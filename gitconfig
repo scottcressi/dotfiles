@@ -1,0 +1,15 @@
+[user]
+        name    = Scott Cressi
+        email   = scottcressi@gmail.com
+[core]
+        editor  = vim
+        pager   = less -iR
+        #pager   = cat
+[merge]
+        tool    = vimdiff
+[color]
+        branch  = auto
+        status  = auto
+        diff    = auto
+[push]
+        default = tracking

@@ -1,0 +1,14 @@
+[dotfiles]
+repository = ~/repos/dotfiles
+ignore = [
+    'setup.sh',
+    'xsession',
+    '.dotfilessrc',
+    'requirements.txt',
+    '.git',
+    '.gitignore',
+    'link.py',
+    '*.swp'
+    ]
+externals = {
+    }

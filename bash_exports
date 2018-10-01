@@ -1,0 +1,71 @@
+#!/bin/bash
+
+# history
+HISTFILESIZE=1000000000
+HISTSIZE=1000000
+shopt -s histappend
+HISTCONTROL=ignoredups
+PROMPT_COMMAND="history -a; history -n; $PROMPT_COMMAND"
+
+# PS1 #########################################################################
+
+## Colors?  Used for the prompt.
+#Regular text color
+BLACK='\[\e[0;30m\]'
+#Bold text color
+BBLACK='\[\e[1;30m\]'
+#background color
+BGBLACK='\[\e[40m\]'
+RED='\[\e[1;31m\]'
+BRED='\[\e[1;31m\]'
+BGRED='\[\e[41m\]'
+GREEN='\[\e[1;32m\]'
+BGREEN='\[\e[1;32m\]'
+BGGREEN='\[\e[1;32m\]'
+YELLOW='\[\e[0;33m\]'
+BYELLOW='\[\e[1;33m\]'
+BGYELLOW='\[\e[1;33m\]'
+BLUE='\[\e[0;34m\]'
+BBLUE='\[\e[1;34m\]'
+BGBLUE='\[\e[1;34m\]'
+MAGENTA='\[\e[0;35m\]'
+BMAGENTA='\[\e[1;35m\]'
+BGMAGENTA='\[\e[1;35m\]'
+CYAN='\[\e[0;36m\]'
+BCYAN='\[\e[1;36m\]'
+BGCYAN='\[\e[1;36m\]'
+WHITE='\[\e[0;37m\]'
+BWHITE='\[\e[1;37m\]'
+BGWHITE='\[\e[1;37m\]'
+
+PROMPT='\u@\h'
+TEXT='\[\e[0m\]'
+
+# set term
+TERM=xterm-color
+
+# disable freeze
+stty -ixon
+
+# initialize shell depth
+printf -v _shell_depth_str '%*s' "$((SHLVL-1))" ''
+_shell_depth_str=${_shell_depth_str:+${_shell_depth_str// />} }
+
+# ps
+PS1="$_shell_depth_str$GREEN$PROMPT$RED\$(parse_git_branch_and_add_brackets) : \w\$ "$TEXT
+
+# unset shell depth
+unset _shell_depth_str
+
+# exports #####################################################################
+
+# java
+export JAVA_HOME=~/jdk-9.0.4/
+export PATH=$PATH:~/jdk-9.0.4/bin/.
+
+# java grey screen fix
+export _JAVA_AWT_WM_NONREPARENTING=1
+
+# go
+export GOBIN=/tmp/
+export GOROOT=/var/tmp/go

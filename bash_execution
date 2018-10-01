@@ -1,0 +1,32 @@
+#!/bin/bash
+
+# vundle
+if [ ! -d ~/.vim/bundle/Vundle.vim ]; then
+    echo "vundle doesn't exist, cloning vundle"
+    git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+    vim +PluginInstall +qall
+fi
+
+xrdb ~/.Xresources
+
+# doge
+#DOGE=`find /usr/local/lib/python2.7/dist-packages/doge/static/ | tail -n +2 | sed 's/\/usr\/local\/lib\/python2.7\/dist-packages\/doge\/static\///g' | sort -R  | head -1`
+#doge --shibe $DOGE
+
+echo "
+⠀⠰⡿⠿⠛⠛⠻⠿⣷
+⠀⠀⠀⠀⠀⠀⣀⣄⡀⠀⠀⠀⠀⢀⣀⣀⣤⣄⣀⡀
+⠀⠀⠀⠀⠀⢸⣿⣿⣷⠀⠀⠀⠀⠛⠛⣿⣿⣿⡛⠿⠷
+⠀⠀⠀⠀⠀⠘⠿⠿⠋⠀⠀⠀⠀⠀⠀⣿⣿⣿⠇
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠉⠁
+
+⠀⠀⠀⠀⣿⣷⣄⠀⢶⣶⣷⣶⣶⣤⣀
+⠀⠀⠀⠀⣿⣿⣿⠀⠀⠀⠀⠀⠈⠙⠻⠗
+⠀⠀⠀⣰⣿⣿⣿⠀⠀⠀⠀⢀⣀⣠⣤⣴⣶⡄
+⠀⣠⣾⣿⣿⣿⣥⣶⣶⣿⣿⣿⣿⣿⠿⠿⠛⠃
+⢰⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡄
+⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡁
+⠈⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠁
+⠀⠀⠛⢿⣿⣿⣿⣿⣿⣿⡿⠟
+⠀⠀⠀⠀⠀⠉⠉⠉
+"
