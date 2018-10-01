@@ -124,5 +124,6 @@ alias pia='curl privateinternetaccess.com -L -s | grep topbar__item | grep prote
 
 # kube
 alias kp='kubectl get pods --all-namespaces'
+alias ka='kubectl get all --all-namespaces'
 alias kn='kubectl get nodes'
 alias kgc='kops --state s3://kubernetes-`aws sts get-caller-identity --output text --query "Account"` get cluster'
