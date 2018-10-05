@@ -31,6 +31,8 @@ echo "
 ⠀⠀⠀⠀⠀⠉⠉⠉
 "
 
-# kube config completion
-_cmd() { COMPREPLY=($(ls ~/.kube/kubeconfig-*)); }
-complete -F _cmd kc
+# kube config
+for f in `ls ~/.kube/config/ | grep kubeconfig`
+do
+    export KUBECONFIG="$HOME/.kube/config/$f:$KUBECONFIG";
+done
