@@ -147,6 +147,7 @@ demjson \
 doge \
 dotfiles \
 gcalcli \
+kube-shell \
 modernize \
 monica \
 moviemon \
