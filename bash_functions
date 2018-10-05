@@ -316,3 +316,8 @@ cd /var/tmp
 curl -LO https://storage.googleapis.com/golang/go1.7.linux-amd64.tar.gz
 tar zxvf go1.7.linux-amd64.tar.gz
 }
+
+_kube_config(){
+unlink ~/.kube/config
+ln -s ~/.kube/kubeconfig-$1 ~/.kube/config
+}
