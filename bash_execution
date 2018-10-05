@@ -30,3 +30,7 @@ echo "
 ⠀⠀⠛⢿⣿⣿⣿⣿⣿⣿⡿⠟
 ⠀⠀⠀⠀⠀⠉⠉⠉
 "
+
+# kube config completion
+_cmd() { COMPREPLY=($(ls ~/.kube/kubeconfig-*)); }
+complete -F _cmd kc
