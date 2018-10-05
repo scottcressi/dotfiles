@@ -322,3 +322,9 @@ _kube_config(){
 unlink ~/.kube/config
 ln -s ~/.kube/kubeconfig-$1 ~/.kube/config
 }
+
+_kubeconfig(){
+sudo git clone https://github.com/ahmetb/kubectx /opt/kubectx
+sudo ln -s /opt/kubectx/kubectx /usr/local/bin/kubectx
+sudo ln -s /opt/kubectx/kubens /usr/local/bin/kubens
+}
