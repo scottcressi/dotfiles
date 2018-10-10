@@ -61,7 +61,7 @@ unset _shell_depth_str
 
 # java
 export JAVA_HOME=~/jdk-9.0.4/
-export PATH=$PATH:~/jdk-9.0.4/bin/.
+export PATH=$PATH:~/jdk-9.0.4/bin/:/usr/local/bin/:~/bin
 
 # java grey screen fix
 export _JAVA_AWT_WM_NONREPARENTING=1
