@@ -138,3 +138,6 @@ alias kn='kubectl get nodes'
 alias kgc='kops --state s3://kubernetes-`aws sts get-caller-identity --output text --query "Account"` get cluster'
 alias kx='kubectx'
 alias ke='kubectl exec -ti'
+
+# docker
+alias docker_cleanup='sudo docker rm $(sudo docker ps -a -q) ; sudo docker rmi $(sudo docker images -a -q)'
