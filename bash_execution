@@ -32,7 +32,7 @@ echo "
 "
 
 # kube config
-for f in `ls ~/.kube/config/ | grep kubeconfig`
+for f in `ls ~/.kube/configs/`
 do
-    export KUBECONFIG="$HOME/.kube/config/$f:$KUBECONFIG";
+    export KUBECONFIG="$HOME/.kube/configs/$f:$KUBECONFIG";
 done
