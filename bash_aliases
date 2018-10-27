@@ -130,6 +130,7 @@ alias ks='watch kubectl get svc --all-namespaces'
 alias ki='watch kubectl get ing --all-namespaces'
 alias kn='watch kubectl get nodes'
 alias kp='kubectl get pods --all-namespaces'
+alias kl='kubectl logs'
 alias ki='kubectl get ing --all-namespaces'
 alias ka='kubectl get all --all-namespaces'
 alias ks='kubectl get svc --all-namespaces'
@@ -140,6 +141,7 @@ alias kgc='kops --state s3://kubernetes-`aws sts get-caller-identity --output te
 alias kx='kubectx'
 alias ke='kubectl exec -ti'
 alias k='kubectx'
+alias kkp='kubectl patch pod -p "{"metadata":{"finalizers":null}}" -n '
 
 # docker
 alias docker_cleanup='sudo docker rm $(sudo docker ps -a -q) ; sudo docker rmi $(sudo docker images -a -q)'
