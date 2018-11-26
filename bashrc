@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+# execution
+if [ -f ~/.bash_execution ]; then
+    source ~/.bash_execution
+fi
+
 # functions
 if [ -f ~/.bash_functions ]; then
     source ~/.bash_functions
@@ -13,11 +18,6 @@ fi
 # exports
 if [ -f ~/.bash_exports ]; then
     source ~/.bash_exports
-fi
-
-# execution
-if [ -f ~/.bash_execution ]; then
-    source ~/.bash_execution
 fi
 
 # completion
