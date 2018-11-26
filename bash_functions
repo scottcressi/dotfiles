@@ -17,6 +17,14 @@ parse_git_branch_and_add_brackets() {
 git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\ \[\1\]/'
 }
 
+parse_kube_context() {
+kubectl config view | grep current-context | awk '{print $2}'
+}
+
+parse_kube_namespace() {
+kubectl config view | grep namespace | awk '{print $2}'
+}
+
 # tunnelkill
 _tunnel-kill() {
 tunnel_kill_list=`ps axuf \
