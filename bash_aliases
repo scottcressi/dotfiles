@@ -146,7 +146,7 @@ alias k='kubectx'
 alias kkp='kubectl patch pod -p "{"metadata":{"finalizers":null}}" -n '
 
 # docker
-alias docker_cleanup='sudo docker rm $(sudo docker ps -a -q) ; sudo docker rmi $(sudo docker images -a -q)'
+alias docker_cleanup='sudo docker stop $(docker ps -aq) ; sudo docker rm $(sudo docker ps -a -q) ; sudo docker rmi $(sudo docker images -a -q)'
 
 # terraform
 alias t='cd ~/repos/terraform'
