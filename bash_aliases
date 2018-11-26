@@ -38,7 +38,7 @@ alias gpa='for i in `find ~/repos -name .git | grep -v forge | grep -v "\.terraf
 alias gs='git status'
 alias gsa='for i in `find ~/repos -maxdepth 3 -name .git | grep -v forge` ; do cd $i/../ ; pwd ; git status ; echo ; done'
 alias ggsa='for i in `find ~/repos -name .git | grep -v forge` ; do cd $i/../ ; git status | grep "On branch" | grep -v master ; done'
-alias gstat='for i in `find ~/repos -name .git | grep -v forge` ; do cd $i/../ ; pwd ; git shortlog -s -n --all --no-merges ; done'
+alias gstat='for i in `find ~/repos -name .git | grep -v forge | grep -v "\.terraform" ` ; do cd $i/../ ; pwd ; git shortlog -s -n --all --no-merges ; done'
 alias gcf='git clean -df'
 alias gbr-f='git branch | grep -v "master" | xargs git branch -D'
 
