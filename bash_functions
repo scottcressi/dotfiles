@@ -291,6 +291,7 @@ suckless-tools \
 tig \
 tmux \
 toilet \
+tree \
 typespeed \
 unrar \
 vim \
