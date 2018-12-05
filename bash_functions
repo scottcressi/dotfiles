@@ -333,13 +333,13 @@ sudo ln -s /opt/kubectx/kubectx /usr/local/bin/kubectx
 sudo ln -s /opt/kubectx/kubens /usr/local/bin/kubens
 }
 
-jenkins(){
+kjenkins(){
 POD=`kubectl get pods -n jenkins | grep Running | awk '{print $1}'`
 OUTPUT=`kubectl exec -n jenkins $POD -- bash -c "ps axuf | grep java | grep -v grep"`
 echo $OUTPUT | awk '{print $15}' | sed 's/.*=//g'
 }
 
-terminate(){
+kterminate(){
 echo enter pod:
 echo
 read POD
