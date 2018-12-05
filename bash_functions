@@ -338,3 +338,11 @@ POD=`kubectl get pods -n jenkins | grep Running | awk '{print $1}'`
 OUTPUT=`kubectl exec -n jenkins $POD -- bash -c "ps axuf | grep java | grep -v grep"`
 echo $OUTPUT | awk '{print $15}' | sed 's/.*=//g'
 }
+
+terminate(){
+echo enter pod:
+echo
+read POD
+kubectl delete pod -n jenkins $POD --grace-period=0 --force &
+kubectl patch pod -n jenkins $POD -p '{"metadata":{"finalizers":null}}'
+}
