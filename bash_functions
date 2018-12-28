@@ -346,3 +346,8 @@ read POD
 kubectl delete pod -n jenkins $POD --grace-period=0 --force &
 kubectl patch pod -n jenkins $POD -p '{"metadata":{"finalizers":null}}'
 }
+
+k(){
+cp ~/.kube/configs/$1 ~/.kube/config
+}
+

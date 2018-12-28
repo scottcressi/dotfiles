@@ -140,10 +140,9 @@ alias ksa='kubectl get serviceaccounts --all-namespaces'
 alias ksm='kubectl get servicemonitors --all-namespaces'
 alias kn='kubectl get nodes'
 alias kgc='kops --state s3://kubernetes-`aws sts get-caller-identity --output text --query "Account"` get cluster'
-alias kx='kubectx'
 alias ke='kubectl exec -ti'
-alias k='kubectx'
 alias kkp='kubectl patch pod -p "{"metadata":{"finalizers":null}}" -n '
+alias kc='ls -la ~/.kube/configs/'
 
 # docker
 alias docker_cleanup='sudo docker stop $(docker ps -aq) ; sudo docker rm $(sudo docker ps -a -q) ; sudo docker rmi -f $(sudo docker images -a -q)'
