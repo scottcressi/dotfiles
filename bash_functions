@@ -362,3 +362,23 @@ echo "BATT  :  `acpi | grep 1: | awk '{print $4}' | sed s/,//g`"
 echo "VOL   :  `amixer get Master | grep "  Front Left" | awk '{print $5}'`"
 echo "DISK  :  `df -h | grep mapper | awk '{print $5}'`"
 }
+
+docker_prereqs(){
+sudo apt-get -y install nfs-common cifs-utils
+sudo apt-get -y install apt-transport-https ca-certificates curl gnupg2 software-properties-common
+curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
+sudo apt-key fingerprint 0EBFCD88
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable"
+sudo apt-get update
+sudo apt-get install -y --allow-unauthenticated docker-ce
+}
+
+docker_jackett(){
+docker pull linuxserver/jackett
+docker stop jackett
+docker rm jackett
+docker run -d \
+-p 9117:9117 \
+--name jackett \
+linuxserver/jackett
+}
