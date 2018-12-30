@@ -355,3 +355,10 @@ docker_cleanup(){
 docker container prune -f
 docker image prune -a -f
 }
+
+s(){
+echo "DATE  :  `date '+%l:%M%P   %A   %m/%d/%y'`"
+echo "BATT  :  `acpi | grep 1: | awk '{print $4}' | sed s/,//g`"
+echo "VOL   :  `amixer get Master | grep "  Front Left" | awk '{print $5}'`"
+echo "DISK  :  `df -h | grep mapper | awk '{print $5}'`"
+}
