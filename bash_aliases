@@ -144,9 +144,6 @@ alias ke='kubectl exec -ti'
 alias kkp='kubectl patch pod -p "{"metadata":{"finalizers":null}}" -n '
 alias kc='ls -la ~/.kube/configs/'
 
-# docker
-alias docker_cleanup='sudo docker stop $(docker ps -aq) ; sudo docker rm $(sudo docker ps -a -q) ; sudo docker rmi -f $(sudo docker images -a -q)'
-
 # terraform
 alias t='cd ~/repos/terraform'
 alias ta='terraform apply'

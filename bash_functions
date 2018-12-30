@@ -351,3 +351,7 @@ k(){
 cp ~/.kube/configs/$1 ~/.kube/config
 }
 
+docker_cleanup(){
+docker container prune -f
+docker image prune -a -f
+}
