@@ -390,6 +390,5 @@ docker rm firefox
 docker run -d \
 -p 5800:5800 \
 --name firefox \
--p 9117:9117 \
 jlesage/firefox
 }
