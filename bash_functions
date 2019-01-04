@@ -323,8 +323,8 @@ wget git.io/trans
 
 _package-go(){
 cd /var/tmp
-curl -LO https://storage.googleapis.com/golang/go1.7.linux-amd64.tar.gz
-tar zxvf go1.7.linux-amd64.tar.gz
+curl -LO https://dl.google.com/go/go1.11.4.linux-amd64.tar.gz
+tar zxvf go1.11.4.linux-amd64.tar.gz
 }
 
 _kubeconfig(){
