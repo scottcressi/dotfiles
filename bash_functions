@@ -392,13 +392,3 @@ docker run -d \
 --name firefox \
 jlesage/firefox
 }
-
-kl(){
-NAMESPACE=`kubectl get pods --all-namespaces | grep $1 | awk '{print $1}'`
-kubectl logs -f $1 -n $NAMESPACE
-}
-
-ke(){
-NAMESPACE=`kubectl get pods --all-namespaces | grep $1 | awk '{print $1}'`
-kubectl exec -ti  $1 -n $NAMESPACE bash
-}
