@@ -14,8 +14,6 @@ alias lses="less"
 alias rm="rm -i"
 alias sl='ls'
 alias iv='vi'
-alias rnano='vi'
-alias nano='vi'
 
 # git
 alias g='cd ~/repos'
@@ -52,12 +50,6 @@ alias vs="vagrant status"
 alias vu="vagrant up"
 alias au="bash test.sh"
 
-# firefox
-alias    f='~/firefox*/firefox & disown ; exit'
-alias   ff='~/firefox*/firefox & disown ; exit'
-alias  fff='~/firefox*/firefox & disown ; exit'
-alias ffff='~/firefox*/firefox & disown ; exit'
-
 # tmux
 alias t0='tmux attach -t 0'
 alias tl='tmux list-windows'
@@ -77,7 +69,7 @@ alias ............='cd ../../../../../../../../../../..'
 alias .............='cd ../../../../../../../../../../../..'
 
 # misc
-alias a='acpi | awk "{print \$4,\$3}" | sed s'/,//'g'
+alias ac='acpi | awk "{print \$4,\$3}" | sed s'/,//'g'
 alias am='alsamixer'
 alias b='~/repos/buku/buku.py'
 alias c='cal'
@@ -87,7 +79,6 @@ alias dict='dict -d gcide'
 alias dotfiles-list='dotfiles -R ~/repos/personal/dotfiles/ -C ~/repos/personal/dotfiles/.dotfilessrc -l'
 alias dotfiles-sync='dotfiles -R ~/repos/personal/dotfiles/ -C ~/repos/personal/dotfiles/.dotfilessrc -s'
 alias dotfiles-force='dotfiles -R ~/repos/personal/dotfiles/ -C ~/repos/personal/dotfiles/.dotfilessrc -s -f'
-alias dwm_script='cd ~/repos/personal/misc/ ; bash dwm_script.sh  & disown ; exit'
 alias e='extract'
 alias fuck='sudo $(history -p \!\!)'
 alias get='sudo apt-get install'
@@ -104,26 +95,18 @@ alias p='pwd'
 alias please='sudo $(history -p !-1)'
 alias pp='ps axuf'
 alias pw='pwgen 32 1 --capitalize --numerals --symbols  --ambiguous'
-alias pwdb='kpcli --kdb ~/repos/personal/misc/pwdb.kdbx'
-alias sa='ssh-agent /bin/bash'
 alias search='apt-cache search'
 alias symlink_buku='ln -sf ~/repos/misc/bookmarks.db ~/.local/share/buku/bookmarks.db'
 alias thesaurus='dict -d moby-thesaurus'
 alias u='uptime'
-alias webserver='python ~/repos/personal_code/python/simple_https_server.py '
 alias ww='curl http://wttr.in/nyc'
 alias xfishtank='xfishtank -c black -r .1 -i .1 -b 20 -f 20 & disown ; exit'
-alias netcat_give='nc -l -p 12345 -q 1 > file'
-alias cc='chromium --enable-remote-extensions & disown ; exit'
-alias lp='i3lock'
 alias vi='vim'
 alias nb='newsbeuter -r -C ~/repos/personal/misc/newsbeuter_config -u ~/repos/personal/misc/newsbeuter_urls -c ~/repos/personal/misc/newsbeuter_cachedb'
-alias btc='curl -sSL https://coinbase.com/api/v1/prices/historical | head -n 1 | sed "s|^.*,|$|" | sed "s|\(\.[0-9]$\)|\10|"'
 alias xterm='xterm -bg black -fg white'
-alias b='mvn clean package -DskipTests=true'
-alias bb='mvn clean package -DskipTests=true ; find target/ -name *.jar | xargs java -jar'
 alias db='sudo docker build .'
 alias pia='curl privateinternetaccess.com -L -s | grep topbar__item | grep protected | sed "s/.*\">//g" | sed "s/<.*//g"'
+alias    f='~/firefox*/firefox & disown ; exit'
 
 # kube
 alias kp='watch kubectl get pods --all-namespaces'
@@ -143,7 +126,6 @@ alias kkp='kubectl patch pod -p "{"metadata":{"finalizers":null}}" -n '
 alias kc='ls -la ~/.kube/configs/'
 
 # terraform
-alias t='cd ~/repos/terraform'
 alias ta='terraform apply'
 alias tp='terraform plan'
 alias ti='terraform init -upgrade'
