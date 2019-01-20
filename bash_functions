@@ -416,13 +416,21 @@ echo domain:
 read domain
 echo bucket:
 read bucket
-kops create cluster --name test.$domain --state s3://$bucket --cloud aws  --zones us-east-1a,us-east-1b
+kops create cluster --name test.$domain --state s3://$bucket --cloud aws  --zones us-east-1a,us-east-1b --kubernetes-version 1.13.2
 kops update --state s3://$bucket cluster --name test.$domain --yes
+}
+
+kdelete(){
+echo domain:
+read domain
+echo bucket:
+read bucket
+echo kops delete cluster  --name test.$domain --state s3://$bucket --yes
 }
 
 list_records(){
 echo domain:
 read domain
 ZONE=`aws route53 list-hosted-zones --query "HostedZones[?Name=='$domain.']".Id --output text | sed 's/\/hostedzone\///g'`
-aws route53 list-resource-record-sets --hosted-zone-id $ZONE --query ResourceRecordSets[].Name[]
+aws route53 list-resource-record-sets --hosted-zone-id $ZONE
 }
