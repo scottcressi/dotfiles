@@ -410,3 +410,19 @@ docker run \
 -v /mnt/videos:/videos \
 plexinc/pms-docker
 }
+
+ktest(){
+echo domain:
+read domain
+echo bucket:
+read bucket
+kops create cluster --name test.$domain --state s3://$bucket --cloud aws  --zones us-east-1a,us-east-1b
+kops update --state s3://$bucket cluster --name test.$domain --yes
+}
+
+list_records(){
+echo domain:
+read domain
+ZONE=`aws route53 list-hosted-zones --query "HostedZones[?Name=='$domain.']".Id --output text | sed 's/\/hostedzone\///g'`
+aws route53 list-resource-record-sets --hosted-zone-id $ZONE --query ResourceRecordSets[].Name[]
+}
