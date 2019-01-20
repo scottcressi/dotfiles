@@ -411,7 +411,7 @@ docker run \
 plexinc/pms-docker
 }
 
-ktest(){
+kopst(){
 echo domain:
 read domain
 echo bucket:
@@ -420,7 +420,7 @@ kops create cluster --name test.$domain --state s3://$bucket --cloud aws  --zone
 kops update --state s3://$bucket cluster --name test.$domain --yes
 }
 
-kdelete(){
+kopsd(){
 echo domain:
 read domain
 echo bucket:
