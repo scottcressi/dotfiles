@@ -438,3 +438,23 @@ aws route53 list-resource-record-sets --hosted-zone-id $ZONE
 ac(){
 aws acm list-certificates --region us-east-1
 }
+
+kpfkibana(){
+POD=`kubectl get pods -n logging | grep kibana | awk '{print $1}'`
+kubectl port-forward -n logging $POD 5601
+}
+
+kpfcerebro(){
+POD=`kubectl get pods -n logging | grep cerebro | awk '{print $1}'`
+kubectl port-forward -n logging $POD 9000
+}
+
+kpfjenkins(){
+POD=`kubectl get pods -n jenkins | grep jenkins | awk '{print $1}'`
+kubectl port-forward -n jenkins $POD 8080
+}
+
+kpfgrafana(){
+POD=`kubectl get pods -n monitoring | grep grafana | awk '{print $1}'`
+kubectl port-forward -n monitoring $POD 3000
+}
