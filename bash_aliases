@@ -74,7 +74,6 @@ alias _information-ip="curl -s ipinfo.io"
 alias _information-location="curl https://whatismycountry.com/ -s | grep -i typed | sed 's/.*from//g' | sed 's/\\,.*//g'  "
 alias _information-movie='ls /mnt/videos/movies/* | grep -i'
 alias _information-music='find /mnt/music/ /mnt/music/_metal/ -maxdepth 2 | grep -i'
-alias ac='acpi | awk "{print \$4,\$3}" | sed s'/,//'g'
 alias am='alsamixer'
 alias b='~/repos/buku/buku.py'
 alias c='cal'

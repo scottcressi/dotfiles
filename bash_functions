@@ -434,3 +434,7 @@ read domain
 ZONE=`aws route53 list-hosted-zones --query "HostedZones[?Name=='$domain.']".Id --output text | sed 's/\/hostedzone\///g'`
 aws route53 list-resource-record-sets --hosted-zone-id $ZONE
 }
+
+ac(){
+aws acm list-certificates --region us-east-1
+}
