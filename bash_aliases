@@ -122,7 +122,9 @@ alias ksm='kubectl get servicemonitors --all-namespaces'
 alias kn='kubectl get nodes'
 alias kgc='kops --state s3://kubernetes-`aws sts get-caller-identity --output text --query "Account"` get cluster'
 alias kkp='kubectl patch pod -p "{"metadata":{"finalizers":null}}" -n '
-alias kc='ls -la ~/.kube/configs/'
+alias kc='aws eks update-kubeconfig --region us-east-1 --name '
+alias kl='aws eks list-clusters --region us-east-1 | jq -r ".clusters| .[]"'
+alias awsl='ls -la ~/.aws/credentials.*'
 
 # terraform
 alias ta='terraform apply'

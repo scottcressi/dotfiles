@@ -458,3 +458,7 @@ kpfgrafana(){
 POD=`kubectl get pods -n monitoring | grep grafana | awk '{print $1}'`
 kubectl port-forward -n monitoring $POD 3000
 }
+
+awsc(){
+cp ~/.aws/credentials.$1 ~/.aws/credentials
+}
