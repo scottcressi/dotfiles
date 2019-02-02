@@ -106,6 +106,7 @@ alias vi='vim'
 alias ww='curl http://wttr.in/nyc'
 alias xfishtank='xfishtank -c black -r .1 -i .1 -b 20 -f 20 & disown ; exit'
 alias xterm='xterm -bg black -fg white'
+alias dstat='dstat -c --top-cpu -dn --top-mem'
 
 # kube
 alias kp='watch kubectl get pods --all-namespaces'

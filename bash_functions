@@ -3,7 +3,6 @@
 _clone-repos(){
 cd ~/repos/ ; \
 git clone https://github.com/colszowka/linux-typewriter.git ; \
-git clone https://github.com/KittyKatt/screenFetch ; \
 git clone https://github.com/alexdantas/yetris ; \
 git clone https://github.com/drwetter/testssl.sh ; \
 git clone https://github.com/jarun/buku/ ; \
@@ -162,6 +161,7 @@ moviemon \
 flake8 \
 rtv \
 socli \
+s-tui \
 speedtest-cli \
 thefuck \
 youtube-dl
@@ -255,7 +255,10 @@ arandr \
 aspell \
 atril \
 bash-completion \
+bb \
+cmatrix \
 cmus \
+cowsay \
 curl \
 dnsutils \
 dstat \
@@ -268,6 +271,7 @@ irssi \
 kpcli \
 keepass2 \
 lftp \
+libaa-bin \
 links2 \
 lolcat \
 mcomix \
@@ -278,6 +282,7 @@ mutt \
 neofetch \
 nethogs \
 newsbeuter \
+oneko \
 p7zip \
 pwgen \
 python \
