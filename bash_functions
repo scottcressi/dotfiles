@@ -257,7 +257,9 @@ feh \
 mcomix \
 mpv \
 mupdf \
+sxiv \
 wicd \
+xboard \
 xcowsay \
 xfishtank \
 
@@ -270,6 +272,7 @@ alsa-utils \
 aspell \
 bash-completion \
 bb \
+bsdgames \
 cmatrix \
 cmus \
 cowsay \
@@ -292,6 +295,7 @@ nethogs \
 newsbeuter \
 oneko \
 p7zip \
+pacman4console \
 pwgen \
 python \
 python-pip \
