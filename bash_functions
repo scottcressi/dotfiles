@@ -140,8 +140,8 @@ cifs-utils \
 dictd \
 dict-gcide \
 dict-moby-thesaurus \
-nfs-common \
-openssh-server
+openssh-server\
+
 }
 
 _package-pip3-packages(){
@@ -263,11 +263,11 @@ feh \
 mcomix \
 mpv \
 mupdf \
+netsurf \
 sxiv \
 wicd \
 xboard \
 xcowsay \
-xfishtank \
 
 }
 
@@ -324,6 +324,7 @@ unrar \
 vim \
 weather-util \
 whois \
+xfishtank \
 xterm \
 
 }
