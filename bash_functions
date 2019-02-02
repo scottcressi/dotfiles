@@ -275,6 +275,7 @@ mdp \
 mpv \
 mupdf \
 mutt \
+neofetch \
 nethogs \
 newsbeuter \
 p7zip \
