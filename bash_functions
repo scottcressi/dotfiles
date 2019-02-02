@@ -142,7 +142,6 @@ dict-gcide \
 dict-moby-thesaurus \
 nfs-common \
 openssh-server
-
 }
 
 _package-pip-packages(){
@@ -150,10 +149,11 @@ sudo pip install --upgrade \
 pip \
 awscli \
 bpython \
+consoletetris \
 demjson \
 doge \
 dotfiles \
-gcalcli \
+glances \
 kube-shell \
 modernize \
 monica \
@@ -247,13 +247,27 @@ wget https://github.com/Radarr/Radarr/releases/download/v0.2.0.596/Radarr.develo
 tar zxvf Radarr.develop.0.2.0.596.linux.tar.gz
 }
 
-_package-debian(){
+_package-debian-gui(){
+sudo apt-get update
+sudo apt-get install \
+eboard \
+arandr \
+atril \
+feh \
+mcomix \
+mpv \
+mupdf \
+wicd \
+xcowsay \
+xfishtank \
+
+}
+
+_package-debian-terminal(){
 sudo apt-get update
 sudo apt-get install \
 alsa-utils \
-arandr \
 aspell \
-atril \
 bash-completion \
 bb \
 cmatrix \
@@ -262,22 +276,16 @@ cowsay \
 curl \
 dnsutils \
 dstat \
-feh \
 git \
 htop \
 iftop \
 ipcalc \
 irssi \
-kpcli \
-keepass2 \
 lftp \
 libaa-bin \
 links2 \
 lolcat \
-mcomix \
 mdp \
-mpv \
-mupdf \
 mutt \
 neofetch \
 nethogs \
@@ -298,15 +306,14 @@ tig \
 tmux \
 toilet \
 tree \
+tty-clock \
 typespeed \
 unrar \
 vim \
 weather-util \
 whois \
-wicd \
-xcowsay \
-xfishtank \
-xterm
+xterm \
+
 }
 
 _brightness(){
