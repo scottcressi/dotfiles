@@ -144,6 +144,12 @@ nfs-common \
 openssh-server
 }
 
+_package-pip3-packages(){
+sudo pip3 install --upgrade \
+cl-chess \
+
+}
+
 _package-pip-packages(){
 sudo pip install --upgrade \
 pip \
@@ -298,7 +304,9 @@ p7zip \
 pacman4console \
 pwgen \
 python \
+python3 \
 python-pip \
+python3-pip \
 ranger \
 rsync \
 rtorrent \
