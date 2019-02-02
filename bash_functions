@@ -328,12 +328,6 @@ curl -LO https://dl.google.com/go/go1.11.4.linux-amd64.tar.gz
 tar zxvf go1.11.4.linux-amd64.tar.gz
 }
 
-_kubeconfig(){
-sudo git clone https://github.com/ahmetb/kubectx /opt/kubectx
-sudo ln -s /opt/kubectx/kubectx /usr/local/bin/kubectx
-sudo ln -s /opt/kubectx/kubens /usr/local/bin/kubens
-}
-
 kjenkins(){
 POD=`kubectl get pods -n jenkins | grep Running | awk '{print $1}'`
 OUTPUT=`kubectl exec -n jenkins $POD -- bash -c "ps axuf | grep java | grep -v grep"`
