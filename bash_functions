@@ -119,6 +119,7 @@ _package-firefox() {
 wget -O firefox.tar.bz2 "https://download.mozilla.org/?product=firefox-latest&os=linux64&lang=en-US"
 bunzip2 firefox.tar.bz2
 tar xvf firefox.tar
+mv firefox firefox-$(date +%Y-%m-%d-%H-%M-%S)
 rm -f firefox.tar
 }
 
