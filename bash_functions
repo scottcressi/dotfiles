@@ -436,7 +436,7 @@ echo domain:
 read domain
 echo bucket:
 read bucket
-kops create cluster --name test.$domain --state s3://$bucket --cloud aws  --zones us-east-1a,us-east-1b --kubernetes-version 1.13.2 --node-size m5.large
+kops create cluster --name test.$domain --state s3://$bucket --cloud aws  --zones us-east-1a,us-east-1b --kubernetes-version 1.13.3 --node-size m5.large
 kops update --state s3://$bucket cluster --name test.$domain --yes
 }
 
