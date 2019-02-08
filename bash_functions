@@ -348,6 +348,11 @@ _package-translate(){
 wget git.io/trans
 }
 
+_package-zoom(){
+wget https://zoom.us/client/latest/zoom_amd64.deb
+sudo dpkg -i zoom_amd64.deb
+}
+
 _package-go(){
 cd /var/tmp
 curl -LO https://dl.google.com/go/go1.11.4.linux-amd64.tar.gz
