@@ -3,6 +3,7 @@ alias a-l='-la'
 alias elss="less"
 alias erg='grep --color=auto'
 alias grep='grep --color=auto'
+alias gep='grep --color=auto'
 alias grpe='grep'
 alias gerp='grep'
 alias l='ls -ls --color'
@@ -128,7 +129,5 @@ alias kl='aws eks list-clusters --region us-east-1 | jq -r ".clusters| .[]"'
 alias awsl='ls -la ~/.aws/credentials.*'
 
 # terraform
-alias ta='terraform apply'
-alias tp='terraform plan'
-alias ti='terraform init -upgrade'
-alias td='terraform destroy'
+alias tp='terragrunt plan --terragrunt-source-update '
+alias ta='terragrunt paply --terragrunt-source-update '
