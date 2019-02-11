@@ -384,7 +384,7 @@ docker image prune -a -f
 
 s(){
 echo "DATE  :  `date '+%l:%M%P   %A   %m/%d/%y'`"
-echo "BATT  :  `acpi | grep "Battery 0" | awk '{print $4}' | sed s/,//g`"
+echo "BATT  :  `acpi | grep "Battery 1" | awk '{print $4}' | sed s/,//g`"
 echo "DISK  :  `df -h / | grep dev | awk '{print $5}'`"
 echo "VOL   :  `amixer get Master | grep "  Front Left" | awk '{print $5}'`"
 }
