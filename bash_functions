@@ -446,6 +446,12 @@ kops create cluster --name test.$domain --state s3://$bucket --cloud aws  --zone
 kops update --state s3://$bucket cluster --name test.$domain --yes
 }
 
+kopsg(){
+echo bucket:
+read bucket
+kops get cluster --state s3://$bucket
+}
+
 kopsd(){
 echo domain:
 read domain
