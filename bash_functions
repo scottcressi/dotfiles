@@ -289,6 +289,7 @@ dstat \
 git \
 htop \
 iftop \
+iotop \
 ipcalc \
 irssi \
 lftp \
