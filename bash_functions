@@ -159,7 +159,6 @@ demjson \
 doge \
 dotfiles \
 glances \
-kube-shell \
 modernize \
 monica \
 moviemon \
