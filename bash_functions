@@ -137,11 +137,9 @@ xorg
 _package-daemons(){
 sudo apt-get update
 sudo apt-get install -y \
-cifs-utils \
 dictd \
 dict-gcide \
 dict-moby-thesaurus \
-openssh-server\
 
 }
 
