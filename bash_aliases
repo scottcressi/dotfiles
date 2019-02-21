@@ -131,3 +131,6 @@ alias awsl='ls -la ~/.aws/credentials.*'
 # terraform
 alias tp='terragrunt plan --terragrunt-source-update '
 alias ta='terragrunt apply --terragrunt-source-update '
+
+# docker
+alias docker_stop='docker stop $(docker ps -aq)'
