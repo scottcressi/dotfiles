@@ -293,6 +293,7 @@ lftp \
 libaa-bin \
 links2 \
 lolcat \
+lsof \
 mdp \
 mutt \
 neofetch \
