@@ -501,3 +501,15 @@ else
 echo yes
 fi
 }
+
+kc(){
+echo region
+read REGION
+aws eks update-kubeconfig --region $REGION --name $1
+}
+
+kl(){
+echo region
+read REGION
+aws eks list-clusters --region $REGION
+}
