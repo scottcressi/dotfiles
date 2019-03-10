@@ -490,6 +490,11 @@ POD=`kubectl get pods -n monitoring | grep grafana | awk '{print $1}'`
 kubectl port-forward -n monitoring $POD 3000
 }
 
+kpfdashboard(){
+kubectl proxy &
+chromium http://127.0.0.1:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:https/proxy/#!/login
+}
+
 awsc(){
 cp ~/.aws/credentials.$1 ~/.aws/credentials
 }
