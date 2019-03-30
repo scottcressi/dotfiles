@@ -124,8 +124,7 @@ rm -f firefox.tar
 }
 
 _package-firefox_prereqs(){
-sudo apt-get install -y bzip2 libasound2 libdbus-glib-1-2 libgtk2.0-0
-sudo apt-get install -y pepperflashplugin-nonfree # flashplugin-nonfree
+sudo apt-get install -y bzip2 libdbus-glib-1-2 libgtk-3-0
 }
 
 _package-wm(){
@@ -300,6 +299,7 @@ neofetch \
 nethogs \
 newsbeuter \
 oneko \
+openssh-client \
 p7zip \
 pacman4console \
 pwgen \
@@ -320,7 +320,6 @@ toilet \
 tree \
 tty-clock \
 typespeed \
-unrar \
 vim \
 weather-util \
 whois \
@@ -348,6 +347,7 @@ wget git.io/trans
 }
 
 _package-zoom(){
+sudo apt-get install -y libnss3
 wget https://zoom.us/client/latest/zoom_amd64.deb
 sudo dpkg -i zoom_amd64.deb
 }
