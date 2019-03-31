@@ -377,8 +377,8 @@ cp ~/.kube/configs/$1 ~/.kube/config
 }
 
 docker_cleanup(){
-docker container prune -f
-docker image prune -a -f
+sudo docker container prune -f
+sudo docker image prune -a -f
 }
 
 s(){
@@ -399,31 +399,31 @@ sudo apt-get install -y --allow-unauthenticated docker-ce
 }
 
 docker_jackett(){
-docker pull linuxserver/jackett
-docker stop jackett
-docker rm jackett
-docker run -d \
+sudo docker pull linuxserver/jackett:amd64-v0.11.154-ls4
+sudo docker stop jackett
+sudo docker rm jackett
+sudo docker run -d \
 -p 9117:9117 \
 --name jackett \
 -v /var/tmp/jackett/config:/config \
-linuxserver/jackett
+linuxserver/jackett:amd64-v0.11.154-ls4
 }
 
 docker_firefox(){
-docker pull jlesage/firefox
-docker stop firefox
-docker rm firefox
-docker run -d \
+sudo docker pull jlesage/firefox
+sudo docker stop firefox
+sudo docker rm firefox
+sudo docker run -d \
 -p 5800:5800 \
 --name firefox \
 jlesage/firefox
 }
 
 docker_plex(){
-docker pull plexinc/pms-docker
-docker stop plex
-docker rm plex
-docker run \
+sudo docker pull plexinc/pms-docker
+sudo docker stop plex
+sudo docker rm plex
+sudo docker run \
 -d \
 --name plex \
 --network=host \
