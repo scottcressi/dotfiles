@@ -288,6 +288,7 @@ iftop \
 iotop \
 ipcalc \
 irssi \
+jq \
 lftp \
 libaa-bin \
 links2 \
@@ -295,6 +296,7 @@ lolcat \
 lsof \
 mdp \
 mutt \
+netcat \
 neofetch \
 nethogs \
 newsbeuter \
