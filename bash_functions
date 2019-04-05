@@ -378,7 +378,7 @@ k(){
 cp ~/.kube/configs/$1 ~/.kube/config
 }
 
-docker_cleanup(){
+_docker_cleanup(){
 sudo docker container prune -f
 sudo docker image prune -a -f
 }
@@ -390,7 +390,7 @@ echo "DISK  :  `df -h / | grep dev | awk '{print $5}'`"
 echo "VOL   :  `amixer get Master | grep "  Front Left" | awk '{print $5}'`"
 }
 
-docker_prereqs(){
+_docker_prereqs(){
 sudo apt-get -y install nfs-common cifs-utils
 sudo apt-get -y install apt-transport-https ca-certificates curl gnupg2 software-properties-common
 curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
@@ -400,7 +400,7 @@ sudo apt-get update
 sudo apt-get install -y --allow-unauthenticated docker-ce
 }
 
-docker_jackett(){
+_docker_jackett(){
 sudo docker pull linuxserver/jackett:amd64-v0.11.154-ls4
 sudo docker stop jackett
 sudo docker rm jackett
@@ -411,7 +411,7 @@ sudo docker run -d \
 linuxserver/jackett:amd64-v0.11.154-ls4
 }
 
-docker_firefox(){
+_docker_firefox(){
 sudo docker pull jlesage/firefox
 sudo docker stop firefox
 sudo docker rm firefox
@@ -421,7 +421,7 @@ sudo docker run -d \
 jlesage/firefox
 }
 
-docker_plex(){
+_docker_plex(){
 sudo docker pull plexinc/pms-docker
 sudo docker stop plex
 sudo docker rm plex

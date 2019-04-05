@@ -131,4 +131,4 @@ alias tp='terragrunt plan --terragrunt-source-update '
 alias ta='terragrunt apply --terragrunt-source-update '
 
 # docker
-alias docker_stop='docker stop $(docker ps -aq)'
+alias _docker_stop='docker stop $(docker ps -aq)'
