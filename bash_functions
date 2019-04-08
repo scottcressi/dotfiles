@@ -275,6 +275,7 @@ alsa-utils \
 aspell \
 bash-completion \
 bb \
+bc \
 bsdgames \
 cmatrix \
 cmus \
