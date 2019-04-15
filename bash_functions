@@ -412,16 +412,6 @@ sudo docker run -d \
 linuxserver/jackett:amd64-v0.11.154-ls4
 }
 
-_docker_firefox(){
-sudo docker pull jlesage/firefox
-sudo docker stop firefox
-sudo docker rm firefox
-sudo docker run -d \
--p 5800:5800 \
---name firefox \
-jlesage/firefox
-}
-
 _docker_plex(){
 sudo docker pull plexinc/pms-docker
 sudo docker stop plex
