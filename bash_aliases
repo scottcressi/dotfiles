@@ -126,7 +126,7 @@ alias kn='kubectl get nodes'
 alias kgc='kops --state s3://kubernetes-`aws sts get-caller-identity --output text --query "Account"` get cluster'
 alias kkp='kubectl patch pod -p "{"metadata":{"finalizers":null}}" -n '
 alias awsl='ls -la ~/.aws/credentials.*'
-alias charts='find -name Chart.yaml | xargs git log -p --since 1.day'
+alias charts='git log -p --since 7.day | grep diff | grep stable | sort | uniq | grep Chart.yaml'
 
 # terraform
 alias tp='rm -rf .terragrunt-cache ; terragrunt plan --terragrunt-source ../../../../../../terraform-modules/modules/networking/ '
