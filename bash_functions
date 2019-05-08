@@ -409,7 +409,7 @@ sudo docker run -d \
 -p 9117:9117 \
 --name jackett \
 -v /var/tmp/jackett/config:/config \
-linuxserver/jackett:amd64-v0.11.154-ls4
+linuxserver/jackett:v0.11.296-ls10
 }
 
 _docker_plex(){
@@ -426,7 +426,7 @@ sudo docker run \
 -v /var/tmp/plex/transcode:/transcode \
 -v /var/tmp/plex/data:/data \
 -v /mnt/videos:/videos \
-plexinc/pms-docker
+plexinc/pms-docker:1.15.4.993-bb4a2cb6c
 }
 
 kopst(){
