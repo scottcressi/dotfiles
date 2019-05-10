@@ -402,7 +402,7 @@ sudo apt-get install -y --allow-unauthenticated docker-ce
 }
 
 _docker_jackett(){
-sudo docker pull linuxserver/jackett:amd64-v0.11.154-ls4
+sudo docker pull linuxserver/jackett
 sudo docker stop jackett
 sudo docker rm jackett
 sudo docker run -d \
