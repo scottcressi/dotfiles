@@ -225,31 +225,6 @@ _information-package_size(){
 dpkg-query -Wf '${Installed-Size}\t${Package}\n' | sort -n
 }
 
-_start-sonar(){
-mono --debug /opt/NzbDrone/NzbDrone.exe
-}
-
-_start-radarr(){
-cd ~/Radarr.develop.0.2.0.596.linux ; mono Radarr.exe
-}
-
-_package-sonarr(){
-sudo apt-get install -y dirmngr
-sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys FDA5DFFC
-echo "deb http://apt.sonarr.tv/ master main" | sudo tee /etc/apt/sources.list.d/sonarr.list
-sudo apt-get update
-sudo apt-get install -y nzbdrone
-}
-
-_package-radarr(){
-sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
-echo "deb http://download.mono-project.com/repo/debian wheezy main" | sudo tee /etc/apt/sources.list.d/mono-xamarin.list
-sudo apt-get update
-sudo apt-get install mono-devel mediainfo sqlite3 libmono-cil-dev -y
-wget https://github.com/Radarr/Radarr/releases/download/v0.2.0.596/Radarr.develop.0.2.0.596.linux.tar.gz
-tar zxvf Radarr.develop.0.2.0.596.linux.tar.gz
-}
-
 _package-debian-gui(){
 sudo apt-get update
 sudo apt-get install \
@@ -335,12 +310,6 @@ _brightness(){
 echo $1 | sudo tee --append /sys/devices/pci0000:00/0000:00:02.0/drm/card0/card0-eDP-1/intel_backlight/brightness
 }
 
-_package-jdk(){
-wget -P ~/ https://download.java.net/java/GA/jdk10/10.0.1/fb4372174a714e6b8c52526dc134031e/10/openjdk-10.0.1_linux-x64_bin.tar.gz
-tar zxvf openjdk-10.0.1_linux-x64_bin.tar.gz
-rm -f openjdk-10.0.1_linux-x64_bin.tar.gz
-}
-
 _package-visualvm(){
 wget https://java.net/projects/visualvm/downloads/download/release138/visualvm_138.zip
 }
@@ -353,12 +322,6 @@ _package-zoom(){
 sudo apt-get install -y libnss3
 wget https://zoom.us/client/latest/zoom_amd64.deb
 sudo dpkg -i zoom_amd64.deb
-}
-
-_package-go(){
-cd /var/tmp
-curl -LO https://dl.google.com/go/go1.11.4.linux-amd64.tar.gz
-tar zxvf go1.11.4.linux-amd64.tar.gz
 }
 
 kjenkins(){
@@ -429,12 +392,24 @@ sudo docker run \
 plexinc/pms-docker
 }
 
+_docker_python(){
+docker run -v "$PWD":/usr/src/myapp -w /usr/src/myapp python python
+}
+
+_docker_go(){
+docker run -v "$PWD":/usr/src/myapp -w /usr/src/myapp golang go
+}
+
+_docker_java(){
+docker run -v "$PWD":/usr/src/myapp -w /usr/src/myapp openjdk:7 java
+}
+
 kopst(){
 echo domain:
 read domain
 echo bucket:
 read bucket
-kops create cluster --name test.$domain --state s3://$bucket --cloud aws  --zones us-east-1a,us-east-1b --kubernetes-version 1.14.1 --node-size m5.large
+kops create cluster --name test.$domain --state s3://$bucket --cloud aws  --zones us-east-1a,us-east-1b --kubernetes-version 1.14.2 --node-size m5.large
 kops update --state s3://$bucket cluster --name test.$domain --yes
 }
 
