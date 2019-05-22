@@ -111,6 +111,8 @@ alias xterm='xterm -bg black -fg white'
 alias dstat='dstat -c --top-cpu -dn --top-mem'
 
 # kube
+alias kd='kp | grep " [0-9]h" ; kp | grep " [0-9]s"'
+alias kp='watch kubectl get pods --all-namespaces'
 alias kp='watch kubectl get pods --all-namespaces'
 alias ka='watch kubectl get all --all-namespaces'
 alias ks='watch kubectl get svc --all-namespaces'
