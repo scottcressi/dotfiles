@@ -464,7 +464,7 @@ chromium http://127.0.0.1:8001/api/v1/namespaces/kubernetes-dashboard/services/h
 }
 
 awsc(){
-cp ~/.aws/credentials.$1 ~/.aws/credentials
+export AWS_DEFAULT_PROFILE=$1
 }
 
 _is-someone-using-my-webcam(){

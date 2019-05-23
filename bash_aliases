@@ -127,7 +127,7 @@ alias ksm='kubectl get servicemonitors --all-namespaces'
 alias kn='kubectl get nodes'
 alias kgc='kops --state s3://kubernetes-`aws sts get-caller-identity --output text --query "Account"` get cluster'
 alias kkp='kubectl patch pod -p "{"metadata":{"finalizers":null}}" -n '
-alias awsl='ls -la ~/.aws/credentials.*'
+alias awsl='grep "\[" ~/.aws/credentials'
 alias charts='git log -p --since 7.day | grep diff | grep stable | sort | uniq | grep Chart.yaml'
 alias hl='helm ls'
 
