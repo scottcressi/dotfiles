@@ -482,7 +482,9 @@ aws eks update-kubeconfig --region $REGION --name $1
 }
 
 kl(){
-echo region
-read REGION
-aws eks list-clusters --region $REGION
+for i in `echo us-east-1 us-west-2` ; do
+echo $i
+aws eks list-clusters --region $i
+echo
+done
 }
