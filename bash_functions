@@ -346,6 +346,7 @@ cp ~/.kube/configs/$1 ~/.kube/config
 _docker_cleanup(){
 sudo docker container prune -f
 sudo docker image prune -a -f
+sudo docker volume rm $(docker volume ls -qf dangling=true)
 }
 
 s(){
