@@ -40,7 +40,9 @@ alias ggsa='for i in `find ~/repos -name .git | grep -v forge` ; do cd $i/../ ; 
 alias gstat='for i in `find ~/repos -name .git | grep -v forge | grep -v "\.terraform" ` ; do cd $i/../ ; pwd ; git shortlog -s -n --all --no-merges ; done'
 alias gcf='git clean -df'
 alias gbd-f='git branch | grep -v "master" | xargs git branch -D ; git fetch -p'
+alias gcom='git checkout master'
 alias changes='git log -p --since 1.day | grep diff | grep stable | sort | uniq'
+alias charts='git log -p --since 7.day | grep diff | grep stable | sort | uniq | grep Chart.yaml'
 
 # virtualization
 alias vb='virtualbox'
@@ -128,7 +130,6 @@ alias kn='kubectl get nodes'
 alias kgc='kops --state s3://kubernetes-`aws sts get-caller-identity --output text --query "Account"` get cluster'
 alias kkp='kubectl patch pod -p "{"metadata":{"finalizers":null}}" -n '
 alias awsl='grep "\[" ~/.aws/credentials'
-alias charts='git log -p --since 7.day | grep diff | grep stable | sort | uniq | grep Chart.yaml'
 alias hl='helm ls'
 
 # terraform
