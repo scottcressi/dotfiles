@@ -17,7 +17,7 @@ alias sl='ls'
 alias iv='vi'
 
 # git
-alias g='cd ~/repos'
+alias gh='cd ~/repos'
 alias ga='git add --all'
 alias gb='git branch -a'
 alias gc='git commit'
@@ -52,7 +52,6 @@ alias vp="vagrant provision"
 alias vv="vagrant ssh"
 alias vs="vagrant status"
 alias vu="vagrant up"
-alias au="bash test.sh"
 
 # tmux
 alias t0='tmux attach -t 0'
@@ -73,18 +72,7 @@ alias ............='cd ../../../../../../../../../../..'
 alias .............='cd ../../../../../../../../../../../..'
 
 # misc
-alias _information-game='ls /mnt/games/pc/* | grep -i'
-alias _information-ip="curl -s ipinfo.io"
-alias _information-location="curl https://whatismycountry.com/ -s | grep -i typed | sed 's/.*from//g' | sed 's/\\,.*//g'  "
-alias _information-movie='ls /mnt/videos/movies/* | grep -i'
-alias _information-music='find /mnt/music/ /mnt/music/_metal/ -maxdepth 2 | grep -i'
-alias am='alsamixer'
-alias b='~/repos/buku/buku.py'
-alias c='cal'
-alias cal='cal -3'
-alias d="date '+%l:%M%P   %A   %m/%d/%y'"
-alias db='sudo docker build .'
-alias dict='dict -d gcide'
+alias d="date '+%l:%M%P %A %m/%d/%y'"
 alias dotfiles-force='dotfiles -R ~/repos/personal/dotfiles/ -C ~/repos/personal/dotfiles/.dotfilessrc -s -f'
 alias dotfiles-list='dotfiles -R ~/repos/personal/dotfiles/ -C ~/repos/personal/dotfiles/.dotfilessrc -l'
 alias dotfiles-sync='dotfiles -R ~/repos/personal/dotfiles/ -C ~/repos/personal/dotfiles/.dotfilessrc -s'
@@ -92,25 +80,21 @@ alias e='extract'
 alias f='~/firefox*/firefox & disown ; exit'
 alias fuck='sudo $(history -p \!\!)'
 alias get='sudo apt-get install'
-alias gip='_information-ip'
-alias google='~/repos/googler/googler'
+alias gip='curl -s ipinfo.io'
 alias h='htop'
-alias movie='~/repos/Govie/bin/govie -d '
 alias nb='newsbeuter -r -C ~/repos/personal/misc/newsbeuter_config -u ~/repos/personal/misc/newsbeuter_urls -c ~/repos/personal/misc/newsbeuter_cachedb'
-alias p='pwd'
 alias pia='curl privateinternetaccess.com -L -s | grep topbar__item | grep protected | sed "s/.*\">//g" | sed "s/<.*//g"'
 alias please='sudo $(history -p !-1)'
-alias pp='ps axuf'
+alias p='ps axuf'
 alias pw='pwgen 32 1 --capitalize --numerals --symbols  --ambiguous'
 alias search='apt-cache search'
-alias symlink_buku='ln -sf ~/repos/misc/bookmarks.db ~/.local/share/buku/bookmarks.db'
-alias thesaurus='dict -d moby-thesaurus'
 alias u='uptime'
 alias vi='vim'
 alias ww='curl http://wttr.in/nyc'
-alias xfishtank='xfishtank -c black -r .1 -i .1 -b 20 -f 20 & disown ; exit'
+alias xfishtank='xfishtank -c black -r .1 -i .1 -b 20 -f 20'
 alias xterm='xterm -bg black -fg white'
 alias dstat='dstat -c --top-cpu -dn --top-mem'
+alias g='glances'
 
 # kube
 alias kd='kp | grep " [0-9]h" ; kp | grep " [0-9]s"'
@@ -137,4 +121,6 @@ alias tp='rm -rf .terragrunt-cache ; terragrunt plan --terragrunt-source ../../.
 alias ta='terragrunt apply --terragrunt-source-update '
 
 # docker
-alias _docker_stop='docker stop $(docker ps -aq)'
+alias ds='docker stop $(docker ps -aq)'
+alias di='docker images'
+alias dp='docker ps'

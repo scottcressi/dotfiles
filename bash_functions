@@ -256,6 +256,7 @@ cowsay \
 curl \
 dnsutils \
 dstat \
+espeak \
 git \
 htop \
 iftop \
@@ -278,12 +279,14 @@ oneko \
 openssh-client \
 p7zip \
 pacman4console \
+pi \
 pwgen \
 python \
 python3 \
 python-pip \
 python3-pip \
 ranger \
+rig \
 rsync \
 rtorrent \
 scrot \
@@ -341,17 +344,10 @@ k(){
 cp ~/.kube/configs/$1 ~/.kube/config
 }
 
-_docker_cleanup(){
+dc(){
 sudo docker container prune -f
 sudo docker image prune -a -f
 sudo docker volume rm $(docker volume ls -qf dangling=true)
-}
-
-s(){
-echo "DATE  :  `date '+%l:%M%P   %A   %m/%d/%y'`"
-echo "BATT  :  `acpi | grep "Battery 1" | awk '{print $4}' | sed s/,//g`"
-echo "DISK  :  `df -h / | grep dev | awk '{print $5}'`"
-echo "VOL   :  `amixer get Master | grep "  Front Left" | awk '{print $5}'`"
 }
 
 _docker_prereqs(){
