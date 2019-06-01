@@ -133,15 +133,6 @@ dwm \
 xorg
 }
 
-_package-daemons(){
-sudo apt-get update
-sudo apt-get install -y \
-dictd \
-dict-gcide \
-dict-moby-thesaurus \
-
-}
-
 _package-pip3-packages(){
 sudo pip3 install --upgrade \
 cl-chess \
@@ -237,9 +228,15 @@ mpv \
 mupdf \
 netsurf \
 sxiv \
-wicd \
 xboard \
 xcowsay \
+
+}
+
+_package-laptop(){
+sudo apt-get update
+sudo apt-get install \
+wicd \
 
 }
 
