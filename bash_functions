@@ -230,7 +230,6 @@ sudo apt-get update
 sudo apt-get install \
 eboard \
 arandr \
-byzanz \
 atril \
 feh \
 mcomix \
@@ -298,6 +297,7 @@ tmux \
 toilet \
 tree \
 tty-clock \
+ttyrec \
 typespeed \
 vim \
 weather-util \
