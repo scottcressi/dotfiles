@@ -252,6 +252,7 @@ bash-completion \
 bb \
 bc \
 bsdgames \
+cifs-utils \
 cmatrix \
 cmus \
 cowsay \
@@ -357,7 +358,6 @@ echo "VOL   :  `amixer get Master | grep "  Front Left" | awk '{print $5}'`"
 }
 
 _docker_prereqs(){
-sudo apt-get -y install nfs-common cifs-utils
 sudo apt-get -y install apt-transport-https ca-certificates curl gnupg2 software-properties-common
 curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
 sudo apt-key fingerprint 0EBFCD88
