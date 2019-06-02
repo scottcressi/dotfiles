@@ -17,7 +17,7 @@ alias sl='ls'
 alias iv='vi'
 
 # git
-alias gh='cd ~/repos'
+alias g='cd ~/repos'
 alias ga='git add --all'
 alias gb='git branch -a'
 alias gc='git commit'
@@ -94,7 +94,6 @@ alias ww='curl http://wttr.in/nyc'
 alias xfishtank='xfishtank -c black -r .1 -i .1 -b 20 -f 20'
 alias xterm='xterm -bg black -fg white'
 alias dstat='dstat -c --top-cpu -dn --top-mem'
-alias g='glances'
 alias df='df -h'
 
 # kube
