@@ -161,12 +161,6 @@ thefuck \
 youtube-dl
 }
 
-_package-intellij(){
-wget -P ~/ https://download.jetbrains.com/idea/ideaIC-2018.1.1.tar.gz
-tar zxvf ideaIC-2018.1.1.tar.gz
-rm -f ideaIC-2018.1.1.tar.gz
-}
-
 _wallpaper(){
 while true
 do
@@ -310,10 +304,6 @@ xterm \
 
 _brightness(){
 echo $1 | sudo tee --append /sys/devices/pci0000:00/0000:00:02.0/drm/card0/card0-eDP-1/intel_backlight/brightness
-}
-
-_package-visualvm(){
-wget https://java.net/projects/visualvm/downloads/download/release138/visualvm_138.zip
 }
 
 _package-translate(){
