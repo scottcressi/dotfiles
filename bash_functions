@@ -316,6 +316,15 @@ wget https://zoom.us/client/latest/zoom_amd64.deb
 sudo dpkg -i zoom_amd64.deb
 }
 
+_package-kube(){
+mkdir ~/bin
+curl --url https://storage.googleapis.com/kubernetes-helm/helm-v2.14.0-linux-amd64.tar.gz --output ~/bin/helm.tar.gz
+cd ~/bin ; tar zxvf helm.tar.gz ; mv ~/bin/linux-amd64/helm ~/bin/helm ; rm -rf ~/bin/linux-amd64 ~/bin/helm.tar.gz
+curl -L --url https://github.com/roboll/helmfile/releases/download/v0.69.0/helmfile_linux_amd64 --output ~/bin/helmfile
+curl --url https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl --output ~/bin/kubectl
+chmod 755 ~/bin/*
+}
+
 kjenkins(){
 POD=`kubectl get pods -n jenkins | grep Running | awk '{print $1}'`
 OUTPUT=`kubectl exec -n jenkins $POD -- bash -c "ps axuf | grep java | grep -v grep"`
