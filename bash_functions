@@ -133,27 +133,18 @@ dwm \
 xorg
 }
 
-_package-pip3-packages(){
-sudo pip3 install --upgrade \
-cl-chess \
-
-}
-
 _package-pip-packages(){
 sudo pip install --upgrade \
 pip \
 awscli \
 bpython \
 consoletetris \
-demjson \
 doge \
 dotfiles \
 glances \
+ipython \
 modernize \
-monica \
-moviemon \
 flake8 \
-rtv \
 socli \
 s-tui \
 speedtest-cli \
@@ -258,6 +249,7 @@ iotop \
 ipcalc \
 irssi \
 jq \
+jsonlint \
 lftp \
 libaa-bin \
 links2 \
@@ -276,9 +268,7 @@ pacman4console \
 pi \
 pwgen \
 python \
-python3 \
 python-pip \
-python3-pip \
 ranger \
 rig \
 rsync \
