@@ -121,6 +121,6 @@ alias tp='rm -rf .terragrunt-cache ; terragrunt plan --terragrunt-source ../../.
 alias ta='terragrunt apply --terragrunt-source-update '
 
 # docker
-alias ds='docker stop $(docker ps -aq)'
+alias ds='docker kill $(docker ps -aq)'
 alias di='docker images'
 alias dp='docker ps'
