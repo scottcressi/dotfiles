@@ -220,7 +220,7 @@ eboard \
 greed \
 moon-buggy \
 ninvaders \
-nsnake
+nsnake \
 pacman4console \
 xboard \
 
