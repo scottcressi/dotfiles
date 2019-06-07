@@ -2,12 +2,7 @@
 
 _clone-repos(){
 cd ~/repos/ ; \
-git clone https://github.com/colszowka/linux-typewriter.git ; \
-git clone https://github.com/alexdantas/yetris ; \
 git clone https://github.com/drwetter/testssl.sh ; \
-git clone https://github.com/jarun/buku/ ; \
-git clone https://github.com/jarun/googler/ ; \
-git clone https://github.com/narenaryan/Govie ; \
 echo done
 }
 
@@ -204,7 +199,6 @@ dpkg-query -Wf '${Installed-Size}\t${Package}\n' | sort -n
 _package-debian-gui(){
 sudo apt-get update
 sudo apt-get install \
-eboard \
 arandr \
 atril \
 feh \
@@ -213,8 +207,22 @@ mpv \
 mupdf \
 netsurf \
 sxiv \
-xboard \
 xcowsay \
+
+}
+
+_package-debian-games(){
+sudo apt-get update
+sudo apt-get install \
+bastet \
+bsdgames \
+eboard \
+greed \
+moon-buggy \
+ninvaders \
+nsnake
+pacman4console \
+xboard \
 
 }
 
@@ -234,7 +242,6 @@ aspell \
 bash-completion \
 bb \
 bc \
-bsdgames \
 cifs-utils \
 cmatrix \
 cmus \
@@ -265,7 +272,6 @@ newsbeuter \
 oneko \
 openssh-client \
 p7zip \
-pacman4console \
 pi \
 pwgen \
 python \
