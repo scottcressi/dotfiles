@@ -1,3 +1,4 @@
 sudo apt-get install -y python-pip
 sudo pip install dotfiles
-dotfiles --repo ~/repos/personal/dotfiles/ -C ~/repos/personal/dotfiles/.dotfilessrc --sync --force
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+dotfiles --repo $DIR -C $DIR/.dotfilessrc --sync --force

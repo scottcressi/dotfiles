@@ -221,6 +221,7 @@ xcowsay \
 _package-laptop(){
 sudo apt-get update
 sudo apt-get install \
+acpi \
 wicd \
 
 }
