@@ -137,7 +137,6 @@ dotfiles \
 modernize \
 socli \
 s-tui \
-youtube-dl
 }
 
 _wallpaper(){
@@ -294,6 +293,7 @@ weather-util \
 whois \
 xfishtank \
 xterm \
+youtube-dl \
 
 }
 
