@@ -58,3 +58,4 @@ PS1="$_shell_depth_str$GREEN$PROMPT$CYAN \$(parse_kube_context)-$MAGENTA\$(parse
 unset _shell_depth_str
 
 complete -C '/usr/local/bin/aws_completer' aws
+export PATH=$PATH:/usr/local/bin/:~/bin
