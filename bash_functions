@@ -339,12 +339,6 @@ k(){
 cp ~/.kube/configs/$1 ~/.kube/config
 }
 
-dc(){
-sudo docker container prune -f
-sudo docker image prune -a -f
-sudo docker volume rm $(docker volume ls -qf dangling=true)
-}
-
 _docker_prereqs(){
 sudo apt-get -y install apt-transport-https ca-certificates curl gnupg2 software-properties-common
 curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
