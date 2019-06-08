@@ -335,10 +335,6 @@ kubectl delete pod -n jenkins $POD --grace-period=0 --force &
 kubectl patch pod -n jenkins $POD -p '{"metadata":{"finalizers":null}}'
 }
 
-k(){
-cp ~/.kube/configs/$1 ~/.kube/config
-}
-
 _docker_prereqs(){
 sudo apt-get -y install apt-transport-https ca-certificates curl gnupg2 software-properties-common
 curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
@@ -411,14 +407,14 @@ read bucket
 echo kops delete cluster  --name test.$domain --state s3://$bucket --yes
 }
 
-aws_records(){
+_aws_records(){
 echo domain:
 read domain
 ZONE=`aws route53 list-hosted-zones --query "HostedZones[?Name=='$domain.']".Id --output text | sed 's/\/hostedzone\///g'`
 aws route53 list-resource-record-sets --hosted-zone-id $ZONE
 }
 
-aws_certs(){
+_aws_certs(){
 aws acm list-certificates --region us-east-1
 }
 
