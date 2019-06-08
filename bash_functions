@@ -448,6 +448,8 @@ chromium http://127.0.0.1:8001/api/v1/namespaces/kubernetes-dashboard/services/h
 }
 
 awsc(){
+grep "\[" ~/.aws/credentials
+if [ -z $1 ] ; then echo enter profile ; fi
 export AWS_DEFAULT_PROFILE=$1
 }
 
@@ -460,9 +462,9 @@ fi
 }
 
 kc(){
-echo region
-read REGION
-aws eks update-kubeconfig --region $REGION --name $1
+if [ -z $1 ] ; then echo enter region ; fi
+if [ -z $2 ] ; then echo enter cluster ; fi
+aws eks update-kubeconfig --region $1 --name $2
 }
 
 kl(){
