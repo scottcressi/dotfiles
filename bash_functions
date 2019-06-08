@@ -132,18 +132,11 @@ _package-pip-packages(){
 sudo pip install --upgrade \
 pip \
 awscli \
-bpython \
-consoletetris \
 doge \
 dotfiles \
-glances \
-ipython \
 modernize \
-flake8 \
 socli \
 s-tui \
-speedtest-cli \
-thefuck \
 youtube-dl
 }
 
@@ -242,6 +235,7 @@ aspell \
 bash-completion \
 bb \
 bc \
+bpython \
 cifs-utils \
 cmatrix \
 cmus \
@@ -250,11 +244,13 @@ curl \
 dnsutils \
 dstat \
 espeak \
+flake8 \
 git \
 htop \
 iftop \
 iotop \
 ipcalc \
+ipython \
 irssi \
 jq \
 jsonlint \
@@ -281,9 +277,11 @@ rig \
 rsync \
 rtorrent \
 scrot \
+speedtest-cli \
 sshfs \
 stterm \
 suckless-tools \
+thefuck \
 tig \
 tmux \
 toilet \
