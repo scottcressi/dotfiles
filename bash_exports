@@ -57,15 +57,4 @@ PS1="$_shell_depth_str$GREEN$PROMPT$CYAN \$(parse_kube_context)-$MAGENTA\$(parse
 # unset shell depth
 unset _shell_depth_str
 
-# exports #####################################################################
-
-# java
-export JAVA_HOME=~/jdk-9.0.4/
-export PATH=$PATH:~/jdk-9.0.4/bin/:/usr/local/bin/:~/bin
-
-# java grey screen fix
-export _JAVA_AWT_WM_NONREPARENTING=1
-
-# go
-export GOBIN=/tmp/
-export GOROOT=/var/tmp/go
+complete -C '/usr/local/bin/aws_completer' aws
