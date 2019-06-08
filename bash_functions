@@ -314,9 +314,9 @@ sudo dpkg -i zoom_amd64.deb
 
 _package-kube(){
 mkdir ~/bin
-curl -s --url https://storage.googleapis.com/kubernetes-helm/helm-v2.14.0-linux-amd64.tar.gz --output ~/bin/helm.tar.gz
+curl -s --url https://storage.googleapis.com/kubernetes-helm/helm-v2.14.1-linux-amd64.tar.gz --output ~/bin/helm.tar.gz
 cd ~/bin ; tar zxvf helm.tar.gz ; mv ~/bin/linux-amd64/helm ~/bin/helm ; rm -rf ~/bin/linux-amd64 ~/bin/helm.tar.gz
-curl -s -L --url https://github.com/roboll/helmfile/releases/download/v0.73.0/helmfile_linux_amd64 --output ~/bin/helmfile
+curl -s -L --url https://github.com/roboll/helmfile/releases/download/v0.73.1/helmfile_linux_amd64 --output ~/bin/helmfile
 curl -s --url https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl --output ~/bin/kubectl
 chmod 755 ~/bin/*
 }
