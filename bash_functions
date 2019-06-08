@@ -137,6 +137,7 @@ dotfiles \
 modernize \
 socli \
 s-tui \
+
 }
 
 _wallpaper(){
