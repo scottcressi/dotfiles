@@ -72,7 +72,8 @@ alias ............='cd ../../../../../../../../../../..'
 alias .............='cd ../../../../../../../../../../../..'
 
 # misc
-alias d="date '+%l:%M%P %A %m/%d/%y'"
+alias da="date '+%A %m/%d/%y'"
+alias d="date '+%l:%M'"
 alias dotfiles-force='dotfiles -R ~/repos/personal/dotfiles/ -C ~/repos/personal/dotfiles/.dotfilessrc -s -f'
 alias dotfiles-list='dotfiles -R ~/repos/personal/dotfiles/ -C ~/repos/personal/dotfiles/.dotfilessrc -l'
 alias dotfiles-sync='dotfiles -R ~/repos/personal/dotfiles/ -C ~/repos/personal/dotfiles/.dotfilessrc -s'
