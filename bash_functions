@@ -1,11 +1,5 @@
 #!/bin/bash
 
-_clone-repos(){
-cd ~/repos/ ; \
-git clone https://github.com/drwetter/testssl.sh ; \
-echo done
-}
-
 # git branch for PS1
 parse_git_branch_and_add_brackets() {
 git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\ \[\1\]/'

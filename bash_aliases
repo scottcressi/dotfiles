@@ -96,6 +96,7 @@ alias xfishtank='xfishtank -c black -r .1 -i .1 -b 20 -f 20'
 alias xterm='xterm -bg black -fg white'
 alias dstat='dstat -c --top-cpu -dn --top-mem'
 alias df='df -h'
+alias testssl='docker run -ti drwetter/testssl.sh'
 
 # kube
 alias kd='kp | grep " [0-9]h" ; kp | grep " [0-9]s"'
