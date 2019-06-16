@@ -378,6 +378,12 @@ _docker_java(){
 docker run -v "$PWD":/usr/src/myapp -w /usr/src/myapp openjdk:7 java
 }
 
+ds(){
+echo kill all containers? y/n
+read confirm
+if [ $confirm == "y" ] ; then docker kill $(docker ps -aq) ; fi
+}
+
 kopst(){
 echo domain:
 read domain
