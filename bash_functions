@@ -329,7 +329,7 @@ kubectl delete pod -n jenkins $POD --grace-period=0 --force &
 kubectl patch pod -n jenkins $POD -p '{"metadata":{"finalizers":null}}'
 }
 
-_docker_prereqs(){
+_package-docker-prereqs(){
 sudo apt-get -y install apt-transport-https ca-certificates curl gnupg2 software-properties-common
 curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
 sudo apt-key fingerprint 0EBFCD88
@@ -338,7 +338,7 @@ sudo apt-get update
 sudo apt-get install -y --allow-unauthenticated docker-ce
 }
 
-_docker_jackett(){
+_docker-jackett(){
 sudo docker pull linuxserver/jackett
 sudo docker stop jackett
 sudo docker rm jackett
@@ -349,7 +349,7 @@ sudo docker run -d \
 linuxserver/jackett
 }
 
-_docker_plex(){
+_docker-plex(){
 sudo docker pull plexinc/pms-docker
 sudo docker stop plex
 sudo docker rm plex
@@ -366,15 +366,15 @@ sudo docker run \
 plexinc/pms-docker
 }
 
-_docker_python(){
+_docker-python(){
 docker run -v "$PWD":/usr/src/myapp -w /usr/src/myapp python python
 }
 
-_docker_go(){
+_docker-go(){
 docker run -v "$PWD":/usr/src/myapp -w /usr/src/myapp golang go
 }
 
-_docker_java(){
+_docker-java(){
 docker run -v "$PWD":/usr/src/myapp -w /usr/src/myapp openjdk:7 java
 }
 
