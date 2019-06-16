@@ -339,10 +339,10 @@ sudo apt-get install -y --allow-unauthenticated docker-ce
 }
 
 _docker-jackett(){
-sudo docker pull linuxserver/jackett
-sudo docker stop jackett
-sudo docker rm jackett
-sudo docker run -d \
+docker pull linuxserver/jackett
+docker stop jackett
+docker rm jackett
+docker run -d \
 -p 9117:9117 \
 --name jackett \
 -v /var/tmp/jackett/config:/config \
@@ -350,10 +350,10 @@ linuxserver/jackett
 }
 
 _docker-plex(){
-sudo docker pull plexinc/pms-docker
-sudo docker stop plex
-sudo docker rm plex
-sudo docker run \
+docker pull plexinc/pms-docker
+docker stop plex
+docker rm plex
+docker run \
 -d \
 --name plex \
 --network=host \
