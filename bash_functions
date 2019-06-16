@@ -179,7 +179,7 @@ echo command is psql -h localhost -U $organization_$USER -d $organization_db -p 
 psql -h localhost -U $organization_$USER -d $organization_db -p $port
 }
 
-_package_size(){
+_package-size(){
 dpkg-query -Wf '${Installed-Size}\t${Package}\n' | sort -n
 }
 
