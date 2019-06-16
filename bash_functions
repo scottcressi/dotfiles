@@ -113,7 +113,7 @@ rm -f firefox.tar
 }
 
 _package-firefox_prereqs(){
-sudo apt-get install -y bzip2 libdbus-glib-1-2 libgtk-3-0
+sudo apt-get install -y libgtk-3-0
 }
 
 _package-wm(){
@@ -179,7 +179,7 @@ echo command is psql -h localhost -U $organization_$USER -d $organization_db -p 
 psql -h localhost -U $organization_$USER -d $organization_db -p $port
 }
 
-_information-package_size(){
+_package_size(){
 dpkg-query -Wf '${Installed-Size}\t${Package}\n' | sort -n
 }
 
