@@ -4,6 +4,7 @@ alias elss="less"
 alias erg='grep --color=auto'
 alias grep='grep --color=auto'
 alias gep='grep --color=auto'
+alias gre='grep --color=auto'
 alias grpe='grep'
 alias gerp='grep'
 alias l='ls -ls --color'
