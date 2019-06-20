@@ -113,7 +113,7 @@ rm -f firefox.tar
 }
 
 _package-firefox_prereqs(){
-sudo apt-get install -y libgtk-3-0
+sudo apt-get install -y libgtk-3-0 pulseaudio
 }
 
 _package-wm(){
