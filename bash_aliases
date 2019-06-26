@@ -14,6 +14,7 @@ alias les="less"
 alias ls='ls --color'
 alias lses="less"
 alias rm="rm -i"
+alias mv="mv -i"
 alias sl='ls'
 alias iv='vi'
 
