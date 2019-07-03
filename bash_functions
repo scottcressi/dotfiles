@@ -188,7 +188,6 @@ sudo apt-get update
 sudo apt-get install \
 arandr \
 atril \
-feh \
 galternatives \
 mcomix \
 mpv \
