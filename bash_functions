@@ -194,6 +194,7 @@ mcomix \
 mpv \
 mupdf \
 netsurf \
+surf \
 sxiv \
 xcowsay \
 
