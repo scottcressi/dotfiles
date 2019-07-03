@@ -189,6 +189,7 @@ sudo apt-get install \
 arandr \
 atril \
 feh \
+galternatives \
 mcomix \
 mpv \
 mupdf \
