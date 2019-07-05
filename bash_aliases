@@ -99,6 +99,8 @@ alias xterm='xterm -bg black -fg white'
 alias dstat='dstat -c --top-cpu -dn --top-mem'
 alias df='df -h'
 alias testssl='docker run -ti drwetter/testssl.sh'
+alias sk='screenkey'
+alias ksk='pkill screenkey'
 
 # kube
 alias kd='kp | grep " [0-9]h" ; kp | grep " [0-9]s"'

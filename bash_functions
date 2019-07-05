@@ -272,6 +272,7 @@ rig \
 rsync \
 rtorrent \
 scrot \
+screenkey \
 speedtest-cli \
 sshfs \
 stterm \
@@ -290,6 +291,7 @@ whois \
 xfishtank \
 xterm \
 youtube-dl \
+zathura \
 
 }
 
