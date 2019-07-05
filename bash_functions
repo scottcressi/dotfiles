@@ -179,10 +179,6 @@ echo command is psql -h localhost -U $organization_$USER -d $organization_db -p 
 psql -h localhost -U $organization_$USER -d $organization_db -p $port
 }
 
-_package-size(){
-dpkg-query -Wf '${Installed-Size}\t${Package}\n' | sort -n
-}
-
 _package-debian-gui(){
 sudo apt-get update
 sudo apt-get install \
@@ -193,9 +189,13 @@ mcomix \
 mpv \
 mupdf \
 netsurf \
+oneko \
+screenkey \
 surf \
 sxiv \
 xcowsay \
+xfishtank \
+zathura \
 
 }
 
@@ -260,7 +260,6 @@ netcat \
 neofetch \
 nethogs \
 newsbeuter \
-oneko \
 openssh-client \
 p7zip \
 pi \
@@ -272,7 +271,6 @@ rig \
 rsync \
 rtorrent \
 scrot \
-screenkey \
 speedtest-cli \
 sshfs \
 stterm \
@@ -288,10 +286,8 @@ typespeed \
 vim \
 weather-util \
 whois \
-xfishtank \
 xterm \
 youtube-dl \
-zathura \
 
 }
 

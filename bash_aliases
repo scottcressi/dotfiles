@@ -99,6 +99,7 @@ alias df='df -h'
 alias testssl='docker run -ti drwetter/testssl.sh'
 alias sk='screenkey'
 alias ksk='pkill screenkey'
+alias s='surf'
 
 # kube
 alias kd='kp | grep " [0-9]h" ; kp | grep " [0-9]s"'
