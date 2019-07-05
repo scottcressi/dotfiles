@@ -271,6 +271,7 @@ rig \
 rsync \
 rtorrent \
 scrot \
+shellcheck \
 speedtest-cli \
 sshfs \
 stterm \
