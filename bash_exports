@@ -59,3 +59,5 @@ unset _shell_depth_str
 
 complete -C '/usr/local/bin/aws_completer' aws
 export PATH=$PATH:/usr/local/bin/:~/bin
+
+eval "$(thefuck --alias)"
