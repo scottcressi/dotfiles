@@ -240,6 +240,7 @@ dnsutils \
 dstat \
 espeak \
 flake8 \
+fzf \
 git \
 htop \
 iftop \
