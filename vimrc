@@ -34,6 +34,9 @@ Plugin 'itchyny/calendar.vim'
 Plugin 'rodjek/vim-puppet'
 "" completer
 Plugin 'davidhalter/jedi-vim'
+"" fzf
+Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plugin 'junegunn/fzf.vim'
 
 "" reactive stuff after vunlde has completed
 call vundle#end()
