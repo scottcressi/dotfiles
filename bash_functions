@@ -339,34 +339,6 @@ sudo apt-get update
 sudo apt-get install -y --allow-unauthenticated docker-ce
 }
 
-_docker-jackett(){
-docker pull linuxserver/jackett
-docker stop jackett
-docker rm jackett
-docker run -d \
--p 9117:9117 \
---name jackett \
--v /var/tmp/jackett/config:/config \
-linuxserver/jackett
-}
-
-_docker-plex(){
-docker pull plexinc/pms-docker
-docker stop plex
-docker rm plex
-docker run \
--d \
---name plex \
---network=host \
--e TZ="<timezone>" \
--e PLEX_CLAIM="<claimToken>" \
--v /var/tmp/plex/config:/config \
--v /var/tmp/plex/transcode:/transcode \
--v /var/tmp/plex/data:/data \
--v /mnt/videos:/videos \
-plexinc/pms-docker
-}
-
 _docker-python(){
 docker run -v "$PWD":/usr/src/myapp -w /usr/src/myapp python python
 }
