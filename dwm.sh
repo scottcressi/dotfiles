@@ -1,6 +1,4 @@
-FOO="foo"
-BAR="bar"
-
-STATUSBAR="$FOO $BAR"
-
-xsetroot -name "$STATUSBAR"
+while true ; do
+bash dmenu.sh
+sleep 60
+done

@@ -121,8 +121,8 @@ let g:ctrlp_max_height = 30
 set wildignore+=*.pyc
 
 "" wombat256mod
-"" set t_Co=256
-"" color wombat256mod
+set t_Co=256
+color wombat256mod
 
 "" folding
 set nofoldenable
