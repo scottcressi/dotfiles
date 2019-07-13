@@ -443,3 +443,11 @@ aws eks list-clusters --region $i
 echo
 done
 }
+
+_package-st(){
+wget https://dl.suckless.org/st/st-0.8.2.tar.gz
+gunzip st-0.8.2.tar.gz
+tar xvf st-0.8.2.tar
+cd st-0.8.2
+make clean install
+}
