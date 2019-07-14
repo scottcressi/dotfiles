@@ -5,14 +5,6 @@ parse_git_branch_and_add_brackets() {
 git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\ \[\1\]/'
 }
 
-parse_kube_context() {
-kubectl config view | grep current-context | awk '{print $2}'
-}
-
-parse_kube_namespace() {
-kubectl config view | grep namespace | awk '{print $2}'
-}
-
 # tunnelkill
 _tunnel-kill() {
 tunnel_kill_list=`ps axuf \
@@ -308,18 +300,12 @@ sudo dpkg -i zoom_amd64.deb
 
 _package-kube(){
 mkdir ~/bin
-curl -s --url https://storage.googleapis.com/kubernetes-helm/helm-v2.14.1-linux-amd64.tar.gz --output ~/bin/helm.tar.gz
+curl -s --url https://storage.googleapis.com/kubernetes-helm/helm-v2.14.2-linux-amd64.tar.gz --output ~/bin/helm.tar.gz
 cd ~/bin ; tar zxvf helm.tar.gz ; mv ~/bin/linux-amd64/helm ~/bin/helm ; rm -rf ~/bin/linux-amd64 ~/bin/helm.tar.gz
-curl -s -L --url https://github.com/roboll/helmfile/releases/download/v0.73.2/helmfile_linux_amd64 --output ~/bin/helmfile
+curl -s -L --url https://github.com/roboll/helmfile/releases/download/v0.80.1/helmfile_linux_amd64 --output ~/bin/helmfile
 curl -s --url https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl --output ~/bin/kubectl
 chmod 755 ~/bin/*
 git clone https://github.com/farmotive/kpoof
-}
-
-kjenkins(){
-POD=`kubectl get pods -n jenkins | grep Running | awk '{print $1}'`
-OUTPUT=`kubectl exec -n jenkins $POD -- bash -c "ps axuf | grep java | grep -v grep"`
-echo $OUTPUT | awk '{print $15}' | sed 's/.*=//g'
 }
 
 kterminate(){
@@ -389,31 +375,6 @@ aws route53 list-resource-record-sets --hosted-zone-id $ZONE
 
 _aws_certs(){
 aws acm list-certificates --region us-east-1
-}
-
-kpfkibana(){
-POD=`kubectl get pods -n logging | grep kibana | awk '{print $1}'`
-kubectl port-forward -n logging $POD 5601
-}
-
-kpfcerebro(){
-POD=`kubectl get pods -n logging | grep cerebro | awk '{print $1}'`
-kubectl port-forward -n logging $POD 9000
-}
-
-kpfjenkins(){
-POD=`kubectl get pods -n jenkins | grep jenkins | awk '{print $1}'`
-kubectl port-forward -n jenkins $POD 8080
-}
-
-kpfgrafana(){
-POD=`kubectl get pods -n monitoring | grep grafana | awk '{print $1}'`
-kubectl port-forward -n monitoring $POD 3000
-}
-
-kpfdashboard(){
-kubectl proxy &
-chromium http://127.0.0.1:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:https/proxy/#!/login
 }
 
 awsc(){
