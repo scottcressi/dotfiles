@@ -451,3 +451,9 @@ tar xvf st-0.8.2.tar
 cd st-0.8.2
 make clean install
 }
+
+_repos-debian-backports(){
+cat <<EOF | sudo tee /etc/apt/sources.list.d/stretch-backports.list
+deb http://http.debian.net/debian stretch-backports main contrib non-free
+EOF
+}
