@@ -32,10 +32,10 @@ Plugin 'michalbachowski/vim-wombat256mod'
 Plugin 'tmhedberg/SimpylFold'
 
 "" puppet
-Plugin 'rodjek/vim-puppet'
+"" Plugin 'rodjek/vim-puppet'
 
 "" completer
-Plugin 'davidhalter/jedi-vim'
+"" Plugin 'davidhalter/jedi-vim'
 
 "" fzf
 Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -50,7 +50,6 @@ call vundle#end()
 autocmd vimenter * NERDTree
 
 "" Automatic reloading of .vimrc
-"" autocmd! bufwritepost .vimrc source %
 autocmd! bufwritepost _vimrc source %
 
 "" Show whitespace
