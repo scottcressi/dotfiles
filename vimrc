@@ -104,7 +104,7 @@ set paste
 noremap Q <NOP>
 
 "" show relative line numbers
-""set relativenumber
+set number relativenumber
 
 "" show tabs as arrows
 set list
@@ -157,7 +157,7 @@ let g:calendar_google_calendar = 1
 "" inoremap <C-Z> <C-O>:update<CR>
 
 " Quick quit command
-"" noremap <Leader>e :quit<CR>  " Quit current window
+noremap <C-Q> :quit<CR>  " Quit current window
 "" noremap <Leader>E :qa!<CR>   " Quit all windows
 
 " bind Ctrl+<movement> keys to move around the windows, instead of using Ctrl+w + <movement>
