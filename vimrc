@@ -86,7 +86,6 @@ syntax enable
 set background=dark
 
 "" Showing line numbers and length
-""set number  " show line numbers
 set tw=79   " width of document (used by gd)
 set wrap  " don't automatically wrap on load
 set fo-=t   " don't automatically wrap text when typing
@@ -104,7 +103,7 @@ set paste
 noremap Q <NOP>
 
 "" show relative line numbers
-set number relativenumber
+set number "relativenumber
 
 "" show tabs as arrows
 set list
@@ -126,9 +125,6 @@ colorscheme wombat256mod
 
 "" folding
 set nofoldenable
-
-"" calendar
-let g:calendar_google_calendar = 1
 
 "" SORT OUT ####################################################################
 
@@ -158,15 +154,6 @@ let g:calendar_google_calendar = 1
 
 " Quick quit command
 noremap <C-Q> :quit<CR>  " Quit current window
-"" noremap <Leader>E :qa!<CR>   " Quit all windows
-
-" bind Ctrl+<movement> keys to move around the windows, instead of using Ctrl+w + <movement>
-" Every unnecessary keystroke that can be saved is good for your health :)
-"" map <c-j> <c-w>j
-"" map <c-k> <c-w>k
-"" map <c-l> <c-w>l
-"" map <c-h> <c-w>h
-
 
 " easier moving between tabs
 "" map <Leader>n <esc>:tabprevious<CR>
