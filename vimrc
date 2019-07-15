@@ -12,28 +12,31 @@ call vundle#begin()
 
 "" plugin manager
 Plugin 'gmarik/Vundle.vim'
+
 "" file drawer
 Plugin 'scrooloose/nerdtree'
+
 "" code tab completion
 ""Plugin 'ervandew/supertab'
+
 "" status bar
-Plugin 'powerline/powerline'
-"" file search
-Plugin 'kien/ctrlp.vim'
+""Plugin 'powerline/powerline'
 
 "" linter
 "" Plugin 'scrooloose/syntastic'
 
 "" colors
 Plugin 'michalbachowski/vim-wombat256mod'
+
 "" folding (zc to close, zo to open)
 Plugin 'tmhedberg/SimpylFold'
-"" calendar
-Plugin 'itchyny/calendar.vim'
+
 "" puppet
 Plugin 'rodjek/vim-puppet'
+
 "" completer
 Plugin 'davidhalter/jedi-vim'
+
 "" fzf
 Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plugin 'junegunn/fzf.vim'
@@ -115,16 +118,15 @@ set listchars=tab:▸\ ,
 "" powerline
 set laststatus=2
 
-"" ctrlp
-let g:ctrlp_max_height = 30
-set wildignore+=*.pyc
-
 "" wombat256mod
 set t_Co=256
 colorscheme wombat256mod
 
 "" folding
 set nofoldenable
+
+"" fzf
+noremap <C-F> :Files<CR>
 
 "" SORT OUT ####################################################################
 
