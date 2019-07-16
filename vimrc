@@ -47,7 +47,7 @@ call vundle#end()
 "" AUTO-INITIALIZATION ########################################################
 
 "" nerdtree
-autocmd vimenter * NERDTree
+"" autocmd vimenter * NERDTree
 
 "" Automatic reloading of .vimrc
 autocmd! bufwritepost _vimrc source %
@@ -125,7 +125,11 @@ colorscheme wombat256mod
 set nofoldenable
 
 "" fzf
-noremap <C-P> :Files<CR>
+"" set key at location "~"
+noremap <C-P> :Files ~<CR>
+
+""" nerdtree
+nmap <C-W> :NERDTreeToggle<CR>
 
 "" SORT OUT ####################################################################
 
