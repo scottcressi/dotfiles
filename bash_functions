@@ -329,7 +329,7 @@ docker run -v "$PWD":/usr/src/myapp -w /usr/src/myapp python python
 }
 
 _docker-go(){
-docker run -v "$PWD":/usr/src/myapp -w /usr/src/myapp golang go
+docker run -v "$PWD":/usr/src/myapp -w /usr/src/myapp golang go build $1
 }
 
 _docker-java(){
