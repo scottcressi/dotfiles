@@ -153,34 +153,14 @@ nmap <C-W> :NERDTreeToggle<CR>
 
 
 " Quicksave command
-"" noremap <C-Z> :update<CR>
-"" vnoremap <C-Z> <C-C>:update<CR>
-"" inoremap <C-Z> <C-O>:update<CR>
+:nmap <c-s> :w<CR>
+:imap <c-s> <Esc>:w<CR>a
 
 " Quick quit command
 noremap <C-Q> :quit<CR>  " Quit current window
-
-" easier moving between tabs
-"" map <Leader>n <esc>:tabprevious<CR>
-"" map <Leader>m <esc>:tabnext<CR>
-
-
-" map sort function to a key
-"" vnoremap <Leader>s :sort<CR>
-
-
-" easier moving of code blocks
-" Try to go into visual mode (v), thenselect several lines of code here and
-" then press ``>`` several times.
-"" vnoremap < <gv  " better indentation
-"" vnoremap > >gv  " better indentation
 
 " Enable syntax highlighting
 " You need to reload this file for the change to apply
 "" filetype off
 "" filetype plugin indent on
 "" syntax on
-
-" easier formatting of paragraphs
-"" vmap Q gq
-"" nmap Q gqap
