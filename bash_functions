@@ -412,6 +412,12 @@ cd st-0.8.2
 make clean install
 }
 
+_package-go(){
+wget https://dl.google.com/go/go1.12.7.linux-amd64.tar.gz
+gunzip go1.12.7.linux-amd64.tar.gz
+tar xvf go1.12.7.linux-amd64.tar
+}
+
 _repos-debian-backports(){
 cat <<EOF | sudo tee /etc/apt/sources.list.d/stretch-backports.list
 deb http://http.debian.net/debian stretch-backports main contrib non-free

@@ -41,6 +41,9 @@ Plugin 'tmhedberg/SimpylFold'
 Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plugin 'junegunn/fzf.vim'
 
+"" completion go
+Plugin 'fatih/vim-go'
+
 "" reactive stuff after vunlde has completed
 call vundle#end()
 
