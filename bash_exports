@@ -58,6 +58,6 @@ PS1="$_shell_depth_str$GREEN$PROMPT$RED\$(parse_git_branch_and_add_brackets) : \
 unset _shell_depth_str
 
 complete -C '/usr/local/bin/aws_completer' aws
-export PATH=$PATH:/usr/local/bin/:~/bin
+export PATH=$PATH:/usr/local/bin/:~/bin:~/go/bin
 
 #eval "$(thefuck --alias)"
