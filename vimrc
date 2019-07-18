@@ -16,33 +16,15 @@ Plugin 'gmarik/Vundle.vim'
 "" file drawer
 Plugin 'scrooloose/nerdtree'
 
-"" code tab completion
-""Plugin 'ervandew/supertab'
-
-"" status bar
-""Plugin 'powerline/powerline'
-
-"" linter
-"" Plugin 'scrooloose/syntastic'
-
 "" colors
 Plugin 'michalbachowski/vim-wombat256mod'
 
 "" folding (zc to close, zo to open)
 Plugin 'tmhedberg/SimpylFold'
 
-"" puppet
-"" Plugin 'rodjek/vim-puppet'
-
-"" completer
-"" Plugin 'davidhalter/jedi-vim'
-
 "" fzf
 Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plugin 'junegunn/fzf.vim'
-
-"" completion go
-Plugin 'fatih/vim-go'
 
 "" reactive stuff after vunlde has completed
 call vundle#end()
@@ -116,9 +98,6 @@ set list
 set listchars=tab:▸\ ,
 
 "" PLUGIN CONFIGURATION #######################################################
-
-"" powerline
-set laststatus=2
 
 "" wombat256mod
 set t_Co=256

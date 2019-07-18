@@ -1,4 +1,4 @@
 while true ; do
 bash dmenu.sh
-sleep 60
+sleep 5
 done
