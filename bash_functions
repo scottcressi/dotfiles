@@ -419,3 +419,8 @@ cat <<EOF | sudo tee /etc/apt/sources.list.d/stretch-backports.list
 deb http://http.debian.net/debian stretch-backports main contrib non-free
 EOF
 }
+
+dwmscript(){
+ps axuf | grep dwm.sh | grep -v grep | awk '{print $2}' | xargs kill
+find ~/ -name dwm.sh | xargs bash &
+}
