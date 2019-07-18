@@ -56,22 +56,7 @@ alias vs="vagrant status"
 alias vu="vagrant up"
 
 # tmux
-alias t0='tmux attach -t 0'
 alias tl='tmux list-windows'
-
-# navigation
-alias ..='cd ..'
-alias ...='cd ../..'
-alias ....='cd ../../..'
-alias .....='cd ../../../..'
-alias ......='cd ../../../../..'
-alias .......='cd ../../../../../..'
-alias ........='cd ../../../../../../..'
-alias .........='cd ../../../../../../../..'
-alias ..........='cd ../../../../../../../../..'
-alias ...........='cd ../../../../../../../../../..'
-alias ............='cd ../../../../../../../../../../..'
-alias .............='cd ../../../../../../../../../../../..'
 
 # misc
 alias da="date '+%A %m/%d/%y'"
@@ -124,3 +109,6 @@ alias dc='docker system prune --volumes -a'
 alias dn='docker network ls'
 alias dcu='docker-compose up'
 alias dcd='docker-compose down'
+
+# transmission
+alias tm='transmission-remote localhost:8080 -l'
