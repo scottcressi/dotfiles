@@ -176,7 +176,6 @@ sudo apt-get update
 sudo apt-get install \
 arandr \
 atril \
-galternatives \
 mcomix \
 mpv \
 mupdf \
