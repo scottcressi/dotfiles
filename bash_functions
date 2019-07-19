@@ -176,9 +176,7 @@ sudo apt-get update
 sudo apt-get install \
 arandr \
 atril \
-mcomix \
 mpv \
-mupdf \
 oneko \
 screenkey \
 surf \
@@ -186,6 +184,8 @@ sxiv \
 xcowsay \
 xfishtank \
 zathura \
+zathura-pdf-poppler \
+zathura-cb \
 
 }
 
