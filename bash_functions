@@ -425,3 +425,8 @@ dwmscript(){
 ps axuf | grep dwm.sh | grep -v grep | awk '{print $2}' | xargs kill
 find ~/ -name dwm.sh | xargs bash &
 }
+
+_package-slack(){
+curl -s --url https://github.com/erroneousboat/slack-term/releases/download/v0.4.1/slack-term-linux-amd64 --output ~/bin/slack-term
+chmod 755 ~/bin/slack-term
+}
