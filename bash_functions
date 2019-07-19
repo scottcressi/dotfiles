@@ -174,9 +174,11 @@ psql -h localhost -U $organization_$USER -d $organization_db -p $port
 _package-debian-gui(){
 sudo apt-get update
 sudo apt-get install \
+abiword \
 arandr \
 atril \
 mpv \
+mupdf \
 oneko \
 screenkey \
 surf \
@@ -184,7 +186,7 @@ sxiv \
 xcowsay \
 xfishtank \
 zathura \
-zathura-pdf-poppler \
+zathura-pdf-mupdf \
 zathura-cb \
 
 }
