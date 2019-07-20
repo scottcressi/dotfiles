@@ -116,13 +116,19 @@ xorg
 
 _package-pip-packages(){
 sudo pip install --upgrade \
-pip \
 awscli \
+bpython \
+demjson \
 doge \
 dotfiles \
+flake8 \
+ipython \
 modernize \
-socli \
+pip \
 s-tui \
+socli \
+speedtest-cli \
+youtube-dl \
 
 }
 
@@ -222,7 +228,6 @@ aspell \
 bash-completion \
 bb \
 bc \
-bpython \
 cifs-utils \
 cmatrix \
 cmus \
@@ -231,13 +236,11 @@ curl \
 dnsutils \
 dstat \
 espeak \
-flake8 \
 git \
 htop \
 iftop \
 iotop \
 ipcalc \
-ipython \
 irssi \
 jq \
 jsonlint \
@@ -264,7 +267,6 @@ rsync \
 rtorrent \
 scrot \
 shellcheck \
-speedtest-cli \
 sshfs \
 stterm \
 suckless-tools \
@@ -280,7 +282,6 @@ vim \
 weather-util \
 whois \
 xterm \
-youtube-dl \
 
 }
 
