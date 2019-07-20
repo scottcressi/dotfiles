@@ -97,6 +97,17 @@ set list
 "set listchars=tab:▸\ ,eol:¬
 set listchars=tab:▸\ ,
 
+" Quicksave command
+:nmap <c-s> :w<CR>
+:imap <c-s> <Esc>:w<CR>a
+
+" Quick quit command
+noremap <C-Q> :quit<CR>  " Quit current window
+
+" Mouse and backspace
+set mouse=r  " on OSX press ALT and click
+set bs=2     " make backspace behave like normal again
+
 "" PLUGIN CONFIGURATION #######################################################
 
 "" wombat256mod
@@ -116,36 +127,3 @@ noremap <C-P> :Files ~<CR>
 
 """ nerdtree
 nmap <C-W> :NERDTreeToggle<CR>
-
-"" SORT OUT ####################################################################
-
-" Mouse and backspace
-" set mouse=r  " on OSX press ALT and click
-"" set bs=2     " make backspace behave like normal again
-
-
-" Rebind <Leader> key
-" I like to have it here becuase it is easier to reach than the default and
-" it is next to ``m`` and ``n`` which I use for navigating between tabs.
-"" let mapleader = ','
-
-
-" Bind nohl
-" Removes highlight of your last search
-" ``<C>`` stands for ``CTRL`` and therefore ``<C-n>`` stands for ``CTRL+n``
-"" noremap <C-n> :nohl<CR>
-"" vnoremap <C-n> :nohl<CR>
-"" inoremap <C-n> :nohl<CR>
-
-
-" Quicksave command
-:nmap <c-s> :w<CR>
-:imap <c-s> <Esc>:w<CR>a
-
-" Quick quit command
-noremap <C-Q> :quit<CR>  " Quit current window
-
-" Enable syntax highlighting
-" You need to reload this file for the change to apply
-"" filetype off
-"" filetype plugin indent on
