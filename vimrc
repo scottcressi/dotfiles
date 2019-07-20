@@ -26,11 +26,14 @@ Plugin 'pseewald/vim-anyfold'
 Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plugin 'junegunn/fzf.vim'
 
-"" linting
-Plugin 'w0rp/ale'
-
 "" statusbar
 Plugin 'itchyny/lightline.vim'
+
+"" tabbing for completion
+Plugin 'ervandew/supertab'
+
+"" completion
+Plugin 'davidhalter/jedi-vim'
 
 "" reactive stuff after vunlde has completed
 call vundle#end()
@@ -85,13 +88,6 @@ set fo-=t   " don't automatically wrap text when typing
 set colorcolumn=80
 highlight ColorColumn ctermbg=233
 
-"" Better copy & paste
-"" When you want to paste large blocks of code into vim, press F2 before you
-"" paste. At the bottom you should see ``-- INSERT (paste) --``.
-set paste
-" set pastetoggle=<F2>
-" set clipboard=unnamed
-
 "" disable Ex mode
 noremap Q <NOP>
 
@@ -133,13 +129,6 @@ noremap <C-P> :Files ~<CR>
 
 "" nerdtree
 nmap <C-W> :NERDTreeToggle<CR>
-
-"" ale
-let g:ale_completion_enabled = 1
-" Check Python files with flake8 and pylint.
-let b:ale_linters = ['flake8', 'pylint', 'golint', "gofmt"]
-" Fix Python files with autopep8 and yapf.
-let b:ale_fixers = ['autopep8', 'yapf']
 
 "" lastline
 set laststatus=2
