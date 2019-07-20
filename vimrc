@@ -130,5 +130,5 @@ noremap <C-P> :Files ~<CR>
 "" nerdtree
 nmap <C-W> :NERDTreeToggle<CR>
 
-"" lastline
+"" lightline status bar fix
 set laststatus=2
