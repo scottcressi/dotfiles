@@ -61,16 +61,12 @@ alias tl='tmux list-windows'
 # misc
 alias da="date '+%A %m/%d/%y'"
 alias d="date '+%l:%M'"
-alias dotfiles-force='dotfiles -R ~/repos/personal/dotfiles/ -C ~/repos/personal/dotfiles/.dotfilessrc -s -f'
-alias dotfiles-list='dotfiles -R ~/repos/personal/dotfiles/ -C ~/repos/personal/dotfiles/.dotfilessrc -l'
-alias dotfiles-sync='dotfiles -R ~/repos/personal/dotfiles/ -C ~/repos/personal/dotfiles/.dotfilessrc -s'
 alias e='extract'
 alias f='vim $(fzf)'
 alias ff='~/firefox*/firefox & disown ; exit'
 alias get='sudo apt-get install'
 alias gip='curl -s ipinfo.io'
 alias h='htop'
-alias nb='newsbeuter -r -C ~/repos/personal/misc/newsbeuter_config -u ~/repos/personal/misc/newsbeuter_urls -c ~/repos/personal/misc/newsbeuter_cachedb'
 alias pia='curl privateinternetaccess.com -L -s | grep topbar__item | grep protected | sed "s/.*\">//g" | sed "s/<.*//g"'
 alias p='ps axuf'
 alias pw='pwgen 32 1 --capitalize --numerals --symbols  --ambiguous'
