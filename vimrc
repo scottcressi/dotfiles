@@ -20,7 +20,7 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'michalbachowski/vim-wombat256mod'
 
 "" folding (zc to close, zo to open)
-Plugin 'tmhedberg/SimpylFold'
+Plugin 'pseewald/vim-anyfold'
 
 "" fzf
 Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -104,7 +104,11 @@ set t_Co=256
 colorscheme wombat256mod
 
 "" folding
-set nofoldenable
+filetype plugin indent on " required
+syntax on                 " required
+autocmd Filetype * AnyFoldActivate " activate for all filetypes
+set foldlevel=0  " close all folds
+set foldlevel=99 " Open all folds
 
 "" fzf
 "" set key at location "~"
@@ -145,4 +149,3 @@ noremap <C-Q> :quit<CR>  " Quit current window
 " You need to reload this file for the change to apply
 "" filetype off
 "" filetype plugin indent on
-"" syntax on
