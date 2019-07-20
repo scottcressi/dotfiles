@@ -26,6 +26,12 @@ Plugin 'pseewald/vim-anyfold'
 Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plugin 'junegunn/fzf.vim'
 
+"" linting
+Plugin 'w0rp/ale'
+
+"" statusbar
+Plugin 'itchyny/lightline.vim'
+
 "" reactive stuff after vunlde has completed
 call vundle#end()
 
@@ -125,5 +131,15 @@ set foldlevel=99 " Open all folds
 "" set key at location "~"
 noremap <C-P> :Files ~<CR>
 
-""" nerdtree
+"" nerdtree
 nmap <C-W> :NERDTreeToggle<CR>
+
+"" ale
+let g:ale_completion_enabled = 1
+" Check Python files with flake8 and pylint.
+let b:ale_linters = ['flake8', 'pylint', 'golint', "gofmt"]
+" Fix Python files with autopep8 and yapf.
+let b:ale_fixers = ['autopep8', 'yapf']
+
+"" lastline
+set laststatus=2
