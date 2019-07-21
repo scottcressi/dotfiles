@@ -33,6 +33,7 @@ Plugin 'junegunn/fzf.vim' " fzf
 Plugin 'itchyny/lightline.vim' " statusbar
 Plugin 'ervandew/supertab' " tabbing
 Plugin 'davidhalter/jedi-vim' " completion
+Plugin 'scrooloose/syntastic' " syntax
 
 "" AUTO-INITIALIZATION ########################################################
 
@@ -121,3 +122,9 @@ nmap <C-W> :NERDTreeToggle<CR>
 
 " lightline status bar fix
 set laststatus=2
+
+" syntactic
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_error_symbol = "✗"
+let g:syntastic_warning_symbol = "⚠"
