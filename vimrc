@@ -1,23 +1,35 @@
 "" VUNDLE #####################################################################
 
-"" required by Vundle
-set nocompatible
-filetype off
+" START - Setting up Vundle - the vim plugin bundler
+let iCanHazVundle=1
+let vundle_readme=expand('~/.vim/bundle/Vundle.vim/README.md')
+if !filereadable(vundle_readme)
+  echo "Installing Vundle.."
+  echo ""
+  silent !mkdir -p ~/.vim/bundle
+  silent !git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+  let iCanHazVundle=0
+endif
+set rtp+=~/.vim/bundle/Vundle.vim/
+call vundle#rc()
 
-"" add runtime path to include Vundle and initalize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+if iCanHazVundle == 0
+  echo "Installing Bundles, please ignore key map error messages"
+  echo ""
+  :source $MYVIMRC
+  :PluginInstall
+endif
+" END - Setting up Vundle - the vim plugin bundler
 
-"" plugins
-
-"" plugin manager
-Plugin 'gmarik/Vundle.vim'
+"" PLUGINS #####################################################################
 
 "" file drawer
 Plugin 'scrooloose/nerdtree'
 
 "" colors
-Plugin 'michalbachowski/vim-wombat256mod'
+Plugin 'morhetz/gruvbox'
 
 "" folding (zc to close, zo to open)
 Plugin 'pseewald/vim-anyfold'
@@ -89,35 +101,36 @@ let &colorcolumn="80,".join(range(120,120),",") "second color column
 " disable Ex mode
 noremap Q <NOP>
 
-" show relative line numbers
+" line numbers
 set number
-
-"" show tabs as arrows
-""set list
-"set listchars=tab:▸\ ,eol:¬
-""set listchars=tab:▸\ ,
 
 " Quick save
 :nmap <c-s> :w<CR>
 :imap <c-s> <Esc>:w<CR>a
 
 " Quick quit
-noremap <C-Q> :quit<CR>  " Quit current window
+noremap <C-Q> :quit<CR>
 
 " Mouse and backspace
 set mouse=r  " on OSX press ALT and click
 set bs=2     " make backspace behave like normal again
 
+"" show tabs as arrows
+""set list
+"set listchars=tab:▸\ ,eol:¬
+""set listchars=tab:▸\ ,
+
 "" PLUGIN CONFIGURATION #######################################################
 
-" wombat256mod
-set t_Co=256
-colorscheme wombat256mod
+" color scheme
+set t_Co=256 "256 terminal colors, hard requirement for color scheme
+colorscheme gruvbox "color scheme
+set background=dark "color scheme dark more
 
 " folding
-filetype plugin indent on " required
-syntax on                 " required
-autocmd Filetype * AnyFoldActivate " activate for all filetypes
+filetype plugin indent on
+syntax on
+autocmd Filetype * AnyFoldActivate "activate for all filetypes
 set foldlevel=0  " close all folds
 set foldlevel=99 " Open all folds
 
