@@ -120,6 +120,9 @@ set bs=2     " make backspace behave like normal again
 "set listchars=tab:▸\ ,eol:¬
 ""set listchars=tab:▸\ ,
 
+" escape key responsiveness for switching modes
+set timeoutlen=1000 ttimeoutlen=0
+
 "" PLUGIN CONFIGURATION #######################################################
 
 " color scheme
