@@ -25,41 +25,40 @@ endif
 
 "" PLUGINS #####################################################################
 
-"" file drawer
+" file drawer
 Plugin 'scrooloose/nerdtree'
 
-"" colors
+" colors
 Plugin 'morhetz/gruvbox'
 
-"" folding (zc to close, zo to open)
+" folding (zc to close, zo to open)
 Plugin 'pseewald/vim-anyfold'
 
-"" fzf
+" fzf
 Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plugin 'junegunn/fzf.vim'
 
-"" statusbar
+" statusbar
 Plugin 'itchyny/lightline.vim'
 
-"" tabbing for completion
+" tabbing for completion
 Plugin 'ervandew/supertab'
 
-"" completion
+" completion
 Plugin 'davidhalter/jedi-vim'
 
-"" reactive stuff after vunlde has completed
+" reactive stuff after vunlde has completed
 call vundle#end()
 
 "" AUTO-INITIALIZATION ########################################################
 
-"" nerdtree
-"" autocmd vimenter * NERDTree
+" nerdtree
+" autocmd vimenter * NERDTree
 
-"" Automatic reloading of .vimrc
+" Automatic reloading of .vimrc
 autocmd! bufwritepost _vimrc source %
 
-"" Show whitespace
-"" MUST be inserted BEFORE the colorscheme command
+" Show whitespace, MUST be inserted BEFORE the colorscheme command
 autocmd BufWritePre * :%s/\s\+$//e
 autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
@@ -110,15 +109,6 @@ set number
 
 " Quick quit
 noremap <C-Q> :quit<CR>
-
-" Mouse and backspace
-set mouse=r  " on OSX press ALT and click
-set bs=2     " make backspace behave like normal again
-
-"" show tabs as arrows
-""set list
-"set listchars=tab:▸\ ,eol:¬
-""set listchars=tab:▸\ ,
 
 " escape key responsiveness for switching modes
 set timeoutlen=1000 ttimeoutlen=0
