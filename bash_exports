@@ -62,6 +62,3 @@ complete -C '/usr/local/bin/aws_completer' aws
 
 # path
 export PATH=$PATH:/usr/local/bin/:~/bin:~/go/bin
-
-# go
-export GOCACHE="/dev/null"
