@@ -34,6 +34,7 @@ Plugin 'itchyny/lightline.vim' " statusbar
 Plugin 'ervandew/supertab' " tabbing
 Plugin 'davidhalter/jedi-vim' " completion
 Plugin 'scrooloose/syntastic' " syntax
+Plugin 'fatih/vim-go' " go
 
 "" AUTO-INITIALIZATION ########################################################
 
