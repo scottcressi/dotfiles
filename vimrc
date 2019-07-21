@@ -25,30 +25,14 @@ endif
 
 "" PLUGINS #####################################################################
 
-" file drawer
-Plugin 'scrooloose/nerdtree'
-
-" colors
-Plugin 'morhetz/gruvbox'
-
-" folding (zc to close, zo to open)
-Plugin 'pseewald/vim-anyfold'
-
-" fzf
-Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plugin 'junegunn/fzf.vim'
-
-" statusbar
-Plugin 'itchyny/lightline.vim'
-
-" tabbing for completion
-Plugin 'ervandew/supertab'
-
-" completion
-Plugin 'davidhalter/jedi-vim'
-
-" reactive stuff after vunlde has completed
-call vundle#end()
+Plugin 'scrooloose/nerdtree' " file drawer
+Plugin 'morhetz/gruvbox' " colors
+Plugin 'pseewald/vim-anyfold' " folding
+Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " fzf
+Plugin 'junegunn/fzf.vim' " fzf
+Plugin 'itchyny/lightline.vim' " statusbar
+Plugin 'ervandew/supertab' " tabbing
+Plugin 'davidhalter/jedi-vim' " completion
 
 "" AUTO-INITIALIZATION ########################################################
 
@@ -62,6 +46,9 @@ autocmd! bufwritepost _vimrc source %
 autocmd BufWritePre * :%s/\s\+$//e
 autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+
+" folding
+autocmd Filetype * AnyFoldActivate "activate for all filetypes
 
 "" GENERAL CONFIGURATION ######################################################
 
@@ -123,7 +110,6 @@ set background=dark "color scheme dark more
 " folding
 filetype plugin indent on
 syntax on
-autocmd Filetype * AnyFoldActivate "activate for all filetypes
 set foldlevel=0  " close all folds
 set foldlevel=99 " Open all folds
 
