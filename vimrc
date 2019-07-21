@@ -54,56 +54,54 @@ autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 
 "" GENERAL CONFIGURATION ######################################################
 
-"" History
-set history=700
-set undolevels=700
+" history
+set history=7000 "history
+set undolevels=7000 "undo history
 
-"" Real programmers don't use TABs but spaces
+" tabs and spaces
 set tabstop=4
-set softtabstop=4
 set shiftwidth=4
 set shiftround
-set expandtab " conflicts with tab arrows
+set expandtab
+set smarttab
 
-"" Make search case insensitive
-set hlsearch
-set incsearch
-set ignorecase
+" search
+set hlsearch "highlight search
+set incsearch "search as your type
+set ignorecase "ignore case
 set smartcase
 
-"" Disable stupid backup and swap files - they trigger too many events
-"" for file system watchers
-set nobackup
-set nowritebackup
-set noswapfile
+" backup files
+set nobackup "no backup file
+set nowritebackup "no backup file on write
+set noswapfile "no swap file
 
-"" Colors
-syntax enable
-set background=dark
-
-"" Showing line numbers and length
-set tw=79   " width of document (used by gd)
+" wrap
+set textwidth=79 " width of document
 set wrap  " don't automatically wrap on load
 set fo-=t   " don't automatically wrap text when typing
-set colorcolumn=80
-highlight ColorColumn ctermbg=233
 
-"" disable Ex mode
+" color column
+set colorcolumn=80 "color column placement
+highlight ColorColumn guibg=Black
+let &colorcolumn="80,".join(range(120,120),",") "second color column
+
+" disable Ex mode
 noremap Q <NOP>
 
-"" show relative line numbers
-set number "relativenumber
+" show relative line numbers
+set number
 
 "" show tabs as arrows
-set list
+""set list
 "set listchars=tab:▸\ ,eol:¬
-set listchars=tab:▸\ ,
+""set listchars=tab:▸\ ,
 
-" Quicksave command
+" Quick save
 :nmap <c-s> :w<CR>
 :imap <c-s> <Esc>:w<CR>a
 
-" Quick quit command
+" Quick quit
 noremap <C-Q> :quit<CR>  " Quit current window
 
 " Mouse and backspace
@@ -112,23 +110,22 @@ set bs=2     " make backspace behave like normal again
 
 "" PLUGIN CONFIGURATION #######################################################
 
-"" wombat256mod
+" wombat256mod
 set t_Co=256
 colorscheme wombat256mod
 
-"" folding
+" folding
 filetype plugin indent on " required
 syntax on                 " required
 autocmd Filetype * AnyFoldActivate " activate for all filetypes
 set foldlevel=0  " close all folds
 set foldlevel=99 " Open all folds
 
-"" fzf
-"" set key at location "~"
+" fzf , sets location to ~
 noremap <C-P> :Files ~<CR>
 
-"" nerdtree
+" nerdtree
 nmap <C-W> :NERDTreeToggle<CR>
 
-"" lightline status bar fix
+" lightline status bar fix
 set laststatus=2
