@@ -104,12 +104,6 @@ mv firefox firefox-$(date +%Y-%m-%d-%H-%M-%S)
 rm -f firefox.tar
 }
 
-_package-wm(){
-sudo apt-get install -y \
-dwm \
-xorg
-}
-
 _package-pip-packages(){
 sudo pip install --upgrade \
 awscli \
@@ -173,27 +167,30 @@ echo command is psql -h localhost -U $organization_$USER -d $organization_db -p 
 psql -h localhost -U $organization_$USER -d $organization_db -p $port
 }
 
-_package-debian-gui(){
+_package-gui(){
 sudo apt-get update
 sudo apt-get install \
 abiword \
 arandr \
 atril \
+dwm \
 mpv \
 mupdf \
 oneko \
 screenkey \
 surf \
 sxiv \
+wicd \
 xcowsay \
 xfishtank \
+xorg \
 zathura \
-zathura-pdf-mupdf \
 zathura-cb \
+zathura-pdf-mupdf \
 
 }
 
-_package-debian-games(){
+_package-games(){
 sudo apt-get update
 sudo apt-get install \
 bastet \
@@ -208,17 +205,10 @@ xboard \
 
 }
 
-_package-laptop(){
+_package-terminal(){
 sudo apt-get update
 sudo apt-get install \
 acpi \
-wicd \
-
-}
-
-_package-debian-terminal(){
-sudo apt-get update
-sudo apt-get install \
 alsa-utils \
 aspell \
 bash-completion \
@@ -279,6 +269,7 @@ weather-util \
 whois \
 xterm \
 
+sudo apt-get install -y --allow-unauthenticated docker-ce
 }
 
 _brightness(){
@@ -310,14 +301,6 @@ echo
 read POD
 kubectl delete pod -n jenkins $POD --grace-period=0 --force &
 kubectl patch pod -n jenkins $POD -p '{"metadata":{"finalizers":null}}'
-}
-
-_package-docker(){
-curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
-sudo apt-key fingerprint 0EBFCD88
-sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable"
-sudo apt-get update
-sudo apt-get install -y --allow-unauthenticated docker-ce
 }
 
 _docker-python(){
@@ -409,6 +392,16 @@ sudo apt-get install -y libgtk-3-0 pulseaudio
 
 # zoom
 sudo apt-get install -y libnss3
+
+# docker
+curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
+sudo apt-key fingerprint 0EBFCD88
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable"
+
+# backports for fzf
+cat <<EOF | sudo tee /etc/apt/sources.list.d/stretch-backports.list
+deb http://http.debian.net/debian stretch-backports main contrib non-free
+EOF
 }
 
 _package-st(){
@@ -437,12 +430,6 @@ _package-go(){
 wget https://dl.google.com/go/go1.12.7.linux-amd64.tar.gz
 gunzip go1.12.7.linux-amd64.tar.gz
 tar xvf go1.12.7.linux-amd64.tar
-}
-
-_repos-debian-backports(){
-cat <<EOF | sudo tee /etc/apt/sources.list.d/stretch-backports.list
-deb http://http.debian.net/debian stretch-backports main contrib non-free
-EOF
 }
 
 dwmscript(){
