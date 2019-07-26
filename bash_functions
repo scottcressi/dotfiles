@@ -220,6 +220,7 @@ cmus \
 cowsay \
 curl \
 dnsutils \
+docker-ce \
 dstat \
 espeak \
 git \
@@ -269,7 +270,6 @@ weather-util \
 whois \
 xterm \
 
-sudo apt-get install -y --allow-unauthenticated docker-ce
 }
 
 _brightness(){
