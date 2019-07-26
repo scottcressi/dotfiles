@@ -403,10 +403,20 @@ done
 }
 
 _package-st(){
+sudo apt-get update
+sudo apt-get install -y pkg-config libfreetype6-dev libfontconfig1-dev libx11-dev libxft-dev
 wget https://dl.suckless.org/st/st-0.8.2.tar.gz
 gunzip st-0.8.2.tar.gz
 tar xvf st-0.8.2.tar
 cd st-0.8.2
+make clean install
+}
+
+_package-dwm(){
+wget https://dl.suckless.org/dwm/dwm-6.2.tar.gz
+gunzip dwm-6.2.tar.gz
+tar xvf dwm-6.2.tar
+cd dwm-6.2
 make clean install
 }
 
