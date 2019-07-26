@@ -104,10 +104,6 @@ mv firefox firefox-$(date +%Y-%m-%d-%H-%M-%S)
 rm -f firefox.tar
 }
 
-_package-firefox_prereqs(){
-sudo apt-get install -y libgtk-3-0 pulseaudio
-}
-
 _package-wm(){
 sudo apt-get install -y \
 dwm \
@@ -294,7 +290,6 @@ wget git.io/trans
 }
 
 _package-zoom(){
-sudo apt-get install -y libnss3
 wget https://zoom.us/client/latest/zoom_amd64.deb
 sudo dpkg -i zoom_amd64.deb
 }
@@ -317,8 +312,7 @@ kubectl delete pod -n jenkins $POD --grace-period=0 --force &
 kubectl patch pod -n jenkins $POD -p '{"metadata":{"finalizers":null}}'
 }
 
-_package-docker-prereqs(){
-sudo apt-get -y install apt-transport-https ca-certificates curl gnupg2 software-properties-common
+_package-docker(){
 curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
 sudo apt-key fingerprint 0EBFCD88
 sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable"
@@ -402,9 +396,22 @@ echo
 done
 }
 
-_package-st(){
+_package-prereqs(){
+# suckless
 sudo apt-get update
-sudo apt-get install -y pkg-config libfreetype6-dev libfontconfig1-dev libx11-dev libxft-dev
+sudo apt-get install -y pkg-config libfreetype6-dev libfontconfig1-dev libx11-dev libxft-dev  libxinerama-dev
+
+# docker
+sudo apt-get -y install apt-transport-https ca-certificates curl gnupg2 software-properties-common
+
+# firefox
+sudo apt-get install -y libgtk-3-0 pulseaudio
+
+# zoom
+sudo apt-get install -y libnss3
+}
+
+_package-st(){
 wget https://dl.suckless.org/st/st-0.8.2.tar.gz
 gunzip st-0.8.2.tar.gz
 tar xvf st-0.8.2.tar
