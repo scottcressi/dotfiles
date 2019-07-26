@@ -412,6 +412,12 @@ cd st-0.8.2
 make clean install
 }
 
+_package-st-lukesmith(){
+git clone https://github.com/LukeSmithxyz/st st-lukesmith
+cd st-lukesmith
+make clean install
+}
+
 _package-dwm(){
 wget https://dl.suckless.org/dwm/dwm-6.2.tar.gz
 gunzip dwm-6.2.tar.gz
