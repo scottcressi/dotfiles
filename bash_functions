@@ -37,7 +37,7 @@ echo remotemachine is $remotemachine
 echo remoteport is $remoteport
 
 ssh -f -A ec2-user@$jump -L $port:$remotemachine:$remoteport -N
-_tunnel-list
+-tunnel-list
 }
 
 -tunnel-list() {
