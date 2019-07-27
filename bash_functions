@@ -354,11 +354,12 @@ if [ $confirm == "y" ] ; then docker kill $(docker ps -aq) ; fi
 }
 
 -kops-create(){
+VERSION=1.15.1
 echo domain:
 read domain
 echo bucket:
 read bucket
-kops create cluster --name test.$domain --state s3://$bucket --cloud aws  --zones us-east-1a,us-east-1b --kubernetes-version 1.15.1 --node-size m5.large
+kops create cluster --name test.$domain --state s3://$bucket --cloud aws  --zones us-east-1a,us-east-1b --kubernetes-version $VERSION --node-size m5.large
 kops update --state s3://$bucket cluster --name test.$domain --yes
 }
 
