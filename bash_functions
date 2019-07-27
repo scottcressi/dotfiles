@@ -314,13 +314,14 @@ fi
 # kubectl
 if test ! -f ~/bin/kubectl ; then
 curl -s -L --url https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl --output ~/bin/kubectl
-chmod 755 ~/bin/*
 fi
 
 # kpoof
 if test ! -d ~/bin/kpoof ; then
 git clone https://github.com/farmotive/kpoof
 fi
+
+chmod 755 ~/bin/*
 }
 
 -kterminate(){
