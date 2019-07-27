@@ -6,7 +6,7 @@ git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\ \[\1\]/'
 }
 
 # tunnelkill
-_tunnel-kill() {
+-tunnel-kill() {
 tunnel_kill_list=`ps axuf \
 | grep " ssh " \
 | grep "\-f" \
@@ -16,7 +16,7 @@ kill $tunnel_kill_list
 }
 
 # tunnelmake
-_tunnel-manual() {
+-tunnel-manual() {
 echo enter remote machine
 read remotemachine
 echo enter remote port
@@ -40,15 +40,15 @@ ssh -f -A ec2-user@$jump -L $port:$remotemachine:$remoteport -N
 _tunnel-list
 }
 
-_tunnel-list() {
+-tunnel-list() {
 ps axuf | grep " ssh " | grep -v grep | grep "\-f"
 }
 
-_tunnel-example() {
+-tunnel-example() {
 echo ssh -f -A youruser@jump -L localport:remotemachine:remoteport -N
 }
 
-_tunnel-db(){
+-tunnel-db(){
 if [ $1 == "sandbox" ] || [ $1 == "qa" ] || [ $1 == "staging" ] ; then
 jump=jump-dev.$organization.com
 db=dbrw.$1.$organization.com
@@ -62,7 +62,7 @@ _tunnel-list
 }
 
 # Extract
-_extract()
+-extract()
 {
     if [ -f $1 ] ; then
         case $1 in
@@ -84,19 +84,19 @@ _extract()
     fi
 }
 
-_down() {
+-down() {
 wget -qO - "http://www.downforeveryoneorjustme.com/$1" | sed "/just you/!d;s/<[^>]*>//g";
 }
 
-_cert-remote() {
+-cert-remote() {
 openssl s_client -showcerts -connect $1:443 </dev/null | openssl x509 -noout -text  | grep DNS
 }
 
-_cert-local() {
+-cert-local() {
 openssl x509 -in $1 -text -noout
 }
 
-_package-firefox() {
+-package-thirdparty-firefox() {
 wget -O firefox.tar.bz2 "https://download.mozilla.org/?product=firefox-latest&os=linux64&lang=en-US"
 bunzip2 firefox.tar.bz2
 tar xvf firefox.tar
@@ -104,7 +104,7 @@ mv firefox firefox-$(date +%Y-%m-%d-%H-%M-%S)
 rm -f firefox.tar
 }
 
-_package-pip-packages(){
+-package-pip-packages(){
 sudo pip install --upgrade \
 awscli \
 bpython \
@@ -122,7 +122,7 @@ youtube-dl \
 
 }
 
-_wallpaper(){
+-wallpaper(){
 while true
 do
 feh --bg-scale --randomize ~/desktops
@@ -130,35 +130,35 @@ sleep 60
 done
 }
 
-_wallpaper_reddit(){
+-wallpaper_reddit(){
 wget -q -O - -- $(wget -q -O - http://www.reddit.com/r/wallpaper | grep -Eo 'https?://\w+\.imgur\.com[^"&]+(jpe?g|png|gif)' | shuf -n 1) | feh --bg-fill -
 }
 
-_wallpaper_imgur(){
+-wallpaper_imgur(){
 wget -q -O- https://imgur.com/a/EYCTw | grep jpg | grep thumb | sed 's/.*src="\/\///g' | sed 's/" alt="" \/>//g' | shuf -n 1 | xargs wget -q -O- | feh --bg-fill -
 }
 
-_wallpaper_hubblesite(){
+-wallpaper_hubblesite(){
 IMAGE=$(wget -q -O- http://hubblesite.org/gallery/wallpaper/ | grep imgsrc.hubblesite.org | sed 's/^.*imgsrc/imgsrc/g' | sed 's/-wallpaper_thumb.jpg.*$//g' | sed 's/imgsrc.hubblesite.org\/hu\/db\/images\///g' | shuf -n 1)
 wget -q -O- http://imgsrc.hubblesite.org/hu/db/images/$IMAGE-2560x1024_wallpaper.jpg | feh --bg-fill -
 }
 
-_package-vagrant(){
+-package-thirdparty-vagrant(){
 wget -P /tmp/ https://releases.hashicorp.com/vagrant/1.8.7/vagrant_1.8.7_x86_64.deb
 sudo dpkg -i /tmp/vagrant_1.8.7_x86_64.deb
 }
 
-_package-virtualbox(){
+-package-thirdparty-virtualbox(){
 VERSION=`curl -s https://download.virtualbox.org/virtualbox/LATEST-STABLE.TXT`
 PACKAGE=`curl -s https://download.virtualbox.org/virtualbox/$VERSION/ | grep rpm | grep el7 | sed 's/rpm.*/rpm/g' | sed 's/.*Virt/Virt/g'`
 sudo yum install https://download.virtualbox.org/virtualbox/$VERSION/$PACKAGE
 }
 
-_psql_list(){
+-psql_list(){
 _tunnel-list | awk '{print $16}'
 }
 
-_psql_env(){
+-psql_env(){
 echo ex. psql_env ro
 ENV=$1
 USER=$2
@@ -167,7 +167,7 @@ echo command is psql -h localhost -U $organization_$USER -d $organization_db -p 
 psql -h localhost -U $organization_$USER -d $organization_db -p $port
 }
 
-_package-gui(){
+-package-debian-gui(){
 sudo apt-get update
 sudo apt-get install \
 abiword \
@@ -190,7 +190,7 @@ zathura-pdf-mupdf \
 
 }
 
-_package-games(){
+-package-debian-games(){
 sudo apt-get update
 sudo apt-get install \
 bastet \
@@ -205,7 +205,7 @@ xboard \
 
 }
 
-_package-terminal(){
+-package-debian-terminal(){
 sudo apt-get update
 sudo apt-get install \
 acpi \
@@ -272,20 +272,20 @@ xterm \
 
 }
 
-_brightness(){
+-brightness(){
 echo $1 | sudo tee --append /sys/devices/pci0000:00/0000:00:02.0/drm/card0/card0-eDP-1/intel_backlight/brightness
 }
 
-_package-translate(){
+-package-thirdparty-translate(){
 wget git.io/trans
 }
 
-_package-zoom(){
+-package-thirdparty-zoom(){
 wget https://zoom.us/client/latest/zoom_amd64.deb
 sudo dpkg -i zoom_amd64.deb
 }
 
-_package-kube(){
+-package-thirdparty-kube(){
 mkdir ~/bin
 curl -s --url https://storage.googleapis.com/kubernetes-helm/helm-v2.14.2-linux-amd64.tar.gz --output ~/bin/helm.tar.gz
 cd ~/bin ; tar zxvf helm.tar.gz ; mv ~/bin/linux-amd64/helm ~/bin/helm ; rm -rf ~/bin/linux-amd64 ~/bin/helm.tar.gz
@@ -295,7 +295,7 @@ chmod 755 ~/bin/*
 git clone https://github.com/farmotive/kpoof
 }
 
-kterminate(){
+-kterminate(){
 echo enter pod:
 echo
 read POD
@@ -303,11 +303,11 @@ kubectl delete pod -n jenkins $POD --grace-period=0 --force &
 kubectl patch pod -n jenkins $POD -p '{"metadata":{"finalizers":null}}'
 }
 
-_docker-python(){
+-docker-python(){
 docker run -v "$PWD":/usr/src/myapp -w /usr/src/myapp python python
 }
 
-_docker-java(){
+-docker-java(){
 docker run -v "$PWD":/usr/src/myapp -w /usr/src/myapp openjdk:7 java
 }
 
@@ -317,7 +317,7 @@ read confirm
 if [ $confirm == "y" ] ; then docker kill $(docker ps -aq) ; fi
 }
 
-kopst(){
+-kopst(){
 echo domain:
 read domain
 echo bucket:
@@ -326,13 +326,13 @@ kops create cluster --name test.$domain --state s3://$bucket --cloud aws  --zone
 kops update --state s3://$bucket cluster --name test.$domain --yes
 }
 
-kopsg(){
+-kopsg(){
 echo bucket:
 read bucket
 kops get cluster --state s3://$bucket
 }
 
-kopsd(){
+-kopsd(){
 echo domain:
 read domain
 echo bucket:
@@ -340,24 +340,23 @@ read bucket
 echo kops delete cluster  --name test.$domain --state s3://$bucket --yes
 }
 
-_aws_records(){
+-aws_records(){
 echo domain:
 read domain
 ZONE=`aws route53 list-hosted-zones --query "HostedZones[?Name=='$domain.']".Id --output text | sed 's/\/hostedzone\///g'`
 aws route53 list-resource-record-sets --hosted-zone-id $ZONE
 }
 
-_aws_certs(){
+-aws_certs(){
 aws acm list-certificates --region us-east-1
 }
 
 awsc(){
-grep "\[" ~/.aws/credentials
 if [ -z $1 ] ; then echo enter profile ; fi
 export AWS_DEFAULT_PROFILE=$1
 }
 
-_is-someone-using-my-webcam(){
+-is-someone-using-my-webcam(){
 if [ `lsmod | grep ^uvcvideo | awk '{print $3}'` == "0" ] ; then
 echo no
 else
@@ -379,7 +378,7 @@ echo
 done
 }
 
-_package-prereqs(){
+-package-debian-prereqs(){
 # suckless
 sudo apt-get update
 sudo apt-get install -y pkg-config libfreetype6-dev libfontconfig1-dev libx11-dev libxft-dev  libxinerama-dev
@@ -404,7 +403,7 @@ deb http://http.debian.net/debian stretch-backports main contrib non-free
 EOF
 }
 
-_package-st(){
+-package-source-st(){
 wget https://dl.suckless.org/st/st-0.8.2.tar.gz
 gunzip st-0.8.2.tar.gz
 tar xvf st-0.8.2.tar
@@ -412,13 +411,13 @@ cd st-0.8.2
 make clean install
 }
 
-_package-st-lukesmith(){
+-package-source-st-lukesmith(){
 git clone https://github.com/LukeSmithxyz/st st-lukesmith
 cd st-lukesmith
 make clean install
 }
 
-_package-dwm(){
+-package-source-dwm(){
 wget https://dl.suckless.org/dwm/dwm-6.2.tar.gz
 gunzip dwm-6.2.tar.gz
 tar xvf dwm-6.2.tar
@@ -426,18 +425,18 @@ cd dwm-6.2
 make clean install
 }
 
-_package-go(){
+-package-language-go(){
 wget https://dl.google.com/go/go1.12.7.linux-amd64.tar.gz
 gunzip go1.12.7.linux-amd64.tar.gz
 tar xvf go1.12.7.linux-amd64.tar
 }
 
-dwmscript(){
+-dwmscript(){
 ps axuf | grep dwm.sh | grep -v grep | awk '{print $2}' | xargs kill
 find ~/ -name dwm.sh | xargs bash &
 }
 
-_package-slack(){
+-package-thirdparty-slack(){
 curl -s -L --url https://github.com/erroneousboat/slack-term/releases/download/v0.4.1/slack-term-linux-amd64 --output ~/bin/slack-term
 chmod 755 ~/bin/slack-term
 }
