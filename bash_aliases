@@ -1,3 +1,6 @@
+# single letters
+alias l='ls -l'
+
 # corrections
 alias a-l='-la'
 alias elss="less"
