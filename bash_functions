@@ -186,7 +186,8 @@ xfishtank \
 xorg \
 zathura \
 zathura-cb \
-zathura-pdf-mupdf \
+
+#zathura-pdf-mupdf \
 
 }
 
