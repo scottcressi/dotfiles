@@ -11,10 +11,7 @@ alias gerp='grep'
 alias ll='ls -la | grep "^d" && ls -la | grep "^-" && ls -la | grep "^l"'
 alias lll='ls -la | grep "^d" && ls -la | grep "^-" && ls -la | grep "^l"'
 alias les="less"
-alias ls='ls --color'
 alias lses="less"
-alias rm="rm -i"
-alias mv="mv -i"
 alias sl='ls'
 alias iv='vi'
 
@@ -59,16 +56,23 @@ alias vu="vagrant up"
 alias tl='tmux list-windows'
 
 # misc
-alias da="date +'%l:%M %A %m/%d/%y'"
-alias fz='vim $(fzf)'
+alias g='cd ~/repos'
+alias grep='grep --color=auto'
+alias ls='ls --color'
+alias rm="rm -i"
+alias mv="mv -i"
+alias da="date +'%A %m/%d/%y'"
+alias d="date +'%l:%M'"
+alias f='vim $(fzf)'
 alias ff='~/firefox*/firefox & disown ; exit'
 alias get='sudo apt-get install'
 alias gip='curl -s ipinfo.io'
 alias pia='curl privateinternetaccess.com -L -s | grep topbar__item | grep protected | sed "s/.*\">//g" | sed "s/<.*//g"'
-alias pp='ps axuf'
+alias p='ps axuf'
 alias pw='pwgen 32 1 --capitalize --numerals --symbols  --ambiguous'
 alias search='apt-cache search'
 alias vi='vim'
+alias h='htop'
 alias ww='curl http://wttr.in/nyc'
 alias www='curl http://wttr.in/nyc?format=4'
 alias xfishtank='xfishtank -c black -r .1 -i .1 -b 20 -f 20'
