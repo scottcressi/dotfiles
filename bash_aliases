@@ -7,7 +7,6 @@ alias gep='grep --color=auto'
 alias gre='grep --color=auto'
 alias grpe='grep'
 alias gerp='grep'
-alias l='ls -ls --color'
 alias ll='ls -la | grep "^d" && ls -la | grep "^-" && ls -la | grep "^l"'
 alias lll='ls -la | grep "^d" && ls -la | grep "^-" && ls -la | grep "^l"'
 alias les="less"
@@ -19,7 +18,7 @@ alias sl='ls'
 alias iv='vi'
 
 # git
-alias g='cd ~/repos'
+alias gg='cd ~/repos'
 alias ga='git add --all'
 alias gb='git branch -a'
 alias gc='git commit'
@@ -59,16 +58,13 @@ alias vu="vagrant up"
 alias tl='tmux list-windows'
 
 # misc
-alias da="date '+%A %m/%d/%y'"
-alias d="date '+%l:%M'"
-alias e='extract'
-alias f='vim $(fzf)'
+alias da="date +'%l:%M %A %m/%d/%y'"
+alias fz='vim $(fzf)'
 alias ff='~/firefox*/firefox & disown ; exit'
 alias get='sudo apt-get install'
 alias gip='curl -s ipinfo.io'
-alias h='htop'
 alias pia='curl privateinternetaccess.com -L -s | grep topbar__item | grep protected | sed "s/.*\">//g" | sed "s/<.*//g"'
-alias p='ps axuf'
+alias pp='ps axuf'
 alias pw='pwgen 32 1 --capitalize --numerals --symbols  --ambiguous'
 alias search='apt-cache search'
 alias vi='vim'
