@@ -1,7 +1,5 @@
-# single letters
-alias l='ls -l'
-
 # corrections
+alias l='ls -l'
 alias a-l='-la'
 alias elss="less"
 alias erg='grep --color=auto'
@@ -93,6 +91,8 @@ alias kn='kubectl get nodes -o wide --show-labels'
 alias kgc='kops --state s3://kubernetes-`aws sts get-caller-identity --output text --query "Account"` get cluster'
 alias kkp='kubectl patch pod -p "{"metadata":{"finalizers":null}}" -n '
 alias hl='helm ls'
+alias k='kubectl'
+alias kns='kubens'
 
 # terraform
 alias tp='rm -rf .terragrunt-cache ; terragrunt plan --terragrunt-source ../../../../../../terraform-modules/modules/networking/ '

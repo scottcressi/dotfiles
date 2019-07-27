@@ -321,6 +321,13 @@ if test ! -d ~/bin/kpoof ; then
 git clone https://github.com/farmotive/kpoof
 fi
 
+# kubectx
+if test ! -d /opt/kubectx/ ; then
+sudo git clone https://github.com/ahmetb/kubectx /opt/kubectx
+sudo ln -sf /opt/kubectx/kubectx /usr/local/bin/kubectx
+sudo ln -sf /opt/kubectx/kubens /usr/local/bin/kubens
+fi
+
 chmod 755 ~/bin/*
 }
 
