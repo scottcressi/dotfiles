@@ -85,7 +85,7 @@ _tunnel-list
 }
 
 -down() {
-wget -qO - "http://www.downforeveryoneorjustme.com/$1" | sed "/just you/!d;s/<[^>]*>//g";
+curl -s https://isitdown.site/api/v3/$1 | jq
 }
 
 -cert-remote() {
