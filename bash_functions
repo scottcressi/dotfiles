@@ -286,24 +286,41 @@ sudo dpkg -i zoom_amd64.deb
 }
 
 -package-thirdparty-kube(){
+if test ! -d ~/bin/ ; then
 mkdir ~/bin
+fi
+
+# minikube
+if test ! -f ~/bin/minikube ; then
+curl -s -L --url https://storage.googleapis.com/minikube/releases/v1.2.0/minikube-linux-amd64 --output ~/bin/minikube
+fi
 
 # kops
+if test ! -f ~/bin/kops ; then
 curl -s -L --url https://github.com/kubernetes/kops/releases/download/1.12.2/kops-linux-amd64 --output ~/bin/kops
+fi
 
 # helm
+if test ! -f ~/bin/helm ; then
 curl -s -L --url https://storage.googleapis.com/kubernetes-helm/helm-v2.14.2-linux-amd64.tar.gz --output ~/bin/helm.tar.gz
 cd ~/bin ; tar zxvf helm.tar.gz ; mv ~/bin/linux-amd64/helm ~/bin/helm ; rm -rf ~/bin/linux-amd64 ~/bin/helm.tar.gz
+fi
 
 # helmfile
+if test ! -f ~/bin/helmfile ; then
 curl -s -L --url https://github.com/roboll/helmfile/releases/download/v0.80.1/helmfile_linux_amd64 --output ~/bin/helmfile
+fi
 
 # kubectl
+if test ! -f ~/bin/kubectl ; then
 curl -s -L --url https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl --output ~/bin/kubectl
 chmod 755 ~/bin/*
+fi
 
 # kpoof
+if test ! -d ~/bin/kpoof ; then
 git clone https://github.com/farmotive/kpoof
+fi
 }
 
 -kterminate(){
