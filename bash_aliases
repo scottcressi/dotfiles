@@ -125,3 +125,4 @@ alias tm='transmission-remote localhost:8080 -l'
 
 # aws
 alias awsl='grep "\[" ~/.aws/credentials'
+alias at='aws s3 ls'
