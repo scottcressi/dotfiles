@@ -184,6 +184,7 @@ wicd \
 xcowsay \
 xfishtank \
 xorg \
+xwallpaper \
 zathura \
 zathura-cb \
 
