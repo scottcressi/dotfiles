@@ -420,16 +420,16 @@ done
 -package-debian-prereqs(){
 # suckless
 sudo apt-get update
-sudo apt-get install -y pkg-config libfreetype6-dev libfontconfig1-dev libx11-dev libxft-dev  libxinerama-dev
+sudo apt-get install pkg-config libfreetype6-dev libfontconfig1-dev libx11-dev libxft-dev  libxinerama-dev
 
 # docker
-sudo apt-get -y install apt-transport-https ca-certificates curl gnupg2 software-properties-common
+sudo apt-get install apt-transport-https ca-certificates curl gnupg2 software-properties-common
 
 # firefox
-sudo apt-get install -y libgtk-3-0 pulseaudio
+sudo apt-get install libgtk-3-0 pulseaudio
 
 # zoom
-sudo apt-get install -y libnss3
+sudo apt-get install libnss3
 
 # docker
 curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
