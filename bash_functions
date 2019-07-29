@@ -58,7 +58,7 @@ db=dbrw.$organization.com
 fi
 port=$(( ( RANDOM % 1024 )  + 60000 ))
 ssh -f -A ec2-user@$jump -L $port:$db:5432 -N
-_tunnel-list
+-tunnel-list
 }
 
 # Extract
@@ -130,15 +130,15 @@ sleep 60
 done
 }
 
--wallpaper_reddit(){
+-wallpaper-reddit(){
 wget -q -O - -- $(wget -q -O - http://www.reddit.com/r/wallpaper | grep -Eo 'https?://\w+\.imgur\.com[^"&]+(jpe?g|png|gif)' | shuf -n 1) | feh --bg-fill -
 }
 
--wallpaper_imgur(){
+-wallpaper-imgur(){
 wget -q -O- https://imgur.com/a/EYCTw | grep jpg | grep thumb | sed 's/.*src="\/\///g' | sed 's/" alt="" \/>//g' | shuf -n 1 | xargs wget -q -O- | feh --bg-fill -
 }
 
--wallpaper_hubblesite(){
+-wallpaper-hubblesite(){
 IMAGE=$(wget -q -O- http://hubblesite.org/gallery/wallpaper/ | grep imgsrc.hubblesite.org | sed 's/^.*imgsrc/imgsrc/g' | sed 's/-wallpaper_thumb.jpg.*$//g' | sed 's/imgsrc.hubblesite.org\/hu\/db\/images\///g' | shuf -n 1)
 wget -q -O- http://imgsrc.hubblesite.org/hu/db/images/$IMAGE-2560x1024_wallpaper.jpg | feh --bg-fill -
 }
@@ -154,15 +154,15 @@ PACKAGE=`curl -s https://download.virtualbox.org/virtualbox/$VERSION/ | grep rpm
 sudo yum install https://download.virtualbox.org/virtualbox/$VERSION/$PACKAGE
 }
 
--psql_list(){
-_tunnel-list | awk '{print $16}'
+-psql-list(){
+-tunnel-list | awk '{print $16}'
 }
 
--psql_env(){
+-psql-env(){
 echo ex. psql_env ro
 ENV=$1
 USER=$2
-port=`_tunnel-list | grep $ENV | sed s/.*ssh/ssh/g | awk '{print $6}' | sed 's/:.*//g'`
+port=`-tunnel-list | grep $ENV | sed s/.*ssh/ssh/g | awk '{print $6}' | sed 's/:.*//g'`
 echo command is psql -h localhost -U $organization_$USER -d $organization_db -p $port
 psql -h localhost -U $organization_$USER -d $organization_db -p $port
 }
@@ -379,14 +379,14 @@ read bucket
 echo kops delete cluster  --name test.$domain --state s3://$bucket --yes
 }
 
--aws_records(){
+-aws-records(){
 echo domain:
 read domain
 ZONE=`aws route53 list-hosted-zones --query "HostedZones[?Name=='$domain.']".Id --output text | sed 's/\/hostedzone\///g'`
 aws route53 list-resource-record-sets --hosted-zone-id $ZONE
 }
 
--aws_certs(){
+-aws-certs(){
 aws acm list-certificates --region us-east-1
 }
 
