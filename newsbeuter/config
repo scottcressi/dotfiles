@@ -1,0 +1,18 @@
+# REMINDER: press ',' then 'm' to open a video
+# REMINDER: press ',' then 'l' to open a browser
+
+auto-reload yes
+
+macro m set browser "mpv %u"; open-in-browser ; set browser "w3m %u"
+macro l set browser "~/firefox*/firefox %u"; open-in-browser ; set browser "~/firefox*/firefox %u"
+
+goto-next-feed no
+
+bind-key j down feedlist
+bind-key k up feedlist
+bind-key j next articlelist
+bind-key k prev articlelist
+bind-key J next-feed articlelist
+bind-key K prev-feed articlelist
+bind-key j down article
+bind-key k up article
