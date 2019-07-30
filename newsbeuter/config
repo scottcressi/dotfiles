@@ -4,7 +4,7 @@
 auto-reload yes
 
 macro m set browser "mpv %u"; open-in-browser ; set browser "w3m %u"
-macro l set browser "~/firefox*/firefox %u"; open-in-browser ; set browser "~/firefox*/firefox %u"
+macro l set browser "firefox %u"; open-in-browser ; set browser "firefox %u"
 
 goto-next-feed no
 
