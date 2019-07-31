@@ -104,6 +104,7 @@ set timeoutlen=1000 ttimeoutlen=0
 
 " no more fzf panel blocking save
 cmap W w
+cmap Q q
 
 "" PLUGIN CONFIGURATION #######################################################
 
