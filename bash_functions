@@ -263,6 +263,7 @@ thefuck \
 tig \
 tmux \
 toilet \
+transmission-remote-cli \
 tree \
 tty-clock \
 ttyrec \
