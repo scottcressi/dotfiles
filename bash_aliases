@@ -123,6 +123,7 @@ alias dcd='docker-compose down'
 
 # transmission
 alias tm='transmission-remote localhost:8080 -l'
+alias tmm='transmission-remote-cli'
 
 # aws
 alias awsl='grep "\[" ~/.aws/credentials'
