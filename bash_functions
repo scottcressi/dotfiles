@@ -265,6 +265,7 @@ thefuck \
 tig \
 tmux \
 toilet \
+transmission-cli \
 transmission-remote-cli \
 tree \
 tty-clock \
