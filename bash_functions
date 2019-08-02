@@ -226,6 +226,7 @@ dnsutils \
 docker-ce \
 dstat \
 espeak \
+feh \
 git \
 htop \
 iftop \
