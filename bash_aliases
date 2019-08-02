@@ -19,6 +19,7 @@ alias sl='ls'
 alias df='df -h'
 alias dstat='dstat -c --top-cpu -dn --top-mem'
 alias grep='grep --color=auto'
+alias less='less -S'
 alias ls='ls --color'
 alias mv="mv -i"
 alias rm="rm -i"
