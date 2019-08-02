@@ -181,13 +181,14 @@ screenkey \
 surf \
 sxiv \
 wicd \
+xautolock \
 xcowsay \
 xfishtank \
 xorg \
-xwallpaper \
 zathura \
 zathura-cb \
 
+#xwallpaper \
 #zathura-pdf-mupdf \
 
 }
@@ -474,6 +475,11 @@ tar xvf go1.12.7.linux-amd64.tar
 -dwmscript(){
 ps axuf | grep dwm.sh | grep -v grep | awk '{print $2}' | xargs kill
 find ~/ -name dwm.sh | xargs bash &
+}
+
+-lock(){
+pkill xautolock
+xautolock -time 3 -locker slock & disown ; exit
 }
 
 -package-thirdparty-slack(){
