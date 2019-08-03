@@ -7,34 +7,34 @@ git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\ \[\1\]/'
 
 # tunnelkill
 -tunnel-kill() {
-tunnel_kill_list=`ps axuf \
+tunnel_kill_list=$(ps axuf \
 | grep " ssh " \
 | grep "\-f" \
-| awk '{print $2}'`
-echo killing $tunnel_kill_list
-kill $tunnel_kill_list
+| awk '{print $2}')
+echo killing "$tunnel_kill_list"
+kill "$tunnel_kill_list"
 }
 
 # tunnelmake
 -tunnel-manual() {
 echo enter remote machine
-read remotemachine
+read -r remotemachine
 echo enter remote port
-read remoteport
+read -r remoteport
 echo enter env dev or prod
-read env
+read -r env
 
 port=$(( ( RANDOM % 1024 )  + 60000 ))
-if [ $env == "prod" ] ;then
+if [ "$env" == "prod" ] ;then
 jump=
-elif [ $env == "corp" ] ;then
+elif [ "$env" == "corp" ] ;then
 jump=$jump_corp
 fi
 
-echo localport is $port
-echo jump is $jump
-echo remotemachine is $remotemachine
-echo remoteport is $remoteport
+echo localport is "$port"
+echo jump is "$jump"
+echo remotemachine is "$remotemachine"
+echo remoteport is "$remoteport"
 
 ssh -f -A ec2-user@$jump -L $port:$remotemachine:$remoteport -N
 -tunnel-list
@@ -49,15 +49,15 @@ echo ssh -f -A youruser@jump -L localport:remotemachine:remoteport -N
 }
 
 -tunnel-db(){
-if [ $1 == "sandbox" ] || [ $1 == "qa" ] || [ $1 == "staging" ] ; then
+if [ "$1" == "sandbox" ] || [ "$1" == "qa" ] || [ "$1" == "staging" ] ; then
 jump=jump-dev.$organization.com
 db=dbrw.$1.$organization.com
-elif [ $1 == "prod" ] || [ $1 == "production" ] ; then
+elif [ "$1" == "prod" ] || [ "$1" == "production" ] ; then
 jump=jump-prod.$organization.com
 db=dbrw.$organization.com
 fi
 port=$(( ( RANDOM % 1024 )  + 60000 ))
-ssh -f -A ec2-user@$jump -L $port:$db:5432 -N
+ssh -f -A ec2-user@"$jump" -L "$port":"$db":5432 -N
 -tunnel-list
 }
 
