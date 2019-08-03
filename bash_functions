@@ -278,6 +278,11 @@ if test ! -d ~/bin/ ; then
 mkdir ~/bin
 fi
 
+# compose
+if test ! -f ~/bin/docker-compose ; then
+curl -L https://github.com/docker/compose/releases/download/1.24.1/docker-compose-`uname -s`-`uname -m` -o ~/bin/docker-compose
+fi
+
 # minikube
 if test ! -f ~/bin/minikube ; then
 curl -s -L --url https://storage.googleapis.com/minikube/releases/v1.2.0/minikube-linux-amd64 --output ~/bin/minikube
