@@ -64,19 +64,19 @@ ssh -f -A ec2-user@$jump -L $port:$db:5432 -N
 # Extract
 -extract()
 {
-    if [ -f $1 ] ; then
-        case $1 in
-            *.tar.bz2)   tar xvjf $1     ;;
-            *.tar.gz)    tar xvzf $1     ;;
-            *.bz2)       bunzip2 $1      ;;
-            *.rar)       unrar x $1      ;;
-            *.gz)        gunzip $1       ;;
-            *.tar)       tar xvf $1      ;;
-            *.tbz2)      tar xvjf $1     ;;
-            *.tgz)       tar xvzf $1     ;;
-            *.zip)       unzip $1        ;;
-            *.Z)         uncompress $1   ;;
-            *.7z)        7z x $1         ;;
+    if [ -f "$1" ] ; then
+        case "$1" in
+            *.tar.bz2)   tar xvjf "$1"     ;;
+            *.tar.gz)    tar xvzf "$1"     ;;
+            *.bz2)       bunzip2 "$1"      ;;
+            *.rar)       unrar x "$1"      ;;
+            *.gz)        gunzip "$1"       ;;
+            *.tar)       tar xvf "$1"      ;;
+            *.tbz2)      tar xvjf "$1"     ;;
+            *.tgz)       tar xvzf "$1"     ;;
+            *.zip)       unzip "$1"        ;;
+            *.Z)         uncompress "$1"   ;;
+            *.7z)        7z x "$1"         ;;
             *)           echo "'$1' cannot be extracted via >extract<" ;;
         esac
     else
@@ -85,22 +85,22 @@ ssh -f -A ec2-user@$jump -L $port:$db:5432 -N
 }
 
 -down() {
-curl -s https://isitdown.site/api/v3/$1 | jq
+curl -s https://isitdown.site/api/v3/"$1" | jq
 }
 
 -cert-remote() {
-openssl s_client -showcerts -connect $1:443 </dev/null | openssl x509 -noout -text  | grep DNS
+openssl s_client -showcerts -connect "$1":443 </dev/null | openssl x509 -noout -text  | grep DNS
 }
 
 -cert-local() {
-openssl x509 -in $1 -text -noout
+openssl x509 -in "$1" -text -noout
 }
 
 -package-thirdparty-firefox() {
 wget -O firefox.tar.bz2 "https://download.mozilla.org/?product=firefox-latest&os=linux64&lang=en-US"
 bunzip2 firefox.tar.bz2
 tar xvf firefox.tar
-mv firefox firefox-$(date +%Y-%m-%d-%H-%M-%S)
+mv firefox firefox-"$(date +%Y-%m-%d-%H-%M-%S)"
 rm -f firefox.tar
 }
 
@@ -130,9 +130,9 @@ sudo dpkg -i /tmp/vagrant_1.8.7_x86_64.deb
 }
 
 -package-thirdparty-virtualbox(){
-VERSION=`curl -s https://download.virtualbox.org/virtualbox/LATEST-STABLE.TXT`
-PACKAGE=`curl -s https://download.virtualbox.org/virtualbox/$VERSION/ | grep rpm | grep el7 | sed 's/rpm.*/rpm/g' | sed 's/.*Virt/Virt/g'`
-sudo yum install https://download.virtualbox.org/virtualbox/$VERSION/$PACKAGE
+VERSION=$(curl -s https://download.virtualbox.org/virtualbox/LATEST-STABLE.TXT)
+PACKAGE=$(curl -s https://download.virtualbox.org/virtualbox/"$VERSION"/ | grep rpm | grep el7 | sed 's/rpm.*/rpm/g' | sed 's/.*Virt/Virt/g')
+sudo yum install https://download.virtualbox.org/virtualbox/"$VERSION"/"$PACKAGE"
 }
 
 -psql-list(){
@@ -143,7 +143,7 @@ sudo yum install https://download.virtualbox.org/virtualbox/$VERSION/$PACKAGE
 echo ex. psql_env ro
 ENV=$1
 USER=$2
-port=`-tunnel-list | grep $ENV | sed s/.*ssh/ssh/g | awk '{print $6}' | sed 's/:.*//g'`
+port=$(-tunnel-list | grep "$ENV" | sed s/.*ssh/ssh/g | awk '{print $6}' | sed 's/:.*//g')
 echo command is psql -h localhost -U $organization_$USER -d $organization_db -p $port
 psql -h localhost -U $organization_$USER -d $organization_db -p $port
 }
@@ -261,7 +261,7 @@ xterm \
 }
 
 -brightness(){
-echo $1 | sudo tee --append /sys/devices/pci0000:00/0000:00:02.0/drm/card0/card0-eDP-1/intel_backlight/brightness
+echo "$1" | sudo tee --append /sys/devices/pci0000:00/0000:00:02.0/drm/card0/card0-eDP-1/intel_backlight/brightness
 }
 
 -package-thirdparty-translate(){
@@ -327,9 +327,9 @@ chmod 755 ~/bin/*
 -kterminate(){
 echo enter pod:
 echo
-read POD
-kubectl delete pod -n jenkins $POD --grace-period=0 --force &
-kubectl patch pod -n jenkins $POD -p '{"metadata":{"finalizers":null}}'
+read -r POD
+kubectl delete pod -n jenkins "$POD" --grace-period=0 --force &
+kubectl patch pod -n jenkins "$POD" -p '{"metadata":{"finalizers":null}}'
 }
 
 -docker-python(){
@@ -342,39 +342,39 @@ docker run -v "$PWD":/usr/src/myapp -w /usr/src/myapp openjdk:7 java
 
 ds(){
 echo kill all containers? y/n
-read confirm
-if [ $confirm == "y" ] ; then docker kill $(docker ps -aq) ; fi
+read -r confirm
+if [ "$confirm" == "y" ] ; then docker kill "$(docker ps -aq)" ; fi
 }
 
 -kops-create(){
 VERSION=1.15.1
 echo domain:
-read domain
+read -r domain
 echo bucket:
-read bucket
-kops create cluster --name test.$domain --state s3://$bucket --cloud aws  --zones us-east-1a,us-east-1b --kubernetes-version $VERSION --node-size m5.large
-kops update --state s3://$bucket cluster --name test.$domain --yes
+read -r bucket
+kops create cluster --name test."$domain" --state s3://"$bucket" --cloud aws  --zones us-east-1a,us-east-1b --kubernetes-version "$VERSION" --node-size m5.large
+kops update --state s3://"$bucket" cluster --name test."$domain" --yes
 }
 
 -kops-get(){
 echo bucket:
-read bucket
-kops get cluster --state s3://$bucket
+read -r bucket
+kops get cluster --state s3://"$bucket"
 }
 
 -kops-delete(){
 echo domain:
-read domain
+read -r domain
 echo bucket:
-read bucket
-echo kops delete cluster  --name test.$domain --state s3://$bucket --yes
+read -r bucket
+echo kops delete cluster  --name test."$domain" --state s3://"$bucket" --yes
 }
 
 -aws-records(){
 echo domain:
-read domain
-ZONE=`aws route53 list-hosted-zones --query "HostedZones[?Name=='$domain.']".Id --output text | sed 's/\/hostedzone\///g'`
-aws route53 list-resource-record-sets --hosted-zone-id $ZONE
+read -r domain
+ZONE=$(aws route53 list-hosted-zones --query "HostedZones[?Name=='$domain.']".Id --output text | sed 's/\/hostedzone\///g')
+aws route53 list-resource-record-sets --hosted-zone-id "$ZONE"
 }
 
 -aws-certs(){
@@ -382,12 +382,12 @@ aws acm list-certificates --region us-east-1
 }
 
 awsc(){
-if [ -z $1 ] ; then echo enter profile ; fi
+if [ -z "$1" ] ; then echo enter profile ; fi
 export AWS_DEFAULT_PROFILE=$1
 }
 
 -is-someone-using-my-webcam(){
-if [ `lsmod | grep ^uvcvideo | awk '{print $3}'` == "0" ] ; then
+if [ "$(lsmod | grep ^uvcvideo | awk '{print $3}')" == "0" ] ; then
 echo no
 else
 echo yes
@@ -395,15 +395,15 @@ fi
 }
 
 kc(){
-if [ -z $1 ] ; then echo enter region ; fi
-if [ -z $2 ] ; then echo enter cluster ; fi
-aws eks update-kubeconfig --region $1 --name $2
+if [ -z "$1" ] ; then echo enter region ; fi
+if [ -z "$2" ] ; then echo enter cluster ; fi
+aws eks update-kubeconfig --region "$1" --name "$2"
 }
 
 kl(){
-for i in `echo us-east-1 us-west-2` ; do
-echo $i
-aws eks list-clusters --region $i
+for i in $(echo us-east-1 us-west-2) ; do
+echo "$i"
+aws eks list-clusters --region "$i"
 echo
 done
 }
@@ -438,14 +438,14 @@ wget https://dl.suckless.org/st/st-0.8.2.tar.gz
 gunzip st-0.8.2.tar.gz
 tar xvf st-0.8.2.tar
 cd st-0.8.2
-export DESTDIR="~/"
+export DESTDIR="$HOME"
 make clean install
 }
 
 -package-source-st-lukesmith(){
 git clone https://github.com/LukeSmithxyz/st st-lukesmith
 cd st-lukesmith
-export DESTDIR="~/"
+export DESTDIR="$HOME"
 make clean install
 }
 
@@ -454,7 +454,7 @@ wget https://dl.suckless.org/dwm/dwm-6.2.tar.gz
 gunzip dwm-6.2.tar.gz
 tar xvf dwm-6.2.tar
 cd dwm-6.2
-export DESTDIR="~/"
+export DESTDIR="$HOME"
 make clean install
 }
 
@@ -465,7 +465,7 @@ tar xvf go1.12.7.linux-amd64.tar
 }
 
 -dwmscript(){
-ps axuf | grep dwm.sh | grep -v grep | awk '{print $2}' | xargs kill
+pgrep -u "$USER" -a | grep dwm | grep -v grep | awk '{print $1}' | xargs kill
 find ~/ -name dwm.sh | xargs bash &
 }
 
