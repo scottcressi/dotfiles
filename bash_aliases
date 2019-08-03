@@ -8,9 +8,8 @@ alias gre='grep --color=auto'
 alias grep='grep --color=auto'
 alias grpe='grep'
 alias iv='vi'
-alias l='ls -l'
 alias les="less"
-alias ll='ls -la | grep "^d" && ls -la | grep "^-" && ls -la | grep "^l"'
+alias ll='ls -l'
 alias lll='ls -la | grep "^d" && ls -la | grep "^-" && ls -la | grep "^l"'
 alias lses="less"
 alias sl='ls'
@@ -29,17 +28,14 @@ alias xfishtank='xfishtank -c black -r .1 -i .1 -b 20 -f 20'
 alias xterm='xterm -bg black -fg white'
 
 # misc
-alias d="date +'%l:%M'"
-alias da="date +'%A %m/%d/%y'"
+alias da="date +'%l:%M %A %m/%d/%y'"
 alias fz='vim $(fzf)'
 alias ff='firefox & disown ; exit'
 alias firefox='~/firefox*/firefox'
-alias g='cd ~/repos'
 alias gg='cd ~/repos'
 alias get='sudo apt-get install'
 alias gip='curl -s ipinfo.io'
-alias h='htop'
-alias p='ps axuf'
+alias pp='ps axuf'
 alias pia='curl privateinternetaccess.com -L -s | grep topbar__item | grep protected | sed "s/.*\">//g" | sed "s/<.*//g"'
 alias pw='pwgen 32 1 --capitalize --numerals --symbols  --ambiguous'
 alias search='apt-cache search'
@@ -88,7 +84,6 @@ alias tl='tmux list-windows'
 
 # kube
 alias hl='helm ls'
-alias k='kubectl'
 alias ka='kubectl get all --all-namespaces'
 alias kae='kubectl get all --all-namespaces -o wide'
 alias kaee='kubectl get all --all-namespaces -o wide --show-labels'
