@@ -430,12 +430,14 @@ wget https://dl.suckless.org/st/st-0.8.2.tar.gz
 gunzip st-0.8.2.tar.gz
 tar xvf st-0.8.2.tar
 cd st-0.8.2
+export DESTDIR="~/st-0.8.2"
 make clean install
 }
 
 -package-source-st-lukesmith(){
 git clone https://github.com/LukeSmithxyz/st st-lukesmith
 cd st-lukesmith
+export DESTDIR="~/st-lukesmith"
 make clean install
 }
 
@@ -444,6 +446,7 @@ wget https://dl.suckless.org/dwm/dwm-6.2.tar.gz
 gunzip dwm-6.2.tar.gz
 tar xvf dwm-6.2.tar
 cd dwm-6.2
+export DESTDIR="~/dwm-6.2"
 make clean install
 }
 
