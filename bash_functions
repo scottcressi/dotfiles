@@ -105,7 +105,9 @@ rm -f firefox.tar
 }
 
 -package-pip-packages(){
-sudo pip install --upgrade \
+virtualenv ~/python
+source ~/python/bin/activate
+pip install --upgrade \
 awscli \
 bpython \
 demjson \
@@ -251,6 +253,7 @@ tty-clock \
 ttyrec \
 typespeed \
 vim \
+virtualbox \
 weather-util \
 whois \
 xterm \
@@ -430,14 +433,14 @@ wget https://dl.suckless.org/st/st-0.8.2.tar.gz
 gunzip st-0.8.2.tar.gz
 tar xvf st-0.8.2.tar
 cd st-0.8.2
-export DESTDIR="~/st-0.8.2"
+export DESTDIR="~/"
 make clean install
 }
 
 -package-source-st-lukesmith(){
 git clone https://github.com/LukeSmithxyz/st st-lukesmith
 cd st-lukesmith
-export DESTDIR="~/st-lukesmith"
+export DESTDIR="~/"
 make clean install
 }
 
@@ -446,7 +449,7 @@ wget https://dl.suckless.org/dwm/dwm-6.2.tar.gz
 gunzip dwm-6.2.tar.gz
 tar xvf dwm-6.2.tar
 cd dwm-6.2
-export DESTDIR="~/dwm-6.2"
+export DESTDIR="~/"
 make clean install
 }
 
