@@ -31,7 +31,7 @@ alias xterm='xterm -bg black -fg white'
 # misc
 alias d="date +'%l:%M'"
 alias da="date +'%A %m/%d/%y'"
-alias f='vim $(fzf)'
+alias fz='vim $(fzf)'
 alias ff='firefox & disown ; exit'
 alias firefox='~/firefox*/firefox'
 alias g='cd ~/repos'

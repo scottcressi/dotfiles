@@ -122,27 +122,6 @@ youtube-dl \
 
 }
 
--wallpaper(){
-while true
-do
-feh --bg-scale --randomize ~/desktops
-sleep 60
-done
-}
-
--wallpaper-reddit(){
-wget -q -O - -- $(wget -q -O - http://www.reddit.com/r/wallpaper | grep -Eo 'https?://\w+\.imgur\.com[^"&]+(jpe?g|png|gif)' | shuf -n 1) | feh --bg-fill -
-}
-
--wallpaper-imgur(){
-wget -q -O- https://imgur.com/a/EYCTw | grep jpg | grep thumb | sed 's/.*src="\/\///g' | sed 's/" alt="" \/>//g' | shuf -n 1 | xargs wget -q -O- | feh --bg-fill -
-}
-
--wallpaper-hubblesite(){
-IMAGE=$(wget -q -O- http://hubblesite.org/gallery/wallpaper/ | grep imgsrc.hubblesite.org | sed 's/^.*imgsrc/imgsrc/g' | sed 's/-wallpaper_thumb.jpg.*$//g' | sed 's/imgsrc.hubblesite.org\/hu\/db\/images\///g' | shuf -n 1)
-wget -q -O- http://imgsrc.hubblesite.org/hu/db/images/$IMAGE-2560x1024_wallpaper.jpg | feh --bg-fill -
-}
-
 -package-thirdparty-vagrant(){
 wget -P /tmp/ https://releases.hashicorp.com/vagrant/1.8.7/vagrant_1.8.7_x86_64.deb
 sudo dpkg -i /tmp/vagrant_1.8.7_x86_64.deb
@@ -174,6 +153,7 @@ abiword \
 arandr \
 atril \
 dwm \
+feh \
 mpv \
 mupdf \
 oneko \
@@ -226,7 +206,6 @@ dnsutils \
 docker-ce \
 dstat \
 espeak \
-feh \
 git \
 htop \
 iftop \
