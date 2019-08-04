@@ -267,9 +267,15 @@ parse_git_branch_and_add_brackets() {
 }
 
 ds(){
+    echo stop all containers? y/n
+    read -r confirm
+    if [ "$confirm" == "y" ] ; then docker stop $(docker ps -aq) ; fi
+}
+
+dk(){
     echo kill all containers? y/n
     read -r confirm
-    if [ "$confirm" == "y" ] ; then docker kill "$(docker ps -aq)" ; fi
+    if [ "$confirm" == "y" ] ; then docker kill $(docker ps -aq) ; fi
 }
 
 -kops-create(){
