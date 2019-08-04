@@ -120,8 +120,8 @@ noremap <C-P> :Files ~<CR>
 nmap <C-W> :NERDTreeToggle<CR>
 
 " folding toggle
-noremap <C-C> :set foldlevel=0<CR>
-noremap <C-X> :set foldlevel=99<CR>
+noremap <C-F> :set foldlevel=0<CR>
+noremap <C-G> :set foldlevel=99<CR>
 
 " generic saving force W and Q lowercase
 cmap W w " remap W to w
