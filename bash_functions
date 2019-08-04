@@ -5,62 +5,6 @@ parse_git_branch_and_add_brackets() {
 git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\ \[\1\]/'
 }
 
-# tunnelkill
--tunnel-kill() {
-tunnel_kill_list=$(ps axuf \
-| grep " ssh " \
-| grep "\-f" \
-| awk '{print $2}')
-echo killing "$tunnel_kill_list"
-kill "$tunnel_kill_list"
-}
-
-# tunnelmake
--tunnel-manual() {
-echo enter remote machine
-read -r remotemachine
-echo enter remote port
-read -r remoteport
-echo enter env dev or prod
-read -r env
-
-port=$(( ( RANDOM % 1024 )  + 60000 ))
-if [ "$env" == "prod" ] ;then
-jump=
-elif [ "$env" == "corp" ] ;then
-jump=$jump_corp
-fi
-
-echo localport is "$port"
-echo jump is "$jump"
-echo remotemachine is "$remotemachine"
-echo remoteport is "$remoteport"
-
-ssh -f -A ec2-user@"$jump" -L "$port":"$remotemachine":"$remoteport" -N
--tunnel-list
-}
-
--tunnel-list() {
-ps axuf | grep " ssh " | grep -v grep | grep "\-f"
-}
-
--tunnel-example() {
-echo ssh -f -A youruser@jump -L localport:remotemachine:remoteport -N
-}
-
--tunnel-db(){
-if [ "$1" == "sandbox" ] || [ "$1" == "qa" ] || [ "$1" == "staging" ] ; then
-jump=jump-dev.$organization.com
-db=dbrw.$1.$organization.com
-elif [ "$1" == "prod" ] || [ "$1" == "production" ] ; then
-jump=jump-prod.$organization.com
-db=dbrw.$organization.com
-fi
-port=$(( ( RANDOM % 1024 )  + 60000 ))
-ssh -f -A ec2-user@"$jump" -L "$port":"$db":5432 -N
--tunnel-list
-}
-
 # Extract
 -extract()
 {
@@ -280,7 +224,7 @@ fi
 
 # compose
 if test ! -f ~/bin/docker-compose ; then
-curl -L https://github.com/docker/compose/releases/download/1.24.1/docker-compose-`uname -s`-`uname -m` -o ~/bin/docker-compose
+    curl -L https://github.com/docker/compose/releases/download/1.24.1/docker-compose-"$(uname -s)"-"$(uname -m)" -o ~/bin/docker-compose
 fi
 
 # minikube
@@ -306,7 +250,7 @@ fi
 
 # kubectl
 if test ! -f ~/bin/kubectl ; then
-curl -s -L --url https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl --output ~/bin/kubectl
+curl -s -L --url https://storage.googleapis.com/kubernetes-release/release/"$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)"/bin/linux/amd64/kubectl --output ~/bin/kubectl
 fi
 
 # kpoof
@@ -466,7 +410,7 @@ tar xvf go1.12.7.linux-amd64.tar
 
 -dwmscript(){
 pgrep -u "$USER" -a | grep dwm | grep -v grep | awk '{print $1}' | xargs kill
-find ~/ -name dwm.sh | xargs bash &
+find ~/ -name dwm.sh -print0 | xargs bash &
 }
 
 -lock(){
