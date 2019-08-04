@@ -296,7 +296,7 @@ fi
 # helm
 if test ! -f ~/bin/helm ; then
 curl -s -L --url https://storage.googleapis.com/kubernetes-helm/helm-v2.14.2-linux-amd64.tar.gz --output ~/bin/helm.tar.gz
-cd ~/bin ; tar zxvf helm.tar.gz ; mv ~/bin/linux-amd64/helm ~/bin/helm ; rm -rf ~/bin/linux-amd64 ~/bin/helm.tar.gz
+cd ~/bin || exit ; tar zxvf helm.tar.gz ; mv ~/bin/linux-amd64/helm ~/bin/helm ; rm -rf ~/bin/linux-amd64 ~/bin/helm.tar.gz
 fi
 
 # helmfile
@@ -437,14 +437,14 @@ EOF
 wget https://dl.suckless.org/st/st-0.8.2.tar.gz
 gunzip st-0.8.2.tar.gz
 tar xvf st-0.8.2.tar
-cd st-0.8.2
+cd st-0.8.2 || exit
 export DESTDIR="$HOME"
 make clean install
 }
 
 -package-source-st-lukesmith(){
 git clone https://github.com/LukeSmithxyz/st st-lukesmith
-cd st-lukesmith
+cd st-lukesmith || exit
 export DESTDIR="$HOME"
 make clean install
 }
@@ -453,7 +453,7 @@ make clean install
 wget https://dl.suckless.org/dwm/dwm-6.2.tar.gz
 gunzip dwm-6.2.tar.gz
 tar xvf dwm-6.2.tar
-cd dwm-6.2
+cd dwm-6.2 || exit
 export DESTDIR="$HOME"
 make clean install
 }
