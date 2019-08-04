@@ -371,10 +371,8 @@ kl(){
     sudo apt-key fingerprint 0EBFCD88
     sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable"
 
-# backports for fzf
-cat <<EOF | sudo tee /etc/apt/sources.list.d/stretch-backports.list
-deb http://http.debian.net/debian stretch-backports main contrib non-free
-EOF
+    # backports for fzf
+    echo 'deb http://http.debian.net/debian stretch-backports main contrib non-free' | sudo tee /etc/apt/sources.list.d/stretch-backports.list > /dev/null
 
 }
 
