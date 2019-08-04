@@ -36,7 +36,7 @@ echo jump is "$jump"
 echo remotemachine is "$remotemachine"
 echo remoteport is "$remoteport"
 
-ssh -f -A ec2-user@$jump -L $port:$remotemachine:$remoteport -N
+ssh -f -A ec2-user@"$jump" -L "$port":"$remotemachine":"$remoteport" -N
 -tunnel-list
 }
 
@@ -144,8 +144,8 @@ echo ex. psql_env ro
 ENV=$1
 USER=$2
 port=$(-tunnel-list | grep "$ENV" | sed s/.*ssh/ssh/g | awk '{print $6}' | sed 's/:.*//g')
-echo command is psql -h localhost -U $organization_$USER -d $organization_db -p $port
-psql -h localhost -U $organization_$USER -d $organization_db -p $port
+echo command is psql -h localhost -U "$organization"_"$USER" -d "$organization"_db -p "$port"
+psql -h localhost -U "$organization"_"$USER" -d "$organization"_db -p "$port"
 }
 
 -package-debian-gui(){
