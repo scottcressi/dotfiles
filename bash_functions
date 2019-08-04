@@ -32,11 +32,6 @@ parse_git_branch_and_add_brackets() {
 
 }
 
--cert-remote() {
-    openssl s_client -showcerts -connect "$1":443 </dev/null | openssl x509 -noout -text  | grep DNS
-
-}
-
 -cert-local() {
     openssl x509 -in "$1" -text -noout
 
