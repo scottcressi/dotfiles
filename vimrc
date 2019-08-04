@@ -86,9 +86,6 @@ set colorcolumn=80 "color column placement
 highlight ColorColumn guibg=Black
 let &colorcolumn="80,".join(range(120,120),",") "second color column
 
-" line numbers
-set number
-
 " escape key responsiveness for switching modes
 set timeoutlen=1000 ttimeoutlen=0
 
@@ -132,6 +129,10 @@ cmap Q q " remap Q to q
 
 " generic quick quit
 noremap <C-Q> :quit<CR>
+
+" generic toggle line numbers
+noremap <C-L> :set number<CR>
+noremap <C-K> :set nonumber<CR>
 
 " generic quick save
 :nmap <c-s> :w<CR>
