@@ -271,14 +271,6 @@ parse_git_branch_and_add_brackets() {
     kubectl patch pod -n jenkins "$POD" -p '{"metadata":{"finalizers":null}}'
 }
 
--docker-python(){
-    docker run -v "$PWD":/usr/src/myapp -w /usr/src/myapp python python
-}
-
--docker-java(){
-    docker run -v "$PWD":/usr/src/myapp -w /usr/src/myapp openjdk:7 java
-}
-
 ds(){
     echo kill all containers? y/n
     read -r confirm
