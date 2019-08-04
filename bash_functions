@@ -50,6 +50,7 @@ rm -f firefox.tar
 
 -package-pip-packages(){
 virtualenv ~/python
+# shellcheck source=/dev/null
 source ~/python/bin/activate
 pip install --upgrade \
 awscli \
@@ -77,19 +78,6 @@ sudo dpkg -i /tmp/vagrant_1.8.7_x86_64.deb
 VERSION=$(curl -s https://download.virtualbox.org/virtualbox/LATEST-STABLE.TXT)
 PACKAGE=$(curl -s https://download.virtualbox.org/virtualbox/"$VERSION"/ | grep rpm | grep el7 | sed 's/rpm.*/rpm/g' | sed 's/.*Virt/Virt/g')
 sudo yum install https://download.virtualbox.org/virtualbox/"$VERSION"/"$PACKAGE"
-}
-
--psql-list(){
--tunnel-list | awk '{print $16}'
-}
-
--psql-env(){
-echo ex. psql_env ro
-ENV=$1
-USER=$2
-port=$(-tunnel-list | grep "$ENV" | sed s/.*ssh/ssh/g | awk '{print $6}' | sed 's/:.*//g')
-echo command is psql -h localhost -U "$organization"_"$USER" -d "$organization"_db -p "$port"
-psql -h localhost -U "$organization"_"$USER" -d "$organization"_db -p "$port"
 }
 
 -package-debian-gui(){
@@ -345,7 +333,8 @@ aws eks update-kubeconfig --region "$1" --name "$2"
 }
 
 kl(){
-for i in $(echo us-east-1 us-west-2) ; do
+REGIONS=(us-east-1 us-west-2)
+for i in "${REGIONS[@]}" ; do
 echo "$i"
 aws eks list-clusters --region "$i"
 echo
