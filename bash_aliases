@@ -1,3 +1,7 @@
+# single letters
+alias l='ls -l'
+alias g='cd ~/repos'
+
 # corrections
 alias a-l='-la'
 alias elss="less"
