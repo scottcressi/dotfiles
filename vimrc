@@ -16,7 +16,7 @@ call vundle#rc()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 if iCanHazVundle == 0
-  echo "Installing Bundles, please ignore key map error messages"
+  echo "Installing Bundles, please ignore error messages"
   echo ""
   :source $MYVIMRC
   :PluginInstall
@@ -86,25 +86,11 @@ set colorcolumn=80 "color column placement
 highlight ColorColumn guibg=Black
 let &colorcolumn="80,".join(range(120,120),",") "second color column
 
-" disable Ex mode
-noremap Q <NOP>
-
 " line numbers
 set number
 
-" Quick save
-:nmap <c-s> :w<CR>
-:imap <c-s> <Esc>:w<CR>a
-
-" Quick quit
-noremap <C-Q> :quit<CR>
-
 " escape key responsiveness for switching modes
 set timeoutlen=1000 ttimeoutlen=0
-
-" no more fzf panel blocking save
-cmap W w
-cmap Q q
 
 "" PLUGIN CONFIGURATION #######################################################
 
@@ -114,19 +100,12 @@ colorscheme gruvbox "color scheme
 set background=dark "color scheme dark more
 
 " folding
-filetype plugin indent on
-syntax on
-set foldlevel=0  " close all folds
-set foldlevel=99 " Open all folds
+filetype plugin indent on " required
+syntax on " required
+set foldlevel=99 " Open all folds by default, set to 0 to close by default
 
-" fzf , sets location to ~
-noremap <C-P> :Files ~<CR>
-
-" nerdtree
-nmap <C-W> :NERDTreeToggle<CR>
-
-" lightline status bar fix
-set laststatus=2
+" lightline
+set laststatus=2 " status bar fix
 
 " syntactic
 let g:syntastic_always_populate_loc_list = 1
@@ -134,3 +113,29 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_error_symbol = "✗"
 let g:syntastic_warning_symbol = "⚠"
 let g:syntastic_go_checkers = ['govet', 'errcheck', 'go']
+
+"" REMAPPINGS #################################################################
+
+" fzf set location to ~
+noremap <C-P> :Files ~<CR>
+
+" nerdtree toggle
+nmap <C-W> :NERDTreeToggle<CR>
+
+" folding toggle
+noremap <C-C> :set foldlevel=0<CR>
+noremap <C-X> :set foldlevel=99<CR>
+
+" generic saving force W and Q lowercase
+cmap W w " remap W to w
+cmap Q q " remap Q to q
+
+" generic quick quit
+noremap <C-Q> :quit<CR>
+
+" generic quick save
+:nmap <c-s> :w<CR>
+:imap <c-s> <Esc>:w<CR>a
+
+" generic disable ex mode
+noremap Q <NOP>
