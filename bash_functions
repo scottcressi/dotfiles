@@ -192,7 +192,7 @@ parse_git_branch_and_add_brackets() {
     ttyrec \
     typespeed \
     vim \
-    virtualbox \
+    virtualenv \
     weather-util \
     whois \
     xterm \
