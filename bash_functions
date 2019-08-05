@@ -224,7 +224,7 @@ parse_git_branch_and_add_brackets() {
 
     # kops
     if test ! -f ~/bin/kops ; then
-    curl -s -L --url https://github.com/kubernetes/kops/releases/download/1.12.2/kops-linux-amd64 --output ~/bin/kops
+    curl -s -L --url https://github.com/kubernetes/kops/releases/download/1.13.0/kops-linux-amd64 --output ~/bin/kops
     fi
 
     # helm
