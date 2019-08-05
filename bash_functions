@@ -410,9 +410,14 @@ kl(){
 
 }
 
--lock(){
+-lockauto(){
     pkill xautolock
-    xautolock -time 3 -locker slock & disown ; exit
+    xautolock -time 1 -locker slock & disown ; exit
+
+}
+
+-lock(){
+    slock
 
 }
 
