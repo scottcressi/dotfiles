@@ -117,6 +117,7 @@ alias ta='terragrunt apply --terragrunt-source-update '
 # docker
 alias di='docker images'
 alias dp='docker ps'
+alias dpa='docker ps --all'
 alias dc='docker system prune --volumes -a'
 alias dn='docker network ls'
 alias dcu='docker-compose up'

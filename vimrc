@@ -124,10 +124,6 @@ nmap <C-W> :NERDTreeToggle<CR>
 noremap <C-F> :set foldlevel=0<CR>
 noremap <C-G> :set foldlevel=99<CR>
 
-" generic saving force W and Q lowercase
-cmap W w " remap W to w
-cmap Q q " remap Q to q
-
 " generic quick quit
 noremap <C-Q> :quit<CR>
 
