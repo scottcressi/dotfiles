@@ -126,7 +126,6 @@ parse_git_branch_and_add_brackets() {
     sudo apt-get update
     sudo apt-get install \
     acpi \
-    alsa-utils \
     aspell \
     bash-completion \
     bb \
@@ -155,6 +154,7 @@ parse_git_branch_and_add_brackets() {
     lsof \
     mdp \
     mutt \
+    ncmpcpp \
     netcat \
     neofetch \
     nethogs \
