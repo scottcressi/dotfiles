@@ -39,7 +39,7 @@ parse_git_branch_and_add_brackets() {
 
 -package-thirdparty-firefox() {
     wget -O firefox.tar.bz2 "https://download.mozilla.org/?product=firefox-latest&os=linux64&lang=en-US"
-    bunzip2 firefox.tar.bz2
+    #bunzip2 firefox.tar.bz2
     tar xvf firefox.tar
     mv firefox firefox-"$(date +%Y-%m-%d-%H-%M-%S)"
     rm -f firefox.tar
@@ -69,8 +69,9 @@ parse_git_branch_and_add_brackets() {
 }
 
 -package-thirdparty-vagrant(){
-    wget -P /tmp/ https://releases.hashicorp.com/vagrant/1.8.7/vagrant_1.8.7_x86_64.deb
-    sudo dpkg -i /tmp/vagrant_1.8.7_x86_64.deb
+    VERSION="$(curl -s https://releases.hashicorp.com/vagrant/ | grep vagrant | head -1 | sed 's/.*vagrant_//g' | sed 's/<.*//g')"
+    curl -s -L https://releases.hashicorp.com/vagrant/$VERSION/vagrant_"$VERSION"_x86_64.deb -o /tmp/vagrant_"$VERSION"_x86_64.deb
+    sudo dpkg -i /tmp/vagrant_"$VERSION"_x86_64.deb
 
 }
 
@@ -199,12 +200,13 @@ parse_git_branch_and_add_brackets() {
 }
 
 -package-thirdparty-translate(){
-    wget git.io/trans
+    curl -s -L git.io/trans -o ~/trans
+    chmod 755 ~/trans
 }
 
 -package-thirdparty-zoom(){
-    wget https://zoom.us/client/latest/zoom_amd64.deb
-    sudo dpkg -i zoom_amd64.deb
+    curl -s -L https://zoom.us/client/latest/zoom_amd64.deb -o /tmp/zoom_amd64.deb
+    sudo dpkg -i /tmp/zoom_amd64.deb
 }
 
 -package-thirdparty-kube(){
@@ -367,6 +369,9 @@ kl(){
     # backports for fzf
     echo 'deb http://http.debian.net/debian stretch-backports main contrib non-free' | sudo tee /etc/apt/sources.list.d/stretch-backports.list > /dev/null
 
+    # trans
+    sudo apt-get install gawk
+
 }
 
 -package-source-st(){
@@ -398,9 +403,8 @@ kl(){
 }
 
 -package-language-go(){
-    wget https://dl.google.com/go/go1.12.7.linux-amd64.tar.gz
-    gunzip go1.12.7.linux-amd64.tar.gz
-    tar xvf go1.12.7.linux-amd64.tar
+    VERSION=1.12.7
+    curl -s -L https://dl.google.com/go/go"$VERSION".linux-amd64.tar.gz | gunzip -c | tar xv
 
 }
 

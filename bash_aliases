@@ -1,5 +1,5 @@
 # single letters
-alias l='ls -l'
+alias l='ls -lh'
 alias g='cd ~/repos'
 
 # corrections
@@ -13,14 +13,15 @@ alias grep='grep --color=auto'
 alias grpe='grep'
 alias iv='vi'
 alias les="less"
-alias ll='ls -l'
-alias lll='ls -la | grep "^d" && ls -la | grep "^-" && ls -la | grep "^l"'
+alias ll='ls -lh'
+alias lll='ls -lah | grep "^d" && ls -la | grep "^-" && ls -la | grep "^l"'
 alias lses="less"
 alias sl='ls'
 alias sduo='sudo'
 alias suod='sudo'
 
 # revisions
+alias dd='dd status="progress"'
 alias df='df -h'
 alias dstat='dstat -c --top-cpu -dn --top-mem'
 alias feh='feh --randomize --bg-max ~/wallpapers/'
