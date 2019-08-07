@@ -38,11 +38,8 @@ parse_git_branch_and_add_brackets() {
 }
 
 -package-thirdparty-firefox() {
-    wget -O firefox.tar.bz2 "https://download.mozilla.org/?product=firefox-latest&os=linux64&lang=en-US"
-    #bunzip2 firefox.tar.bz2
-    tar xvf firefox.tar
+    wget "https://download.mozilla.org/?product=firefox-latest&os=linux64&lang=en-US" -O - | bunzip2 | tar xv
     mv firefox firefox-"$(date +%Y-%m-%d-%H-%M-%S)"
-    rm -f firefox.tar
 
 }
 
@@ -231,8 +228,8 @@ parse_git_branch_and_add_brackets() {
 
     # helm
     if test ! -f ~/bin/helm ; then
-    curl -s -L --url https://storage.googleapis.com/kubernetes-helm/helm-v2.14.2-linux-amd64.tar.gz --output ~/bin/helm.tar.gz
-    cd ~/bin || exit ; tar zxvf helm.tar.gz ; mv ~/bin/linux-amd64/helm ~/bin/helm ; rm -rf ~/bin/linux-amd64 ~/bin/helm.tar.gz
+    curl -s -L --url https://storage.googleapis.com/kubernetes-helm/helm-v2.14.2-linux-amd64.tar.gz | gunzip | tar xv
+    mv linux-amd64/helm ~/bin/helm ; rm -rf linux-amd64
     fi
 
     # helmfile
@@ -252,9 +249,10 @@ parse_git_branch_and_add_brackets() {
 
     # kubectx
     if test ! -d /opt/kubectx/ ; then
-    sudo git clone https://github.com/ahmetb/kubectx /opt/kubectx
-    sudo ln -sf /opt/kubectx/kubectx /usr/local/bin/kubectx
-    sudo ln -sf /opt/kubectx/kubens /usr/local/bin/kubens
+    #sudo git clone https://github.com/ahmetb/kubectx /opt/kubectx
+    #sudo ln -sf /opt/kubectx/kubectx /usr/local/bin/kubectx
+    #sudo ln -sf /opt/kubectx/kubens /usr/local/bin/kubens
+    echo fix
     fi
 
     chmod 755 ~/bin/*
@@ -375,9 +373,7 @@ kl(){
 }
 
 -package-source-st(){
-    wget https://dl.suckless.org/st/st-0.8.2.tar.gz
-    gunzip st-0.8.2.tar.gz
-    tar xvf st-0.8.2.tar
+    curl -s -L https://dl.suckless.org/st/st-0.8.2.tar.gz | gunzip -c | tar xv
     cd st-0.8.2 || exit
     export DESTDIR="$HOME"
     make clean install
@@ -393,9 +389,7 @@ kl(){
 }
 
 -package-source-dwm(){
-    wget https://dl.suckless.org/dwm/dwm-6.2.tar.gz
-    gunzip dwm-6.2.tar.gz
-    tar xvf dwm-6.2.tar
+    curl -s -L https://dl.suckless.org/dwm/dwm-6.2.tar.gz -c | tar xv
     cd dwm-6.2 || exit
     export DESTDIR="$HOME"
     make clean install
