@@ -18,6 +18,7 @@ alias lll='ls -la | grep "^d" && ls -la | grep "^-" && ls -la | grep "^l"'
 alias lses="less"
 alias sl='ls'
 alias sduo='sudo'
+alias suod='sudo'
 
 # revisions
 alias df='df -h'
