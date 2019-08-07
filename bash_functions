@@ -219,7 +219,7 @@ parse_git_branch_and_add_brackets() {
 
     # minikube
     if test ! -f ~/bin/minikube ; then
-    curl -s -L --url https://storage.googleapis.com/minikube/releases/v1.2.0/minikube-linux-amd64 --output ~/bin/minikube
+    curl -s -L --url https://storage.googleapis.com/minikube/releases/v1.3.0/minikube-linux-amd64 --output ~/bin/minikube
     fi
 
     # kops
@@ -235,7 +235,7 @@ parse_git_branch_and_add_brackets() {
 
     # helmfile
     if test ! -f ~/bin/helmfile ; then
-    curl -s -L --url https://github.com/roboll/helmfile/releases/download/v0.80.1/helmfile_linux_amd64 --output ~/bin/helmfile
+    curl -s -L --url https://github.com/roboll/helmfile/releases/download/v0.80.2/helmfile_linux_amd64 --output ~/bin/helmfile
     fi
 
     # kubectl
