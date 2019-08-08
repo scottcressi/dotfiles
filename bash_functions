@@ -60,6 +60,7 @@ parse_git_branch_and_add_brackets() {
     s-tui \
     socli \
     speedtest-cli \
+    yamllint \
     youtube-dl \
 
 
