@@ -1,5 +1,5 @@
 # single letters
-alias l='ls -lh'
+alias l='ls -lh --color=auto'
 alias g='cd ~/repos'
 
 # corrections
@@ -27,7 +27,7 @@ alias dstat='dstat -c --top-cpu -dn --top-mem'
 alias feh='feh --randomize --bg-max ~/wallpapers/'
 alias grep='grep --color=auto'
 alias less='less -S'
-alias ls='ls --color'
+alias ls='ls --color=auto'
 alias mv="mv -i"
 alias rm="rm -i"
 alias vi='vim'
