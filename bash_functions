@@ -425,3 +425,9 @@ kl(){
     chmod 755 ~/bin/slack-term
 
 }
+
+-kind(){
+    kind start cluster
+    export KUBECONFIG="$(kind get kubeconfig-path)"
+
+}
