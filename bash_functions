@@ -432,7 +432,7 @@ kl(){
 }
 
 -kind(){
-    kind start cluster
+    kind create cluster
     export KUBECONFIG="$(kind get kubeconfig-path)"
 
 }
