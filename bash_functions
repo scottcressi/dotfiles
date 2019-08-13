@@ -261,6 +261,12 @@ parse_git_branch_and_add_brackets() {
     echo fix
     fi
 
+    # rakkess
+    if test ! -f ~/bin/rakkess ; then
+    curl -s -L --url https://github.com/corneliusweig/rakkess/releases/download/v0.4.1/rakkess-linux-amd64.gz --output ~/bin/rakkess-linux-amd64.gz
+    gunzip ~/bin/rakkess-linux-amd64.gz ; mv ~/bin/rakkess-linux-amd64 ~/bin/rakkess
+    fi
+
     chmod 755 ~/bin/*
 }
 
