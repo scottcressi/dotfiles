@@ -243,6 +243,9 @@ parse_git_branch_and_add_brackets() {
     curl -s -L --url https://storage.googleapis.com/kubernetes-release/release/"$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)"/bin/linux/amd64/kubectl --output ~/bin/kubectl
     fi
 
+    # kind
+    curl -s -L --url https://github.com/kubernetes-sigs/kind/releases/download/v0.4.0/kind-linux-amd64 --output ~/bin/kind
+
     # kpoof
     if test ! -d ~/bin/kpoof ; then
     git clone https://github.com/farmotive/kpoof
