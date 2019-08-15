@@ -44,10 +44,10 @@ parse_git_branch_and_add_brackets() {
 }
 
 -package-pip-packages(){
-    virtualenv ~/python
+    python3 -m venv ~/python
     # shellcheck source=/dev/null
     source ~/python/bin/activate
-    pip install --upgrade \
+    pip3 install --upgrade \
     awscli \
     bpython \
     demjson \
@@ -56,7 +56,6 @@ parse_git_branch_and_add_brackets() {
     flake8 \
     ipython \
     modernize \
-    pip \
     s-tui \
     socli \
     speedtest-cli \
@@ -164,8 +163,9 @@ parse_git_branch_and_add_brackets() {
     p7zip \
     pi \
     pwgen \
-    python \
-    python-pip \
+    python3 \
+    python3-pip \
+    python3-venv \
     ranger \
     rig \
     rsync \
@@ -186,7 +186,6 @@ parse_git_branch_and_add_brackets() {
     ttyrec \
     typespeed \
     vim \
-    virtualenv \
     weather-util \
     whois \
     xterm \
