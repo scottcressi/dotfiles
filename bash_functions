@@ -394,6 +394,14 @@ kl(){
 
 }
 
+-package-source-dwm-lukesmith(){
+    git clone https://github.com/LukeSmithxyz/dwm.git dwm-lukesmith
+    cd dwm-lukesmith || exit
+    export DESTDIR="$HOME"
+    make clean install
+
+}
+
 -package-language-go(){
     VERSION=1.12.7
     curl -s -L https://dl.google.com/go/go"$VERSION".linux-amd64.tar.gz | gunzip -c | tar xv
