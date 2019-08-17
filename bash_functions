@@ -1,6 +1,5 @@
 #!/bin/bash
 
-# git branch for PS1
 parse_git_branch_and_add_brackets() {
     git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\ \[\1\]/'
 }
@@ -244,11 +243,10 @@ parse_git_branch_and_add_brackets() {
     git clone https://github.com/farmotive/kpoof
     fi
 
-    if test ! -d /opt/kubectx/ ; then
-    ##sudo git clone https://github.com/ahmetb/kubectx /opt/kubectx
-    ##sudo ln -sf /opt/kubectx/kubectx /usr/local/bin/kubectx
-    ##sudo ln -sf /opt/kubectx/kubens /usr/local/bin/kubens
-    echo fix
+    if test ! -d ~/kubectx/ ; then
+    git clone https://github.com/ahmetb/kubectx ~/kubectx
+    ln -sf ~/kubectx/kubectx ~/bin/kubectx
+    ln -sf ~/kubectx/kubens ~/bin/kubens
     fi
 
     if test ! -f ~/bin/rakkess ; then
