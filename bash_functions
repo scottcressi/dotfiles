@@ -172,7 +172,6 @@ parse_git_branch_and_add_brackets(){
     scrot \
     shellcheck \
     sshfs \
-    stterm \
     suckless-tools \
     thefuck \
     tig \
