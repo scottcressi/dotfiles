@@ -4,7 +4,6 @@
 [core]
         editor  = vim
         pager   = less -iR
-        #pager   = cat
 [merge]
         tool    = vimdiff
 [color]

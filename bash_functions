@@ -101,8 +101,8 @@ parse_git_branch_and_add_brackets() {
     zathura \
     zathura-cb \
 
-    #xwallpaper \
-    #zathura-pdf-mupdf \
+    ##xwallpaper \
+    ##zathura-pdf-mupdf \
 
 
 }
@@ -211,56 +211,47 @@ parse_git_branch_and_add_brackets() {
     mkdir ~/bin
     fi
 
-    # compose
     if test ! -f ~/bin/docker-compose ; then
         curl -L https://github.com/docker/compose/releases/download/1.24.1/docker-compose-"$(uname -s)"-"$(uname -m)" -o ~/bin/docker-compose
     fi
 
-    # minikube
     if test ! -f ~/bin/minikube ; then
     curl -s -L --url https://storage.googleapis.com/minikube/releases/v1.3.0/minikube-linux-amd64 --output ~/bin/minikube
     fi
 
-    # kops
     if test ! -f ~/bin/kops ; then
     curl -s -L --url https://github.com/kubernetes/kops/releases/download/1.13.0/kops-linux-amd64 --output ~/bin/kops
     fi
 
-    # helm
     if test ! -f ~/bin/helm ; then
     curl -s -L --url https://storage.googleapis.com/kubernetes-helm/helm-v2.14.2-linux-amd64.tar.gz | gunzip | tar xv
     mv linux-amd64/helm ~/bin/helm ; rm -rf linux-amd64
     fi
 
-    # helmfile
     if test ! -f ~/bin/helmfile ; then
     curl -s -L --url https://github.com/roboll/helmfile/releases/download/v0.80.2/helmfile_linux_amd64 --output ~/bin/helmfile
     fi
 
-    # kubectl
     if test ! -f ~/bin/kubectl ; then
     curl -s -L --url https://storage.googleapis.com/kubernetes-release/release/"$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)"/bin/linux/amd64/kubectl --output ~/bin/kubectl
     fi
 
-    # kind
     if test ! -f ~/bin/kind ; then
     curl -s -L --url https://github.com/kubernetes-sigs/kind/releases/download/v0.4.0/kind-linux-amd64 --output ~/bin/kind
     fi
 
-    # kpoof
     if test ! -d ~/bin/kpoof ; then
     git clone https://github.com/farmotive/kpoof
     fi
 
     # kubectx
     if test ! -d /opt/kubectx/ ; then
-    #sudo git clone https://github.com/ahmetb/kubectx /opt/kubectx
-    #sudo ln -sf /opt/kubectx/kubectx /usr/local/bin/kubectx
-    #sudo ln -sf /opt/kubectx/kubens /usr/local/bin/kubens
+    ##sudo git clone https://github.com/ahmetb/kubectx /opt/kubectx
+    ##sudo ln -sf /opt/kubectx/kubectx /usr/local/bin/kubectx
+    ##sudo ln -sf /opt/kubectx/kubens /usr/local/bin/kubens
     echo fix
     fi
 
-    # rakkess
     if test ! -f ~/bin/rakkess ; then
     curl -s -L --url https://github.com/corneliusweig/rakkess/releases/download/v0.4.1/rakkess-linux-amd64.gz --output ~/bin/rakkess-linux-amd64.gz
     gunzip ~/bin/rakkess-linux-amd64.gz ; mv ~/bin/rakkess-linux-amd64 ~/bin/rakkess

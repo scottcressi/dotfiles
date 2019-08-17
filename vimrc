@@ -1,6 +1,5 @@
-"" VUNDLE #####################################################################
+"" VUNDLE
 
-" START - Setting up Vundle - the vim plugin bundler
 let iCanHazVundle=1
 let vundle_readme=expand('~/.vim/bundle/Vundle.vim/README.md')
 if !filereadable(vundle_readme)
@@ -21,9 +20,8 @@ if iCanHazVundle == 0
   :source $MYVIMRC
   :PluginInstall
 endif
-" END - Setting up Vundle - the vim plugin bundler
 
-"" PLUGINS #####################################################################
+"" PLUGINS
 
 Plugin 'scrooloose/nerdtree' " file drawer
 Plugin 'morhetz/gruvbox' " colors
@@ -36,7 +34,7 @@ Plugin 'davidhalter/jedi-vim' " completion
 Plugin 'scrooloose/syntastic' " syntax
 Plugin 'fatih/vim-go' " go
 
-"" AUTO-INITIALIZATION ########################################################
+"" AUTO-INITIALIZATION
 
 " nerdtree
 " autocmd vimenter * NERDTree
@@ -52,7 +50,7 @@ autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 " folding
 autocmd Filetype * AnyFoldActivate "activate for all filetypes
 
-"" GENERAL CONFIGURATION ######################################################
+"" GENERAL CONFIGURATION
 
 " history
 set history=7000 "history
@@ -89,7 +87,7 @@ let &colorcolumn="80,".join(range(120,120),",") "second color column
 " escape key responsiveness for switching modes
 set timeoutlen=1000 ttimeoutlen=0
 
-"" PLUGIN CONFIGURATION #######################################################
+"" PLUGIN CONFIGURATION
 
 " color scheme
 set t_Co=256 "256 terminal colors, hard requirement for color scheme
@@ -112,7 +110,7 @@ let g:syntastic_warning_symbol = "⚠"
 let g:syntastic_go_checkers = ['govet', 'errcheck', 'go']
 let g:go_version_warning = 0
 
-"" REMAPPINGS #################################################################
+"" REMAPPINGS
 
 " fzf set location to ~
 noremap <C-P> :Files ~<CR>

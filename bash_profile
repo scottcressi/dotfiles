@@ -1,2 +1,2 @@
 # disable CAPSLOCK key
-#xmodmap -e "remove lock = Caps_Lock"
+##xmodmap -e "remove lock = Caps_Lock"
