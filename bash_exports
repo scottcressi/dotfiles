@@ -6,12 +6,6 @@ stty -ixon
 # completers
 complete -C "$HOME"/python/bin/aws_completer aws
 
-# path
-export PATH=$PATH:~/bin
-export PATH=$PATH:~/go/bin
-export PATH=$PATH:~/python/bin
-export PATH=$PATH:~/usr/local/bin
-
 # PS1
 
 # Colors?  Used for the prompt.
