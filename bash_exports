@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# history
+HISTSIZE=1
+
 # disable freeze
 stty -ixon
 
