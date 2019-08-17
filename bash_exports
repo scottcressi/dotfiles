@@ -61,4 +61,7 @@ unset _shell_depth_str
 complete -C '/usr/local/bin/aws_completer' aws
 
 # path
-export PATH=$PATH:/usr/local/bin/:~/bin:~/go/bin:~/usr/local/bin:~/python/bin
+export PATH=$PATH:~/bin
+export PATH=$PATH:~/go/bin
+export PATH=$PATH:~/python/bin
+export PATH=$PATH:~/usr/local/bin
