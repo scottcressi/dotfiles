@@ -138,6 +138,7 @@ parse_git_branch_and_add_brackets(){
     docker-ce \
     dstat \
     espeak \
+    gcc \
     git \
     htop \
     iftop \
@@ -151,6 +152,7 @@ parse_git_branch_and_add_brackets(){
     links2 \
     lolcat \
     lsof \
+    make \
     mdp \
     mutt \
     ncmpcpp \
@@ -346,10 +348,10 @@ kl(){
 -package-debian-prereqs(){
     # suckless
     sudo apt-get update
-    sudo apt-get install pkg-config libfreetype6-dev libfontconfig1-dev libx11-dev libxft-dev libxinerama-dev make gcc
+    sudo apt-get install pkg-config libfreetype6-dev libfontconfig1-dev libx11-dev libxft-dev libxinerama-dev
 
     # docker
-    sudo apt-get install apt-transport-https ca-certificates curl gnupg2 software-properties-common
+    sudo apt-get install apt-transport-https ca-certificates gnupg2 software-properties-common
 
     # firefox
     sudo apt-get install libgtk-3-0 pulseaudio
