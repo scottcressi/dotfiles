@@ -1,11 +1,16 @@
 #!/bin/bash
 
-# history
-HISTFILESIZE=1000000000
-HISTSIZE=1000000
-shopt -s histappend
-HISTCONTROL=ignoredups
-PROMPT_COMMAND="history -a; history -n; $PROMPT_COMMAND"
+# disable freeze
+stty -ixon
+
+# completers
+complete -C "$HOME"/python/bin/aws_completer aws
+
+# path
+export PATH=$PATH:~/bin
+export PATH=$PATH:~/go/bin
+export PATH=$PATH:~/python/bin
+export PATH=$PATH:~/usr/local/bin
 
 # PS1
 
@@ -41,12 +46,6 @@ BGWHITE='\[\e[1;37m\]'
 PROMPT='\u@\h'
 TEXT='\[\e[0m\]'
 
-# set term
-TERM=xterm-color
-
-# disable freeze
-stty -ixon
-
 # initialize shell depth
 printf -v _shell_depth_str '%*s' "$((SHLVL-1))" ''
 _shell_depth_str=${_shell_depth_str:+${_shell_depth_str// />} }
@@ -56,12 +55,3 @@ PS1="$_shell_depth_str$GREEN$PROMPT$RED\$(parse_git_branch_and_add_brackets) : \
 
 # unset shell depth
 unset _shell_depth_str
-
-# completers
-complete -C '/usr/local/bin/aws_completer' aws
-
-# path
-export PATH=$PATH:~/bin
-export PATH=$PATH:~/go/bin
-export PATH=$PATH:~/python/bin
-export PATH=$PATH:~/usr/local/bin
