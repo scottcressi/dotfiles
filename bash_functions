@@ -346,7 +346,7 @@ kl(){
 -package-debian-prereqs(){
     # suckless
     sudo apt-get update
-    sudo apt-get install pkg-config libfreetype6-dev libfontconfig1-dev libx11-dev libxft-dev  libxinerama-dev
+    sudo apt-get install pkg-config libfreetype6-dev libfontconfig1-dev libx11-dev libxft-dev libxinerama-dev make gcc
 
     # docker
     sudo apt-get install apt-transport-https ca-certificates curl gnupg2 software-properties-common
