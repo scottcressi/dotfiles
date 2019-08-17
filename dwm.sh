@@ -1,6 +1,8 @@
+#!/usr/local/env bash
+
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
 while true ; do
-bash $DIR/dmenu.sh
+bash "$DIR"/dmenu.sh
 sleep 60
 done
