@@ -7,14 +7,14 @@ shopt -s histappend
 HISTCONTROL=ignoredups
 PROMPT_COMMAND="history -a; history -n; $PROMPT_COMMAND"
 
-# PS1 #########################################################################
+# PS1
 
-## Colors?  Used for the prompt.
-#Regular text color
+# Colors?  Used for the prompt.
+# Regular text color
 BLACK='\[\e[0;30m\]'
-#Bold text color
+# Bold text color
 BBLACK='\[\e[1;30m\]'
-#background color
+# background color
 BGBLACK='\[\e[40m\]'
 RED='\[\e[1;31m\]'
 BRED='\[\e[1;31m\]'

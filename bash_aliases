@@ -1,4 +1,4 @@
-#!/usr/local/env bash
+#!/usr/bin/env bash
 
 # single letters
 alias l='ls -lh --color=auto'
