@@ -67,7 +67,7 @@ parse_git_branch_and_add_brackets() {
 
 -package-thirdparty-vagrant(){
     VERSION="$(curl -s https://releases.hashicorp.com/vagrant/ | grep vagrant | head -1 | sed 's/.*vagrant_//g' | sed 's/<.*//g')"
-    curl -s -L https://releases.hashicorp.com/vagrant/$VERSION/vagrant_"$VERSION"_x86_64.deb -o /tmp/vagrant_"$VERSION"_x86_64.deb
+    curl -s -L https://releases.hashicorp.com/vagrant/"$VERSION"/vagrant_"$VERSION"_x86_64.deb -o /tmp/vagrant_"$VERSION"_x86_64.deb
     sudo dpkg -i /tmp/vagrant_"$VERSION"_x86_64.deb
 
 }
@@ -438,6 +438,7 @@ kl(){
 
 -kind(){
     kind create cluster
-    export KUBECONFIG="$(kind get kubeconfig-path)"
+    KUBECONFIG="$(kind get kubeconfig-path)"
+    export KUBECONFIG
 
 }
