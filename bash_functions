@@ -229,7 +229,7 @@ parse_git_branch_and_add_brackets(){
     fi
 
     if test ! -f ~/bin/helmfile ; then
-    curl -s -L --url https://github.com/roboll/helmfile/releases/download/v0.80.2/helmfile_linux_amd64 --output ~/bin/helmfile
+    curl -s -L --url https://github.com/roboll/helmfile/releases/download/v0.81.0/helmfile_linux_amd64 --output ~/bin/helmfile
     fi
 
     if test ! -f ~/bin/kubectl ; then
@@ -279,7 +279,7 @@ dk(){
 }
 
 -kops-create(){
-    VERSION=1.15.1
+    VERSION=1.15.3
     echo domain:
     read -r domain
     echo bucket:
