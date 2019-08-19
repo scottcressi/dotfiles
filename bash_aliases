@@ -3,6 +3,7 @@
 # single letters
 alias l='ls -lh --color=auto'
 alias g='cd ~/repos'
+alias k='kubectl'
 
 # corrections
 alias a-l='-la'
