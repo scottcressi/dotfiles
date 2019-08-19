@@ -136,5 +136,4 @@ alias tm='transmission-remote -l'
 alias tmm='transmission-remote-cli'
 
 # aws
-alias awsl='grep "\[" ~/.aws/credentials'
 alias at='aws s3 ls'

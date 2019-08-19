@@ -315,7 +315,7 @@ dk(){
 }
 
 awsc(){
-    if [ -z "$1" ] ; then echo enter profile ; fi
+    if [ -z "$1" ] ; then echo enter profile ; echo ; grep "\[" ~/.aws/credentials ; fi
     export AWS_DEFAULT_PROFILE=$1
 }
 
