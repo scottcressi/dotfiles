@@ -237,7 +237,7 @@ parse_git_branch_and_add_brackets(){
     fi
 
     if test ! -f ~/bin/kind ; then
-    curl -s -L --url https://github.com/kubernetes-sigs/kind/releases/download/v0.4.0/kind-linux-amd64 --output ~/bin/kind
+    curl -s -L --url https://github.com/kubernetes-sigs/kind/releases/download/v0.5.1/kind-linux-amd64 --output ~/bin/kind
     fi
 
     if test ! -d ~/bin/kpoof ; then
