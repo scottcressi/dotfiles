@@ -281,6 +281,7 @@ dk(){
 -kops-create(){
     VERSION=1.15.3
     echo domain:
+    echo ex. foo.com
     read -r domain
     echo bucket:
     read -r bucket
@@ -296,6 +297,7 @@ dk(){
 
 -kops-delete(){
     echo domain:
+    echo ex. foo.com
     read -r domain
     echo bucket:
     read -r bucket
