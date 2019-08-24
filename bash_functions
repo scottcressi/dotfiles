@@ -216,7 +216,7 @@ parse_git_branch_and_add_brackets(){
     fi
 
     if test ! -f ~/bin/minikube ; then
-    curl -s -L --url https://storage.googleapis.com/minikube/releases/v1.3.0/minikube-linux-amd64 --output ~/bin/minikube
+    curl -s -L --url https://storage.googleapis.com/minikube/releases/v1.3.1/minikube-linux-amd64 --output ~/bin/minikube
     fi
 
     if test ! -f ~/bin/kops ; then
