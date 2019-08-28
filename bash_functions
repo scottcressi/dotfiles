@@ -49,7 +49,6 @@ parse_git_branch_and_add_brackets(){
     pip3 install --upgrade \
     awscli \
     bpython \
-    demjson \
     doge \
     dotfiles \
     flake8 \
@@ -58,7 +57,6 @@ parse_git_branch_and_add_brackets(){
     s-tui \
     socli \
     speedtest-cli \
-    yamllint \
     youtube-dl \
 
 
@@ -188,6 +186,7 @@ parse_git_branch_and_add_brackets(){
     weather-util \
     whois \
     xterm \
+    yamllint \
 
 }
 
