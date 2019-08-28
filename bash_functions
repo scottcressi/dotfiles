@@ -84,7 +84,6 @@ parse_git_branch_and_add_brackets(){
     abiword \
     arandr \
     atril \
-    dwm \
     feh \
     mpv \
     mupdf \
