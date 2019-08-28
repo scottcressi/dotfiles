@@ -240,6 +240,10 @@ parse_git_branch_and_add_brackets(){
     curl -s -L --url https://github.com/kubernetes-sigs/kind/releases/download/v0.5.1/kind-linux-amd64 --output ~/bin/kind
     fi
 
+    if test ! -f ~/bin/sops ; then
+    curl -s -L --url https://github.com/mozilla/sops/releases/download/3.3.1/sops-3.3.1.linux --output ~/bin/sops
+    fi
+
     if test ! -d ~/bin/kpoof ; then
     git clone https://github.com/farmotive/kpoof
     fi
