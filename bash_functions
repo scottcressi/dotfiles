@@ -70,9 +70,11 @@ parse_git_branch_and_add_brackets(){
 }
 
 -package-thirdparty-virtualbox(){
-    VERSION=$(curl -s https://download.virtualbox.org/virtualbox/LATEST-STABLE.TXT)
-    PACKAGE=$(curl -s https://download.virtualbox.org/virtualbox/"$VERSION"/ | grep rpm | grep el7 | sed 's/rpm.*/rpm/g' | sed 's/.*Virt/Virt/g')
-    sudo yum install https://download.virtualbox.org/virtualbox/"$VERSION"/"$PACKAGE"
+    wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -
+    wget -q https://www.virtualbox.org/download/oracle_vbox.asc -O- | sudo apt-key add -
+    sudo add-apt-repository "deb http://download.virtualbox.org/virtualbox/debian bionic contrib"
+    sudo apt update
+    sudo apt install virtualbox-6.0
 
 }
 
