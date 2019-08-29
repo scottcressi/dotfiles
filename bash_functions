@@ -184,6 +184,7 @@ parse_git_branch_and_add_brackets(){
     typespeed \
     vim \
     weather-util \
+    wget \
     whois \
     xterm \
     yamllint \
@@ -393,7 +394,7 @@ kl(){
 }
 
 -package-source-dwm(){
-    curl -s -L https://dl.suckless.org/dwm/dwm-6.2.tar.gz -c | tar xv
+    curl -s -L https://dl.suckless.org/dwm/dwm-6.2.tar.gz | gunzip -c | tar xv
     cd dwm-6.2 || exit
     export DESTDIR="$HOME"
     make clean install
