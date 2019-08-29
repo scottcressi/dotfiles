@@ -521,3 +521,7 @@ rms(){
 random_cowsay(){
     fortune | cowsay -f "$(find /usr/share/cowsay/cows/ | shuf -n1 | xargs basename)"
 }
+
+-sudo(){
+    echo 'scott ALL=(ALL) NOPASSWD:ALL' | sudo tee /etc/sudoers.d/scott
+}
