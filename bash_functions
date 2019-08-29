@@ -227,6 +227,8 @@ parse_git_branch_and_add_brackets(){
     if test ! -f ~/bin/helm ; then
     curl -s -L --url https://storage.googleapis.com/kubernetes-helm/helm-v2.14.2-linux-amd64.tar.gz | gunzip | tar xv
     mv linux-amd64/helm ~/bin/helm ; rm -rf linux-amd64
+    helm plugin install https://github.com/futuresimple/helm-secrets
+    helm plugin install https://github.com/databus23/helm-diff --version master
     fi
 
     if test ! -f ~/bin/helmfile ; then
