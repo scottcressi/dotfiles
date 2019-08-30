@@ -286,13 +286,12 @@ dk(){
 }
 
 -kops-create(){
-    VERSION=1.15.3
     echo domain:
     echo ex. foo.com
     read -r domain
     echo bucket:
     read -r bucket
-    kops create cluster --name test."$domain" --state s3://"$bucket" --cloud aws  --zones us-east-1a,us-east-1b --kubernetes-version "$VERSION" --node-size m5.large
+    kops create cluster --name test."$domain" --state s3://"$bucket" --cloud aws  --zones us-east-1a,us-east-1b --node-size m5.large
     kops update --state s3://"$bucket" cluster --name test."$domain" --yes
 }
 
