@@ -166,7 +166,6 @@ parse_git_branch_and_add_brackets(){
     python3 \
     python3-pip \
     python3-venv \
-    ranger \
     rig \
     rsync \
     rtorrent \
@@ -184,6 +183,7 @@ parse_git_branch_and_add_brackets(){
     tty-clock \
     ttyrec \
     typespeed \
+    vifm \
     vim \
     weather-util \
     wget \
