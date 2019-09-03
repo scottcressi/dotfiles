@@ -289,8 +289,11 @@ dk(){
     echo domain:
     echo ex. foo.com
     read -r domain
-    kops create cluster --name test."$domain" --state s3://$(aws sts get-caller-identity --output text --query 'Account')-kops-test --cloud aws  --zones us-east-1a,us-east-1b --node-size m5.large
-    kops update --state s3://$(aws sts get-caller-identity --output text --query 'Account')-kops-test cluster --name test."$domain" --yes
+    echo name:
+    echo ex. asdf
+    read -r name
+    kops create cluster --node-count 1 --name "$name"."$domain" --state s3://$(aws sts get-caller-identity --output text --query 'Account')-kops-test --cloud aws  --zones us-east-1a,us-east-1b --node-size m5.large
+    kops update --state s3://$(aws sts get-caller-identity --output text --query 'Account')-kops-test cluster --name "$name"."$domain" --yes
 }
 
 -kops-get(){
@@ -301,7 +304,10 @@ dk(){
     echo domain:
     echo ex. foo.com
     read -r domain
-    echo kops delete cluster  --name test."$domain" --state s3://$(aws sts get-caller-identity --output text --query 'Account')-kops-test --yes
+    echo name:
+    echo ex. sdf
+    read -r name
+    echo kops delete cluster  --name "$name"."$domain" --state s3://$(aws sts get-caller-identity --output text --query 'Account')-kops-test --yes
 }
 
 -aws-records(){
