@@ -8,6 +8,7 @@ ignore = [
     '.git',
     '.gitignore',
     '*.swp',
+    'xinitrc',
     ]
 externals = {
     }
