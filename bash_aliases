@@ -29,7 +29,6 @@ alias df='df -h'
 alias dstat='dstat -c --top-cpu -dn --top-mem'
 alias feh='feh --randomize --bg-max ~/wallpapers/'
 alias grep='grep --color=auto'
-alias less='less -S'
 alias ls='ls --color=auto'
 alias mpv='mpv --ytdl-format="bestvideo[height<=?360]+bestaudio/best"'
 alias mv="mv -i"
