@@ -522,5 +522,5 @@ random_cowsay(){
 }
 
 -sudo(){
-    echo 'scott ALL=(ALL) NOPASSWD:ALL' | sudo tee /etc/sudoers.d/scott
+echo "$(whoami) ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/$(whoami)
 }
