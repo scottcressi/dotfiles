@@ -112,7 +112,7 @@ let g:go_version_warning = 0
 
 "" REMAPPINGS -----------------------------------------------------------------
 
-" fzf set location to ~
+" fzf set location to ~/repos
 noremap <C-P> :Files ~/repos<CR>
 
 " nerdtree toggle
