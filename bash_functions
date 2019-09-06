@@ -292,7 +292,7 @@ dk(){
     echo name:
     echo ex. asdf
     read -r name
-    kops create cluster --node-count 1 --name "$name"."$domain" --state s3://$(aws sts get-caller-identity --output text --query 'Account')-kops-test --cloud aws  --zones us-east-1a,us-east-1b --node-size m5.large
+    kops create cluster --node-count 1 --name "$name"."$domain" --state s3://$(aws sts get-caller-identity --output text --query 'Account')-kops-test --cloud aws  --zones us-east-1a,us-east-1b --node-size m5.xlarge
     kops update --state s3://$(aws sts get-caller-identity --output text --query 'Account')-kops-test cluster --name "$name"."$domain" --yes
 }
 
@@ -307,7 +307,9 @@ dk(){
     echo name:
     echo ex. sdf
     read -r name
-    echo kops delete cluster  --name "$name"."$domain" --state s3://$(aws sts get-caller-identity --output text --query 'Account')-kops-test --yes
+    echo delete cluster "$name"."$domain"? y/n
+    read -r confirm
+    if [ "$confirm" == "y" ] ; then kops delete cluster  --name "$name"."$domain" --state s3://$(aws sts get-caller-identity --output text --query 'Account')-kops-test --yes ; fi
 }
 
 -aws-records(){
