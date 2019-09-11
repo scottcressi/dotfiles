@@ -38,6 +38,7 @@ alias xfishtank='xfishtank -c black -r .1 -i .1 -b 20 -f 20'
 alias xterm='xterm -bg black -fg white'
 
 # misc
+alias am="alsamixer"
 alias da="date +'%l:%M %A %m/%d/%y'"
 alias fz='vim $(fzf)'
 alias ff='firefox & disown ; exit'
@@ -52,6 +53,7 @@ alias search='apt-cache search'
 alias sk='screenkey'
 alias skk='pkill screenkey'
 alias testssl='docker run -ti drwetter/testssl.sh'
+alias weather='weather $(curl -s ipinfo.io | jq .postal -r)'
 alias ww='curl http://wttr.in/nyc'
 alias www='curl http://wttr.in/nyc?format=4'
 
