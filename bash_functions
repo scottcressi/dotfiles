@@ -269,8 +269,11 @@ parse_git_branch_and_add_brackets(){
     echo enter pod:
     echo
     read -r POD
-    kubectl delete pod -n jenkins "$POD" --grace-period=0 --force &
-    kubectl patch pod -n jenkins "$POD" -p '{"metadata":{"finalizers":null}}'
+    echo enter namespace:
+    echo
+    read -r NAMESPACE
+    kubectl delete pod -n "$NAMESPACE" "$POD" --grace-period=0 --force &
+    kubectl patch pod -n "$NAMESPACE" "$POD" -p '{"metadata":{"finalizers":null}}'
 }
 
 ds(){
