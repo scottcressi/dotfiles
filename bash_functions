@@ -217,7 +217,7 @@ parse_git_branch_and_add_brackets(){
     fi
 
     if test ! -f ~/bin/minikube ; then
-    curl -s -L --url https://storage.googleapis.com/minikube/releases/v1.3.1/minikube-linux-amd64 --output ~/bin/minikube
+    curl -s -L --url https://storage.googleapis.com/minikube/releases/v1.4.0/minikube-linux-amd64 --output ~/bin/minikube
     fi
 
     if test ! -f ~/bin/kops ; then
@@ -232,7 +232,7 @@ parse_git_branch_and_add_brackets(){
     fi
 
     if test ! -f ~/bin/helmfile ; then
-    curl -s -L --url https://github.com/roboll/helmfile/releases/download/v0.82.0/helmfile_linux_amd64 --output ~/bin/helmfile
+    curl -s -L --url https://github.com/roboll/helmfile/releases/download/v0.85.2/helmfile_linux_amd64 --output ~/bin/helmfile
     fi
 
     if test ! -f ~/bin/kubectl ; then
@@ -244,7 +244,7 @@ parse_git_branch_and_add_brackets(){
     fi
 
     if test ! -f ~/bin/sops ; then
-    curl -s -L --url https://github.com/mozilla/sops/releases/download/3.3.1/sops-3.3.1.linux --output ~/bin/sops
+    curl -s -L --url https://github.com/mozilla/sops/releases/download/3.4.0/sops-3.4.0.linux --output ~/bin/sops
     fi
 
     if test ! -d ~/bin/kpoof ; then
