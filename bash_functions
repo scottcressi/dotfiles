@@ -128,6 +128,7 @@ parse_git_branch_and_add_brackets(){
     bash-completion \
     bb \
     bc \
+    brightnessctl \
     cifs-utils \
     cmatrix \
     cmus \
@@ -191,10 +192,6 @@ parse_git_branch_and_add_brackets(){
     xterm \
     yamllint \
 
-}
-
--brightness(){
-    echo "$1" | sudo tee --append /sys/devices/pci0000:00/0000:00:02.0/drm/card0/card0-eDP-1/intel_backlight/brightness
 }
 
 -package-thirdparty-translate(){
@@ -546,4 +543,8 @@ random_cowsay(){
 
 -sudo(){
 echo "$(whoami) ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/$(whoami)
+}
+
+-brightness(){
+sudo brightnessctl s "$1"%
 }
