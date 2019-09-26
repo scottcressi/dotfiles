@@ -78,120 +78,23 @@ parse_git_branch_and_add_brackets(){
 
 }
 
--package-debian-gui(){
+-package-debian(){
     sudo apt-get update
-    sudo apt-get install \
-    abiword \
-    arandr \
-    atril \
-    feh \
-    mpv \
-    mupdf \
-    oneko \
-    screenkey \
-    surf \
-    sxiv \
-    wicd \
-    xautolock \
-    xcowsay \
-    xfishtank \
-    xorg \
-    zathura \
-    zathura-cb \
 
-    ##xwallpaper \
-    ##zathura-pdf-mupdf \
+    # docker
+    curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
+    sudo apt-key fingerprint 0EBFCD88
+    sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable"
 
+    # backports for fzf
+    echo 'deb http://http.debian.net/debian stretch-backports main contrib non-free' | sudo tee /etc/apt/sources.list.d/stretch-backports.list > /dev/null
 
-}
+    # packages
+    cat "$HOME"/repos/personal/dotfiles/packages.txt | awk '{print $1}' | xargs sudo apt-get install
 
--package-debian-games(){
-    sudo apt-get update
-    sudo apt-get install \
-    bastet \
-    bsdgames \
-    eboard \
-    greed \
-    moon-buggy \
-    ninvaders \
-    nsnake \
-    pacman4console \
-    xboard \
-
-}
-
--package-debian-terminal(){
-    sudo apt-get update
-    sudo apt-get install \
-    acpi \
-    aspell \
-    bash-completion \
-    bb \
-    bc \
-    brightnessctl \
-    cifs-utils \
-    cmatrix \
-    cmus \
-    cowsay \
-    curl \
-    dnsutils \
-    docker-ce \
-    dstat \
-    espeak \
-    gcc \
-    git \
-    htop \
-    iftop \
-    iotop \
-    ipcalc \
-    irssi \
-    jq \
-    jsonlint \
-    lftp \
-    libaa-bin \
-    links2 \
-    lolcat \
-    lsof \
-    make \
-    mdp \
-    mutt \
-    ncmpcpp \
-    netcat \
-    neofetch \
-    nethogs \
-    newsbeuter \
-    openssh-client \
-    p7zip \
-    pi \
-    pwgen \
-    python3 \
-    python3-pip \
-    python3-venv \
-    rig \
-    rsync \
-    rtorrent \
-    scrot \
-    shellcheck \
-    sshfs \
-    suckless-tools \
-    thefuck \
-    tig \
-    tmux \
-    toilet \
-    transmission-cli \
-    transmission-remote-cli \
-    tree \
-    tty-clock \
-    ttyrec \
-    typespeed \
-    vifm \
-    vim \
-    weather-util \
-    wget \
-    whois \
-    xterm \
-    yamllint \
-
+    # not working
+    ##xwallpaper
+    ##zathura-pdf-mupdf
 }
 
 -package-thirdparty-translate(){
@@ -370,33 +273,6 @@ kl(){
     aws eks list-clusters --region "$i"
     echo
     done
-
-}
-
--package-debian-prereqs(){
-    # suckless
-    sudo apt-get update
-    sudo apt-get install pkg-config libfreetype6-dev libfontconfig1-dev libx11-dev libxft-dev libxinerama-dev
-
-    # docker
-    sudo apt-get install apt-transport-https ca-certificates gnupg2 software-properties-common
-
-    # firefox
-    sudo apt-get install libgtk-3-0 pulseaudio
-
-    # zoom
-    sudo apt-get install libnss3
-
-    # docker
-    curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
-    sudo apt-key fingerprint 0EBFCD88
-    sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable"
-
-    # backports for fzf
-    echo 'deb http://http.debian.net/debian stretch-backports main contrib non-free' | sudo tee /etc/apt/sources.list.d/stretch-backports.list > /dev/null
-
-    # trans
-    sudo apt-get install gawk
 
 }
 

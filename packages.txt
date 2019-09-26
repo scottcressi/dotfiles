@@ -1,0 +1,108 @@
+abiword                     gui       doc               reader
+acpi                        terminal  power
+apt-transport-https         prereq    docker
+arandr                      gui       resolution
+aspell                      terminal
+atril                       gui
+bash-completion             terminal  completion
+bastet                      fun
+bb                          terminal
+bc                          terminal
+brightnessctl               terminal
+bsdgames                    fun
+ca-certificates             prereq    docker
+cifs-utils                  terminal
+cmatrix                     terminal
+cmus                        terminal  music
+cowsay                      terminal
+curl                        terminal
+dnsutils                    terminal
+docker-ce                   terminal  containerization
+dstat                       terminal
+eboard                      fun
+espeak                      terminal
+feh                         gui       pictures
+gawk                        prereq    trans
+gcc                         terminal  compiler
+git                         terminal  source            control
+gnupg2                      prereq    docker
+greed                       fun
+htop                        terminal  stats
+iftop                       terminal  stats
+iotop                       terminal  stats
+ipcalc                      terminal  stats
+irssi                       terminal  messaging
+jq                          terminal
+jsonlint                    terminal  lint
+lftp                        terminal  file              transfer
+libaa-bin                   terminal
+libfontconfig1-dev          prereq    suckless
+libfreetype6-dev            prereq    suckless
+libgtk-3-0                  prereq    firefox
+libnss3                     prereq    zoom
+libx11-dev                  prereq    suckless
+libxft-dev                  prereq    suckless
+libxinerama-dev             prereq    suckless
+links2                      terminal  browser
+lolcat                      terminal
+lsof                        terminal  stats
+make                        terminal  compiler
+mdp                         terminal  music
+moon-buggy                  fun       game
+mpv                         gui       video
+mupdf                       gui       doc               reader
+mutt                        terminal  mail
+ncmpcpp                     terminal  music
+neofetch                    terminal
+netcat                      terminal
+nethogs                     terminal
+newsbeuter                  terminal
+ninvaders                   fun
+nsnake                      fun
+oneko                       fun
+openssh-client              terminal
+p7zip                       terminal
+pacman4console              fun
+pi                          terminal
+pkg-config                  prereq    suckless
+pulseaudio                  prereq    firefox
+pwgen                       terminal
+python3                     terminal
+python3-pip                 terminal
+python3-venv                terminal
+rig                         terminal
+rsync                       terminal
+rtorrent                    terminal
+screenkey                   gui
+scrot                       terminal
+shellcheck                  terminal
+software-properties-common  prereq    docker
+sshfs                       terminal
+suckless-tools              terminal
+surf                        gui
+sxiv                        gui
+thefuck                     terminal
+tig                         terminal
+tmux                        terminal
+toilet                      terminal
+transmission-cli            terminal
+transmission-remote-cli     terminal
+tree                        terminal
+tty-clock                   terminal
+ttyrec                      terminal
+typespeed                   terminal
+vifm                        terminal
+vim                         terminal  editor
+weather-util                terminal
+wget                        terminal  file              transfer
+whois                       terminal
+wicd                        gui
+xautolock                   gui       screen            lock
+xboard                      fun
+xcowsay                     fun
+xfishtank                   fun       screensaver
+xorg                        gui       gui
+xterm                       terminal  emulator
+yamllint                    terminal  lint
+zathura                     gui       doc               reader
+zathura-cb                  gui       doc               reader
