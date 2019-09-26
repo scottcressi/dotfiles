@@ -12,9 +12,9 @@ brightnessctl               terminal  brightness
 bsdgames                    fun       game
 ca-certificates             prereq    docker
 cifs-utils                  terminal  mounting
-cmatrix                     terminal
+cmatrix                     terminal  visual
 cmus                        terminal  music
-cowsay                      terminal
+cowsay                      terminal  visual
 curl                        terminal  filetransfer
 dnsutils                    terminal  stats
 docker-ce                   terminal  containerization
@@ -44,7 +44,7 @@ libx11-dev                  prereq    suckless
 libxft-dev                  prereq    suckless
 libxinerama-dev             prereq    suckless
 links2                      terminal  browser
-lolcat                      terminal
+lolcat                      terminal  visual
 lsof                        terminal  stats
 make                        terminal  compiler
 mdp                         terminal  music
@@ -53,10 +53,10 @@ mpv                         gui       video
 mupdf                       gui       docreader
 mutt                        terminal  mail
 ncmpcpp                     terminal  music
-neofetch                    terminal
+neofetch                    terminal  stats
 netcat                      terminal  stats
 nethogs                     terminal  stats
-newsbeuter                  terminal
+newsbeuter                  terminal  rss
 ninvaders                   fun       game
 nsnake                      fun       game
 oneko                       fun       visual
@@ -84,7 +84,7 @@ sxiv                        gui       pictures
 thefuck                     terminal
 tig                         terminal
 tmux                        terminal
-toilet                      terminal
+toilet                      terminal  visual
 transmission-cli            terminal  torrenting
 transmission-remote-cli     terminal  torrenting
 tree                        terminal
