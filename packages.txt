@@ -1,4 +1,4 @@
-abiword                     gui       doc               reader
+abiword                     gui       docreader
 acpi                        terminal  power
 apt-transport-https         prereq    docker
 arandr                      gui       resolution
@@ -8,23 +8,23 @@ bash-completion             terminal  completion
 bastet                      fun
 bb                          terminal
 bc                          terminal
-brightnessctl               terminal
+brightnessctl               terminal  brightness
 bsdgames                    fun
 ca-certificates             prereq    docker
-cifs-utils                  terminal
+cifs-utils                  terminal  mounting
 cmatrix                     terminal
 cmus                        terminal  music
 cowsay                      terminal
-curl                        terminal
-dnsutils                    terminal
+curl                        terminal  filetransfer
+dnsutils                    terminal  stats
 docker-ce                   terminal  containerization
-dstat                       terminal
+dstat                       terminal  stats
 eboard                      fun
 espeak                      terminal
 feh                         gui       pictures
 gawk                        prereq    trans
 gcc                         terminal  compiler
-git                         terminal  source            control
+git                         terminal  sourcecontrol
 gnupg2                      prereq    docker
 greed                       fun
 htop                        terminal  stats
@@ -34,7 +34,7 @@ ipcalc                      terminal  stats
 irssi                       terminal  messaging
 jq                          terminal
 jsonlint                    terminal  lint
-lftp                        terminal  file              transfer
+lftp                        terminal  filetransfer
 libaa-bin                   terminal
 libfontconfig1-dev          prereq    suckless
 libfreetype6-dev            prereq    suckless
@@ -50,12 +50,12 @@ make                        terminal  compiler
 mdp                         terminal  music
 moon-buggy                  fun       game
 mpv                         gui       video
-mupdf                       gui       doc               reader
+mupdf                       gui       docreader
 mutt                        terminal  mail
 ncmpcpp                     terminal  music
 neofetch                    terminal
-netcat                      terminal
-nethogs                     terminal
+netcat                      terminal  stats
+nethogs                     terminal  stats
 newsbeuter                  terminal
 ninvaders                   fun
 nsnake                      fun
@@ -71,22 +71,22 @@ python3                     terminal
 python3-pip                 terminal
 python3-venv                terminal
 rig                         terminal
-rsync                       terminal
-rtorrent                    terminal
+rsync                       terminal  filetransfer
+rtorrent                    terminal  torrenting
 screenkey                   gui
 scrot                       terminal
 shellcheck                  terminal
 software-properties-common  prereq    docker
 sshfs                       terminal
 suckless-tools              terminal
-surf                        gui
-sxiv                        gui
+surf                        gui       browser
+sxiv                        gui       pictures
 thefuck                     terminal
 tig                         terminal
 tmux                        terminal
 toilet                      terminal
-transmission-cli            terminal
-transmission-remote-cli     terminal
+transmission-cli            terminal  torrenting
+transmission-remote-cli     terminal  torrenting
 tree                        terminal
 tty-clock                   terminal
 ttyrec                      terminal
@@ -94,15 +94,15 @@ typespeed                   terminal
 vifm                        terminal
 vim                         terminal  editor
 weather-util                terminal
-wget                        terminal  file              transfer
+wget                        terminal  filetransfer
 whois                       terminal
-wicd                        gui
-xautolock                   gui       screen            lock
+wicd                        gui       networking
+xautolock                   gui       screenlock
 xboard                      fun
 xcowsay                     fun
 xfishtank                   fun       screensaver
 xorg                        gui       gui
 xterm                       terminal  emulator
 yamllint                    terminal  lint
-zathura                     gui       doc               reader
-zathura-cb                  gui       doc               reader
+zathura                     gui       docreader
+zathura-cb                  gui       docreader
