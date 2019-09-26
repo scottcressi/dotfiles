@@ -5,11 +5,11 @@ arandr                      gui       resolution
 aspell                      terminal
 atril                       gui
 bash-completion             terminal  completion
-bastet                      fun
+bastet                      fun       game
 bb                          terminal
 bc                          terminal
 brightnessctl               terminal  brightness
-bsdgames                    fun
+bsdgames                    fun       game
 ca-certificates             prereq    docker
 cifs-utils                  terminal  mounting
 cmatrix                     terminal
@@ -19,14 +19,14 @@ curl                        terminal  filetransfer
 dnsutils                    terminal  stats
 docker-ce                   terminal  containerization
 dstat                       terminal  stats
-eboard                      fun
+eboard                      fun       game
 espeak                      terminal
 feh                         gui       pictures
 gawk                        prereq    trans
 gcc                         terminal  compiler
 git                         terminal  sourcecontrol
 gnupg2                      prereq    docker
-greed                       fun
+greed                       fun       game
 htop                        terminal  stats
 iftop                       terminal  stats
 iotop                       terminal  stats
@@ -57,12 +57,12 @@ neofetch                    terminal
 netcat                      terminal  stats
 nethogs                     terminal  stats
 newsbeuter                  terminal
-ninvaders                   fun
-nsnake                      fun
-oneko                       fun
+ninvaders                   fun       game
+nsnake                      fun       game
+oneko                       fun       visual
 openssh-client              terminal
 p7zip                       terminal
-pacman4console              fun
+pacman4console              fun       game
 pi                          terminal
 pkg-config                  prereq    suckless
 pulseaudio                  prereq    firefox
@@ -98,8 +98,8 @@ wget                        terminal  filetransfer
 whois                       terminal
 wicd                        gui       networking
 xautolock                   gui       screenlock
-xboard                      fun
-xcowsay                     fun
+xboard                      fun       game
+xcowsay                     fun       visual
 xfishtank                   fun       screensaver
 xorg                        gui       gui
 xterm                       terminal  emulator
