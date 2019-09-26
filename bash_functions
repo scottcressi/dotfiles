@@ -91,7 +91,7 @@ parse_git_branch_and_add_brackets(){
     sudo apt-get update
 
     # packages
-    cat "$HOME"/repos/personal/dotfiles/packages.txt | awk '{print $1}' | xargs sudo apt-get install
+    cat "$HOME"/repos/personal/dotfiles/packages.txt | awk '{print $1}' | xargs sudo apt-get install -y
 
     # not working
     ##xwallpaper
