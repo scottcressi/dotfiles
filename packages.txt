@@ -1,6 +1,5 @@
 abiword                     gui       docreader
 acpi                        terminal  power
-apt-transport-https         prereq    docker
 arandr                      gui       resolution
 aspell                      terminal
 atril                       gui
@@ -10,7 +9,6 @@ bb                          terminal
 bc                          terminal
 brightnessctl               terminal  brightness
 bsdgames                    fun       game
-ca-certificates             prereq    docker
 cifs-utils                  terminal  mounting
 cmatrix                     terminal  visual
 cmus                        terminal  music
@@ -25,7 +23,6 @@ feh                         gui       pictures
 gawk                        prereq    trans
 gcc                         terminal  compiler
 git                         terminal  sourcecontrol
-gnupg2                      prereq    docker
 greed                       fun       game
 htop                        terminal  stats
 iftop                       terminal  stats
@@ -76,7 +73,6 @@ rtorrent                    terminal  torrenting
 screenkey                   gui
 scrot                       terminal
 shellcheck                  terminal
-software-properties-common  prereq    docker
 sshfs                       terminal
 suckless-tools              terminal
 surf                        gui       browser

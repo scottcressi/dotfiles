@@ -79,8 +79,6 @@ parse_git_branch_and_add_brackets(){
 }
 
 -package-debian(){
-    sudo apt-get update
-
     # docker
     curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
     sudo apt-key fingerprint 0EBFCD88
@@ -88,6 +86,9 @@ parse_git_branch_and_add_brackets(){
 
     # backports for fzf
     echo 'deb http://http.debian.net/debian stretch-backports main contrib non-free' | sudo tee /etc/apt/sources.list.d/stretch-backports.list > /dev/null
+
+    # update
+    sudo apt-get update
 
     # packages
     cat "$HOME"/repos/personal/dotfiles/packages.txt | awk '{print $1}' | xargs sudo apt-get install
