@@ -295,12 +295,12 @@ dk(){
     kops create cluster \
         --node-count 1 \
         --name "$name"."$domain" \
-        --state s3://$(aws sts get-caller-identity --output text --query 'Account')-kops-test \
+        --state s3://"$(aws sts get-caller-identity --output text --query 'Account')"-kops-test \
         --cloud aws  \
         --zones us-east-1a,us-east-1b \
         --node-size m5.xlarge
     kops update \
-        --state s3://$(aws sts get-caller-identity --output text --query 'Account')-kops-test \
+        --state s3://"$(aws sts get-caller-identity --output text --query 'Account')"-kops-test \
         cluster \
         --name "$name"."$domain"\
         --yes
@@ -308,9 +308,9 @@ dk(){
 
 -kops-get(){
     kops get cluster \
-        --state s3://$(aws sts get-caller-identity \
+        --state s3://"$(aws sts get-caller-identity \
         --output text \
-        --query 'Account')-kops-test
+        --query 'Account')"-kops-test
 }
 
 -kops-delete(){
@@ -324,9 +324,9 @@ dk(){
     read -r confirm
     if [ "$confirm" == "y" ] ; then kops delete cluster \
         --name "$name"."$domain" \
-        --state s3://$(aws sts get-caller-identity \
+        --state s3://"$(aws sts get-caller-identity \
         --output text \
-        --query 'Account')-kops-test \
+        --query 'Account')"-kops-test \
         --yes ; fi
 }
 
@@ -542,9 +542,18 @@ random_cowsay(){
 }
 
 -sudo(){
-echo "$(whoami) ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/$(whoami)
+echo "$(whoami) ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/"$(whoami)"
 }
 
 -brightness(){
 sudo brightnessctl s "$1"%
+}
+
+-record-screen(){
+RESOLUTION=$(xrandr | grep \* | awk '{print $1}')
+ffmpeg -f x11grab -s "$RESOLUTION" -i :0.0 out.mkv
+}
+
+-record-me(){
+ffmpeg -i /dev/video0 out.mkv
 }
