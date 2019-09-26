@@ -121,7 +121,7 @@ parse_git_branch_and_add_brackets(){
     fi
 
     if test ! -f ~/bin/kops ; then
-    curl -s -L --url https://github.com/kubernetes/kops/releases/download/1.13.0/kops-linux-amd64 --output ~/bin/kops
+    curl -s -L --url https://github.com/kubernetes/kops/releases/download/1.13.2/kops-linux-amd64 --output ~/bin/kops
     fi
 
     if test ! -f ~/bin/helm ; then
@@ -309,7 +309,7 @@ kl(){
 }
 
 -package-language-go(){
-    VERSION=1.12.7
+    VERSION=1.13.1
     curl -s -L https://dl.google.com/go/go"$VERSION".linux-amd64.tar.gz | gunzip -c | tar xv
 
 }
