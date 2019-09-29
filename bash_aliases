@@ -96,6 +96,7 @@ alias tl='tmux list-windows'
 
 # kube
 alias hl='helm ls'
+alias hdp='helm delete --purge'
 alias ka='kubectl get all --all-namespaces'
 alias kae='kubectl get all --all-namespaces -o wide'
 alias kaee='kubectl get all --all-namespaces -o wide --show-labels'
