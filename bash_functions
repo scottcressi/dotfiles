@@ -190,11 +190,11 @@ dk(){
 }
 
 -kops-create(){
-    echo domain:
-    echo ex. foo.com
+    aws route53 list-hosted-zones --query HostedZones[].Name[]
+    echo
+    echo enter domain, ex. foo.com:
     read -r domain
-    echo name:
-    echo ex. asdf
+    echo enter cluster name, ex. asdf:
     read -r name
     kops create cluster \
         --node-count 1 \
@@ -218,16 +218,14 @@ dk(){
 }
 
 -kops-delete(){
-    echo domain:
-    echo ex. foo.com
-    read -r domain
-    echo name:
-    echo ex. sdf
-    read -r name
-    echo delete cluster "$name"."$domain"? y/n
+    -kops-get
+    echo
+    echo enter cluster name ex. foo.example.com:
+    read -r cluster
+    echo delete cluster "$cluster"? y/n
     read -r confirm
     if [ "$confirm" == "y" ] ; then kops delete cluster \
-        --name "$name"."$domain" \
+        --name "$cluster" \
         --state s3://"$(aws sts get-caller-identity \
         --output text \
         --query 'Account')"-kops-test \
