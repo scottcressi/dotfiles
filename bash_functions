@@ -87,7 +87,7 @@ parse_git_branch_and_add_brackets(){
     sudo apt-get update
 
     # packages
-    cat "$HOME"/repos/personal/dotfiles/packages.txt | awk '{print $1}' | xargs sudo apt-get install -y
+    awk '{print $1}' "$HOME"/repos/personal/dotfiles/packages.txt | xargs sudo apt-get install -y
 
     # not working
     ##xwallpaper
@@ -176,14 +176,22 @@ parse_git_branch_and_add_brackets(){
 ds(){
     echo stop all containers? y/n
     read -r confirm
-    if [ "$confirm" == "y" ] ; then docker stop $(docker ps -aq) ; fi
+    if [ "$confirm" == "y" ] ; then
+        for i in $(docker ps | awk '{print $1}' | tail +2); do
+        docker stop "$i"
+        done
+    fi
 
 }
 
 dk(){
     echo kill all containers? y/n
     read -r confirm
-    if [ "$confirm" == "y" ] ; then docker kill $(docker ps -aq) ; fi
+    if [ "$confirm" == "y" ] ; then
+        for i in $(docker ps | awk '{print $1}' | tail +2); do
+        docker kill "$i"
+        done
+    fi
 }
 
 -kops-create(){
