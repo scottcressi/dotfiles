@@ -68,6 +68,47 @@ parse_git_branch_and_add_brackets(){
     mkdir ~/bin
     fi
 
+    # st
+    if test ! -d ~/st-0.8.2 ; then
+    cd
+    curl -s -L https://dl.suckless.org/st/st-0.8.2.tar.gz | gunzip -c | tar xv
+    cd ~/st-0.8.2 || exit
+    export DESTDIR="$HOME"
+    make clean install
+    fi
+
+    # st lukesmith
+    if test ! -d ~/st-lukesmith ; then
+    cd
+    git clone https://github.com/LukeSmithxyz/st ~/st-lukesmith
+    cd ~/st-lukesmith || exit
+    export DESTDIR="$HOME"
+    make clean install
+    fi
+
+    # dwm
+    if test ! -d ~/dwm-6.2 ; then
+    cd
+    curl -s -L https://dl.suckless.org/dwm/dwm-6.2.tar.gz | gunzip -c | tar xv
+    cd ~/dwm-6.2 || exit
+    export DESTDIR="$HOME"
+    make clean install
+    fi
+
+    # dwm lukesmith
+    if test ! -d ~/dwm-lukesmith ; then
+    cd
+    git clone https://github.com/LukeSmithxyz/dwm.git dwm-lukesmith
+    cd ~/dwm-lukesmith || exit
+    export DESTDIR="$HOME"
+    make clean install
+    fi
+
+    # golang
+    if test ! -d ~/go ; then
+    curl -s -L https://dl.google.com/go/go1.13.1.linux-amd64.tar.gz | gunzip -c | tar xv
+    fi
+
     # docker compose
     if test ! -f ~/bin/docker-compose ; then
         curl -L https://github.com/docker/compose/releases/download/1.24.1/docker-compose-"$(uname -s)"-"$(uname -m)" -o ~/bin/docker-compose
@@ -147,9 +188,10 @@ parse_git_branch_and_add_brackets(){
     fi
 
     # vagrant
-    VERSION="$(curl -s https://releases.hashicorp.com/vagrant/ | grep vagrant | head -1 | sed 's/.*vagrant_//g' | sed 's/<.*//g')"
-    curl -s -L https://releases.hashicorp.com/vagrant/"$VERSION"/vagrant_"$VERSION"_x86_64.deb -o ~/Downloads/vagrant_"$VERSION"_x86_64.deb
-    sudo dpkg -i ~/Downloads/vagrant_"$VERSION"_x86_64.deb
+    if test ! -f ~/Downloads/vagrant_2.2.5_x86_64.deb ; then
+    curl -s -L https://releases.hashicorp.com/vagrant/2.2.5/vagrant_2.2.5_x86_64.deb -o ~/Downloads/vagrant_2.2.5_x86_64.deb
+    sudo dpkg -i ~/Downloads/vagrant_2.2.5_x86_64.deb
+    fi
 
     # zoom
     if test ! -f ~/Downloads/zoom_amd64.deb ; then
@@ -299,44 +341,6 @@ kl(){
     aws eks list-clusters --region "$i"
     echo
     done
-
-}
-
--package-source-st(){
-    curl -s -L https://dl.suckless.org/st/st-0.8.2.tar.gz | gunzip -c | tar xv
-    cd st-0.8.2 || exit
-    export DESTDIR="$HOME"
-    make clean install
-
-}
-
--package-source-st-lukesmith(){
-    git clone https://github.com/LukeSmithxyz/st st-lukesmith
-    cd st-lukesmith || exit
-    export DESTDIR="$HOME"
-    make clean install
-
-}
-
--package-source-dwm(){
-    curl -s -L https://dl.suckless.org/dwm/dwm-6.2.tar.gz | gunzip -c | tar xv
-    cd dwm-6.2 || exit
-    export DESTDIR="$HOME"
-    make clean install
-
-}
-
--package-source-dwm-lukesmith(){
-    git clone https://github.com/LukeSmithxyz/dwm.git dwm-lukesmith
-    cd dwm-lukesmith || exit
-    export DESTDIR="$HOME"
-    make clean install
-
-}
-
--package-language-go(){
-    VERSION=1.13.1
-    curl -s -L https://dl.google.com/go/go"$VERSION".linux-amd64.tar.gz | gunzip -c | tar xv
 
 }
 
