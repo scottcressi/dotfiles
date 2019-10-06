@@ -89,6 +89,7 @@ ttyrec                      terminal
 typespeed                   terminal
 vifm                        terminal
 vim                         terminal  editor
+virtualbox-6.0              terminal  virtualization
 weather-util                terminal
 wget                        terminal  filetransfer
 whois                       terminal

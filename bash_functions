@@ -69,16 +69,12 @@ parse_git_branch_and_add_brackets(){
 
 }
 
--package-thirdparty-virtualbox(){
+-package-debian(){
+    # virtalbox
     wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -
     wget -q https://www.virtualbox.org/download/oracle_vbox.asc -O- | sudo apt-key add -
     sudo add-apt-repository "deb http://download.virtualbox.org/virtualbox/debian bionic contrib"
-    sudo apt update
-    sudo apt install virtualbox-6.0
 
-}
-
--package-debian(){
     # docker
     curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
     sudo apt-key fingerprint 0EBFCD88
@@ -181,6 +177,7 @@ ds(){
     echo stop all containers? y/n
     read -r confirm
     if [ "$confirm" == "y" ] ; then docker stop $(docker ps -aq) ; fi
+
 }
 
 dk(){
@@ -202,8 +199,8 @@ dk(){
         --state s3://"$(aws sts get-caller-identity --output text --query 'Account')"-kops-test \
         --cloud aws  \
         --zones us-east-1a,us-east-1b \
-        --node-size m5.xlarge
-        --kubernetes-version 1.15.0
+        --node-size m5.xlarge \
+        --kubernetes-version 1.15.0 \
     kops update \
         --state s3://"$(aws sts get-caller-identity --output text --query 'Account')"-kops-test \
         cluster \
@@ -219,7 +216,6 @@ dk(){
 }
 
 -kops-delete(){
-    -kops-get
     echo
     echo enter cluster name ex. foo.example.com:
     read -r cluster
@@ -426,7 +422,7 @@ sudo brightnessctl s "$1"%
 }
 
 -record-screen(){
-RESOLUTION=$(xrandr | grep \* | awk '{print $1}')
+RESOLUTION=$(xrandr | grep "\\*" | awk '{print $1}')
 ffmpeg -f x11grab -s "$RESOLUTION" -i :0.0 out.mkv
 }
 
