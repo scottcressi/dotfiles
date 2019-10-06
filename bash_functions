@@ -36,12 +36,6 @@ parse_git_branch_and_add_brackets(){
 
 }
 
--package-thirdparty-firefox() {
-    wget "https://download.mozilla.org/?product=firefox-latest&os=linux64&lang=en-US" -O - | bunzip2 | tar xv
-    mv firefox firefox-"$(date +%Y-%m-%d-%H-%M-%S)"
-
-}
-
 -package-pip-packages(){
     python3 -m venv ~/python
     # shellcheck source=/dev/null
@@ -62,14 +56,110 @@ parse_git_branch_and_add_brackets(){
 
 }
 
--package-thirdparty-vagrant(){
-    VERSION="$(curl -s https://releases.hashicorp.com/vagrant/ | grep vagrant | head -1 | sed 's/.*vagrant_//g' | sed 's/<.*//g')"
-    curl -s -L https://releases.hashicorp.com/vagrant/"$VERSION"/vagrant_"$VERSION"_x86_64.deb -o /tmp/vagrant_"$VERSION"_x86_64.deb
-    sudo dpkg -i /tmp/vagrant_"$VERSION"_x86_64.deb
-
-}
-
 -package-debian(){
+
+    # download dir
+    if test ! -d ~/Downloads ; then
+    mkdir ~/Downloads
+    fi
+
+    # bin dir
+    if test ! -d ~/bin/ ; then
+    mkdir ~/bin
+    fi
+
+    # docker compose
+    if test ! -f ~/bin/docker-compose ; then
+        curl -L https://github.com/docker/compose/releases/download/1.24.1/docker-compose-"$(uname -s)"-"$(uname -m)" -o ~/bin/docker-compose
+    fi
+
+    # minikube
+    if test ! -f ~/bin/minikube ; then
+    curl -s -L --url https://storage.googleapis.com/minikube/releases/v1.4.0/minikube-linux-amd64 --output ~/bin/minikube
+    fi
+
+    # kops
+    if test ! -f ~/bin/kops ; then
+    curl -s -L --url https://github.com/kubernetes/kops/releases/download/1.14.0/kops-linux-amd64 --output ~/bin/kops
+    fi
+
+    # helm
+    if test ! -f ~/bin/helm ; then
+    curl -s -L --url https://storage.googleapis.com/kubernetes-helm/helm-v2.14.3-linux-amd64.tar.gz | gunzip | tar xv
+    mv linux-amd64/helm ~/bin/helm ; rm -rf linux-amd64
+    helm plugin install https://github.com/futuresimple/helm-secrets
+    helm plugin install https://github.com/databus23/helm-diff --version master
+    fi
+
+    # helmfile
+    if test ! -f ~/bin/helmfile ; then
+    curl -s -L --url https://github.com/roboll/helmfile/releases/download/v0.85.3/helmfile_linux_amd64 --output ~/bin/helmfile
+    fi
+
+    # kubectl
+    if test ! -f ~/bin/kubectl ; then
+    curl -s -L --url https://storage.googleapis.com/kubernetes-release/release/"$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)"/bin/linux/amd64/kubectl --output ~/bin/kubectl
+    fi
+
+    # kind
+    if test ! -f ~/bin/kind ; then
+    curl -s -L --url https://github.com/kubernetes-sigs/kind/releases/download/v0.5.1/kind-linux-amd64 --output ~/bin/kind
+    fi
+
+    # sops
+    if test ! -f ~/bin/sops ; then
+    curl -s -L --url https://github.com/mozilla/sops/releases/download/3.4.0/sops-3.4.0.linux --output ~/bin/sops
+    fi
+
+    # kpoof
+    if test ! -d ~/bin/kpoof ; then
+    git clone https://github.com/farmotive/kpoof
+    fi
+
+    # kubectx
+    if test ! -d ~/kubectx/ ; then
+    git clone https://github.com/ahmetb/kubectx ~/kubectx
+    ln -sf ~/kubectx/kubectx ~/bin/kubectx
+    ln -sf ~/kubectx/kubens ~/bin/kubens
+    fi
+
+    # rakkess
+    if test ! -f ~/bin/rakkess ; then
+    curl -s -L --url https://github.com/corneliusweig/rakkess/releases/download/v0.4.1/rakkess-linux-amd64.gz --output ~/bin/rakkess-linux-amd64.gz
+    gunzip ~/bin/rakkess-linux-amd64.gz ; mv ~/bin/rakkess-linux-amd64 ~/bin/rakkess
+    fi
+
+    # firefox
+    if test ! -d ~/firefox ; then
+    wget "https://download.mozilla.org/?product=firefox-latest&os=linux64&lang=en-US" -O - | bunzip2 | tar xv
+    fi
+
+    # slack term
+    if test ! -f ~/bin/slack-term ; then
+    curl -s -L --url https://github.com/erroneousboat/slack-term/releases/download/v0.4.1/slack-term-linux-amd64 --output ~/bin/slack-term
+    chmod 755 ~/bin/slack-term
+    fi
+
+    # translate
+    if test ! -f ~/bin/trans ; then
+    curl -s -L git.io/trans -o ~/bin/trans
+    chmod 755 ~/bin/trans
+    fi
+
+    # vagrant
+    VERSION="$(curl -s https://releases.hashicorp.com/vagrant/ | grep vagrant | head -1 | sed 's/.*vagrant_//g' | sed 's/<.*//g')"
+    curl -s -L https://releases.hashicorp.com/vagrant/"$VERSION"/vagrant_"$VERSION"_x86_64.deb -o ~/Downloads/vagrant_"$VERSION"_x86_64.deb
+    sudo dpkg -i ~/Downloads/vagrant_"$VERSION"_x86_64.deb
+
+    # zoom
+    if test ! -f ~/Downloads/zoom_amd64.deb ; then
+    curl -s -L https://zoom.us/client/latest/zoom_amd64.deb -o ~/Downloads/zoom_amd64.deb
+    sudo dpkg -i ~/Downloads/zoom_amd64.deb
+    fi
+
+    # permissions
+    chmod 755 ~/bin/*
+
     # virtalbox
     wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -
     wget -q https://www.virtualbox.org/download/oracle_vbox.asc -O- | sudo apt-key add -
@@ -92,74 +182,6 @@ parse_git_branch_and_add_brackets(){
     # not working
     ##xwallpaper
     ##zathura-pdf-mupdf
-}
-
--package-thirdparty-translate(){
-    curl -s -L git.io/trans -o ~/trans
-    chmod 755 ~/trans
-}
-
--package-thirdparty-zoom(){
-    curl -s -L https://zoom.us/client/latest/zoom_amd64.deb -o /tmp/zoom_amd64.deb
-    sudo dpkg -i /tmp/zoom_amd64.deb
-}
-
--package-thirdparty-kube(){
-    if test ! -d ~/bin/ ; then
-    mkdir ~/bin
-    fi
-
-    if test ! -f ~/bin/docker-compose ; then
-        curl -L https://github.com/docker/compose/releases/download/1.24.1/docker-compose-"$(uname -s)"-"$(uname -m)" -o ~/bin/docker-compose
-    fi
-
-    if test ! -f ~/bin/minikube ; then
-    curl -s -L --url https://storage.googleapis.com/minikube/releases/v1.4.0/minikube-linux-amd64 --output ~/bin/minikube
-    fi
-
-    if test ! -f ~/bin/kops ; then
-    curl -s -L --url https://github.com/kubernetes/kops/releases/download/1.14.0/kops-linux-amd64 --output ~/bin/kops
-    fi
-
-    if test ! -f ~/bin/helm ; then
-    curl -s -L --url https://storage.googleapis.com/kubernetes-helm/helm-v2.14.3-linux-amd64.tar.gz | gunzip | tar xv
-    mv linux-amd64/helm ~/bin/helm ; rm -rf linux-amd64
-    helm plugin install https://github.com/futuresimple/helm-secrets
-    helm plugin install https://github.com/databus23/helm-diff --version master
-    fi
-
-    if test ! -f ~/bin/helmfile ; then
-    curl -s -L --url https://github.com/roboll/helmfile/releases/download/v0.85.3/helmfile_linux_amd64 --output ~/bin/helmfile
-    fi
-
-    if test ! -f ~/bin/kubectl ; then
-    curl -s -L --url https://storage.googleapis.com/kubernetes-release/release/"$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)"/bin/linux/amd64/kubectl --output ~/bin/kubectl
-    fi
-
-    if test ! -f ~/bin/kind ; then
-    curl -s -L --url https://github.com/kubernetes-sigs/kind/releases/download/v0.5.1/kind-linux-amd64 --output ~/bin/kind
-    fi
-
-    if test ! -f ~/bin/sops ; then
-    curl -s -L --url https://github.com/mozilla/sops/releases/download/3.4.0/sops-3.4.0.linux --output ~/bin/sops
-    fi
-
-    if test ! -d ~/bin/kpoof ; then
-    git clone https://github.com/farmotive/kpoof
-    fi
-
-    if test ! -d ~/kubectx/ ; then
-    git clone https://github.com/ahmetb/kubectx ~/kubectx
-    ln -sf ~/kubectx/kubectx ~/bin/kubectx
-    ln -sf ~/kubectx/kubens ~/bin/kubens
-    fi
-
-    if test ! -f ~/bin/rakkess ; then
-    curl -s -L --url https://github.com/corneliusweig/rakkess/releases/download/v0.4.1/rakkess-linux-amd64.gz --output ~/bin/rakkess-linux-amd64.gz
-    gunzip ~/bin/rakkess-linux-amd64.gz ; mv ~/bin/rakkess-linux-amd64 ~/bin/rakkess
-    fi
-
-    chmod 755 ~/bin/*
 }
 
 -kterminate(){
@@ -332,12 +354,6 @@ kl(){
 
 -lock(){
     slock
-
-}
-
--package-thirdparty-slack(){
-    curl -s -L --url https://github.com/erroneousboat/slack-term/releases/download/v0.4.1/slack-term-linux-amd64 --output ~/bin/slack-term
-    chmod 755 ~/bin/slack-term
 
 }
 
