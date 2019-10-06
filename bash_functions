@@ -203,6 +203,7 @@ dk(){
         --cloud aws  \
         --zones us-east-1a,us-east-1b \
         --node-size m5.xlarge
+        --kubernetes-version 1.15.0
     kops update \
         --state s3://"$(aws sts get-caller-identity --output text --query 'Account')"-kops-test \
         cluster \
@@ -431,4 +432,8 @@ ffmpeg -f x11grab -s "$RESOLUTION" -i :0.0 out.mkv
 
 -record-me(){
 ffmpeg -i /dev/video0 out.mkv
+}
+
+-minikube(){
+minikube start --memory 16g --cpus 4 --kubernetes-version "v1.15.0"
 }
