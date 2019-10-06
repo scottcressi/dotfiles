@@ -222,7 +222,6 @@ parse_git_branch_and_add_brackets(){
     awk '{print $1}' "$HOME"/repos/personal/dotfiles/packages.txt | xargs sudo apt-get install -y
 
     # not working
-    ##xwallpaper
     ##zathura-pdf-mupdf
 }
 
