@@ -106,12 +106,13 @@ parse_git_branch_and_add_brackets(){
 
     # golang
     if test ! -d ~/go ; then
+    cd || exit
     curl -s -L https://dl.google.com/go/go1.13.1.linux-amd64.tar.gz | gunzip -c | tar xv
     fi
 
     # docker compose
     if test ! -f ~/bin/docker-compose ; then
-        curl -L https://github.com/docker/compose/releases/download/1.24.1/docker-compose-"$(uname -s)"-"$(uname -m)" -o ~/bin/docker-compose
+    curl -L https://github.com/docker/compose/releases/download/1.24.1/docker-compose-"$(uname -s)"-"$(uname -m)" -o ~/bin/docker-compose
     fi
 
     # minikube
@@ -154,7 +155,7 @@ parse_git_branch_and_add_brackets(){
 
     # kpoof
     if test ! -d ~/bin/kpoof ; then
-    git clone https://github.com/farmotive/kpoof
+    git clone https://github.com/farmotive/kpoof ~/bin/kpoof
     fi
 
     # kubectx
@@ -172,6 +173,7 @@ parse_git_branch_and_add_brackets(){
 
     # firefox
     if test ! -d ~/firefox ; then
+    cd || exit
     wget "https://download.mozilla.org/?product=firefox-latest&os=linux64&lang=en-US" -O - | bunzip2 | tar xv
     fi
 
