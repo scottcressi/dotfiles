@@ -187,21 +187,21 @@ parse_git_branch_and_add_brackets(){
     # virtalbox
     wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -
     wget -q https://www.virtualbox.org/download/oracle_vbox.asc -O- | sudo apt-key add -
-    sudo add-apt-repository "deb http://download.virtualbox.org/virtualbox/debian bionic contrib"
+    sudo add-apt-repository --no-update "deb http://download.virtualbox.org/virtualbox/debian bionic contrib"
 
     # docker
     curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
     sudo apt-key fingerprint 0EBFCD88
-    sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable"
+    sudo add-apt-repository --no-update "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable"
 
     # backports for fzf
     echo 'deb http://http.debian.net/debian stretch-backports main contrib non-free' | sudo tee /etc/apt/sources.list.d/stretch-backports.list > /dev/null
 
     # update
-    sudo apt-get update
+    sudo apt-get update --quiet --quiet
 
     # packages
-    awk '{print $1}' "$HOME"/repos/personal/dotfiles/packages.txt | xargs sudo apt-get install -y
+    awk '{print $1}' "$HOME"/repos/personal/dotfiles/packages.txt | xargs sudo apt-get install -y --quiet --quiet
 
     # not working
     ##zathura-pdf-mupdf
