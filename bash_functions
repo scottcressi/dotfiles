@@ -36,7 +36,7 @@ parse_git_branch_and_add_brackets(){
 
 }
 
--packages-debian(){
+-packages(){
 
     # download dir
     if test ! -d ~/Downloads ; then
