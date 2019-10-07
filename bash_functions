@@ -36,26 +36,6 @@ parse_git_branch_and_add_brackets(){
 
 }
 
--packages-pip(){
-    python3 -m venv ~/python
-    # shellcheck source=/dev/null
-    source ~/python/bin/activate
-    pip3 install --upgrade \
-    awscli \
-    bpython \
-    doge \
-    dotfiles \
-    flake8 \
-    ipython \
-    modernize \
-    s-tui \
-    socli \
-    speedtest-cli \
-    youtube-dl \
-
-
-}
-
 -packages-debian(){
 
     # download dir
@@ -225,6 +205,25 @@ parse_git_branch_and_add_brackets(){
 
     # not working
     ##zathura-pdf-mupdf
+
+    # python
+    python3 -m venv ~/python
+    # shellcheck source=/dev/null
+    source ~/python/bin/activate
+    yes | pip3 install --upgrade \
+    awscli \
+    bpython \
+    doge \
+    dotfiles \
+    flake8 \
+    ipython \
+    modernize \
+    s-tui \
+    socli \
+    speedtest-cli \
+    youtube-dl \
+    --quiet
+
 }
 
 -kterminate(){
