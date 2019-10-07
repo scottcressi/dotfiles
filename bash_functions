@@ -370,7 +370,7 @@ kl(){
 }
 
 dogecoin(){
-    doge --shibe "$(ls $(find ~/python/lib -name doge)/static | sort -R  | head -1 | xargs basename)"
+    doge --shibe "$(ls "$(find ~/python/lib -name doge)"/static | sort -R  | head -1 | xargs basename)"
 }
 
 hmm(){
