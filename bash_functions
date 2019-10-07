@@ -36,7 +36,7 @@ parse_git_branch_and_add_brackets(){
 
 }
 
--package-pip-packages(){
+-packages-pip(){
     python3 -m venv ~/python
     # shellcheck source=/dev/null
     source ~/python/bin/activate
@@ -56,7 +56,7 @@ parse_git_branch_and_add_brackets(){
 
 }
 
--package-debian(){
+-packages-debian(){
 
     # download dir
     if test ! -d ~/Downloads ; then
