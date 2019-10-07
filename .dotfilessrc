@@ -2,12 +2,9 @@
 repository = ~/repos/personal/dotfiles
 ignore = [
     'setup.sh',
-    'dwm.sh',
-    'dmenu.sh',
     '.dotfilessrc',
     '.git',
     '.gitignore',
-    '*.swp',
     'xinitrc',
     ]
 externals = {
