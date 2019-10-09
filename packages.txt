@@ -1,12 +1,12 @@
 abiword                     gui       docreader
 acpi                        terminal  power
 arandr                      gui       resolution
-aspell                      terminal
+aspell                      terminal  spelling
 atril                       gui
 bash-completion             terminal  completion
 bastet                      fun       game
 bb                          terminal
-bc                          terminal
+bc                          terminal  calculator
 brightnessctl               terminal  brightness
 bsdgames                    fun       game
 cifs-utils                  terminal  mounting
@@ -18,7 +18,7 @@ dnsutils                    terminal  stats
 docker-ce                   terminal  containerization
 dstat                       terminal  stats
 eboard                      fun       game
-espeak                      terminal
+espeak                      terminal  speech
 feh                         gui       pictures
 gawk                        prereq    trans
 gcc                         terminal  compiler
@@ -30,7 +30,7 @@ iotop                       terminal  stats
 ipcalc                      terminal  stats
 irssi                       terminal  messaging
 jq                          terminal
-jsonlint                    terminal  lint
+jsonlint                    terminal  linter
 lftp                        terminal  filetransfer
 libaa-bin                   terminal
 libfontconfig1-dev          prereq    suckless
@@ -71,36 +71,36 @@ rig                         terminal
 rsync                       terminal  filetransfer
 rtorrent                    terminal  torrenting
 screenkey                   gui
-scrot                       terminal
-shellcheck                  terminal
+scrot                       terminal  screenshot
+shellcheck                  terminal  linter
 sshfs                       terminal
-suckless-tools              terminal
+suckless-tools              terminal  terminal
 surf                        gui       browser
 sxiv                        gui       pictures
-thefuck                     terminal
-tig                         terminal
-tmux                        terminal
+thefuck                     terminal  spelling
+tig                         terminal  source control
+tmux                        terminal  terminal emulator
 toilet                      terminal  visual
 transmission-cli            terminal  torrenting
 transmission-remote-cli     terminal  torrenting
 tree                        terminal
-tty-clock                   terminal
-ttyrec                      terminal
+tty-clock                   terminal  time
+ttyrec                      terminal  recording
 typespeed                   terminal
 vifm                        terminal
 vim                         terminal  editor
 virtualbox-6.0              terminal  virtualization
-weather-util                terminal
+weather-util                terminal  weather
 wget                        terminal  filetransfer
-whois                       terminal
+whois                       terminal  stats
 wicd                        gui       networking
 xautolock                   gui       screenlock
 xboard                      fun       game
 xcowsay                     fun       visual
 xfishtank                   fun       screensaver
 xorg                        gui       gui
-xterm                       terminal  emulator
+xterm                       terminal  terminal emulator
 xwallpaper                  gui       wallpaper
-yamllint                    terminal  lint
+yamllint                    terminal  linter
 zathura                     gui       docreader
 zathura-cb                  gui       docreader
