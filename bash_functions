@@ -53,7 +53,6 @@ parse_git_branch_and_add_brackets(){
     cd || exit
     curl -s -L https://dl.suckless.org/st/st-0.8.2.tar.gz | gunzip -c | tar xv
     cd ~/st-0.8.2 || exit
-    export DESTDIR="$HOME"
     make clean install
     fi
 
@@ -62,7 +61,6 @@ parse_git_branch_and_add_brackets(){
     cd || exit
     git clone https://github.com/LukeSmithxyz/st ~/st-lukesmith
     cd ~/st-lukesmith || exit
-    export DESTDIR="$HOME"
     make clean install
     fi
 
