@@ -270,7 +270,7 @@ dk(){
         --cloud aws  \
         --zones us-east-1a,us-east-1b \
         --node-size m5.xlarge \
-        --kubernetes-version 1.15.0 \
+        --kubernetes-version 1.15.0
     kops update \
         --state s3://"$(aws sts get-caller-identity --output text --query 'Account')"-kops-test \
         cluster \
