@@ -133,7 +133,7 @@ alias dc='docker system prune --volumes -a'
 alias dn='docker network ls'
 alias dcu='docker-compose up -d'
 alias dcd='docker-compose down'
-alias dcp='docker-compose pull'
+alias dcp='docker-compose pull ; docker-compose restart'
 
 # transmission
 alias tm='transmission-remote -l'
