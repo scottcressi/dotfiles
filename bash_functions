@@ -459,5 +459,8 @@ ffmpeg -i /dev/video0 out.mkv
 }
 
 -minikube(){
-minikube start --memory 16g --cpus 4 --kubernetes-version "v1.15.0"
+MEMORY=$(free -g | awk '{print $2}' | grep -v used | uniq)
+USE=$(echo "$MEMORY/2" | bc)
+echo "$USE"
+minikube start --memory "$USE"g --cpus 4 --kubernetes-version "v1.15.0"
 }
