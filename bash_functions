@@ -182,40 +182,32 @@ parse_git_branch_and_add_brackets(){
     # permissions
     chmod 755 ~/bin/*
 
-    echo
-    echo "### adding virtualbox repo"
-    echo
-
     # virtalbox
+    if [ "$(grep -ri virtualbox /etc/apt/sources.list | echo $?)" != "0" ] ; then
     wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -
     wget -q https://www.virtualbox.org/download/oracle_vbox.asc -O- | sudo apt-key add -
     sudo add-apt-repository "deb http://download.virtualbox.org/virtualbox/debian bionic contrib"
-
-    echo
-    echo "### adding docker repo"
-    echo
+    fi
 
     # docker
+    if [ "$(grep -ri docker /etc/apt/sources.list | echo $?)" != "0" ] ; then
     curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
     sudo apt-key fingerprint 0EBFCD88
     sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable"
-
-    echo
-    echo "### adding fzf repo"
-    echo
+    fi
 
     # backports for fzf
     echo 'deb http://http.debian.net/debian stretch-backports main contrib non-free' | sudo tee /etc/apt/sources.list.d/stretch-backports.list > /dev/null
 
     echo
-    echo "### updating repos"
+    echo "# updating repos"
     echo
 
     # update
     sudo apt-get update --quiet --quiet
 
     echo
-    echo "### installing packages"
+    echo "# installing packages"
     echo
 
     # packages
