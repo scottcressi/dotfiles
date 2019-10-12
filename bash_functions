@@ -207,7 +207,7 @@ parse_git_branch_and_add_brackets(){
     sudo apt-get update --quiet --quiet
 
     echo
-    echo "# installing packages"
+    echo "# installing debian packages"
     echo
 
     # packages
@@ -215,6 +215,10 @@ parse_git_branch_and_add_brackets(){
 
     # not working
     ##zathura-pdf-mupdf
+
+    echo
+    echo "# installing python packages"
+    echo
 
     # python
     python3 -m venv ~/python
