@@ -55,6 +55,7 @@ netcat                      terminal  stats
 nethogs                     terminal  stats
 newsbeuter                  terminal  rss
 ninvaders                   fun       game
+nmap                        terminal  stats
 nsnake                      fun       game
 oneko                       fun       visual
 openssh-client              terminal
