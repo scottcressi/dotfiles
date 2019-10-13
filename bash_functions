@@ -93,6 +93,12 @@ parse_git_branch_and_add_brackets(){
     curl -L https://github.com/docker/compose/releases/download/1.24.1/docker-compose-"$(uname -s)"-"$(uname -m)" -o ~/bin/docker-compose
     fi
 
+    # draft
+    if test ! -f ~/bin/draft ; then
+    curl -s -L --url https://azuredraft.blob.core.windows.net/draft/draft-v0.16.0-linux-amd64.tar.gz | gunzip | tar xv
+    mv linux-amd64/draft ~/bin/draft ; rm -rf linux-amd64
+    fi
+
     # minikube
     if test ! -f ~/bin/minikube ; then
     curl -s -L --url https://storage.googleapis.com/minikube/releases/v1.4.0/minikube-linux-amd64 --output ~/bin/minikube
