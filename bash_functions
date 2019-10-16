@@ -329,7 +329,8 @@ dk(){
     read -r cluster
     echo delete cluster "$cluster"? y/n
     read -r confirm
-    if [ "$confirm" == "y" ] ; then kops delete cluster \
+    if [ "$confirm" == "y" ] ; then
+        kops delete cluster \
         --name "$cluster" \
         --state s3://"$(aws sts get-caller-identity \
         --output text \
