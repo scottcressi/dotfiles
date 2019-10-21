@@ -173,52 +173,57 @@ parse_git_branch_and_add_brackets(){
     chmod 755 ~/bin/trans
     fi
 
-    # vagrant
-    if test ! -f ~/Downloads/vagrant_2.2.5_x86_64.deb ; then
-    curl -s -L https://releases.hashicorp.com/vagrant/2.2.5/vagrant_2.2.5_x86_64.deb -o ~/Downloads/vagrant_2.2.5_x86_64.deb
-    sudo dpkg -i ~/Downloads/vagrant_2.2.5_x86_64.deb
-    fi
-
-    # zoom
-    if test ! -f ~/Downloads/zoom_amd64.deb ; then
-    curl -s -L https://zoom.us/client/latest/zoom_amd64.deb -o ~/Downloads/zoom_amd64.deb
-    sudo dpkg -i ~/Downloads/zoom_amd64.deb
-    fi
-
     # permissions
     chmod 755 ~/bin/*
 
-    # virtalbox
-    if [ "$(grep -ri virtualbox /etc/apt/sources.list | echo $?)" != "0" ] ; then
-    wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -
-    wget -q https://www.virtualbox.org/download/oracle_vbox.asc -O- | sudo apt-key add -
-    sudo add-apt-repository "deb http://download.virtualbox.org/virtualbox/debian bionic contrib"
+    # debian
+    if [ -f /etc/debian_version ] ; then
+
+        # vagrant
+        if test ! -f ~/Downloads/vagrant_2.2.5_x86_64.deb ; then
+        curl -s -L https://releases.hashicorp.com/vagrant/2.2.5/vagrant_2.2.5_x86_64.deb -o ~/Downloads/vagrant_2.2.5_x86_64.deb
+        sudo dpkg -i ~/Downloads/vagrant_2.2.5_x86_64.deb
+        fi
+
+        # zoom
+        if test ! -f ~/Downloads/zoom_amd64.deb ; then
+        curl -s -L https://zoom.us/client/latest/zoom_amd64.deb -o ~/Downloads/zoom_amd64.deb
+        sudo dpkg -i ~/Downloads/zoom_amd64.deb
+        fi
+
+        # virtalbox
+        if [ "$(grep -ri virtualbox /etc/apt/sources.list | echo $?)" != "0" ] ; then
+        wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -
+        wget -q https://www.virtualbox.org/download/oracle_vbox.asc -O- | sudo apt-key add -
+        sudo add-apt-repository "deb http://download.virtualbox.org/virtualbox/debian bionic contrib"
+        fi
+
+        # docker
+        if [ "$(grep -ri docker /etc/apt/sources.list | echo $?)" != "0" ] ; then
+        curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
+        sudo apt-key fingerprint 0EBFCD88
+        sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable"
+        fi
+
+        # backports for fzf
+        echo 'deb http://http.debian.net/debian stretch-backports main contrib non-free' | sudo tee /etc/apt/sources.list.d/stretch-backports.list > /dev/null
+
+        # update
+        echo
+        echo "# updating repos"
+        echo
+        sudo apt-get update --quiet --quiet
+
+        # packages
+        echo
+        echo "# installing packages"
+        echo
+        awk '{print $1}' "$HOME"/repos/personal/dotfiles/packages.txt | xargs sudo apt-get install -y --quiet --quiet
+
+        # not working
+        ##zathura-pdf-mupdf
+
     fi
-
-    # docker
-    if [ "$(grep -ri docker /etc/apt/sources.list | echo $?)" != "0" ] ; then
-    curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
-    sudo apt-key fingerprint 0EBFCD88
-    sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable"
-    fi
-
-    # backports for fzf
-    echo 'deb http://http.debian.net/debian stretch-backports main contrib non-free' | sudo tee /etc/apt/sources.list.d/stretch-backports.list > /dev/null
-
-    # update
-    echo
-    echo "# updating repos"
-    echo
-    sudo apt-get update --quiet --quiet
-
-    # packages
-    echo
-    echo "# installing packages"
-    echo
-    awk '{print $1}' "$HOME"/repos/personal/dotfiles/packages.txt | xargs sudo apt-get install -y --quiet --quiet
-
-    # not working
-    ##zathura-pdf-mupdf
 
     echo
     echo "# installing python packages"
