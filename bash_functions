@@ -155,12 +155,6 @@ parse_git_branch_and_add_brackets(){
     gunzip ~/bin/rakkess-linux-amd64.gz ; mv ~/bin/rakkess-linux-amd64 ~/bin/rakkess
     fi
 
-    # firefox
-    if test ! -d ~/firefox ; then
-    cd || exit
-    wget "https://download.mozilla.org/?product=firefox-latest&os=linux64&lang=en-US" -O - | bunzip2 | tar xv
-    fi
-
     # slack term
     if test ! -f ~/bin/slack-term ; then
     curl -s -L --url https://github.com/erroneousboat/slack-term/releases/download/v0.4.1/slack-term-linux-amd64 --output ~/bin/slack-term
@@ -178,6 +172,12 @@ parse_git_branch_and_add_brackets(){
 
     # debian
     if [ -f /etc/debian_version ] ; then
+
+        # firefox
+        if test ! -d ~/firefox ; then
+        cd || exit
+        wget "https://download.mozilla.org/?product=firefox-latest&os=linux64&lang=en-US" -O - | bunzip2 | tar xv
+        fi
 
         # vagrant
         if test ! -f ~/Downloads/vagrant_2.2.5_x86_64.deb ; then
