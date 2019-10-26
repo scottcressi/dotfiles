@@ -119,7 +119,7 @@ parse_git_branch_and_add_brackets(){
 
     # helmfile
     if test ! -f ~/bin/helmfile ; then
-    curl -s -L --url https://github.com/roboll/helmfile/releases/download/v0.86.1/helmfile_linux_amd64 --output ~/bin/helmfile
+    curl -s -L --url https://github.com/roboll/helmfile/releases/download/v0.89.0/helmfile_linux_amd64 --output ~/bin/helmfile
     fi
 
     # kubectl
