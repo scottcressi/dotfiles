@@ -148,13 +148,6 @@ parse_git_branch_and_add_brackets(){
     git clone https://github.com/farmotive/kpoof ~/bin/kpoof
     fi
 
-    # kubectx
-    if test ! -d ~/kubectx/ ; then
-    git clone https://github.com/ahmetb/kubectx ~/kubectx
-    ln -sf ~/kubectx/kubectx ~/bin/kubectx
-    ln -sf ~/kubectx/kubens ~/bin/kubens
-    fi
-
     # rakkess
     if test ! -f ~/bin/rakkess ; then
     curl -s -L --url https://github.com/corneliusweig/rakkess/releases/download/v0.4.1/rakkess-linux-amd64.gz --output ~/bin/rakkess-linux-amd64.gz
