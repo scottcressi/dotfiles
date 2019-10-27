@@ -127,6 +127,12 @@ parse_git_branch_and_add_brackets(){
     curl -s -L --url https://storage.googleapis.com/kubernetes-release/release/"$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)"/bin/linux/amd64/kubectl --output ~/bin/kubectl
     fi
 
+    # k9s
+    if test ! -f ~/bin/k9s ; then
+    curl -s -L --url https://github.com/derailed/k9s/releases/download/0.9.2/k9s_0.9.2_Linux_x86_64.tar.gz | gunzip | tar xv
+    mv k9s ~/bin/k9s ; rm -f README.md LICENSE k9s_0.9.2_Linux_x86_64.tar
+    fi
+
     # kind
     if test ! -f ~/bin/kind ; then
     curl -s -L --url https://github.com/kubernetes-sigs/kind/releases/download/v0.5.1/kind-linux-amd64 --output ~/bin/kind
