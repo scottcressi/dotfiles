@@ -129,8 +129,8 @@ parse_git_branch_and_add_brackets(){
 
     # k9s
     if test ! -f ~/bin/k9s ; then
-    curl -s -L --url https://github.com/derailed/k9s/releases/download/0.9.2/k9s_0.9.2_Linux_x86_64.tar.gz | gunzip | tar xv
-    mv k9s ~/bin/k9s ; rm -f README.md LICENSE k9s_0.9.2_Linux_x86_64.tar
+    curl -s -L --url https://github.com/derailed/k9s/releases/download/0.9.3/k9s_0.9.3_Linux_x86_64.tar.gz | gunzip | tar xv
+    mv k9s ~/bin/k9s ; rm -f README.md LICENSE k9s_0.9.3_Linux_x86_64.tar
     fi
 
     # kind
