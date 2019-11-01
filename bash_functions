@@ -56,28 +56,11 @@ parse_git_branch_and_add_brackets(){
     make clean install
     fi
 
-    # st lukesmith
-    if test ! -d ~/st-lukesmith ; then
-    cd || exit
-    git clone https://github.com/LukeSmithxyz/st ~/st-lukesmith
-    cd ~/st-lukesmith || exit
-    make clean install
-    fi
-
     # dwm
     if test ! -d ~/dwm-6.2 ; then
     cd || exit
     curl -s -L https://dl.suckless.org/dwm/dwm-6.2.tar.gz | gunzip -c | tar xv
     cd ~/dwm-6.2 || exit
-    export DESTDIR="$HOME"
-    make clean install
-    fi
-
-    # dwm lukesmith
-    if test ! -d ~/dwm-lukesmith ; then
-    cd || exit
-    git clone https://github.com/LukeSmithxyz/dwm.git dwm-lukesmith
-    cd ~/dwm-lukesmith || exit
     export DESTDIR="$HOME"
     make clean install
     fi
