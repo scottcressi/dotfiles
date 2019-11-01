@@ -4,11 +4,11 @@ arandr                      gui       resolution
 aspell                      terminal  spelling
 atril                       gui
 bash-completion             terminal  completion
-bastet                      fun       game
+bastet                      terminal  game
 bb                          terminal
 bc                          terminal  calculator
 brightnessctl               terminal  brightness
-bsdgames                    fun       game
+bsdgames                    terminal  game
 cifs-utils                  terminal  mounting
 cmatrix                     terminal  visual
 cmus                        terminal  music
@@ -17,13 +17,13 @@ curl                        terminal  filetransfer
 dnsutils                    terminal  stats
 docker-ce                   terminal  containerization
 dstat                       terminal  stats
-eboard                      fun       game
+eboard                      gui       game
 espeak                      terminal  speech
 feh                         gui       pictures
 gawk                        prereq    trans
 gcc                         terminal  compiler
 git                         terminal  sourcecontrol
-greed                       fun       game
+greed                       terminal  game
 htop                        terminal  stats
 iftop                       terminal  stats
 iotop                       terminal  stats
@@ -45,7 +45,7 @@ lolcat                      terminal  visual
 lsof                        terminal  stats
 make                        terminal  compiler
 mdp                         terminal  music
-moon-buggy                  fun       game
+moon-buggy                  terminal  game
 mpv                         gui       video
 mupdf                       gui       docreader
 mutt                        terminal  mail
@@ -54,20 +54,20 @@ neofetch                    terminal  stats
 netcat                      terminal  stats
 nethogs                     terminal  stats
 newsbeuter                  terminal  rss
-ninvaders                   fun       game
+ninvaders                   terminal  game
 nmap                        terminal  stats
-nsnake                      fun       game
-oneko                       fun       visual
+nsnake                      terminal  game
+oneko                       terminal  visual
 openssh-client              terminal
 p7zip                       terminal
-pacman4console              fun       game
+pacman4console              terminal  game
 pi                          terminal
 pkg-config                  prereq    suckless
 pulseaudio                  prereq    firefox
-pwgen                       terminal
-python3                     terminal
-python3-pip                 terminal
-python3-venv                terminal
+pwgen                       terminal  passwords
+python3                     terminal  language
+python3-pip                 terminal  language
+python3-venv                terminal  language
 rig                         terminal
 rsync                       terminal  filetransfer
 rtorrent                    terminal  torrenting
@@ -80,15 +80,15 @@ surf                        gui       browser
 sxiv                        gui       pictures
 thefuck                     terminal  spelling
 tig                         terminal  source control
-tmux                        terminal  terminal emulator
+tmux                        terminal  terminal multiplexer
 toilet                      terminal  visual
 transmission-cli            terminal  torrenting
 transmission-remote-cli     terminal  torrenting
 tree                        terminal
 tty-clock                   terminal  time
 ttyrec                      terminal  recording
-typespeed                   terminal
-vifm                        terminal
+typespeed                   terminal  game
+vifm                        terminal  passwords
 vim                         terminal  editor
 virtualbox-6.0              terminal  virtualization
 weather-util                terminal  weather
@@ -96,9 +96,9 @@ wget                        terminal  filetransfer
 whois                       terminal  stats
 wicd                        gui       networking
 xautolock                   gui       screenlock
-xboard                      fun       game
-xcowsay                     fun       visual
-xfishtank                   fun       screensaver
+xboard                      gui       game
+xcowsay                     gui       visual
+xfishtank                   gui       screensaver
 xorg                        gui       gui
 xterm                       terminal  terminal emulator
 xwallpaper                  gui       wallpaper
