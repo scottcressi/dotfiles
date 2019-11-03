@@ -88,7 +88,7 @@ parse_git_branch_and_add_brackets(){
 
     # helm
     if test ! -f ~/bin/helm ; then
-    curl -s -L --url https://storage.googleapis.com/kubernetes-helm/helm-v2.14.3-linux-amd64.tar.gz | gunzip | tar xv
+    curl -s -L --url https://storage.googleapis.com/kubernetes-helm/helm-v2.15.2-linux-amd64.tar.gz | gunzip | tar xv
     mv linux-amd64/helm ~/bin/helm ; rm -rf linux-amd64
     helm plugin install https://github.com/futuresimple/helm-secrets
     helm plugin install https://github.com/databus23/helm-diff --version master
@@ -96,7 +96,7 @@ parse_git_branch_and_add_brackets(){
 
     # helmfile
     if test ! -f ~/bin/helmfile ; then
-    curl -s -L --url https://github.com/roboll/helmfile/releases/download/v0.90.0/helmfile_linux_amd64 --output ~/bin/helmfile
+    curl -s -L --url https://github.com/roboll/helmfile/releases/download/v0.90.5/helmfile_linux_amd64 --output ~/bin/helmfile
     fi
 
     # kubectl
