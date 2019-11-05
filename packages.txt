@@ -7,7 +7,6 @@ bash-completion             terminal  completion
 bastet                      terminal  game
 bb                          terminal
 bc                          terminal  calculator
-brightnessctl               terminal  brightness
 bsdgames                    terminal  game
 cifs-utils                  terminal  mounting
 cmatrix                     terminal  visual

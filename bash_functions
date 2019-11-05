@@ -450,7 +450,13 @@ echo "$(whoami) ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/"$(whoami)"
 }
 
 -brightness(){
-sudo brightnessctl s "$1"%
+brightness=$1
+if [ "$brightness" -gt 1 ] ; then
+    echo please enter 1 or less
+    brightness=1
+fi
+screenname=$(xrandr | grep " connected" | cut -f1 -d" ")
+xrandr --output "$screenname" --brightness "$brightness";
 }
 
 -record-screen(){
