@@ -182,7 +182,10 @@ parse_git_branch_and_add_brackets(){
         fi
 
         # backports for fzf
+        if [ "$(grep -ri backports /etc/apt/sources.list.d/stretch-backports.list | echo $?)" != "0" ] ; then
         echo 'deb http://http.debian.net/debian stretch-backports main contrib non-free' | sudo tee /etc/apt/sources.list.d/stretch-backports.list > /dev/null
+        sudo apt-key adv --recv-key 8B48AD6246925553 && sudo apt-key adv --recv-key 7638D0442B90D010
+        fi
 
         # update
         echo
