@@ -478,3 +478,7 @@ CPU=$(nproc)
 USECPU=$(echo "$CPU-1" | bc)
 minikube start --memory "$USEMEM"g --cpus "$USECPU" --kubernetes-version "v1.15.0"
 }
+
+-kpeee(){
+kubectl get pods --all-namespaces -o wide --show-labels | awk '{print $11}'
+}
