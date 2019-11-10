@@ -48,6 +48,11 @@ parse_git_branch_and_add_brackets(){
     mkdir ~/bin
     fi
 
+    # wallpaper dir
+    if test ! -d ~/wallpapers/ ; then
+    mkdir ~/wallpapers
+    fi
+
     # st
     if test ! -d ~/st-0.8.2 ; then
     cd || exit
