@@ -1,20 +1,20 @@
-abiword                     gui       docreader
+abiword                     gui       document reader
 acpi                        terminal  power
 arandr                      gui       resolution
 aspell                      terminal  spelling
-atril                       gui
+atril                       gui       document reader
 bash-completion             terminal  completion
 bastet                      terminal  game
-bb                          terminal
+bb                          terminal  fun
 bc                          terminal  calculator
 bsdgames                    terminal  game
 cifs-utils                  terminal  mounting
-cmatrix                     terminal  visual
+cmatrix                     terminal  fun
 cmus                        terminal  music
-cowsay                      terminal  visual
-curl                        terminal  filetransfer
+cowsay                      terminal  fun
+curl                        terminal  file transfer
 dnsutils                    terminal  stats
-docker-ce                   terminal  containerization
+docker-ce                   terminal  virtualization
 dstat                       terminal  stats
 eboard                      gui       game
 espeak                      terminal  speech
@@ -29,9 +29,9 @@ iotop                       terminal  stats
 ipcalc                      terminal  stats
 irssi                       terminal  messaging
 jq                          terminal
-jsonlint                    terminal  linter
-lftp                        terminal  filetransfer
-libaa-bin                   terminal
+jsonlint                    terminal  lint
+lftp                        terminal  file transfer
+libaa-bin                   terminal  fun
 libfontconfig1-dev          prereq    suckless
 libfreetype6-dev            prereq    suckless
 libgtk-3-0                  prereq    firefox
@@ -40,13 +40,13 @@ libx11-dev                  prereq    suckless
 libxft-dev                  prereq    suckless
 libxinerama-dev             prereq    suckless
 links2                      terminal  browser
-lolcat                      terminal  visual
+lolcat                      terminal  fun
 lsof                        terminal  stats
 make                        terminal  compiler
 mdp                         terminal  music
 moon-buggy                  terminal  game
 mpv                         gui       video
-mupdf                       gui       docreader
+mupdf                       gui       document reader
 mutt                        terminal  mail
 ncmpcpp                     terminal  music
 neofetch                    terminal  stats
@@ -56,11 +56,11 @@ newsbeuter                  terminal  rss
 ninvaders                   terminal  game
 nmap                        terminal  stats
 nsnake                      terminal  game
-oneko                       terminal  visual
-openssh-client              terminal
+oneko                       terminal  fun
+openssh-client              terminal  file transfer
 p7zip                       terminal
 pacman4console              terminal  game
-pi                          terminal
+pi                          terminal  fun
 pkg-config                  prereq    suckless
 pulseaudio                  prereq    firefox
 pwgen                       terminal  passwords
@@ -68,39 +68,40 @@ python3                     terminal  language
 python3-pip                 terminal  language
 python3-venv                terminal  language
 rig                         terminal
-rsync                       terminal  filetransfer
-rtorrent                    terminal  torrenting
+rsync                       terminal  file transfer
+rtorrent                    terminal  file transfer
 screenkey                   gui
 scrot                       terminal  screenshot
-shellcheck                  terminal  linter
-sshfs                       terminal
+shellcheck                  terminal  lint
+sshfs                       terminal  mounting
 suckless-tools              terminal  terminal
 surf                        gui       browser
 sxiv                        gui       pictures
 thefuck                     terminal  spelling
 tig                         terminal  source control
 tmux                        terminal  terminal multiplexer
-toilet                      terminal  visual
-transmission-cli            terminal  torrenting
-transmission-remote-cli     terminal  torrenting
-tree                        terminal
+toilet                      terminal  fun
+transmission-cli            terminal  file transfer
+transmission-remote-cli     terminal  file transfer
+tree                        terminal  file manager
 tty-clock                   terminal  time
 ttyrec                      terminal  recording
 typespeed                   terminal  game
-vifm                        terminal  passwords
+vifm                        terminal  file manager
 vim                         terminal  editor
 virtualbox-6.0              terminal  virtualization
 weather-util                terminal  weather
-wget                        terminal  filetransfer
+wget                        terminal  file transfer
 whois                       terminal  stats
-wicd                        gui       networking
-xautolock                   gui       screenlock
+wicd                        gui       network
+xautolock                   gui       lock
 xboard                      gui       game
-xcowsay                     gui       visual
-xfishtank                   gui       screensaver
-xorg                        gui       gui
+xcowsay                     gui       fun
+xfce4-terminal              terminal  terminal emulator
+xfishtank                   gui       fun
+xorg                        gui       graphics
 xterm                       terminal  terminal emulator
 xwallpaper                  gui       wallpaper
-yamllint                    terminal  linter
-zathura                     gui       docreader
-zathura-cb                  gui       docreader
+yamllint                    terminal  lint
+zathura                     gui       document reader
+zathura-cb                  gui       document reader
