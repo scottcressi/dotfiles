@@ -393,13 +393,13 @@ kl(){
 
 }
 
-dogecoin(){
+-dogecoin(){
     DOGE="$(find ~/python/lib/python3.7/site-packages/doge/static/ -type f -exec basename {} ';' | sort -R  | head -1 )"
     doge --shibe "$DOGE"
 
 }
 
-hmm(){
+-hmm(){
     echo "
     ⠰⡿⠿⠛⠛⠻⠿⣷
     ⠀⠀⠀⠀⠀⠀⣀⣄⡀⠀⠀⠀⠀⢀⣀⣀⣤⣄⣀⡀
@@ -419,7 +419,7 @@ hmm(){
     "
 }
 
-rms(){
+-rms(){
     echo "
     I'd just like to interject for a moment.  What you're referring to as Linux,
     is in fact, GNU/Linux, or as I've recently taken to calling it, GNU plus Linux.
@@ -464,7 +464,7 @@ rms(){
     "
 }
 
-random_cowsay(){
+-random_cowsay(){
     fortune | cowsay -f "$(find /usr/share/cowsay/cows/ | shuf -n1 | xargs basename)"
 }
 
