@@ -81,7 +81,7 @@ parse_git_branch_and_add_brackets(){
     # draft
     version=v0.16.0
     if test ! -f ~/bin/draft ; then
-        curl -s -L --url https://azuredraft.blob.core.windows.net/draft/draft-"$(version)"-linux-amd64.tar.gz | gunzip | tar xv
+        curl -s -L --url https://azuredraft.blob.core.windows.net/draft/draft-"${version}"-linux-amd64.tar.gz | gunzip | tar xv
     mv linux-amd64/draft ~/bin/draft ; rm -rf linux-amd64
     fi
 
@@ -100,7 +100,7 @@ parse_git_branch_and_add_brackets(){
     # helm
     version=v2.16.1
     if test ! -f ~/bin/helm ; then
-        curl -s -L --url https://storage.googleapis.com/kubernetes-helm/helm-"$(version)"-linux-amd64.tar.gz | gunzip | tar xv
+        curl -s -L --url https://storage.googleapis.com/kubernetes-helm/helm-"${version}"-linux-amd64.tar.gz | gunzip | tar xv
     mv linux-amd64/helm ~/bin/helm ; rm -rf linux-amd64
     helm plugin install https://github.com/futuresimple/helm-secrets
     helm plugin install https://github.com/databus23/helm-diff --version master
@@ -109,7 +109,7 @@ parse_git_branch_and_add_brackets(){
     # helmfile
     version=v0.90.8
     if test ! -f ~/bin/helmfile ; then
-    curl -s -L --url https://github.com/roboll/helmfile/releases/download/$version/helmfile_linux_amd64 --output ~/bin/helmfile
+    curl -s -L --url https://github.com/roboll/helmfile/releases/download/${version}/helmfile_linux_amd64 --output ~/bin/helmfile
     fi
 
     # kubectl
@@ -120,20 +120,20 @@ parse_git_branch_and_add_brackets(){
     # k9s
     version=0.9.3
     if test ! -f ~/bin/k9s ; then
-        curl -s -L --url https://github.com/derailed/k9s/releases/download/$version/k9s_"$(version)"_Linux_x86_64.tar.gz | gunzip | tar xv
-        mv k9s ~/bin/k9s ; rm -f README.md LICENSE k9s_"$(version)"_Linux_x86_64.tar
+        curl -s -L --url https://github.com/derailed/k9s/releases/download/${version}/k9s_"${version}"_Linux_x86_64.tar.gz | gunzip | tar xv
+        mv k9s ~/bin/k9s ; rm -f README.md LICENSE k9s_"${version}"_Linux_x86_64.tar
     fi
 
     # kind
     version=v0.5.1
     if test ! -f ~/bin/kind ; then
-    curl -s -L --url https://github.com/kubernetes-sigs/kind/releases/download/$version/kind-linux-amd64 --output ~/bin/kind
+    curl -s -L --url https://github.com/kubernetes-sigs/kind/releases/download/${version}/kind-linux-amd64 --output ~/bin/kind
     fi
 
     # sops
     version=3.4.0
     if test ! -f ~/bin/sops ; then
-        curl -s -L --url https://github.com/mozilla/sops/releases/download/$version/sops-"$(version)".linux --output ~/bin/sops
+        curl -s -L --url https://github.com/mozilla/sops/releases/download/${version}/sops-"$(version)".linux --output ~/bin/sops
     fi
 
     # kpoof
@@ -144,14 +144,14 @@ parse_git_branch_and_add_brackets(){
     # rakkess
     version=v0.4.2
     if test ! -f ~/bin/rakkess ; then
-    curl -s -L --url https://github.com/corneliusweig/rakkess/releases/download/$version/rakkess-linux-amd64.gz --output ~/bin/rakkess-linux-amd64.gz
+    curl -s -L --url https://github.com/corneliusweig/rakkess/releases/download/${version}/rakkess-linux-amd64.gz --output ~/bin/rakkess-linux-amd64.gz
     gunzip ~/bin/rakkess-linux-amd64.gz ; mv ~/bin/rakkess-linux-amd64 ~/bin/rakkess
     fi
 
     # slack term
     version=v0.4.1
     if test ! -f ~/bin/slack-term ; then
-    curl -s -L --url https://github.com/erroneousboat/slack-term/releases/download/$version/slack-term-linux-amd64 --output ~/bin/slack-term
+    curl -s -L --url https://github.com/erroneousboat/slack-term/releases/download/${version}/slack-term-linux-amd64 --output ~/bin/slack-term
     chmod 755 ~/bin/slack-term
     fi
 
@@ -175,9 +175,9 @@ parse_git_branch_and_add_brackets(){
 
         # vagrant
         version=2.2.6
-        if test ! -f ~/Downloads/vagrant_"$(version)"_x86_64.deb ; then
-            curl -s -L https://releases.hashicorp.com/vagrant/$version/vagrant_"$(version)"_x86_64.deb -o ~/Downloads/vagrant_"$(version)"_x86_64.deb
-            sudo dpkg -i ~/Downloads/vagrant_"$(version)"_x86_64.deb
+        if test ! -f ~/Downloads/vagrant_"${version}"_x86_64.deb ; then
+            curl -s -L https://releases.hashicorp.com/vagrant/${version}/vagrant_${version}_x86_64.deb -o ~/Downloads/vagrant_"${version}"_x86_64.deb
+            sudo dpkg -i ~/Downloads/vagrant_"${version}"_x86_64.deb
         fi
 
         # zoom
