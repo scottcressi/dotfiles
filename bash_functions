@@ -54,18 +54,20 @@ parse_git_branch_and_add_brackets(){
     fi
 
     # st
-    if test ! -d ~/st-0.8.2 ; then
+    version=0.8.2
+    if test ! -d ~/st-$version ; then
     cd || exit
-    curl -s -L https://dl.suckless.org/st/st-0.8.2.tar.gz | gunzip -c | tar xv
-    cd ~/st-0.8.2 || exit
+    curl -s -L https://dl.suckless.org/st/st-"$(version)".tar.gz | gunzip -c | tar xv
+    cd ~/st-$version || exit
     make clean install
     fi
 
     # dwm
-    if test ! -d ~/dwm-6.2 ; then
+    version=6.2
+    if test ! -d ~/dwm-$version ; then
     cd || exit
-    curl -s -L https://dl.suckless.org/dwm/dwm-6.2.tar.gz | gunzip -c | tar xv
-    cd ~/dwm-6.2 || exit
+    curl -s -L https://dl.suckless.org/dwm/dwm-"$(version)".tar.gz | gunzip -c | tar xv
+    cd ~/dwm-"$(version)" || exit
     export DESTDIR="$HOME"
     make clean install
     fi
@@ -77,8 +79,9 @@ parse_git_branch_and_add_brackets(){
     fi
 
     # draft
+    version=v0.16.0
     if test ! -f ~/bin/draft ; then
-    curl -s -L --url https://azuredraft.blob.core.windows.net/draft/draft-v0.16.0-linux-amd64.tar.gz | gunzip | tar xv
+        curl -s -L --url https://azuredraft.blob.core.windows.net/draft/draft-"$(version)"-linux-amd64.tar.gz | gunzip | tar xv
     mv linux-amd64/draft ~/bin/draft ; rm -rf linux-amd64
     fi
 
@@ -95,8 +98,9 @@ parse_git_branch_and_add_brackets(){
     fi
 
     # helm
+    version=v2.15.2
     if test ! -f ~/bin/helm ; then
-    curl -s -L --url https://storage.googleapis.com/kubernetes-helm/helm-v2.15.2-linux-amd64.tar.gz | gunzip | tar xv
+        curl -s -L --url https://storage.googleapis.com/kubernetes-helm/helm-"$(version)"-linux-amd64.tar.gz | gunzip | tar xv
     mv linux-amd64/helm ~/bin/helm ; rm -rf linux-amd64
     helm plugin install https://github.com/futuresimple/helm-secrets
     helm plugin install https://github.com/databus23/helm-diff --version master
@@ -114,9 +118,10 @@ parse_git_branch_and_add_brackets(){
     fi
 
     # k9s
+    version=0.9.3
     if test ! -f ~/bin/k9s ; then
-    curl -s -L --url https://github.com/derailed/k9s/releases/download/0.9.3/k9s_0.9.3_Linux_x86_64.tar.gz | gunzip | tar xv
-    mv k9s ~/bin/k9s ; rm -f README.md LICENSE k9s_0.9.3_Linux_x86_64.tar
+        curl -s -L --url https://github.com/derailed/k9s/releases/download/$version/k9s_"$(version)"_Linux_x86_64.tar.gz | gunzip | tar xv
+        mv k9s ~/bin/k9s ; rm -f README.md LICENSE k9s_"$(version)"_Linux_x86_64.tar
     fi
 
     # kind
@@ -126,8 +131,9 @@ parse_git_branch_and_add_brackets(){
     fi
 
     # sops
+    version=3.4.0
     if test ! -f ~/bin/sops ; then
-    curl -s -L --url https://github.com/mozilla/sops/releases/download/3.4.0/sops-3.4.0.linux --output ~/bin/sops
+        curl -s -L --url https://github.com/mozilla/sops/releases/download/$verion/sops-"$(version)".linux --output ~/bin/sops
     fi
 
     # kpoof
@@ -168,9 +174,10 @@ parse_git_branch_and_add_brackets(){
         fi
 
         # vagrant
-        if test ! -f ~/Downloads/vagrant_2.2.5_x86_64.deb ; then
-        curl -s -L https://releases.hashicorp.com/vagrant/2.2.5/vagrant_2.2.5_x86_64.deb -o ~/Downloads/vagrant_2.2.5_x86_64.deb
-        sudo dpkg -i ~/Downloads/vagrant_2.2.5_x86_64.deb
+        version=2.2.5
+        if test ! -f ~/Downloads/vagrant_"$(version)"_x86_64.deb ; then
+            curl -s -L https://releases.hashicorp.com/vagrant/$version/vagrant_"$(version)"_x86_64.deb -o ~/Downloads/vagrant_"$(version)"_x86_64.deb
+            sudo dpkg -i ~/Downloads/vagrant_"$(version)"_x86_64.deb
         fi
 
         # zoom
@@ -485,11 +492,12 @@ ffmpeg -i /dev/video0 out.mkv
 }
 
 -minikube(){
+version=v1.15.0
 MEMORY=$(free -g | awk '{print $2}' | grep -v used | uniq)
 USEMEM=$(echo "$MEMORY-2" | bc)
 CPU=$(nproc)
 USECPU=$(echo "$CPU-1" | bc)
-minikube start --memory "$USEMEM"g --cpus "$USECPU" --kubernetes-version "v1.15.0"
+minikube start --memory "$USEMEM"g --cpus "$USECPU" --kubernetes-version "$(version)"
 }
 
 -kpeee(){
