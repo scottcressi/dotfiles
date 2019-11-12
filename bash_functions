@@ -144,8 +144,8 @@ parse_git_branch_and_add_brackets(){
     # rakkess
     version=v0.4.2
     if test ! -f ~/bin/rakkess ; then
-    curl -s -L --url https://github.com/corneliusweig/rakkess/releases/download/${version}/rakkess-linux-amd64.gz --output ~/bin/rakkess-linux-amd64.gz
-    gunzip ~/bin/rakkess-linux-amd64.gz ; mv ~/bin/rakkess-linux-amd64 ~/bin/rakkess
+    curl -s -L --url https://github.com/corneliusweig/rakkess/releases/download/${version}/rakkess-amd64-linux.tar.gz | gunzip | tar xv
+    mv rakkess-amd64-linux ~/bin/rakkess ; rm -f LICENSE
     fi
 
     # slack term
