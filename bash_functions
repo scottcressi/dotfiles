@@ -71,8 +71,9 @@ parse_git_branch_and_add_brackets(){
     fi
 
     # docker compose
+    version=1.24.1
     if test ! -f ~/bin/docker-compose ; then
-    curl -L https://github.com/docker/compose/releases/download/1.24.1/docker-compose-"$(uname -s)"-"$(uname -m)" -o ~/bin/docker-compose
+    curl -L https://github.com/docker/compose/releases/download/$version/docker-compose-"$(uname -s)"-"$(uname -m)" -o ~/bin/docker-compose
     fi
 
     # draft
@@ -82,13 +83,15 @@ parse_git_branch_and_add_brackets(){
     fi
 
     # minikube
+    version=v1.4.0
     if test ! -f ~/bin/minikube ; then
-    curl -s -L --url https://storage.googleapis.com/minikube/releases/v1.4.0/minikube-linux-amd64 --output ~/bin/minikube
+    curl -s -L --url https://storage.googleapis.com/minikube/releases/$version/minikube-linux-amd64 --output ~/bin/minikube
     fi
 
     # kops
+    version=1.14.0
     if test ! -f ~/bin/kops ; then
-    curl -s -L --url https://github.com/kubernetes/kops/releases/download/1.14.0/kops-linux-amd64 --output ~/bin/kops
+    curl -s -L --url https://github.com/kubernetes/kops/releases/download/$version/kops-linux-amd64 --output ~/bin/kops
     fi
 
     # helm
@@ -100,8 +103,9 @@ parse_git_branch_and_add_brackets(){
     fi
 
     # helmfile
+    version=v0.90.8
     if test ! -f ~/bin/helmfile ; then
-    curl -s -L --url https://github.com/roboll/helmfile/releases/download/v0.90.8/helmfile_linux_amd64 --output ~/bin/helmfile
+    curl -s -L --url https://github.com/roboll/helmfile/releases/download/$version/helmfile_linux_amd64 --output ~/bin/helmfile
     fi
 
     # kubectl
@@ -116,8 +120,9 @@ parse_git_branch_and_add_brackets(){
     fi
 
     # kind
+    version=v0.5.1
     if test ! -f ~/bin/kind ; then
-    curl -s -L --url https://github.com/kubernetes-sigs/kind/releases/download/v0.5.1/kind-linux-amd64 --output ~/bin/kind
+    curl -s -L --url https://github.com/kubernetes-sigs/kind/releases/download/$version/kind-linux-amd64 --output ~/bin/kind
     fi
 
     # sops
@@ -131,14 +136,16 @@ parse_git_branch_and_add_brackets(){
     fi
 
     # rakkess
+    version=v0.4.1
     if test ! -f ~/bin/rakkess ; then
-    curl -s -L --url https://github.com/corneliusweig/rakkess/releases/download/v0.4.1/rakkess-linux-amd64.gz --output ~/bin/rakkess-linux-amd64.gz
+    curl -s -L --url https://github.com/corneliusweig/rakkess/releases/download/$version/rakkess-linux-amd64.gz --output ~/bin/rakkess-linux-amd64.gz
     gunzip ~/bin/rakkess-linux-amd64.gz ; mv ~/bin/rakkess-linux-amd64 ~/bin/rakkess
     fi
 
     # slack term
+    version=v0.4.1
     if test ! -f ~/bin/slack-term ; then
-    curl -s -L --url https://github.com/erroneousboat/slack-term/releases/download/v0.4.1/slack-term-linux-amd64 --output ~/bin/slack-term
+    curl -s -L --url https://github.com/erroneousboat/slack-term/releases/download/$version/slack-term-linux-amd64 --output ~/bin/slack-term
     chmod 755 ~/bin/slack-term
     fi
 
@@ -268,6 +275,7 @@ dk(){
 }
 
 -kops-create(){
+    version=1.15.0
     aws route53 list-hosted-zones --query HostedZones[].Name[]
     echo
     echo enter domain, ex. foo.com:
@@ -281,7 +289,7 @@ dk(){
         --cloud aws  \
         --zones us-east-1a,us-east-1b \
         --node-size m5.xlarge \
-        --kubernetes-version 1.15.0
+        --kubernetes-version $version
     kops update \
         --state s3://"$(aws sts get-caller-identity --output text --query 'Account')"-kops-test \
         cluster \
