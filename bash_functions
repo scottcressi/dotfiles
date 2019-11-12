@@ -86,19 +86,19 @@ parse_git_branch_and_add_brackets(){
     fi
 
     # minikube
-    version=v1.4.0
+    version=v1.5.2
     if test ! -f ~/bin/minikube ; then
     curl -s -L --url https://storage.googleapis.com/minikube/releases/$version/minikube-linux-amd64 --output ~/bin/minikube
     fi
 
     # kops
-    version=1.14.0
+    version=1.14.1
     if test ! -f ~/bin/kops ; then
     curl -s -L --url https://github.com/kubernetes/kops/releases/download/$version/kops-linux-amd64 --output ~/bin/kops
     fi
 
     # helm
-    version=v2.15.2
+    version=v2.16.1
     if test ! -f ~/bin/helm ; then
         curl -s -L --url https://storage.googleapis.com/kubernetes-helm/helm-"$(version)"-linux-amd64.tar.gz | gunzip | tar xv
     mv linux-amd64/helm ~/bin/helm ; rm -rf linux-amd64
@@ -142,7 +142,7 @@ parse_git_branch_and_add_brackets(){
     fi
 
     # rakkess
-    version=v0.4.1
+    version=v0.4.2
     if test ! -f ~/bin/rakkess ; then
     curl -s -L --url https://github.com/corneliusweig/rakkess/releases/download/$version/rakkess-linux-amd64.gz --output ~/bin/rakkess-linux-amd64.gz
     gunzip ~/bin/rakkess-linux-amd64.gz ; mv ~/bin/rakkess-linux-amd64 ~/bin/rakkess
@@ -174,7 +174,7 @@ parse_git_branch_and_add_brackets(){
         fi
 
         # vagrant
-        version=2.2.5
+        version=2.2.6
         if test ! -f ~/Downloads/vagrant_"$(version)"_x86_64.deb ; then
             curl -s -L https://releases.hashicorp.com/vagrant/$version/vagrant_"$(version)"_x86_64.deb -o ~/Downloads/vagrant_"$(version)"_x86_64.deb
             sudo dpkg -i ~/Downloads/vagrant_"$(version)"_x86_64.deb
