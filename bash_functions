@@ -477,37 +477,37 @@ kl(){
 }
 
 -sudo(){
-echo "$(whoami) ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/"$(whoami)"
+    echo "$(whoami) ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/"$(whoami)"
 }
 
 -brightness(){
-brightness=$1
-if [ "$brightness" -gt 1 ] ; then
-    echo please enter 1 or less
-    brightness=1
-fi
-screenname=$(xrandr | grep " connected" | cut -f1 -d" ")
-xrandr --output "$screenname" --brightness "$brightness";
+    brightness=$1
+    if [ "$brightness" -gt 1 ] ; then
+        echo please enter 1 or less
+        brightness=1
+    fi
+    screenname=$(xrandr | grep " connected" | cut -f1 -d" ")
+    xrandr --output "$screenname" --brightness "$brightness";
 }
 
 -record-screen(){
-RESOLUTION=$(xrandr | grep "\\*" | awk '{print $1}')
-ffmpeg -f x11grab -s "$RESOLUTION" -i :0.0 out.mkv
+    RESOLUTION=$(xrandr | grep "\\*" | awk '{print $1}')
+    ffmpeg -f x11grab -s "$RESOLUTION" -i :0.0 out.mkv
 }
 
 -record-me(){
-ffmpeg -i /dev/video0 out.mkv
+    ffmpeg -i /dev/video0 out.mkv
 }
 
 -minikube(){
-version=v1.15.0
-MEMORY=$(cat /proc/meminfo | grep MemTotal | awk '{print $2}')
-USEMEM=$(echo "$MEMORY/1024/1024-2" | bc)
-CPU=$(nproc)
-USECPU=$(echo "$CPU-1" | bc)
-minikube start --memory "$USEMEM"g --cpus "$USECPU" --kubernetes-version "${version}"
+    version=v1.15.0
+    MEMORY=$(cat /proc/meminfo | grep MemTotal | awk '{print $2}')
+    USEMEM=$(echo "$MEMORY/1024/1024-2" | bc)
+    CPU=$(nproc)
+    USECPU=$(echo "$CPU-1" | bc)
+    minikube start --memory "$USEMEM"g --cpus "$USECPU" --kubernetes-version "${version}"
 }
 
 -kpeee(){
-kubectl get pods --all-namespaces -o wide --show-labels | awk '{print $11}'
+    kubectl get pods --all-namespaces -o wide --show-labels | awk '{print $11}'
 }
