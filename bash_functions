@@ -133,7 +133,7 @@ parse_git_branch_and_add_brackets(){
     # sops
     version=3.4.0
     if test ! -f ~/bin/sops ; then
-        curl -s -L --url https://github.com/mozilla/sops/releases/download/${version}/sops-"$(version)".linux --output ~/bin/sops
+        curl -s -L --url https://github.com/mozilla/sops/releases/download/${version}/sops-"${version}".linux --output ~/bin/sops
     fi
 
     # kpoof
