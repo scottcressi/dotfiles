@@ -6,6 +6,7 @@ ignore = [
     '.git',
     '.gitignore',
     'xinitrc',
+    'packages.txt',
     ]
 externals = {
     }
