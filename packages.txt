@@ -101,7 +101,6 @@ xfce4-terminal              terminal  terminal emulator
 xfishtank                   gui       fun
 xorg                        gui       graphics
 xterm                       terminal  terminal emulator
-xwallpaper                  gui       pictures
 yamllint                    terminal  lint
 zathura                     gui       document reader
 zathura-cb                  gui       document reader
