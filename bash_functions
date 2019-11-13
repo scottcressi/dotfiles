@@ -72,6 +72,14 @@ parse_git_branch_and_add_brackets(){
     make clean install
     fi
 
+    # dwm slstatus
+    if test ! -d "$HOME"/repos/personal/slstatus ; then
+    git clone git@github.com:drkhsh/slstatus.git "$HOME"/repos/personal/slstatus
+    cd "$HOME"/repos/personal/slstatus || exit
+    export DESTDIR="$HOME"
+    make clean install
+    fi
+
     # docker compose
     version=1.24.1
     if test ! -f ~/bin/docker-compose ; then
