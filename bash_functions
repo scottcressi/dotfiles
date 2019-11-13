@@ -74,7 +74,7 @@ parse_git_branch_and_add_brackets(){
 
     # dwm slstatus
     if test ! -d "$HOME"/repos/personal/slstatus ; then
-    git clone git@github.com:drkhsh/slstatus.git "$HOME"/repos/personal/slstatus
+    git clone https://github.com/drkhsh/slstatus.git "$HOME"/repos/personal/slstatus
     cd "$HOME"/repos/personal/slstatus || exit
     export DESTDIR="$HOME"
     make clean install
