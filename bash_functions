@@ -351,7 +351,7 @@ awsc(){
     export AWS_DEFAULT_PROFILE=$1
 }
 
--is-someone-using-my-webcam(){
+-is-webcam-on(){
     if [ "$(lsmod | grep ^uvcvideo | awk '{print $3}')" == "0" ] ; then
     echo no
     else
