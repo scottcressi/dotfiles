@@ -55,19 +55,19 @@ parse_git_branch_and_add_brackets(){
 
     # st
     version=0.8.2
-    if test ! -d ~/st-$version ; then
+    if test ! -d ~/st-${version} ; then
     cd || exit
-    curl -s -L https://dl.suckless.org/st/st-"$(version)".tar.gz | gunzip -c | tar xv
-    cd ~/st-$version || exit
+    curl -s -L https://dl.suckless.org/st/st-"${version}".tar.gz | gunzip -c | tar xv
+    cd ~/st-${version} || exit
     make clean install
     fi
 
     # dwm
     version=6.2
-    if test ! -d ~/dwm-$version ; then
+    if test ! -d ~/dwm-${version} ; then
     cd || exit
-    curl -s -L https://dl.suckless.org/dwm/dwm-"$(version)".tar.gz | gunzip -c | tar xv
-    cd ~/dwm-"$(version)" || exit
+    curl -s -L https://dl.suckless.org/dwm/dwm-"${version}".tar.gz | gunzip -c | tar xv
+    cd ~/dwm-"${version}" || exit
     export DESTDIR="$HOME"
     make clean install
     fi
@@ -75,7 +75,7 @@ parse_git_branch_and_add_brackets(){
     # docker compose
     version=1.24.1
     if test ! -f ~/bin/docker-compose ; then
-    curl -L https://github.com/docker/compose/releases/download/$version/docker-compose-"$(uname -s)"-"$(uname -m)" -o ~/bin/docker-compose
+    curl -L https://github.com/docker/compose/releases/download/${version}/docker-compose-"$(uname -s)"-"$(uname -m)" -o ~/bin/docker-compose
     fi
 
     # draft
@@ -88,13 +88,13 @@ parse_git_branch_and_add_brackets(){
     # minikube
     version=v1.5.2
     if test ! -f ~/bin/minikube ; then
-    curl -s -L --url https://storage.googleapis.com/minikube/releases/$version/minikube-linux-amd64 --output ~/bin/minikube
+    curl -s -L --url https://storage.googleapis.com/minikube/releases/${version}/minikube-linux-amd64 --output ~/bin/minikube
     fi
 
     # kops
     version=1.14.1
     if test ! -f ~/bin/kops ; then
-    curl -s -L --url https://github.com/kubernetes/kops/releases/download/$version/kops-linux-amd64 --output ~/bin/kops
+    curl -s -L --url https://github.com/kubernetes/kops/releases/download/${version}/kops-linux-amd64 --output ~/bin/kops
     fi
 
     # helm
@@ -296,7 +296,7 @@ dk(){
         --cloud aws  \
         --zones us-east-1a,us-east-1b \
         --node-size m5.xlarge \
-        --kubernetes-version $version
+        --kubernetes-version ${version}
     kops update \
         --state s3://"$(aws sts get-caller-identity --output text --query 'Account')"-kops-test \
         cluster \
@@ -497,7 +497,7 @@ MEMORY=$(free -g | awk '{print $2}' | grep -v used | uniq)
 USEMEM=$(echo "$MEMORY-2" | bc)
 CPU=$(nproc)
 USECPU=$(echo "$CPU-1" | bc)
-minikube start --memory "$USEMEM"g --cpus "$USECPU" --kubernetes-version "$(version)"
+minikube start --memory "$USEMEM"g --cpus "$USECPU" --kubernetes-version "${version}"
 }
 
 -kpeee(){
