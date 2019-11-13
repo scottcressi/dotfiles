@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
-
 parse_git_branch_and_add_brackets(){
     git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\ \[\1\]/'
 }
@@ -218,7 +216,7 @@ parse_git_branch_and_add_brackets(){
         echo
         echo "# installing packages"
         echo
-        awk '{print $1}' "$DIR"/packages.txt | xargs sudo apt-get install -y --quiet --quiet
+        awk '{print $1}' "$HOME"/repos/personal/dotfiles/packages.txt | xargs sudo apt-get install -y --quiet --quiet
 
         # not working
         ##zathura-pdf-mupdf
