@@ -73,9 +73,9 @@ parse_git_branch_and_add_brackets(){
     fi
 
     # dwm slstatus
-    if test ! -d "$HOME"/repos/personal/slstatus ; then
-    git clone https://git.suckless.org/slstatus "$HOME"/repos/personal/slstatus
-    cd "$HOME"/repos/personal/slstatus || exit
+    if test ! -d "$HOME"/slstatus ; then
+    git clone https://git.suckless.org/slstatus "$HOME"/slstatus
+    cd "$HOME"/slstatus || exit
     export DESTDIR="$HOME"
     make clean install
     fi
