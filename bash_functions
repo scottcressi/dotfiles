@@ -501,7 +501,7 @@ kl(){
 
 -minikube(){
     version=v1.15.0
-    MEMORY=$(cat /proc/meminfo | grep MemTotal | awk '{print $2}')
+    MEMORY=$(grep MemTotal /proc/meminfo | awk '{print $2}')
     USEMEM=$(echo "$MEMORY/1024/1024-2" | bc)
     CPU=$(nproc)
     USECPU=$(echo "$CPU-1" | bc)
