@@ -394,9 +394,13 @@ kl(){
 }
 
 -kind(){
-    kind create cluster
-    helm init
-    kubectl create clusterrolebinding add-on-cluster-admin --clusterrole=cluster-admin --serviceaccount=kube-system:default
+    if [ "$(systemctl show --property ActiveState docker)" == "ActiveState=active" ] ; then
+        kind create cluster
+        helm init
+        kubectl create clusterrolebinding add-on-cluster-admin --clusterrole=cluster-admin --serviceaccount=kube-system:default
+    else
+        echo please start docker
+    fi
 
 }
 
