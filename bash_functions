@@ -86,11 +86,10 @@ parse_git_branch_and_add_brackets(){
     curl -L https://github.com/docker/compose/releases/download/${version}/docker-compose-"$(uname -s)"-"$(uname -m)" -o ~/bin/docker-compose
     fi
 
-    # draft
-    version=v0.16.0
-    if test ! -f ~/bin/draft ; then
-        curl -s -L --url https://azuredraft.blob.core.windows.net/draft/draft-"${version}"-linux-amd64.tar.gz | gunzip | tar xv
-    mv linux-amd64/draft ~/bin/draft ; rm -rf linux-amd64
+    # skaffold
+    version=v1.0.1
+    if test ! -f ~/bin/skaffold ; then
+        curl -s -L --url https://github.com/GoogleContainerTools/skaffold/releases/download/${version}/skaffold-linux-amd64 --output ~/bin/skaffold
     fi
 
     # minikube
