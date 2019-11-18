@@ -395,8 +395,8 @@ kl(){
 
 -kind(){
     kind create cluster
-    KUBECONFIG="$(kind get kubeconfig-path)"
-    export KUBECONFIG
+    helm init
+    kubectl create clusterrolebinding add-on-cluster-admin --clusterrole=cluster-admin --serviceaccount=kube-system:default
 
 }
 
