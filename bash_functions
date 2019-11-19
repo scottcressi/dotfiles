@@ -137,11 +137,6 @@ parse_git_branch_and_add_brackets(){
         curl -s -L --url https://github.com/mozilla/sops/releases/download/${version}/sops-"${version}".linux --output ~/bin/sops
     fi
 
-    # kpoof
-    if test ! -d ~/bin/kpoof ; then
-    git clone https://github.com/farmotive/kpoof ~/bin/kpoof
-    fi
-
     # rakkess
     version=v0.4.2
     if test ! -f ~/bin/rakkess ; then
@@ -487,4 +482,14 @@ kl(){
 
 -kpeee(){
     kubectl get pods --all-namespaces -o wide --show-labels | awk '{print $11}'
+}
+
+-kforward(){
+    echo port:
+    read port
+    echo namespace:
+    read namespace
+    echo pod:
+    read pod
+    kubectl port-forward --address 0.0.0.0 --namespace $namespace pod/$pod $port:$port
 }
