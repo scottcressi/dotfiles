@@ -92,12 +92,6 @@ parse_git_branch_and_add_brackets(){
         curl -s -L --url https://github.com/GoogleContainerTools/skaffold/releases/download/${version}/skaffold-linux-amd64 --output ~/bin/skaffold
     fi
 
-    # minikube
-    version=v1.5.2
-    if test ! -f ~/bin/minikube ; then
-    curl -s -L --url https://storage.googleapis.com/minikube/releases/${version}/minikube-linux-amd64 --output ~/bin/minikube
-    fi
-
     # kops
     version=1.14.1
     if test ! -f ~/bin/kops ; then
@@ -180,24 +174,10 @@ parse_git_branch_and_add_brackets(){
         wget "https://download.mozilla.org/?product=firefox-latest&os=linux64&lang=en-US" -O - | bunzip2 | tar xv
         fi
 
-        # vagrant
-        version=2.2.6
-        if test ! -f ~/Downloads/vagrant_"${version}"_x86_64.deb ; then
-            curl -s -L https://releases.hashicorp.com/vagrant/${version}/vagrant_${version}_x86_64.deb -o ~/Downloads/vagrant_"${version}"_x86_64.deb
-            sudo dpkg -i ~/Downloads/vagrant_"${version}"_x86_64.deb
-        fi
-
         # zoom
         if test ! -f ~/Downloads/zoom_amd64.deb ; then
         curl -s -L https://zoom.us/client/latest/zoom_amd64.deb -o ~/Downloads/zoom_amd64.deb
         sudo dpkg -i ~/Downloads/zoom_amd64.deb
-        fi
-
-        # virtalbox
-        if ! grep -qF virtualbox /etc/apt/sources.list ; then
-        wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -
-        wget -q https://www.virtualbox.org/download/oracle_vbox.asc -O- | sudo apt-key add -
-        sudo add-apt-repository "deb http://download.virtualbox.org/virtualbox/debian bionic contrib"
         fi
 
         # docker
@@ -503,15 +483,6 @@ kl(){
 
 -record-me(){
     ffmpeg -i /dev/video0 out.mkv
-}
-
--minikube(){
-    version=v1.15.0
-    MEMORY=$(grep MemTotal /proc/meminfo | awk '{print $2}')
-    USEMEM=$(echo "$MEMORY/1024/1024-2" | bc)
-    CPU=$(nproc)
-    USECPU=$(echo "$CPU-1" | bc)
-    minikube start --memory "$USEMEM"g --cpus "$USECPU" --kubernetes-version "${version}"
 }
 
 -kpeee(){
