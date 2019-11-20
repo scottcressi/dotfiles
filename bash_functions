@@ -266,7 +266,7 @@ ds(){
     echo stop all containers? y/n
     read -r confirm
     if [ "$confirm" == "y" ] ; then
-        for i in $(docker ps | awk '{print $1}' | tail +2); do
+        for i in $(docker ps | awk '{print $1}' | grep -v CONTAINER); do
         docker stop "$i"
         done
     fi
@@ -277,7 +277,7 @@ dk(){
     echo kill all containers? y/n
     read -r confirm
     if [ "$confirm" == "y" ] ; then
-        for i in $(docker ps | awk '{print $1}' | tail +2); do
+        for i in $(docker ps | awk '{print $1}' | grep -v CONTAINER); do
         docker kill "$i"
         done
     fi
