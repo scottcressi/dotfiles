@@ -362,12 +362,9 @@ keksc(){
 }
 
 keksl(){
-    REGIONS=(us-east-1 us-west-2)
-    for i in "${REGIONS[@]}" ; do
-    echo "$i"
-    aws eks list-clusters --region "$i"
-    echo
-    done
+    echo region:
+    read -r region
+    aws eks list-clusters --region "$region"
 
 }
 
@@ -515,10 +512,10 @@ keksl(){
 
 -kforward(){
     echo port:
-    read port
+    read -r port
     echo namespace:
-    read namespace
+    read -r namespace
     echo pod:
-    read pod
-    kubectl port-forward --address 0.0.0.0 --namespace $namespace pod/$pod $port:$port
+    read -r pod
+    kubectl port-forward --address 0.0.0.0 --namespace "$namespace" pod/"$pod" "$port":"$port"
 }
