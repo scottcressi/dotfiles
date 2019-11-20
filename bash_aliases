@@ -119,7 +119,8 @@ alias kse='kubectl get svc --all-namespaces -o wide'
 alias ksee='kubectl get svc --all-namespaces -o wide --show-labels'
 alias ksm='kubectl get servicemonitors --all-namespaces'
 alias ktest='kubectl run -it foo --image=centos --restart=Never -- /bin/bash'
-alias kx='kubectx'
+alias kl='kubectl config get-contexts'
+alias kc='kubectl config use-context'
 
 # terraform
 alias tp='rm -rf .terragrunt-cache ; terragrunt plan --terragrunt-source ../../../../../../terraform-modules/modules/networking/ '

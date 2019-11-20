@@ -354,14 +354,14 @@ awsc(){
 
 }
 
-kc(){
+keksc(){
     if [ -z "$1" ] ; then echo enter region ; fi
     if [ -z "$2" ] ; then echo enter cluster ; fi
     aws eks update-kubeconfig --region "$1" --name "$2"
 
 }
 
-kl(){
+keksl(){
     REGIONS=(us-east-1 us-west-2)
     for i in "${REGIONS[@]}" ; do
     echo "$i"
