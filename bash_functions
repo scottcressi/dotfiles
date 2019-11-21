@@ -215,20 +215,16 @@ parse_git_branch_and_add_brackets(){
 
         # backports for fzf
         if ! grep -qF backports /etc/apt/sources.list.d/stretch-backports.list ; then
-        echo 'deb http://http.$OS.net/$OS stretch-backports main contrib non-free' | sudo tee /etc/apt/sources.list.d/stretch-backports.list > /dev/null
+        echo "deb http://http.$OS.net/$OS stretch-backports main contrib non-free" | sudo tee /etc/apt/sources.list.d/stretch-backports.list > /dev/null
         sudo apt-key adv --recv-key 8B48AD6246925553 && sudo apt-key adv --recv-key 7638D0442B90D010
         fi
 
         # update
-        echo
         echo "# updating repos"
-        echo
         sudo apt-get update --quiet --quiet
 
         # packages
-        echo
         echo "# installing packages"
-        echo
         awk '{print $1}' "$HOME"/repos/personal/dotfiles/packages.txt | xargs sudo apt-get install -y --quiet --quiet
 
         # not working
@@ -236,9 +232,7 @@ parse_git_branch_and_add_brackets(){
 
     fi
 
-    echo
     echo "# installing python packages"
-    echo
 
     # python
     python3 -m venv ~/python
