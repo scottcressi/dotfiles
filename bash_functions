@@ -168,6 +168,17 @@ parse_git_branch_and_add_brackets(){
 
     # debian
     if [ -f /etc/debian_version ] ; then
+        echo debian based
+
+        if grep ID=ubuntu /etc/os-release ; then
+        echo actually ubuntu
+        OS=ubuntu
+        fi
+
+        if grep ID=debian /etc/os-release ; then
+        echo actually debian
+        OS=debian
+        fi
 
         # firefox
         if test ! -d ~/firefox ; then
@@ -192,19 +203,19 @@ parse_git_branch_and_add_brackets(){
         if ! grep -qF virtualbox /etc/apt/sources.list ; then
         wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -
         wget -q https://www.virtualbox.org/download/oracle_vbox.asc -O- | sudo apt-key add -
-        sudo add-apt-repository "deb http://download.virtualbox.org/virtualbox/debian bionic contrib"
+        sudo add-apt-repository "deb http://download.virtualbox.org/virtualbox/$OS bionic contrib"
         fi
 
         # docker
         if ! grep -qF docker /etc/apt/sources.list ; then
-        curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
+        curl -fsSL https://download.docker.com/linux/$OS/gpg | sudo apt-key add -
         sudo apt-key fingerprint 0EBFCD88
-        sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable"
+        sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/$OS $(lsb_release -cs) stable"
         fi
 
         # backports for fzf
         if ! grep -qF backports /etc/apt/sources.list.d/stretch-backports.list ; then
-        echo 'deb http://http.debian.net/debian stretch-backports main contrib non-free' | sudo tee /etc/apt/sources.list.d/stretch-backports.list > /dev/null
+        echo 'deb http://http.$OS.net/$OS stretch-backports main contrib non-free' | sudo tee /etc/apt/sources.list.d/stretch-backports.list > /dev/null
         sudo apt-key adv --recv-key 8B48AD6246925553 && sudo apt-key adv --recv-key 7638D0442B90D010
         fi
 
