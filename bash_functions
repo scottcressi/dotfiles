@@ -83,7 +83,7 @@ parse_git_branch_and_add_brackets(){
     # docker compose
     version=1.24.1
     if test ! -f ~/bin/docker-compose ; then
-    curl -L https://github.com/docker/compose/releases/download/${version}/docker-compose-"$(uname -s)"-"$(uname -m)" -o ~/bin/docker-compose
+    curl -s -L https://github.com/docker/compose/releases/download/${version}/docker-compose-"$(uname -s)"-"$(uname -m)" -o ~/bin/docker-compose
     fi
 
     # skaffold
@@ -154,13 +154,11 @@ parse_git_branch_and_add_brackets(){
     version=v0.4.1
     if test ! -f ~/bin/slack-term ; then
     curl -s -L --url https://github.com/erroneousboat/slack-term/releases/download/${version}/slack-term-linux-amd64 --output ~/bin/slack-term
-    chmod 755 ~/bin/slack-term
     fi
 
     # translate
     if test ! -f ~/bin/trans ; then
     curl -s -L git.io/trans -o ~/bin/trans
-    chmod 755 ~/bin/trans
     fi
 
     # permissions
