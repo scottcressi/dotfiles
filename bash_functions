@@ -516,11 +516,11 @@ keksl(){
 }
 
 -kforward(){
-    echo port:
-    read -r port
-    echo namespace:
-    read -r namespace
     echo pod:
     read -r pod
+    namespace=$(kubectl get pod --all-namespaces | grep "$pod" | awk '{print $1}')
+    echo "$namespace"
+    port=$(kubectl get pods -n "$namespace" "$pod" --template='{{(index (index .spec.containers 0).ports 0).containerPort}}{{"\n"}}')
+    echo "$port"
     kubectl port-forward --address 0.0.0.0 --namespace "$namespace" pod/"$pod" "$port":"$port"
 }
