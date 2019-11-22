@@ -166,6 +166,12 @@ parse_git_branch_and_add_brackets(){
     # permissions
     chmod 755 ~/bin/*
 
+    # firefox
+    if test ! -d ~/firefox ; then
+    cd || exit
+    wget "https://download.mozilla.org/?product=firefox-latest&os=linux64&lang=en-US" -O - | bunzip2 | tar xv
+    fi
+
     # debian
     if [ -f /etc/debian_version ] ; then
         echo debian based
@@ -178,12 +184,6 @@ parse_git_branch_and_add_brackets(){
         if grep ID=debian /etc/os-release ; then
         echo actually debian
         OS=debian
-        fi
-
-        # firefox
-        if test ! -d ~/firefox ; then
-        cd || exit
-        wget "https://download.mozilla.org/?product=firefox-latest&os=linux64&lang=en-US" -O - | bunzip2 | tar xv
         fi
 
         # vagrant
