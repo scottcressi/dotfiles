@@ -75,6 +75,7 @@ screenkey                   gui
 scrot                       terminal  screenshot
 shellcheck                  terminal  lint
 sshfs                       terminal  mounting
+s-tui
 suckless-tools              terminal  terminal
 surf                        gui       browser
 sxiv                        gui       pictures
