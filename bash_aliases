@@ -39,7 +39,6 @@ alias xterm='xterm -bg black -fg white'
 
 # misc
 alias am="alsamixer"
-alias da="date +'%l:%M %A %m/%d/%y'"
 alias fz='vim $(fzf)'
 alias ff='firefox & disown ; exit'
 alias firefox='~/firefox/firefox -ProfileManager'
@@ -48,7 +47,7 @@ alias get='sudo apt-get install'
 alias gip='curl -s ipinfo.io'
 alias pp='ps axuf'
 alias pia='curl privateinternetaccess.com -L -s | grep topbar__item | grep protected | sed "s/.*\">//g" | sed "s/<.*//g"'
-alias pw='pwgen 32 1 --capitalize --numerals --symbols  --ambiguous'
+alias pw='pwgen 32 1 --no-capitalize --no-numerals --ambiguous'
 alias search='apt-cache search'
 alias sk='screenkey'
 alias skk='pkill screenkey'
@@ -123,8 +122,8 @@ alias kl='kubectl config get-contexts'
 alias kc='kubectl config use-context'
 
 # terraform
-alias tp='rm -rf .terragrunt-cache ; terragrunt plan --terragrunt-source ../../../../../../terraform-modules/modules/networking/ '
-alias ta='terragrunt apply --terragrunt-source-update '
+alias tfp='rm -rf .terragrunt-cache ; terragrunt plan --terragrunt-source ../../../../../../terraform-modules/modules/networking/ '
+alias tfa='terragrunt apply --terragrunt-source-update '
 
 # docker
 alias di='docker images'
