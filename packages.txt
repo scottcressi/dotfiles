@@ -13,6 +13,7 @@ cmatrix                     terminal  fun
 cmus                        terminal  music
 cowsay                      terminal  fun
 curl                        terminal  file transfer
+ddgr                        terminal  browser
 dnsutils                    terminal  stats
 docker-ce                   terminal  virtualization
 dstat                       terminal  stats

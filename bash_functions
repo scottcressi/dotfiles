@@ -239,14 +239,12 @@ parse_git_branch_and_add_brackets(){
     yes | pip3 install --upgrade \
     awscli \
     bpython \
-    ddgr \
     doge \
     dotfiles \
     flake8 \
     ipython \
     modernize \
     s-tui \
-    sphinxcontrib-shellcheck \
     socli \
     speedtest-cli \
     youtube-dl \
@@ -265,7 +263,7 @@ parse_git_branch_and_add_brackets(){
     kubectl patch pod -n "$NAMESPACE" "$POD" -p '{"metadata":{"finalizers":null}}'
 }
 
-ds(){
+-ds(){
     echo stop all containers? y/n
     read -r confirm
     if [ "$confirm" == "y" ] ; then
@@ -273,10 +271,9 @@ ds(){
         docker stop "$i"
         done
     fi
-
 }
 
-dk(){
+-dk(){
     echo kill all containers? y/n
     read -r confirm
     if [ "$confirm" == "y" ] ; then
@@ -343,7 +340,7 @@ dk(){
     aws acm list-certificates --region us-east-1
 }
 
-awsc(){
+-awsc(){
     if [ -z "$1" ] ; then echo enter profile ; echo ; grep "\\[" ~/.aws/credentials ; fi
     export AWS_DEFAULT_PROFILE=$1
 }
@@ -357,14 +354,14 @@ awsc(){
 
 }
 
-keksc(){
+-keksc(){
     if [ -z "$1" ] ; then echo enter region ; fi
     if [ -z "$2" ] ; then echo enter cluster ; fi
     aws eks update-kubeconfig --region "$1" --name "$2"
 
 }
 
-keksl(){
+-keksl(){
     echo region:
     read -r region
     aws eks list-clusters --region "$region"
@@ -403,7 +400,7 @@ keksl(){
 }
 
 -dogecoin(){
-    DOGE="$(find ~/python/lib/python3.7/site-packages/doge/static/ -type f -exec basename {} ';' | sort -R  | head -1 )"
+    DOGE="$(find ~/python/lib/python*/site-packages/doge/static/ -type f -exec basename {} ';' | sort -R  | head -1 )"
     doge --shibe "$DOGE"
 
 }
