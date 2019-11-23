@@ -177,7 +177,6 @@ parse_git_branch_and_add_brackets(){
 
     # debian
     if [ -f /etc/debian_version ] ; then
-        echo
 
         echo debian based
 
@@ -190,8 +189,6 @@ parse_git_branch_and_add_brackets(){
         echo actually debian
         OS=debian
         fi
-
-        echo
 
         # vagrant
         version=2.2.6
@@ -490,10 +487,11 @@ parse_git_branch_and_add_brackets(){
 }
 
 -brightness(){
-    brightness=$1
-    if [ "$brightness" -gt 1 ] ; then
+    if (( $(echo "$1 > 1" | bc -l) )); then
         echo please enter 1 or less
         brightness=1
+    else
+        brightness=$1
     fi
     screenname=$(xrandr | grep " connected" | cut -f1 -d" ")
     xrandr --output "$screenname" --brightness "$brightness";
