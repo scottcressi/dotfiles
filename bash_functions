@@ -38,19 +38,24 @@ parse_git_branch_and_add_brackets(){
 
 -packages(){
 
-    # download dir
+    # downloads
     if test ! -d ~/Downloads ; then
     mkdir ~/Downloads
     fi
 
-    # bin dir
+    # bin
     if test ! -d ~/bin/ ; then
     mkdir ~/bin
     fi
 
-    # wallpaper dir
+    # wallpaper
     if test ! -d ~/wallpapers/ ; then
     mkdir ~/wallpapers
+    fi
+
+    # newsboat
+    if test ! -d ~/.newsboat/ ; then
+    mkdir ~/.newsboat
     fi
 
     # st
