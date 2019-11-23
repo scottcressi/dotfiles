@@ -140,4 +140,4 @@ alias tm='transmission-remote -l'
 alias tmm='transmission-remote-cli'
 
 # aws
-alias at='aws s3 ls'
+alias awst='aws s3 ls'
