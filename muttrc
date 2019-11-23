@@ -14,5 +14,9 @@ folder-hook . "push \eV"
 set collapse_unread=yes
 set uncollapse_jump=yes
 
-source ~/.mutt/muttpass
-source ~/.mutt/muttemail
+#set realname = "John Smith"
+#set from = "johnsmith@gmail.com"
+#set smtp_url = "smtps://johnsmith@gmail.com@smtp.gmail.com:465/"
+#set imap_user = "johnsmith@gmail.com"
+#set imap_pass = ""
+#set smtp_pass = ""
