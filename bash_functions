@@ -172,6 +172,8 @@ parse_git_branch_and_add_brackets(){
 
     # debian
     if [ -f /etc/debian_version ] ; then
+        echo
+
         echo debian based
 
         if grep ID=ubuntu /etc/os-release ; then
@@ -183,6 +185,8 @@ parse_git_branch_and_add_brackets(){
         echo actually debian
         OS=debian
         fi
+
+        echo
 
         # vagrant
         version=2.2.6
@@ -219,7 +223,9 @@ parse_git_branch_and_add_brackets(){
 
         # update
         echo "# updating repos"
+        if [ -z "$(find /var/cache/apt/pkgcache.bin -mmin -1440)" ]; then
         sudo apt-get update --quiet --quiet
+        fi
 
         # packages
         echo "# installing packages"
@@ -230,8 +236,9 @@ parse_git_branch_and_add_brackets(){
 
     fi
 
-    echo "# installing python packages"
+}
 
+-packages-python(){
     # python
     python3 -m venv ~/python
     # shellcheck source=/dev/null
