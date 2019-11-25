@@ -247,6 +247,7 @@ parse_git_branch_and_add_brackets(){
     source ~/python/bin/activate
     yes | pip3 install --upgrade \
     awscli \
+    botocore==1.12.240 \
     bpython \
     doge \
     dotfiles \
