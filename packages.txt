@@ -95,7 +95,6 @@ virtualbox-6.0              terminal  virtualization
 weather-util                terminal  weather
 wget                        terminal  file transfer
 whois                       terminal  stats
-wicd                        gui       network
 xautolock                   gui       lock
 xboard                      gui       game
 xcowsay                     gui       fun
