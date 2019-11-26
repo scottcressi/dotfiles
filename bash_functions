@@ -514,6 +514,8 @@ parse_git_branch_and_add_brackets(){
     CPU=$(nproc)
     USECPU=$(echo "$CPU-1" | bc)
     minikube start --memory "$USEMEM"g --cpus "$USECPU" --kubernetes-version "${version}"
+    helm init
+    kubectl create clusterrolebinding add-on-cluster-admin --clusterrole=cluster-admin --serviceaccount=kube-system:default
 }
 
 -kpeee(){
