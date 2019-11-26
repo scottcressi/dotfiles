@@ -255,6 +255,7 @@ parse_git_branch_and_add_brackets(){
     ipython \
     modernize \
     socli \
+    s-tui \
     speedtest-cli \
     youtube-dl \
     --quiet
