@@ -83,6 +83,7 @@ parse_git_branch_and_add_brackets(){
     cd "$HOME"/slstatus || exit
     export DESTDIR="$HOME"
     make clean install
+    ./slstatus & disown ; exit
     fi
 
     # docker compose
@@ -374,12 +375,6 @@ parse_git_branch_and_add_brackets(){
     echo region:
     read -r region
     aws eks list-clusters --region "$region"
-
-}
-
--dwmscript(){
-    pgrep -u "$USER" -a | grep dwm | grep -v grep | awk '{print $1}' | xargs kill
-    find ~/ -name dwm.sh -print0 | xargs bash &
 
 }
 
