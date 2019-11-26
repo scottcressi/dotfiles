@@ -172,7 +172,7 @@ parse_git_branch_and_add_brackets(){
     # firefox
     if test ! -d ~/firefox ; then
     cd || exit
-    wget "https://download.mozilla.org/?product=firefox-latest&os=linux64&lang=en-US" -O - | bunzip2 | tar xv
+    wget --quiet "https://download.mozilla.org/?product=firefox-latest&os=linux64&lang=en-US" -O - | bunzip2 | tar xv
     fi
 
     # debian
