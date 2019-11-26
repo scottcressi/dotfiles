@@ -83,7 +83,6 @@ parse_git_branch_and_add_brackets(){
     cd "$HOME"/slstatus || exit
     export DESTDIR="$HOME"
     make clean install
-    ./slstatus & disown ; exit
     fi
 
     # docker compose
