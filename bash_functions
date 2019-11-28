@@ -301,26 +301,28 @@ parse_git_branch_and_add_brackets(){
     read -r domain
     echo enter cluster name, ex. asdf:
     read -r name
+    echo create cluster "$name"."$domain"? y/n
+    read -r confirm
+    if [ "$confirm" == "y" ] ; then
     kops create cluster \
-        --node-count 1 \
+        --node-count 3 \
         --name "$name"."$domain" \
         --state s3://"$(aws sts get-caller-identity --output text --query 'Account')"-kops-test \
         --cloud aws  \
         --zones us-east-1a,us-east-1b \
-        --node-size m5.xlarge \
+        --node-size m5.2xlarge \
         --kubernetes-version ${version}
     kops update \
         --state s3://"$(aws sts get-caller-identity --output text --query 'Account')"-kops-test \
         cluster \
         --name "$name"."$domain"\
         --yes
+    fi
 }
 
 -kops-get(){
     kops get cluster \
-        --state s3://"$(aws sts get-caller-identity \
-        --output text \
-        --query 'Account')"-kops-test
+        --state s3://"$(aws sts get-caller-identity --output text --query 'Account')"-kops-test
 }
 
 -kops-delete(){
