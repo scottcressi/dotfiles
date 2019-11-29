@@ -526,5 +526,5 @@ parse_git_branch_and_add_brackets(){
     echo "$namespace"
     port=$(kubectl get pods -n "$namespace" "$pod" --template='{{(index (index .spec.containers 0).ports 0).containerPort}}{{"\n"}}')
     echo "$port"
-    kubectl port-forward --address 0.0.0.0 --namespace "$namespace" pod/"$pod" "$port":"$port"
+    kubectl port-forward --address 0.0.0.0 --namespace "$namespace" pod/"$pod" 12345:"$port"
 }
