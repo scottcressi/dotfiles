@@ -305,12 +305,12 @@ parse_git_branch_and_add_brackets(){
     read -r confirm
     if [ "$confirm" == "y" ] ; then
     kops create cluster \
-        --node-count 5 \
+        --node-count 4 \
         --name "$name"."$domain" \
         --state s3://"$(aws sts get-caller-identity --output text --query 'Account')"-kops-test \
         --cloud aws  \
         --zones us-east-1a,us-east-1b \
-        --node-size m5.4xlarge \
+        --node-size m5.xlarge \
         --kubernetes-version ${version}
     kops update \
         --state s3://"$(aws sts get-caller-identity --output text --query 'Account')"-kops-test \
