@@ -110,7 +110,7 @@ parse_git_branch_and_add_brackets(){
     fi
 
     # helm
-    version=v2.16.1
+    version=v2.16.2
     if test ! -f ~/bin/helm ; then
         curl -s -L --url https://storage.googleapis.com/kubernetes-helm/helm-"${version}"-linux-amd64.tar.gz | gunzip | tar xv
     mv linux-amd64/helm ~/bin/helm ; rm -rf linux-amd64
