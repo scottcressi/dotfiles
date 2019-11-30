@@ -119,7 +119,7 @@ parse_git_branch_and_add_brackets(){
     fi
 
     # helmfile
-    version=v0.90.8
+    version=v0.94.0
     if test ! -f ~/bin/helmfile ; then
     curl -s -L --url https://github.com/roboll/helmfile/releases/download/${version}/helmfile_linux_amd64 --output ~/bin/helmfile
     fi
@@ -294,7 +294,6 @@ parse_git_branch_and_add_brackets(){
 }
 
 -kops-create(){
-    version=1.15.0
     aws route53 list-hosted-zones --query HostedZones[].Name[]
     echo
     echo enter domain, ex. foo.com:
@@ -310,8 +309,7 @@ parse_git_branch_and_add_brackets(){
         --state s3://"$(aws sts get-caller-identity --output text --query 'Account')"-kops-test \
         --cloud aws  \
         --zones us-east-1a,us-east-1b \
-        --node-size m5.xlarge \
-        --kubernetes-version ${version}
+        --node-size m5.xlarge
     kops update \
         --state s3://"$(aws sts get-caller-identity --output text --query 'Account')"-kops-test \
         cluster \
@@ -505,12 +503,11 @@ parse_git_branch_and_add_brackets(){
 }
 
 -minikube(){
-    version=v1.15.0
     MEMORY=$(grep MemTotal /proc/meminfo | awk '{print $2}')
     USEMEM=$(echo "$MEMORY/1024/1024-2" | bc)
     CPU=$(nproc)
     USECPU=$(echo "$CPU-1" | bc)
-    minikube start --memory "$USEMEM"g --cpus "$USECPU" --kubernetes-version "${version}"
+    minikube start --memory "$USEMEM"g --cpus "$USECPU"
     helm init
     kubectl create clusterrolebinding add-on-cluster-admin --clusterrole=cluster-admin --serviceaccount=kube-system:default
 }
