@@ -9,6 +9,7 @@ bc                          terminal  calculator
 bombardier                  terminal  game
 bsdgames                    terminal  game
 cataclysm-dda-curses        terminal  game
+chafa                       terminal  converter images to text
 cifs-utils                  terminal  mounting
 cmatrix                     terminal  fun
 cmus                        terminal  music
