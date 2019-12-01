@@ -1,8 +1,6 @@
-abiword                     gui       document reader
 acpi                        terminal  power
 arandr                      gui       resolution
 aspell                      terminal  spelling
-atril                       gui       document reader
 bash-completion             terminal  completion
 bastet                      terminal  game
 bb                          terminal  fun
@@ -61,6 +59,7 @@ oneko                       terminal  fun
 openssh-client              terminal  file transfer
 p7zip                       terminal
 pacman4console              terminal  game
+pandoc                      terminal  converter txt to docx
 pi                          terminal  fun
 pkg-config                  prereq    suckless
 pulseaudio                  prereq    firefox
