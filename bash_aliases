@@ -28,8 +28,10 @@ alias dd='dd status="progress"'
 alias df='df -h'
 alias dstat='dstat -c --top-cpu -dn --top-mem'
 alias feh='feh --randomize --bg-max ~/wallpapers/'
+alias firefox='~/firefox/firefox -ProfileManager'
 alias grep='grep --color=auto'
 alias ls='ls --color=auto'
+alias maim='maim -s ~/screenshot-$(date "+%Y-%m-%d-%H:%M:%S").png'
 alias mpv='mpv --ytdl-format="bestvideo[height<=?360]+bestaudio/best"'
 alias mv="mv -i"
 alias rm="rm -i"
@@ -41,7 +43,6 @@ alias xterm='xterm -bg black -fg white'
 alias am="alsamixer"
 alias fz='vim $(fzf)'
 alias ff='firefox & disown ; exit'
-alias firefox='~/firefox/firefox -ProfileManager'
 alias gg='cd ~/repos'
 alias get='sudo apt-get install'
 alias gip='curl -s ipinfo.io'
