@@ -56,7 +56,6 @@ moon-buggy                  terminal  game
 mpc                         terminal  music client
 mpd                         terminal  music server
 mpv                         gui       video
-mupdf                       gui       document reader
 mutt                        terminal  mail
 ncmpcpp                     terminal  music client
 neofetch                    terminal  stats
