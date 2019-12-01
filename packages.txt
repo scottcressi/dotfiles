@@ -15,7 +15,6 @@ ddgr                        terminal  browser
 dnsutils                    terminal  stats
 docker-ce                   terminal  virtualization
 dstat                       terminal  stats
-eboard                      gui       game
 espeak                      terminal  speech
 feh                         gui       pictures
 gawk                        prereq    trans
@@ -94,7 +93,6 @@ weather-util                terminal  weather
 wget                        terminal  file transfer
 whois                       terminal  stats
 xautolock                   gui       lock
-xboard                      gui       game
 xcowsay                     gui       fun
 xfce4-terminal              terminal  terminal emulator
 xfishtank                   gui       fun
