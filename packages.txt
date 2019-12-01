@@ -74,7 +74,6 @@ scrot                       terminal  screenshot
 shellcheck                  terminal  lint
 sshfs                       terminal  mounting
 suckless-tools              terminal  terminal
-surf                        gui       browser
 sxiv                        gui       pictures
 thefuck                     terminal  spelling
 tig                         terminal  source control
@@ -93,9 +92,7 @@ weather-util                terminal  weather
 wget                        terminal  file transfer
 whois                       terminal  stats
 xautolock                   gui       lock
-xcowsay                     gui       fun
 xfce4-terminal              terminal  terminal emulator
-xfishtank                   gui       fun
 xorg                        gui       graphics
 yamllint                    terminal  lint
 zathura                     gui       document reader
