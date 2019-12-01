@@ -54,8 +54,7 @@ alias skk='pkill screenkey'
 alias testssl='docker run -ti drwetter/testssl.sh'
 alias vpn='curl privateinternetaccess.com -L -s | grep topbar__item | grep protected | sed "s/.*\">//g" | sed "s/<.*//g"'
 alias weather='weather $(curl -s ipinfo.io | jq .postal -r)'
-alias ww='curl http://wttr.in/nyc'
-alias www='curl http://wttr.in/nyc?format=4'
+alias ww='curl http://wttr.in/'
 
 # git
 alias ga='git add --all'
