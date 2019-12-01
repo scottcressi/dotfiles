@@ -1,25 +1,32 @@
 acpi                        terminal  power
+angband                     terminal  game
 arandr                      gui       resolution
 aspell                      terminal  spelling
 bash-completion             terminal  completion
 bastet                      terminal  game
 bb                          terminal  fun
 bc                          terminal  calculator
+bombardier                  terminal  game
 bsdgames                    terminal  game
+cataclysm-dda-curses        terminal  game
 cifs-utils                  terminal  mounting
 cmatrix                     terminal  fun
 cmus                        terminal  music
 cowsay                      terminal  fun
 curl                        terminal  file transfer
+curseofwar                  terminal  game
 ddgr                        terminal  browser
 dnsutils                    terminal  stats
 docker-ce                   terminal  virtualization
 dstat                       terminal  stats
+dwarf-fortress              terminal  game
+empire                      terminal  game
 espeak                      terminal  speech
 feh                         gui       pictures
 gawk                        prereq    trans
 gcc                         terminal  compiler
 git                         terminal  sourcecontrol
+gnuchess                    terminal  game
 greed                       terminal  game
 htop                        terminal  stats
 iftop                       terminal  stats
@@ -49,11 +56,14 @@ mutt                        terminal  mail
 ncmpcpp                     terminal  music
 neofetch                    terminal  stats
 netcat                      terminal  stats
+nethack-console             terminal  game
 nethogs                     terminal  stats
+nettoe                      terminal  game
 newsbeuter                  terminal  rss
 ninvaders                   terminal  game
 nmap                        terminal  stats
 nsnake                      terminal  game
+nudoku                      terminal  game
 oneko                       terminal  fun
 openssh-client              terminal  file transfer
 p7zip                       terminal
@@ -67,6 +77,7 @@ python3                     terminal  language
 python3-pip                 terminal  language
 python3-venv                terminal  language
 rig                         terminal
+robotfindskitten            terminal  game
 rsync                       terminal  file transfer
 rtorrent                    terminal  file transfer
 screenkey                   gui
@@ -95,5 +106,6 @@ xautolock                   gui       lock
 xfce4-terminal              terminal  terminal emulator
 xorg                        gui       graphics
 yamllint                    terminal  lint
+zangband                    terminal  game
 zathura                     gui       document reader
 zathura-cb                  gui       document reader
