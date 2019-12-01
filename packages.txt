@@ -85,7 +85,6 @@ robotfindskitten            terminal  game
 rsync                       terminal  file transfer
 rtorrent                    terminal  file transfer
 screenkey                   gui
-scrot                       terminal  screenshot
 shellcheck                  terminal  lint
 sshfs                       terminal  mounting
 suckless-tools              terminal  terminal
