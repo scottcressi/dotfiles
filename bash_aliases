@@ -31,7 +31,7 @@ alias feh='feh --randomize --bg-max ~/wallpapers/'
 alias firefox='~/firefox/firefox -ProfileManager'
 alias grep='grep --color=auto'
 alias ls='ls --color=auto'
-alias maim='maim -s ~/screenshot-$(date "+%Y-%m-%d-%H:%M:%S").png'
+alias maim='maim -s ~/screenshot-$(date "+%Y-%m-%d-%H-%M-%S").png'
 alias mpv='mpv --ytdl-format="bestvideo[height<=?360]+bestaudio/best"'
 alias mv="mv -i"
 alias rm="rm -i"
