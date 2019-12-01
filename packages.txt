@@ -12,7 +12,7 @@ cataclysm-dda-curses        terminal  game
 chafa                       terminal  converter images to text
 cifs-utils                  terminal  mounting
 cmatrix                     terminal  fun
-cmus                        terminal  music
+cmus                        terminal  music client
 cowsay                      terminal  fun
 curl                        terminal  file transfer
 curseofwar                  terminal  game
@@ -24,6 +24,7 @@ dwarf-fortress              terminal  game
 empire                      terminal  game
 espeak                      terminal  speech
 feh                         gui       pictures
+ffmpeg                      terminal  video
 gawk                        prereq    trans
 gcc                         terminal  compiler
 git                         terminal  sourcecontrol
@@ -49,13 +50,15 @@ links2                      terminal  browser
 lolcat                      terminal  fun
 lsof                        terminal  stats
 lynx                        terminal  browser
+maim                        terminal  screenshot
 make                        terminal  compiler
-mdp                         terminal  music
 moon-buggy                  terminal  game
+mpc                         terminal  music client
+mpd                         terminal  music server
 mpv                         gui       video
 mupdf                       gui       document reader
 mutt                        terminal  mail
-ncmpcpp                     terminal  music
+ncmpcpp                     terminal  music client
 neofetch                    terminal  stats
 netcat                      terminal  stats
 nethack-console             terminal  game
@@ -78,6 +81,7 @@ pwgen                       terminal  passwords
 python3                     terminal  language
 python3-pip                 terminal  language
 python3-venv                terminal  language
+ranger                      terminal  file manager
 rig                         terminal
 robotfindskitten            terminal  game
 rsync                       terminal  file transfer
@@ -111,3 +115,4 @@ yamllint                    terminal  lint
 zangband                    terminal  game
 zathura                     gui       document reader
 zathura-cb                  gui       document reader
+zathura-pdf-poppler         gui       document reader
