@@ -48,6 +48,7 @@ libxinerama-dev             prereq    suckless
 links2                      terminal  browser
 lolcat                      terminal  fun
 lsof                        terminal  stats
+lynx                        terminal  browser
 make                        terminal  compiler
 mdp                         terminal  music
 moon-buggy                  terminal  game
