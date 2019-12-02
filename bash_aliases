@@ -136,9 +136,5 @@ alias dcu='docker-compose up -d'
 alias dcd='docker-compose down'
 alias dcp='docker-compose pull ; docker-compose restart'
 
-# transmission
-alias tm='transmission-remote -l'
-alias tmm='transmission-remote-cli'
-
 # aws
 alias awst='aws s3 ls'

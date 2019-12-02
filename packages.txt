@@ -93,8 +93,6 @@ thefuck                     terminal  spelling
 tig                         terminal  source control
 tmux                        terminal  terminal multiplexer
 toilet                      terminal  fun
-transmission-cli            terminal  file transfer
-transmission-remote-cli     terminal  file transfer
 tree                        terminal  file manager
 tty-clock                   terminal  time
 ttyrec                      terminal  recording
