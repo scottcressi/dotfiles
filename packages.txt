@@ -23,7 +23,7 @@ dstat                       terminal  stats
 empire                      terminal  game
 espeak                      terminal  speech
 feh                         gui       pictures
-ffmpeg                      terminal  video
+ffmpeg                      gui       video
 gawk                        prereq    trans
 gcc                         terminal  compiler
 git                         terminal  sourcecontrol
@@ -49,7 +49,7 @@ links2                      terminal  browser
 lolcat                      terminal  fun
 lsof                        terminal  stats
 lynx                        terminal  browser
-maim                        terminal  screenshot
+maim                        gui       screenshot
 make                        terminal  compiler
 moon-buggy                  terminal  game
 mpc                         terminal  music client
@@ -80,14 +80,14 @@ python3                     terminal  language
 python3-pip                 terminal  language
 python3-venv                terminal  language
 ranger                      terminal  file manager
-rig                         terminal
+rig                         terminal  fun
 robotfindskitten            terminal  game
 rsync                       terminal  file transfer
 rtorrent                    terminal  file transfer
 screenkey                   gui
 shellcheck                  terminal  lint
 sshfs                       terminal  mounting
-suckless-tools              terminal  terminal
+suckless-tools              terminal
 sxiv                        gui       pictures
 thefuck                     terminal  spelling
 tig                         terminal  source control
