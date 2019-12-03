@@ -20,6 +20,7 @@ ddgr                        terminal  browser
 dnsutils                    terminal  stats
 docker-ce                   terminal  virtualization
 dstat                       terminal  stats
+dwarf-fortress              terminal  game
 empire                      terminal  game
 espeak                      terminal  speech
 feh                         gui       pictures
@@ -107,6 +108,7 @@ xautolock                   gui       lock
 xfce4-terminal              terminal  terminal emulator
 xorg                        gui       graphics
 yamllint                    terminal  lint
+zangband                    terminal  game
 zathura                     gui       document reader
 zathura-cb                  gui       document reader
 zathura-pdf-poppler         gui       document reader
