@@ -36,6 +36,7 @@ alias mpv='mpv --ytdl-format="bestvideo[height<=?360]+bestaudio/best"'
 alias mv="mv -i"
 alias rm="rm -i"
 alias vi='vim'
+alias weather='weather $(curl -s ipinfo.io | jq .postal -r)'
 alias xfishtank='xfishtank -c black -r .1 -i .1 -b 20 -f 20'
 alias xterm='xterm -bg black -fg white'
 
@@ -52,7 +53,6 @@ alias search='apt-cache search'
 alias testssl='docker run -ti drwetter/testssl.sh'
 alias vpn-mullvad='curl -s https://mullvad.net/ -L | grep "has-text-weight-bold has-text-danger" | sed "s/.*\">//g" | sed "s/<.*//g"'
 alias vpn-pia='curl privateinternetaccess.com -L -s | grep topbar__item | grep protected | sed "s/.*\">//g" | sed "s/<.*//g"'
-alias weather='weather $(curl -s ipinfo.io | jq .postal -r)'
 alias ww='curl http://wttr.in/'
 
 # git
