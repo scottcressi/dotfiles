@@ -85,6 +85,14 @@ parse_git_branch_and_add_brackets(){
     make clean install
     fi
 
+    # terraform
+    version=v0.12.17
+    if test ! -f ~/bin/terraform ; then
+    curl -s -L https://releases.hashicorp.com/terraform/0.12.17/terraform_0.12.17_linux_amd64.zip --output ~/bin/terraform_0.12.17_linux_amd64.zip
+    unzip -d ~/bin ~/bin/terraform_0.12.17_linux_amd64.zip
+    rm -f ~/bin/terraform_0.12.17_linux_amd64.zip
+    fi
+
     # docker compose
     version=1.24.1
     if test ! -f ~/bin/docker-compose ; then
