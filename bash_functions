@@ -93,6 +93,12 @@ parse_git_branch_and_add_brackets(){
     rm -f ~/bin/terraform_${version}_linux_amd64.zip
     fi
 
+    # terragrunt
+    version=v0.21.8
+    if test ! -f ~/bin/terragrunt ; then
+    curl -s -L https://github.com/gruntwork-io/terragrunt/releases/download/${version}/terragrunt_linux_amd64 --output ~/bin/terragrunt
+    fi
+
     # docker compose
     version=1.24.1
     if test ! -f ~/bin/docker-compose ; then
