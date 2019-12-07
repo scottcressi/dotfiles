@@ -199,15 +199,11 @@ parse_git_branch_and_add_brackets(){
     # debian
     if [ -f /etc/debian_version ] ; then
 
-        echo debian based
-
-        if grep ID=ubuntu /etc/os-release ; then
-        echo actually ubuntu
+        if grep --quiet ID=ubuntu /etc/os-release ; then
         OS=ubuntu
         fi
 
-        if grep ID=debian /etc/os-release ; then
-        echo actually debian
+        if grep --quiet ID=debian /etc/os-release ; then
         OS=debian
         fi
 
