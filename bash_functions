@@ -244,7 +244,6 @@ parse_git_branch_and_add_brackets(){
 }
 
 -packages-python(){
-    # python
     python3 -m venv ~/python
     # shellcheck source=/dev/null
     source ~/python/bin/activate
