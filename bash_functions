@@ -257,6 +257,7 @@ parse_git_branch_and_add_brackets(){
     flake8 \
     ipython \
     modernize \
+    saws \
     socli \
     s-tui \
     speedtest-cli \

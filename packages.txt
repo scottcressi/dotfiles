@@ -57,6 +57,7 @@ mps-youtube                 terminal  video
 mpv                         gui       video
 mupdf                       gui       document reader
 mutt                        terminal  mail
+mycli                       terminal  database client
 ncmpcpp                     terminal  music client
 neofetch                    terminal  stats
 netcat                      terminal  stats
@@ -73,6 +74,7 @@ openssh-client              terminal  file transfer
 p7zip                       terminal
 pacman4console              terminal  game
 pandoc                      terminal  converter txt to docx
+pgcli                       terminal  database client
 pi                          terminal  fun
 pkg-config                  prereq    suckless
 pulseaudio                  prereq    firefox
@@ -81,6 +83,7 @@ python3                     terminal  language
 python3-pip                 terminal  language
 python3-venv                terminal  language
 ranger                      terminal  file manager
+redis-tools                 terminal  database client
 rig                         terminal  fun
 robotfindskitten            terminal  game
 rsync                       terminal  file transfer
