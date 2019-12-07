@@ -5,6 +5,7 @@ doge
 dotfiles
 flake8
 glances
+howdoi
 ipython
 modernize
 mps-youtube
@@ -12,4 +13,6 @@ saws
 socli
 s-tui
 speedtest-cli
+tldr.py
 youtube-dl
+yq
