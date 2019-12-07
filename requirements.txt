@@ -4,6 +4,7 @@ bpython
 doge
 dotfiles
 flake8
+glances
 ipython
 modernize
 mps-youtube
