@@ -8,7 +8,6 @@ bb                          terminal  fun
 bc                          terminal  calculator
 bombardier                  terminal  game
 bsdgames                    terminal  game
-cataclysm-dda-curses        terminal  game
 chafa                       terminal  converter images to text
 cifs-utils                  terminal  mounting
 cmatrix                     terminal  fun
@@ -20,7 +19,6 @@ ddgr                        terminal  browser
 dnsutils                    terminal  stats
 docker-ce                   terminal  virtualization
 dstat                       terminal  stats
-dwarf-fortress              terminal  game
 empire                      terminal  game
 espeak                      terminal  speech
 feh                         gui       pictures

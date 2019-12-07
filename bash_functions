@@ -189,6 +189,19 @@ parse_git_branch_and_add_brackets(){
     wget --quiet "https://download.mozilla.org/?product=firefox-latest&os=linux64&lang=en-US" -O - | bunzip2 | tar xv
     fi
 
+    # dwarf fortress
+    if test ! -d ~/df_linux ; then
+    curl -s -L --url http://www.bay12games.com/dwarves/df_44_12_linux.tar.bz2 --output ~/df_44_12_linux.tar.bz2
+    bunzip2 ~/df_44_12_linux.tar.bz2
+    tar xvf ~/df_44_12_linux.tar
+    rm -f ~/df_44_12_linux.tar
+    fi
+
+    # cataclysm dark days ahead
+    if test ! -d ~/cataclysmdda-0.D ; then
+    curl -s -L --url https://github.com/CleverRaven/Cataclysm-DDA/releases/download/0.D/cataclysmdda-0.D-8574-Linux-Tiles.tar.gz | gunzip | tar xv
+    fi
+
     # debian
     if [ -f /etc/debian_version ] ; then
 
