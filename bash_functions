@@ -217,24 +217,10 @@ parse_git_branch_and_add_brackets(){
         OS=debian
         fi
 
-        # vagrant
-        version=2.2.6
-        if test ! -f ~/Downloads/vagrant_"${version}"_x86_64.deb ; then
-            curl -s -L https://releases.hashicorp.com/vagrant/${version}/vagrant_${version}_x86_64.deb -o ~/Downloads/vagrant_"${version}"_x86_64.deb
-            sudo dpkg -i ~/Downloads/vagrant_"${version}"_x86_64.deb
-        fi
-
         # zoom
         if test ! -f ~/Downloads/zoom_amd64.deb ; then
         curl -s -L https://zoom.us/client/latest/zoom_amd64.deb -o ~/Downloads/zoom_amd64.deb
         sudo dpkg -i ~/Downloads/zoom_amd64.deb
-        fi
-
-        # virtalbox
-        if ! grep -qF virtualbox /etc/apt/sources.list ; then
-        wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -
-        wget -q https://www.virtualbox.org/download/oracle_vbox.asc -O- | sudo apt-key add -
-        sudo add-apt-repository "deb http://download.virtualbox.org/virtualbox/$OS bionic contrib"
         fi
 
         # docker

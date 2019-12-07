@@ -80,15 +80,6 @@ alias gsa='for i in `find ~/repos -maxdepth 3 -name .git | grep -v forge` ; do c
 alias gstat='for i in `find ~/repos -name .git | grep -v forge | grep -v "\.terraform" ` ; do cd $i/../ ; pwd ; git shortlog -s -n --all --no-merges ; done'
 alias gt='git tag -l'
 
-# virtualization
-alias vb='virtualbox'
-alias vd="vagrant destroy"
-alias vdf="vagrant destroy -f"
-alias vp="vagrant provision"
-alias vv="vagrant ssh"
-alias vs="vagrant status"
-alias vu="vagrant up"
-
 # tmux
 alias tl='tmux list-windows'
 

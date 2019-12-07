@@ -98,7 +98,6 @@ ttyrec                      terminal  recording
 typespeed                   terminal  game
 vifm                        terminal  file manager
 vim                         terminal  editor
-virtualbox-6.0              terminal  virtualization
 weather-util                terminal  weather
 wget                        terminal  file transfer
 whois                       terminal  stats
