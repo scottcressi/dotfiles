@@ -111,12 +111,6 @@ parse_git_branch_and_add_brackets(){
         curl -s -L --url https://github.com/GoogleContainerTools/skaffold/releases/download/${version}/skaffold-linux-amd64 --output ~/bin/skaffold
     fi
 
-    # minikube
-    version=v1.5.2
-    if test ! -f ~/bin/minikube ; then
-    curl -s -L --url https://storage.googleapis.com/minikube/releases/${version}/minikube-linux-amd64 --output ~/bin/minikube
-    fi
-
     # kops
     version=1.15.0
     if test ! -f ~/bin/kops ; then
@@ -448,16 +442,6 @@ parse_git_branch_and_add_brackets(){
 
 -record-me(){
     ffmpeg -i /dev/video0 out.mkv
-}
-
--minikube(){
-    MEMORY=$(grep MemTotal /proc/meminfo | awk '{print $2}')
-    USEMEM=$(echo "$MEMORY/1024/1024-2" | bc)
-    CPU=$(nproc)
-    USECPU=$(echo "$CPU-1" | bc)
-    minikube start --memory "$USEMEM"g --cpus "$USECPU"
-    helm init
-    kubectl create clusterrolebinding add-on-cluster-admin --clusterrole=cluster-admin --serviceaccount=kube-system:default
 }
 
 -kpeee(){
