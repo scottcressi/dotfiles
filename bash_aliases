@@ -1,9 +1,7 @@
 #!/usr/bin/env bash
 
 # single letters
-alias l='ls -lh --color=auto'
 alias g='cd ~/repos'
-alias k='kubectl'
 
 # corrections
 alias a-l='-la'
@@ -83,14 +81,18 @@ alias gt='git tag -l'
 # tmux
 alias tl='tmux list-windows'
 
-# kube
+# helm
 alias hl='helm ls'
 alias hdp='helm delete --purge'
+
+# kops
+alias kgc='kops --state s3://kubernetes-`aws sts get-caller-identity --output text --query "Account"` get cluster'
+
+# kube
 alias ka='kubectl get all --all-namespaces'
 alias kae='kubectl get all --all-namespaces -o wide'
 alias kaee='kubectl get all --all-namespaces -o wide --show-labels'
 alias kd='kp | grep " [0-9]h" ; kp | grep " [0-9]s"'
-alias kgc='kops --state s3://kubernetes-`aws sts get-caller-identity --output text --query "Account"` get cluster'
 alias ki='kubectl get ing --all-namespaces'
 alias kie='kubectl get ing --all-namespaces -o wide'
 alias kiee='kubectl get ing --all-namespaces -o wide --show-labels'
