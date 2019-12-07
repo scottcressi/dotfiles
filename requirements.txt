@@ -6,6 +6,7 @@ dotfiles
 flake8
 ipython
 modernize
+mps-youtube
 saws
 socli
 s-tui
