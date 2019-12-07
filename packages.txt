@@ -53,6 +53,7 @@ make                        terminal  compiler
 moon-buggy                  terminal  game
 mpc                         terminal  music client
 mpd                         terminal  music server
+mps-youtube                 terminal  video
 mpv                         gui       video
 mupdf                       gui       document reader
 mutt                        terminal  mail
@@ -84,6 +85,7 @@ rig                         terminal  fun
 robotfindskitten            terminal  game
 rsync                       terminal  file transfer
 rtorrent                    terminal  file transfer
+rtv                         terminal  social media
 screenkey                   gui
 shellcheck                  terminal  lint
 sshfs                       terminal  mounting
