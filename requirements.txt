@@ -1,0 +1,14 @@
+awscli
+botocore
+bpython
+doge
+dotfiles
+flake8
+ipython
+modernize
+prompt-toolkit
+saws
+socli
+s-tui
+speedtest-cli
+youtube-dl

@@ -248,21 +248,7 @@ parse_git_branch_and_add_brackets(){
     python3 -m venv ~/python
     # shellcheck source=/dev/null
     source ~/python/bin/activate
-    yes | pip3 install --upgrade \
-    awscli \
-    botocore==1.12.240 \
-    bpython \
-    doge \
-    dotfiles \
-    flake8 \
-    ipython \
-    modernize \
-    saws \
-    socli \
-    s-tui \
-    speedtest-cli \
-    youtube-dl \
-    --quiet
+    yes | pip3 install --upgrade --quiet -r "$HOME"/repos/personal/dotfiles/requirements.txt
 
 }
 
