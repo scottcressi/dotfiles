@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 # single letters
+alias l='ls -lh --color=auto'
 alias g='cd ~/repos'
 
 # corrections
