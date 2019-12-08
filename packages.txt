@@ -11,7 +11,7 @@ bsdgames                    terminal  game
 chafa                       terminal  converter images to text
 cifs-utils                  terminal  mounting
 cmatrix                     terminal  fun
-cmus                        terminal  music client
+cmus                        terminal  client music
 cowsay                      terminal  fun
 curl                        terminal  file transfer
 curseofwar                  terminal  game
@@ -52,13 +52,13 @@ maim                        gui       screenshot
 make                        terminal  compiler
 mdp                         terminal  markdown
 moon-buggy                  terminal  game
-mpc                         terminal  music client
+mpc                         terminal  client music
 mpd                         terminal  music server
 mpv                         gui       video
 mupdf                       gui       document reader
 mutt                        terminal  mail
-mycli                       terminal  database client
-ncmpcpp                     terminal  music client
+mycli                       terminal  client database
+ncmpcpp                     terminal  client music
 neofetch                    terminal  stats
 netcat                      terminal  stats
 nethack-console             terminal  game
@@ -70,11 +70,11 @@ nmap                        terminal  stats
 nsnake                      terminal  game
 nudoku                      terminal  game
 oneko                       terminal  fun
-openssh-client              terminal  file transfer
+openssh-client              terminal  client ssh
 p7zip                       terminal
 pacman4console              terminal  game
 pandoc                      terminal  converter txt to docx
-pgcli                       terminal  database client
+pgcli                       terminal  client database
 pi                          terminal  fun
 pkg-config                  prereq    suckless
 pulseaudio                  prereq    firefox
@@ -83,7 +83,7 @@ python3                     terminal  language
 python3-pip                 terminal  language
 python3-venv                terminal  language
 ranger                      terminal  file manager
-redis-tools                 terminal  database client
+redis-tools                 terminal  client database
 rig                         terminal  fun
 robotfindskitten            terminal  game
 rsync                       terminal  file transfer
