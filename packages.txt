@@ -50,6 +50,7 @@ lsof                        terminal  stats
 lynx                        terminal  browser
 maim                        gui       screenshot
 make                        terminal  compiler
+mdp                         terminal  markdown
 moon-buggy                  terminal  game
 mpc                         terminal  music client
 mpd                         terminal  music server
@@ -89,6 +90,7 @@ rsync                       terminal  file transfer
 rtorrent                    terminal  file transfer
 rtv                         terminal  social media
 screenkey                   gui
+sent                        terminal  markdown
 shellcheck                  terminal  lint
 sshfs                       terminal  mounting
 suckless-tools              terminal
