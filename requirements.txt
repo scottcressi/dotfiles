@@ -9,7 +9,6 @@ howdoi
 ipython
 modernize
 mps-youtube
-saws
 socli
 s-tui
 speedtest-cli

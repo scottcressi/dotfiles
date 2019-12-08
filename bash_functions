@@ -439,3 +439,7 @@ parse_git_branch_and_add_brackets(){
     echo "$port"
     kubectl port-forward --address 0.0.0.0 --namespace "$namespace" pod/"$pod" 12345:"$port"
 }
+
+-saws(){
+    docker run -it -v "$HOME"/.aws/:/root/.aws:ro joshdvir/saws
+}
