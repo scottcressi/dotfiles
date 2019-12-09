@@ -435,13 +435,20 @@ parse_git_branch_and_add_brackets(){
 }
 
 -mount(){
-    status=$(nc -z freenas 80 ; echo $?)
-    if [ "$status" == "0" ] ; then
-        for i in "${DIRS[@]}" ; do
-        sudo mount -t cifs //freenas/"$i" ~/mnt/"$i" -o credentials="$HOME"/.smbpasswd -v
-        done
+    # smbpasswd check
+    if test -f ~/.smbpasswd ; then
+        # freenas check
+        status=$(nc -z freenas 80 ; echo $?)
+        if [ "$status" == "0" ] ; then
+            for i in "${DIRS[@]}" ; do
+            sudo mount -t cifs //freenas/"$i" ~/mnt/"$i" -o credentials="$HOME"/.smbpasswd -v
+            done
+        else
+            echo
+            echo freenas down or not in /etc/hosts
+        fi
     else
-        echo freenas down
+        echo ~/.smbpasswd does not exist, format is password=foo
     fi
 }
 
