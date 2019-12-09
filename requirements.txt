@@ -4,7 +4,6 @@ doge
 dotfiles
 mdv
 modernize
-mps-youtube
 socli
 speedtest-cli
 tldr.py
