@@ -435,9 +435,14 @@ parse_git_branch_and_add_brackets(){
 }
 
 -mount(){
-    for i in "${DIRS[@]}" ; do
-    sudo mount -t cifs //freenas/"$i" ~/mnt/"$i" -o credentials="$HOME"/.smbpasswd -v
-    done
+    status=$(nc -z freenas 80 ; echo $?)
+    if [ "$status" == "0" ] ; then
+        for i in "${DIRS[@]}" ; do
+        sudo mount -t cifs //freenas/"$i" ~/mnt/"$i" -o credentials="$HOME"/.smbpasswd -v
+        done
+    else
+        echo freenas down
+    fi
 }
 
 -umount(){
