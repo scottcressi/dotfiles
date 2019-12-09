@@ -8,14 +8,12 @@ alias g='cd ~/repos'
 alias am="alsamixer"
 alias fz='vim $(fzf)'
 alias ff='firefox & disown ; exit'
-alias gg='cd ~/repos'
 alias get='sudo apt-get install'
 alias gip='curl -s ipinfo.io'
 alias pp='ps axuf'
 alias search='apt-cache search'
 alias testssl='docker run -ti drwetter/testssl.sh'
-alias vpn-mullvad='curl -s https://mullvad.net/ -L | grep "has-text-weight-bold has-text-danger" | sed "s/.*\">//g" | sed "s/<.*//g"'
-alias vpn-pia='curl privateinternetaccess.com -L -s | grep topbar__item | grep protected | sed "s/.*\">//g" | sed "s/<.*//g"'
+alias vpn='curl -s https://mullvad.net/ -L | grep "has-text-weight-bold has-text-danger" | sed "s/.*\">//g" | sed "s/<.*//g"'
 alias ww='curl http://wttr.in/'
 
 # corrections
