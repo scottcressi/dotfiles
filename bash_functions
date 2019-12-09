@@ -1,5 +1,19 @@
 #!/usr/bin/env bash
 
+DIRS=(
+books
+comics
+documents
+drop
+emulators
+games
+music
+pictures
+sheet_music
+software
+videos
+)
+
 parse_git_branch_and_add_brackets(){
     git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\ \[\1\]/'
 }
@@ -38,22 +52,15 @@ parse_git_branch_and_add_brackets(){
 
 -packages(){
 
-    # directories
+    # directories to mount
+    for i in "${DIRS[@]}" ; do
+    mkdir -p ~/mnt/"$i"
+    done
+
+    # directories other
     mkdir -p ~/.newsboat
     mkdir -p ~/Downloads
     mkdir -p ~/bin
-    mkdir -p ~/mnt
-    mkdir -p ~/mnt/books
-    mkdir -p ~/mnt/comics
-    mkdir -p ~/mnt/documents
-    mkdir -p ~/mnt/drop
-    mkdir -p ~/mnt/emulators
-    mkdir -p ~/mnt/games
-    mkdir -p ~/mnt/music
-    mkdir -p ~/mnt/pictures
-    mkdir -p ~/mnt/sheet_music
-    mkdir -p ~/mnt/software
-    mkdir -p ~/mnt/videos
     mkdir -p ~/wallpapers
 
     # venv
@@ -427,12 +434,14 @@ parse_git_branch_and_add_brackets(){
     docker run -it -v "$HOME"/.aws/:/root/.aws:ro joshdvir/saws
 }
 
--mount-personal(){
-foo=(
-videos
-games
-)
-for i in "${foo[@]}" ; do
-sudo mount -t cifs //freenas/"$i" ~/mnt/"$i" -o credentials="$HOME"/.smbpasswd -v
-done
+-mount(){
+    for i in "${DIRS[@]}" ; do
+    sudo mount -t cifs //freenas/"$i" ~/mnt/"$i" -o credentials="$HOME"/.smbpasswd -v
+    done
+}
+
+-umount(){
+    for i in "${DIRS[@]}" ; do
+    sudo umount ~/mnt/"$i"
+    done
 }
