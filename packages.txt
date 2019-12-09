@@ -20,6 +20,7 @@ ddgr                        terminal  browser
 dnsutils                    terminal  stats
 docker-ce                   terminal  virtualization
 dstat                       terminal  stats
+dwm                         gui       graphics
 empire                      terminal  game
 espeak                      terminal  speech
 feh                         gui       pictures
@@ -41,13 +42,8 @@ jq                          terminal
 jsonlint                    terminal  lint
 lftp                        terminal  file transfer
 libaa-bin                   terminal  fun
-libfontconfig1-dev          prereq    suckless
-libfreetype6-dev            prereq    suckless
 libgtk-3-0                  prereq    firefox
 libnss3                     prereq    zoom
-libx11-dev                  prereq    suckless
-libxft-dev                  prereq    suckless
-libxinerama-dev             prereq    suckless
 links2                      terminal  browser
 lolcat                      terminal  fun
 lsof                        terminal  stats
@@ -80,7 +76,6 @@ pacman4console              terminal  game
 pandoc                      terminal  converter txt to docx
 pgcli                       terminal  client database
 pi                          terminal  fun
-pkg-config                  prereq    suckless
 pulseaudio                  prereq    firefox
 pwgen                       terminal  passwords
 python3                     terminal  language
@@ -100,6 +95,7 @@ screenkey                   gui
 sent                        terminal  markdown
 shellcheck                  terminal  lint
 sshfs                       terminal  mounting
+stterm                      terminal  terminal emulator
 suckless-tools              terminal
 sxiv                        gui       pictures
 thefuck                     terminal  spelling

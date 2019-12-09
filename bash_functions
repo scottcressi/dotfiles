@@ -63,26 +63,7 @@ parse_git_branch_and_add_brackets(){
     python3 -m venv ~/python
     fi
 
-    # st
-    version=0.8.2
-    if test ! -d ~/st-${version} ; then
-    cd || exit
-    curl -s -L https://dl.suckless.org/st/st-"${version}".tar.gz | gunzip -c | tar xv
-    cd ~/st-${version} || exit
-    make clean install
-    fi
-
-    # dwm
-    version=6.2
-    if test ! -d ~/dwm-${version} ; then
-    cd || exit
-    curl -s -L https://dl.suckless.org/dwm/dwm-"${version}".tar.gz | gunzip -c | tar xv
-    cd ~/dwm-"${version}" || exit
-    export DESTDIR="$HOME"
-    make clean install
-    fi
-
-    # dwm slstatus
+    # slstatus
     if test ! -d "$HOME"/slstatus ; then
     git clone https://git.suckless.org/slstatus "$HOME"/slstatus
     cd "$HOME"/slstatus || exit
