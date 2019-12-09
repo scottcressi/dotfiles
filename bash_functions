@@ -428,5 +428,11 @@ parse_git_branch_and_add_brackets(){
 }
 
 -mount-personal(){
-for i in `echo videos games` ; do sudo mount -t cifs //freenas/$i ~/mnt/$i -o credentials="$HOME"/.smbpasswd -v ; done
+foo=(
+videos
+games
+)
+for i in "${foo[@]}" ; do
+sudo mount -t cifs //freenas/"$i" ~/mnt/"$i" -o credentials="$HOME"/.smbpasswd -v
+done
 }
