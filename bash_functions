@@ -52,7 +52,7 @@ parse_git_branch_and_add_brackets(){
 
 -packages(){
 
-    # directories to mount
+    # directories storage
     for i in "${DIRS[@]}" ; do
     mkdir -p ~/mnt/"$i"
     done
@@ -435,7 +435,7 @@ parse_git_branch_and_add_brackets(){
 }
 
 -mount(){
-    # smbpasswd check
+    # credentials file check
     if test -f ~/.smbpasswd ; then
         # freenas check
         status=$(nc -z freenas 80 ; echo $?)
