@@ -4,7 +4,6 @@ bpython
 doge
 dotfiles
 flake8
-glances
 howdoi
 ipython
 mdv

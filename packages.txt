@@ -27,6 +27,7 @@ gawk                        prereq    trans
 gcc                         terminal  compiler
 git                         terminal  source control
 git-extras                  terminal  soruce control extras
+glances                     terminal  stats
 gnuchess                    terminal  game
 greed                       terminal  game
 htop                        terminal  stats
