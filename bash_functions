@@ -58,6 +58,11 @@ parse_git_branch_and_add_brackets(){
     mkdir ~/.newsboat
     fi
 
+    # venv
+    if test ! -d ~/python/ ; then
+    python3 -m venv ~/python
+    fi
+
     # st
     version=0.8.2
     if test ! -d ~/st-${version} ; then
@@ -244,7 +249,6 @@ parse_git_branch_and_add_brackets(){
 }
 
 -packages-python(){
-    python3 -m venv ~/python
     # shellcheck source=/dev/null
     source ~/python/bin/activate
     yes | pip3 install --upgrade --quiet -r "$HOME"/repos/personal/dotfiles/requirements.txt
