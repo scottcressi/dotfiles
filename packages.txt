@@ -105,6 +105,7 @@ sxiv                        gui       pictures
 thefuck                     terminal  spelling
 tig                         terminal  source control
 tmux                        terminal  terminal multiplexer
+tldr.py                     terminal
 toilet                      terminal  fun
 tree                        terminal  file manager
 tty-clock                   terminal  time

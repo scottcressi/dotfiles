@@ -7,6 +7,5 @@ modernize
 mps-youtube
 socli
 speedtest-cli
-tldr.py
 youtube-dl
 yq
