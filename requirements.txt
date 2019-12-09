@@ -1,16 +1,11 @@
 aws-adfs
 awscli
-bpython
 doge
 dotfiles
-flake8
-howdoi
-ipython
 mdv
 modernize
 mps-youtube
 socli
-s-tui
 speedtest-cli
 tldr.py
 youtube-dl

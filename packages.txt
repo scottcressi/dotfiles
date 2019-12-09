@@ -7,6 +7,7 @@ bastet                      terminal  game
 bb                          terminal  fun
 bc                          terminal  calculator
 bombardier                  terminal  game
+bpython3                    terminal  language
 bsdgames                    terminal  game
 chafa                       terminal  converter images to text
 cifs-utils                  terminal  mounting
@@ -30,6 +31,7 @@ git-extras                  terminal  soruce control extras
 glances                     terminal  stats
 gnuchess                    terminal  game
 greed                       terminal  game
+howdoi                      terminal
 htop                        terminal  stats
 iftop                       terminal  stats
 iotop                       terminal  stats
@@ -82,6 +84,8 @@ pkg-config                  prereq    suckless
 pulseaudio                  prereq    firefox
 pwgen                       terminal  passwords
 python3                     terminal  language
+python3-flake8              terminal  language
+python3-ipython             terminal  language
 python3-pip                 terminal  language
 python3-venv                terminal  language
 ranger                      terminal  file manager
@@ -91,6 +95,7 @@ robotfindskitten            terminal  game
 rsync                       terminal  file transfer
 rtorrent                    terminal  file transfer
 rtv                         terminal  social media
+s-tui                       terminal  stats
 screenkey                   gui
 sent                        terminal  markdown
 shellcheck                  terminal  lint
