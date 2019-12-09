@@ -25,7 +25,8 @@ feh                         gui       pictures
 ffmpeg                      gui       video
 gawk                        prereq    trans
 gcc                         terminal  compiler
-git                         terminal  sourcecontrol
+git                         terminal  source control
+git-extras                  terminal  soruce control extras
 gnuchess                    terminal  game
 greed                       terminal  game
 htop                        terminal  stats
@@ -101,6 +102,7 @@ tmux                        terminal  terminal multiplexer
 toilet                      terminal  fun
 tree                        terminal  file manager
 tty-clock                   terminal  time
+ttygif                      terminal
 ttyrec                      terminal  recording
 typespeed                   terminal  game
 vifm                        terminal  file manager
