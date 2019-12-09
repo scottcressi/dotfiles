@@ -38,25 +38,23 @@ parse_git_branch_and_add_brackets(){
 
 -packages(){
 
-    # downloads
-    if test ! -d ~/Downloads ; then
-    mkdir ~/Downloads
-    fi
-
-    # bin
-    if test ! -d ~/bin/ ; then
-    mkdir ~/bin
-    fi
-
-    # wallpaper
-    if test ! -d ~/wallpapers/ ; then
-    mkdir ~/wallpapers
-    fi
-
-    # newsboat
-    if test ! -d ~/.newsboat/ ; then
-    mkdir ~/.newsboat
-    fi
+    # directories
+    mkdir -p ~/.newsboat
+    mkdir -p ~/Downloads
+    mkdir -p ~/bin
+    mkdir -p ~/mnt
+    mkdir -p ~/mnt/books
+    mkdir -p ~/mnt/comics
+    mkdir -p ~/mnt/documents
+    mkdir -p ~/mnt/drop
+    mkdir -p ~/mnt/emulators
+    mkdir -p ~/mnt/games
+    mkdir -p ~/mnt/music
+    mkdir -p ~/mnt/pictures
+    mkdir -p ~/mnt/sheet_music
+    mkdir -p ~/mnt/software
+    mkdir -p ~/mnt/videos
+    mkdir -p ~/wallpapers
 
     # venv
     if test ! -d ~/python/ ; then
@@ -427,4 +425,8 @@ parse_git_branch_and_add_brackets(){
 
 -saws(){
     docker run -it -v "$HOME"/.aws/:/root/.aws:ro joshdvir/saws
+}
+
+-mount-personal(){
+for i in `echo videos games` ; do sudo mount -t cifs //freenas/$i ~/mnt/$i -o credentials="$HOME"/.smbpasswd -v ; done
 }
