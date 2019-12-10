@@ -273,7 +273,6 @@ parse_git_branch_and_add_brackets(){
 }
 
 -kops-create(){
-    aws route53 list-hosted-zones --query HostedZones[].Name[]
     echo
     echo enter domain, ex. foo.com:
     read -r domain
