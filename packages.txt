@@ -54,6 +54,7 @@ mdp                         terminal  markdown
 moon-buggy                  terminal  game
 mpc                         terminal  client music
 mpd                         terminal  music server
+mps-youtube                 terminal  video
 mpv                         gui       video
 mupdf                       gui       document reader
 mutt                        terminal  mail
@@ -94,6 +95,7 @@ s-tui                       terminal  stats
 screenkey                   gui
 sent                        terminal  markdown
 shellcheck                  terminal  lint
+speedtest-cli               terminal  stats
 sshfs                       terminal  mounting
 stterm                      terminal  terminal emulator
 suckless-tools              terminal

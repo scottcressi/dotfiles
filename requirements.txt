@@ -4,8 +4,6 @@ doge
 dotfiles
 mdv
 modernize
-mps-youtube
 socli
-speedtest-cli
 youtube-dl
 yq
