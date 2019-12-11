@@ -2,4 +2,3 @@ aws-adfs
 awscli
 doge
 dotfiles
-socli
