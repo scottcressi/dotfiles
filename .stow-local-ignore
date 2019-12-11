@@ -1,0 +1,6 @@
+.git
+.gitignore
+.stow-local-ignore.swp
+packages.txt
+setup.sh
+requirements.txt
