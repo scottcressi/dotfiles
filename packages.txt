@@ -110,6 +110,7 @@ tty-clock                   terminal  time
 ttygif                      terminal
 ttyrec                      terminal  recording
 typespeed                   terminal  game
+youtube-dl                  terminal  file transfer
 vifm                        terminal  file manager
 vim                         terminal  editor
 weather-util                terminal  weather

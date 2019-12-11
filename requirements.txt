@@ -5,4 +5,3 @@ dotfiles
 mdv
 modernize
 socli
-youtube-dl
