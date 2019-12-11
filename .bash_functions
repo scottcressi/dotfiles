@@ -14,6 +14,10 @@ software
 videos
 )
 
+parse_git_branch_and_add_brackets(){
+    git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\ \[\1\]/'
+}
+
 -packages(){
 
     # directories storage
@@ -419,10 +423,6 @@ videos
     for i in "${DIRS[@]}" ; do
     sudo umount ~/mnt/"$i"
     done
-}
-
-parse_git_branch_and_add_brackets(){
-    git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\ \[\1\]/'
 }
 
 -extract(){
