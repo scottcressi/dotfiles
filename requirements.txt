@@ -2,5 +2,4 @@ aws-adfs
 awscli
 doge
 dotfiles
-mdv
 socli
