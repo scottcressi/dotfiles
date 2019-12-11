@@ -66,6 +66,7 @@ nethack-console             terminal  game
 nethogs                     terminal  stats
 nettoe                      terminal  game
 newsboat                    terminal  rss
+micstat                     terminal  stats
 ninvaders                   terminal  game
 nmap                        terminal  stats
 nsnake                      terminal  game
