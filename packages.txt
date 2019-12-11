@@ -97,6 +97,7 @@ sent                        terminal  markdown
 shellcheck                  terminal  lint
 speedtest-cli               terminal  stats
 sshfs                       terminal  mounting
+stow                        termianl
 stterm                      terminal  terminal emulator
 suckless-tools              terminal
 sxiv                        gui       pictures
