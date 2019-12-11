@@ -3,5 +3,4 @@ awscli
 doge
 dotfiles
 mdv
-modernize
 socli
