@@ -6,4 +6,3 @@ mdv
 modernize
 socli
 youtube-dl
-yq
