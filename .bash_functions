@@ -26,7 +26,6 @@ parse_git_branch_and_add_brackets(){
     done
 
     # directories other
-    mkdir -p ~/.newsboat
     mkdir -p ~/Downloads
     mkdir -p ~/bin
     mkdir -p ~/wallpapers
