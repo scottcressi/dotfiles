@@ -19,7 +19,7 @@ curseofwar                  terminal  game
 ddgr                        terminal  browser
 dnsutils                    terminal  stats dns
 docker-ce                   terminal  virtualization
-dstat                       terminal  stats
+dstat                       terminal  stats multi
 dwm                         gui       graphics
 empire                      terminal  game
 espeak                      terminal  speech
@@ -29,11 +29,11 @@ gawk                        prereq    trans
 gcc                         terminal  compiler
 git                         terminal  source control
 git-extras                  terminal  soruce control extras
-glances                     terminal  stats
+glances                     terminal  stats multi
 gnuchess                    terminal  game
 greed                       terminal  game
 howdoi                      terminal
-htop                        terminal  stats
+htop                        terminal  stats multi
 iftop                       terminal  stats network
 iotop                       terminal  stats disk
 ipcalc                      terminal  stats
@@ -93,7 +93,7 @@ robotfindskitten            terminal  game
 rsync                       terminal  file transfer
 rtorrent                    terminal  file transfer
 rtv                         terminal  social media
-s-tui                       terminal  stats
+s-tui                       terminal  stats multi
 screenkey                   gui
 sent                        terminal  markdown
 shellcheck                  terminal  lint
