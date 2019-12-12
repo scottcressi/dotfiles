@@ -17,7 +17,7 @@ cowsay                      terminal  fun
 curl                        terminal  file transfer
 curseofwar                  terminal  game
 ddgr                        terminal  browser
-dnsutils                    terminal  stats
+dnsutils                    terminal  stats dns
 docker-ce                   terminal  virtualization
 dstat                       terminal  stats
 dwm                         gui       graphics
@@ -34,10 +34,10 @@ gnuchess                    terminal  game
 greed                       terminal  game
 howdoi                      terminal
 htop                        terminal  stats
-iftop                       terminal  stats
-iotop                       terminal  stats
+iftop                       terminal  stats network
+iotop                       terminal  stats disk
 ipcalc                      terminal  stats
-iptraf                      terminal  stats
+iptraf                      terminal  stats network
 irssi                       terminal  messaging
 jq                          terminal
 jsonlint                    terminal  lint
@@ -64,12 +64,12 @@ ncmpcpp                     terminal  client music
 neofetch                    terminal  stats
 netcat                      terminal  stats
 nethack-console             terminal  game
-nethogs                     terminal  stats
+nethogs                     terminal  stats network
 nettoe                      terminal  game
 newsboat                    terminal  rss
-nicstat                     terminal  stats
+nicstat                     terminal  stats network
 ninvaders                   terminal  game
-nmap                        terminal  stats
+nmap                        terminal  stats network
 nsnake                      terminal  game
 nudoku                      terminal  game
 oneko                       gui       fun
@@ -97,7 +97,7 @@ s-tui                       terminal  stats
 screenkey                   gui
 sent                        terminal  markdown
 shellcheck                  terminal  lint
-speedtest-cli               terminal  stats
+speedtest-cli               terminal  stats network
 sshfs                       terminal  mounting
 stow                        termianl
 stterm                      terminal  terminal emulator
