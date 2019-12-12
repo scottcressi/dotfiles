@@ -1,5 +1,4 @@
-newsbeuter/cache.db
-newsbeuter/history.cmdline
-newsbeuter/history.search
-newsbeuter/cache.db.lock
-newsbeuter/urls
+.newsboat/cache.db
+.newsboat/history.cmdline
+.newsboat/history.search
+.newsboat/cache.db.lock
