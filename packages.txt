@@ -37,6 +37,7 @@ htop                        terminal  stats
 iftop                       terminal  stats
 iotop                       terminal  stats
 ipcalc                      terminal  stats
+iptraf                      terminal  stats
 irssi                       terminal  messaging
 jq                          terminal
 jsonlint                    terminal  lint
