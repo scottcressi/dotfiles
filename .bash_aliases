@@ -127,4 +127,4 @@ alias dcd='docker-compose down'
 alias dcp='docker-compose pull ; docker-compose restart'
 
 # aws
-alias awst='aws s3 ls'
+alias awst='aws sts get-caller-identity ; aws s3 ls'
