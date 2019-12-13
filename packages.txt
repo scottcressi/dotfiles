@@ -1,130 +1,130 @@
-acpi                        terminal  power
-angband                     terminal  game
-arandr                      gui       resolution
-aspell                      terminal  spelling
-bash-completion             terminal  completion
-bastet                      terminal  game
-bb                          terminal  fun
-bc                          terminal  calculator
-bombardier                  terminal  game
-bpython3                    terminal  language
-bsdgames                    terminal  game
-chafa                       terminal  converter images to text
-cifs-utils                  terminal  mounting
-cmatrix                     terminal  fun
-cmus                        terminal  client music
-cowsay                      terminal  fun
-curl                        terminal  file transfer
-curseofwar                  terminal  game
-ddgr                        terminal  browser
-dnsutils                    terminal  stats dns
-docker-ce                   terminal  virtualization
-dstat                       terminal  stats multi
-dwm                         gui       graphics
-empire                      terminal  game
-espeak                      terminal  speech
-feh                         gui       pictures
-ffmpeg                      gui       video
-fzf                         terminal
-gawk                        prereq    trans
-gcc                         terminal  compiler
-git                         terminal  source control
-git-extras                  terminal  soruce control extras
-glances                     terminal  stats multi
-gnuchess                    terminal  game
-greed                       terminal  game
-howdoi                      terminal
-htop                        terminal  stats multi
-iftop                       terminal  stats network
-iotop                       terminal  stats disk
-ipcalc                      terminal  stats
-iptraf                      terminal  stats network
-irssi                       terminal  messaging
-jq                          terminal
-jsonlint                    terminal  lint
-lftp                        terminal  file transfer
-libaa-bin                   terminal  fun
-libgtk-3-0                  prereq    firefox
-libnss3                     prereq    zoom
-links2                      terminal  browser
-lolcat                      terminal  fun
-lsof                        terminal  stats
-lynx                        terminal  browser
-maim                        gui       screenshot
-make                        terminal  compiler
-mdp                         terminal  markdown
-moon-buggy                  terminal  game
-mpc                         terminal  client music
-mpd                         terminal  music server
-mps-youtube                 terminal  video
-mpv                         gui       video
-mupdf                       gui       document reader
-mutt                        terminal  mail
-mycli                       terminal  client database
-ncmpcpp                     terminal  client music
-neofetch                    terminal  stats
-netcat                      terminal  stats
-nethack-console             terminal  game
-nethogs                     terminal  stats network
-nettoe                      terminal  game
-newsboat                    terminal  rss
-nicstat                     terminal  stats network
-ninvaders                   terminal  game
-nmap                        terminal  stats network
-nsnake                      terminal  game
-nudoku                      terminal  game
-oneko                       gui       fun
-openssh-client              terminal  client ssh
-p7zip                       terminal
-pacman4console              terminal  game
-pandoc                      terminal  converter txt to docx
-pgcli                       terminal  client database
-pi                          terminal  fun
-pulseaudio                  prereq    firefox
-pwgen                       terminal  passwords
-python3                     terminal  language
-python3-flake8              terminal  language
-python3-ipython             terminal  language
-python3-pip                 terminal  language
-python3-venv                terminal  language
-ranger                      terminal  file manager
-redis-tools                 terminal  client database
-rig                         terminal  fun
-robotfindskitten            terminal  game
-rsync                       terminal  file transfer
-rtorrent                    terminal  file transfer
-rtv                         terminal  social media
-s-tui                       terminal  stats multi
-screenkey                   gui
-sent                        terminal  markdown
-shellcheck                  terminal  lint
-speedtest-cli               terminal  stats network
-sshfs                       terminal  mounting
-stow                        termianl
-stterm                      terminal  terminal emulator
-suckless-tools              terminal
-sxiv                        gui       pictures
-thefuck                     terminal  spelling
-tig                         terminal  source control
-tmux                        terminal  terminal multiplexer
-tldr.py                     terminal
-toilet                      terminal  fun
-tree                        terminal  file manager
-tty-clock                   terminal  time
-ttygif                      terminal
-ttyrec                      terminal  recording
-typespeed                   terminal  game
-units                       terminal
-vifm                        terminal  file manager
-vim                         terminal  editor
-weather-util                terminal  weather
-wget                        terminal  file transfer
-whois                       terminal  stats
-xautolock                   gui       lock
-xfce4-terminal              gui       terminal emulator
-xorg                        gui       graphics
-yamllint                    terminal  lint
-youtube-dl                  terminal  file transfer
-zathura                     gui       document reader
-zathura-cb                  gui       document reader
-zathura-pdf-poppler         gui       document reader
+acpi                 terminal  power
+angband              terminal  game
+arandr               gui       resolution
+aspell               terminal  spelling
+bash-completion      terminal  completion
+bastet               terminal  game
+bb                   terminal  fun
+bc                   terminal  calculator
+bombardier           terminal  game
+bpython3             terminal  language
+bsdgames             terminal  game
+chafa                terminal  converter       images
+cifs-utils           terminal  mounting
+cmatrix              terminal  fun
+cmus                 terminal  client          music
+cowsay               terminal  fun
+curl                 terminal  file            transfer
+curseofwar           terminal  game
+ddgr                 terminal  browser
+dnsutils             terminal  stats           dns
+docker-ce            terminal  virtualization
+dstat                terminal  stats           multi
+dwm                  gui       graphics
+empire               terminal  game
+espeak               terminal  speech
+feh                  gui       pictures
+ffmpeg               gui       video
+fzf                  terminal
+gawk                 prereq    trans
+gcc                  terminal  compiler
+git                  terminal  scm
+git-extras           terminal  scm
+glances              terminal  stats           multi
+gnuchess             terminal  game
+greed                terminal  game
+howdoi               terminal
+htop                 terminal  stats           multi
+iftop                terminal  stats           network
+iotop                terminal  stats           disk
+ipcalc               terminal  stats
+iptraf               terminal  stats           network
+irssi                terminal  messaging
+jq                   terminal
+jsonlint             terminal  lint
+lftp                 terminal  file            transfer
+libaa-bin            terminal  fun
+libgtk-3-0           prereq    firefox
+libnss3              prereq    zoom
+links2               terminal  browser
+lolcat               terminal  fun
+lsof                 terminal  stats
+lynx                 terminal  browser
+maim                 gui       screenshot
+make                 terminal  compiler
+mdp                  terminal  markdown
+moon-buggy           terminal  game
+mpc                  terminal  client          music
+mpd                  terminal  music           server
+mps-youtube          terminal  video
+mpv                  gui       video
+mupdf                gui       document        reader
+mutt                 terminal  mail
+mycli                terminal  client          database
+ncmpcpp              terminal  client          music
+neofetch             terminal  stats
+netcat               terminal  stats
+nethack-console      terminal  game
+nethogs              terminal  stats           network
+nettoe               terminal  game
+newsboat             terminal  rss
+nicstat              terminal  stats           network
+ninvaders            terminal  game
+nmap                 terminal  stats           network
+nsnake               terminal  game
+nudoku               terminal  game
+oneko                gui       fun
+openssh-client       terminal  client          ssh
+p7zip                terminal
+pacman4console       terminal  game
+pandoc               terminal  converter       docs
+pgcli                terminal  client          database
+pi                   terminal  fun
+pulseaudio           prereq    firefox
+pwgen                terminal  passwords
+python3              terminal  language
+python3-flake8       terminal  language
+python3-ipython      terminal  language
+python3-pip          terminal  language
+python3-venv         terminal  language
+ranger               terminal  file            manager
+redis-tools          terminal  client          database
+rig                  terminal  fun
+robotfindskitten     terminal  game
+rsync                terminal  file            transfer
+rtorrent             terminal  file            transfer
+rtv                  terminal  social          media
+s-tui                terminal  stats           multi
+screenkey            gui
+sent                 terminal  markdown
+shellcheck           terminal  lint
+speedtest-cli        terminal  stats           network
+sshfs                terminal  mounting
+stow                 termianl
+stterm               terminal  terminal        emulator
+suckless-tools       terminal
+sxiv                 gui       pictures
+thefuck              terminal  spelling
+tig                  terminal  scm
+tmux                 terminal  terminal        multiplexer
+tldr.py              terminal
+toilet               terminal  fun
+tree                 terminal  file            manager
+tty-clock            terminal  time
+ttygif               terminal
+ttyrec               terminal  recording
+typespeed            terminal  game
+units                terminal
+vifm                 terminal  file            manager
+vim                  terminal  editor
+weather-util         terminal  weather
+wget                 terminal  file            transfer
+whois                terminal  stats
+xautolock            gui       lock
+xfce4-terminal       gui       terminal        emulator
+xorg                 gui       graphics
+yamllint             terminal  lint
+youtube-dl           terminal  file            transfer
+zathura              gui       document        reader
+zathura-cb           gui       document        reader
+zathura-pdf-poppler  gui       document        reader
