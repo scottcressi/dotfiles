@@ -402,7 +402,7 @@ parse_git_branch_and_add_brackets(){
 }
 
 -saws(){
-    docker run -it -v "$HOME"/.aws/:/root/.aws:ro joshdvir/saws
+    docker run -it -v ~/.aws/:/root/.aws:ro joshdvir/saws
 }
 
 -mount(){
@@ -412,7 +412,7 @@ parse_git_branch_and_add_brackets(){
         status=$(nc -z freenas 80 ; echo $?)
         if [ "$status" == "0" ] ; then
             for i in "${DIRS[@]}" ; do
-            sudo mount -t cifs //freenas/"$i" ~/mnt/"$i" -o credentials="$HOME"/.smbpasswd -v
+            sudo mount -t cifs //freenas/"$i" ~/mnt/"$i" -o credentials=~/.smbpasswd -v
             done
         else
             echo
