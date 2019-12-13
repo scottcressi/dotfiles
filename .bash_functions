@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# shellcheck source=/dev/null
+source ~/python/bin/activate
+
 DIRS=(
 books
 comics
@@ -200,8 +203,6 @@ parse_git_branch_and_add_brackets(){
 }
 
 -packages-python(){
-    # shellcheck source=/dev/null
-    source ~/python/bin/activate
     yes | pip3 install --upgrade --quiet -r ~/repos/personal/dotfiles/requirements.txt
 
 }
@@ -343,12 +344,6 @@ parse_git_branch_and_add_brackets(){
     else
         echo please start docker
     fi
-
-}
-
--dogecoin(){
-    DOGE="$(find ~/python/lib/python*/site-packages/doge/static/ -type f -exec basename {} ';' | sort -R  | head -1 )"
-    doge --shibe "$DOGE"
 
 }
 
