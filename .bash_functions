@@ -159,10 +159,12 @@ parse_git_branch_and_add_brackets(){
 
         if grep --quiet ID=ubuntu /etc/os-release ; then
         OS=ubuntu
+        package_manager=apt-get
         fi
 
         if grep --quiet ID=debian /etc/os-release ; then
         OS=debian
+        package_manager=apt-get
         fi
 
         # zoom
@@ -187,12 +189,12 @@ parse_git_branch_and_add_brackets(){
         # update
         echo "# updating repos"
         if [ -z "$(find /var/cache/apt/pkgcache.bin -mmin -1440)" ]; then
-        sudo apt-get update --quiet --quiet
+        sudo $package_manager update --quiet --quiet
         fi
 
         # packages
         echo "# installing packages"
-        awk '{print $1}' "$HOME"/repos/personal/dotfiles/packages.txt | xargs sudo apt-get install -y --quiet --quiet
+        awk '{print $1}' "$HOME"/repos/personal/dotfiles/packages.txt | xargs sudo $package_manager install -y --quiet --quiet
 
         # not working
         ##zathura-pdf-mupdf
