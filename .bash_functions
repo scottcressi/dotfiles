@@ -46,9 +46,9 @@ parse_git_branch_and_add_brackets(){
     fi
 
     # slstatus
-    if test ! -d "$HOME"/slstatus ; then
-    git clone https://git.suckless.org/slstatus "$HOME"/slstatus
-    cd "$HOME"/slstatus || exit
+    if test ! -d ~/slstatus ; then
+    git clone https://git.suckless.org/slstatus ~/slstatus
+    cd ~/slstatus || exit
     export DESTDIR="$HOME"
     make clean install
     fi
@@ -148,7 +148,6 @@ parse_git_branch_and_add_brackets(){
     # firefox
     version=71.0
     if test ! -d ~/firefox ; then
-    cd || exit
     curl -s -L --url https://ftp.mozilla.org/pub/firefox/releases/${version}/linux-x86_64/en-US/firefox-${version}.tar.bz2 --output ~/firefox-${version}.tar.bz2
     bunzip2 ~/firefox-${version}.tar.bz2
     tar xvf ~/firefox-${version}.tar
@@ -198,7 +197,7 @@ parse_git_branch_and_add_brackets(){
 
         # packages
         echo "# installing packages"
-        awk '{print $1}' "$HOME"/repos/personal/dotfiles/packages.txt | xargs sudo $package_manager install -y --quiet --quiet
+        awk '{print $1}' ~/repos/personal/dotfiles/packages.txt | xargs sudo $package_manager install -y --quiet --quiet
 
         # not working
         ##zathura-pdf-mupdf
@@ -210,7 +209,7 @@ parse_git_branch_and_add_brackets(){
 -packages-python(){
     # shellcheck source=/dev/null
     source ~/python/bin/activate
-    yes | pip3 install --upgrade --quiet -r "$HOME"/repos/personal/dotfiles/requirements.txt
+    yes | pip3 install --upgrade --quiet -r ~/repos/personal/dotfiles/requirements.txt
 
 }
 
