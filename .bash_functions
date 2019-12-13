@@ -176,10 +176,10 @@ parse_git_branch_and_add_brackets(){
         fi
 
         # docker
-        if ! grep -qF docker /etc/apt/sources.list ; then
+        if ! grep -qF docker /etc/apt/sources.list.d/stretch-docker.list ; then
+        echo "deb [arch=amd64] https://download.docker.com/linux/$OS $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/stretch-docker.list > /dev/null
         curl -fsSL https://download.docker.com/linux/$OS/gpg | sudo apt-key add -
         sudo apt-key fingerprint 0EBFCD88
-        sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/$OS $(lsb_release -cs) stable"
         fi
 
         # backports for fzf
