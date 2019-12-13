@@ -25,6 +25,7 @@ empire                      terminal  game
 espeak                      terminal  speech
 feh                         gui       pictures
 ffmpeg                      gui       video
+fzf                         terminal
 gawk                        prereq    trans
 gcc                         terminal  compiler
 git                         terminal  source control

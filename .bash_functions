@@ -182,12 +182,6 @@ parse_git_branch_and_add_brackets(){
         sudo apt-key fingerprint 0EBFCD88
         fi
 
-        # backports for fzf
-        if ! grep -qF backports /etc/apt/sources.list.d/stretch-backports.list ; then
-        echo "deb http://http.$OS.net/$OS stretch-backports main contrib non-free" | sudo tee /etc/apt/sources.list.d/stretch-backports.list > /dev/null
-        sudo apt-key adv --recv-key 8B48AD6246925553 && sudo apt-key adv --recv-key 7638D0442B90D010
-        fi
-
         # update
         echo "# updating repos"
         if [ -z "$(find /var/cache/apt/pkgcache.bin -mmin -1440)" ]; then
