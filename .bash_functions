@@ -20,6 +20,16 @@ parse_git_branch_and_add_brackets(){
 
 -packages(){
 
+    if grep --quiet ID=ubuntu /etc/os-release ; then
+    OS=ubuntu
+    package_manager=apt-get
+    fi
+
+    if grep --quiet ID=debian /etc/os-release ; then
+    OS=debian
+    package_manager=apt-get
+    fi
+
     # directories storage
     for i in "${DIRS[@]}" ; do
     mkdir -p ~/mnt/"$i"
@@ -136,9 +146,13 @@ parse_git_branch_and_add_brackets(){
     chmod 755 ~/bin/*
 
     # firefox
+    version=71.0
     if test ! -d ~/firefox ; then
     cd || exit
-    wget --quiet "https://download.mozilla.org/?product=firefox-latest&os=linux64&lang=en-US" -O - | bunzip2 | tar xv
+    curl -s -L --url https://ftp.mozilla.org/pub/firefox/releases/${version}/linux-x86_64/en-US/firefox-${version}.tar.bz2 --output ~/firefox-${version}.tar.bz2
+    bunzip2 ~/firefox-${version}.tar.bz2
+    tar xvf ~/firefox-${version}.tar
+    rm -f ~/firefox-${version}.tar
     fi
 
     # dwarf fortress
@@ -154,18 +168,8 @@ parse_git_branch_and_add_brackets(){
     curl -s -L --url https://github.com/CleverRaven/Cataclysm-DDA/releases/download/0.D/cataclysmdda-0.D-8574-Linux-Tiles.tar.gz | gunzip | tar xv
     fi
 
-    # debian
-    if [ -f /etc/debian_version ] ; then
-
-        if grep --quiet ID=ubuntu /etc/os-release ; then
-        OS=ubuntu
-        package_manager=apt-get
-        fi
-
-        if grep --quiet ID=debian /etc/os-release ; then
-        OS=debian
-        package_manager=apt-get
-        fi
+    # deb based
+    if [ "$package_manager" == "apt-get" ] ; then
 
         # zoom
         if test ! -f ~/Downloads/zoom_amd64.deb ; then
