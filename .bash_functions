@@ -188,14 +188,14 @@ parse_git_branch_and_add_brackets(){
         sudo $package_manager update --quiet --quiet
         fi
 
+        # packages
+        echo "# installing packages"
+        awk '{print $1}' ~/repos/personal/dotfiles/packages.txt | xargs sudo $package_manager install -y --quiet --quiet
+
+        # not working
+        ##zathura-pdf-mupdf
+
     fi
-
-    # packages
-    echo "# installing packages"
-    awk '{print $1}' ~/repos/personal/dotfiles/packages.txt | xargs sudo $package_manager install -y --quiet --quiet
-
-    # not working
-    ##zathura-pdf-mupdf
 
 }
 
