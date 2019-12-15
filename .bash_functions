@@ -290,10 +290,6 @@ parse_git_branch_and_add_brackets(){
 
 }
 
--aws-certs(){
-    aws acm list-certificates --region us-east-1
-}
-
 -awsc(){
     if [ -z "$1" ] ; then echo enter profile ; echo ; grep "\\[" ~/.aws/credentials ; fi
     export AWS_DEFAULT_PROFILE=$1

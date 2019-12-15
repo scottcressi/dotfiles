@@ -127,4 +127,5 @@ alias dcd='docker-compose down'
 alias dcp='docker-compose pull ; docker-compose restart'
 
 # aws
-alias awst='aws sts get-caller-identity ; aws s3 ls'
+alias aws-test='aws sts get-caller-identity ; aws s3 ls'
+alias aws-certs='aws acm list-certificates --region us-east-1'
