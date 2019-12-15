@@ -19,7 +19,7 @@ alias ww='curl http://wttr.in/'
 # revisions
 alias dd='dd status="progress"'
 alias df='df -h'
-alias dstat='dstat -c --top-cpu -dn --top-mem'
+alias dstat='dstat --time --net --disk --top-bio --top-cpu --top-cputime --top-io --top-latency --top-mem --top-oom'
 alias feh='feh --randomize --bg-max ~/wallpapers/'
 alias firefox='~/firefox/firefox -ProfileManager'
 alias grep='grep --color=auto'
