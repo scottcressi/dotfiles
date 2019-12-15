@@ -16,24 +16,6 @@ alias testssl='docker run -ti drwetter/testssl.sh'
 alias vpn='curl -s https://mullvad.net/ -L | grep "has-text-weight-bold has-text-danger" | sed "s/.*\">//g" | sed "s/<.*//g"'
 alias ww='curl http://wttr.in/'
 
-# corrections
-alias a-l='-la'
-alias elss="less"
-alias erg='grep --color=auto'
-alias gep='grep --color=auto'
-alias gerp='grep'
-alias gre='grep --color=auto'
-alias grep='grep --color=auto'
-alias grpe='grep'
-alias iv='vi'
-alias les="less"
-alias ll='ls -lh'
-alias lll='ls -lah | grep "^d" && ls -la | grep "^-" && ls -la | grep "^l"'
-alias lses="less"
-alias sl='ls'
-alias sduo='sudo'
-alias suod='sudo'
-
 # revisions
 alias dd='dd status="progress"'
 alias df='df -h'
