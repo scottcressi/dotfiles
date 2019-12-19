@@ -380,8 +380,10 @@ parse_git_branch_and_add_brackets(){
     read -r pod
     namespace=$(kubectl get pod --all-namespaces | grep "$pod" | awk '{print $1}')
     echo "$namespace"
-    port=$(kubectl get pods -n "$namespace" "$pod" --template='{{(index (index .spec.containers 0).ports 0).containerPort}}{{"\n"}}')
+    port=$(kubectl describe pod -n "$namespace" "$pod" | grep Ports: | grep -v Host)
     echo "$port"
+    echo enter port to forward
+    read -r port
     kubectl port-forward --address 0.0.0.0 --namespace "$namespace" pod/"$pod" 12345:"$port"
 }
 
