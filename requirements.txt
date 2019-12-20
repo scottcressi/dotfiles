@@ -1,2 +1,4 @@
 aws-adfs
 awscli
+mps-youtube
+youtube-dl

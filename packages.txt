@@ -35,14 +35,14 @@ git-extras           terminal  scm
 glances              terminal  stats           multi
 gnuchess             terminal  game
 greed                terminal  game
-howdoi               terminal
+howdoi               terminal  language
 htop                 terminal  stats           multi
 iftop                terminal  stats           network
 iotop                terminal  stats           disk
 ipcalc               terminal  stats
 iptraf               terminal  stats           network
 irssi                terminal  messaging
-jq                   terminal
+jq                   terminal  language
 jsonlint             terminal  lint
 lftp                 terminal  file            transfer
 libaa-bin            terminal  fun
@@ -58,7 +58,6 @@ mdp                  terminal  markdown
 moon-buggy           terminal  game
 mpc                  terminal  client          music
 mpd                  terminal  music           server
-mps-youtube          terminal  video
 mpv                  gui       video
 mupdf                gui       document        reader
 mutt                 terminal  mail
@@ -108,12 +107,11 @@ suckless-tools       terminal
 sxiv                 gui       pictures
 thefuck              terminal  spelling
 tig                  terminal  scm
-tldr.py              terminal
 tmux                 terminal  terminal        multiplexer
 toilet               terminal  fun
 tree                 terminal  file            manager
 tty-clock            terminal  time
-ttygif               terminal
+ttygif               terminal  recording
 ttyrec               terminal  recording
 typespeed            terminal  game
 units                terminal
