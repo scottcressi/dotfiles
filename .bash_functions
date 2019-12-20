@@ -367,7 +367,7 @@ parse_git_branch_and_add_brackets(){
     ffmpeg -f x11grab -s "$RESOLUTION" -i :0.0 out.mkv
 }
 
--record-me(){
+-record-camera(){
     ffmpeg -i /dev/video0 out.mkv
 }
 
