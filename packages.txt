@@ -124,7 +124,6 @@ xautolock            gui       lock
 xfce4-terminal       gui       terminal        emulator
 xorg                 gui       graphics
 yamllint             terminal  lint
-youtube-dl           terminal  file            transfer
 zathura              gui       document        reader
 zathura-cb           gui       document        reader
 zathura-pdf-poppler  gui       document        reader
