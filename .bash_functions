@@ -379,8 +379,8 @@ parse_git_branch_and_add_brackets(){
     echo pod:
     read -r pod
     namespace=$(kubectl get pod --all-namespaces | grep "$pod" | awk '{print $1}')
-    echo "$namespace"
-    port=$(kubectl describe pod -n "$namespace" "$pod" | grep Ports: | grep -v Host)
+    echo namespace: "$namespace"
+    port=$(kubectl describe pod -n "$namespace" "$pod" | grep Port | grep -v Host)
     echo "$port"
     echo enter port to forward
     read -r port
