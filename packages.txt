@@ -13,12 +13,14 @@ chafa                terminal  converter       images
 cifs-utils           terminal  mounting
 cmatrix              terminal  fun
 cmus                 terminal  client          music
+containerd.io        terminal  virtualization
 cowsay               terminal  fun
 curl                 terminal  file            transfer
 curseofwar           terminal  game
 ddgr                 terminal  browser
 dnsutils             terminal  stats           dns
 docker-ce            terminal  virtualization
+docker-ce-cli        terminal  virtualization
 dstat                terminal  stats           multi
 dwm                  gui       graphics
 empire               terminal  game
@@ -106,8 +108,8 @@ suckless-tools       terminal
 sxiv                 gui       pictures
 thefuck              terminal  spelling
 tig                  terminal  scm
-tmux                 terminal  terminal        multiplexer
 tldr.py              terminal
+tmux                 terminal  terminal        multiplexer
 toilet               terminal  fun
 tree                 terminal  file            manager
 tty-clock            terminal  time
