@@ -1,4 +1,5 @@
 aws-adfs
 awscli
+doge
 mps-youtube
 youtube-dl
