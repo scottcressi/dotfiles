@@ -123,6 +123,7 @@ whois                terminal  stats
 xautolock            gui       lock
 xcowsay              gui       fun
 xfce4-terminal       gui       terminal        emulator
+xfishtank            gui       fun
 xorg                 gui       graphics
 yamllint             terminal  lint
 zathura              gui       document        reader
