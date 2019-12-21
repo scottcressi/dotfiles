@@ -121,6 +121,7 @@ weather-util         terminal  weather
 wget                 terminal  file            transfer
 whois                terminal  stats
 xautolock            gui       lock
+xcowsay              gui       fun
 xfce4-terminal       gui       terminal        emulator
 xorg                 gui       graphics
 yamllint             terminal  lint
