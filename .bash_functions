@@ -387,10 +387,6 @@ parse_git_branch_and_add_brackets(){
     kubectl port-forward --address 0.0.0.0 --namespace "$namespace" pod/"$pod" 12345:"$port"
 }
 
--saws(){
-    docker run -it -v ~/.aws/:/root/.aws:ro joshdvir/saws
-}
-
 -mount(){
     # credentials file check
     if test ! -f ~/.smbpasswd ; then
