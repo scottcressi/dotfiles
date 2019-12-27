@@ -105,6 +105,7 @@ stow                 termianl
 stterm               terminal  terminal        emulator
 suckless-tools       terminal
 sxiv                 gui       pictures
+texlive-xetex        terminal  converter       docs
 thefuck              terminal  spelling
 tig                  terminal  scm
 tmux                 terminal  terminal        multiplexer
