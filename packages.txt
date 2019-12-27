@@ -32,7 +32,6 @@ gawk                 prereq    trans
 gcc                  terminal  compiler
 git                  terminal  scm
 git-extras           terminal  scm
-glances              terminal  stats           multi
 gnuchess             terminal  game
 greed                terminal  game
 howdoi               terminal  language
