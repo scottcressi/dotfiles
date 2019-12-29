@@ -57,6 +57,7 @@ mdp                  terminal  markdown
 moon-buggy           terminal  game
 mpc                  terminal  client          music
 mpd                  terminal  music           server
+mps-youtube          terminal  video
 mpv                  gui       video
 mupdf                gui       document        reader
 mutt                 terminal  mail
@@ -126,6 +127,7 @@ xfce4-terminal       gui       terminal        emulator
 xfishtank            gui       fun
 xorg                 gui       graphics
 yamllint             terminal  lint
+youtube-dl           terminal  video
 zathura              gui       document        reader
 zathura-cb           gui       document        reader
 zathura-pdf-poppler  gui       document        reader
