@@ -1,6 +1,7 @@
 angband              terminal  game
 arandr               gui       resolution
 aspell               terminal  spelling
+aws-shell            terminal
 bash-completion      terminal  completion
 bastet               terminal  game
 bb                   terminal  fun

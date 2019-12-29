@@ -1,5 +1,4 @@
 aws-adfs
-aws-shell
 awscli
 doge
 mps-youtube
