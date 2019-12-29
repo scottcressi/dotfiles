@@ -164,11 +164,6 @@ parse_git_branch_and_add_brackets(){
     rm -f ~/df_44_12_linux.tar
     fi
 
-    # cataclysm dark days ahead
-    if test ! -d ~/cataclysmdda-0.D ; then
-    curl -s -L --url https://github.com/CleverRaven/Cataclysm-DDA/releases/download/0.D/cataclysmdda-0.D-8574-Linux-Tiles.tar.gz | gunzip | tar xv
-    fi
-
     # deb based
     if [ "$package_manager" == "apt-get" ] ; then
 
