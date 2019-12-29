@@ -195,9 +195,6 @@ parse_git_branch_and_add_brackets(){
         echo "# installing packages"
         awk '{print $1}' ~/repos/personal/dotfiles/packages.txt | xargs sudo $package_manager install -y --quiet --quiet
 
-        # not working
-        ##zathura-pdf-mupdf
-
     fi
 
 }

@@ -59,7 +59,6 @@ mpc                  terminal  client          music
 mpd                  terminal  music           server
 mps-youtube          terminal  video
 mpv                  gui       video
-mupdf                gui       document        reader
 mutt                 terminal  mail
 mycli                terminal  client          database
 ncmpcpp              terminal  client          music
