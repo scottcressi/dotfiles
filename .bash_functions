@@ -88,9 +88,10 @@ parse_git_branch_and_add_brackets(){
     fi
 
     # helm
-    version=v2.16.2
+    version=v2.16.1
     if test ! -f ~/bin/helm ; then
-        curl -s -L --url https://storage.googleapis.com/kubernetes-helm/helm-"${version}"-linux-amd64.tar.gz | gunzip | tar xv
+        https://get.helm.sh/helm-v2.16.1-linux-amd64.tar.gz
+        curl -s -L --url https://get.helm.sh/helm-"${version}"-linux-amd64.tar.gz | gunzip | tar xv
     mv linux-amd64/helm ~/bin/helm ; rm -rf linux-amd64
     helm plugin install https://github.com/futuresimple/helm-secrets
     helm plugin install https://github.com/databus23/helm-diff --version master
