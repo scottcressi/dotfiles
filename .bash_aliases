@@ -6,6 +6,7 @@ alias g='cd ~/repos'
 
 # misc
 alias am="alsamixer"
+alias compile="make clean install"
 alias fz='vim $(fzf)'
 alias get='sudo apt-get install'
 alias gip='curl -s ipinfo.io'

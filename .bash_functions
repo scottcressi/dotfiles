@@ -52,7 +52,6 @@ parse_git_branch_and_add_brackets(){
     export DESTDIR="$HOME"
     if test ! -d ~/slstatus ; then
     git clone https://git.suckless.org/slstatus ~/slstatus
-    cd ~/slstatus || make clean install
     fi
 
     # terraform
