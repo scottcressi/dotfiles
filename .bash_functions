@@ -103,8 +103,9 @@ parse_git_branch_and_add_brackets(){
     fi
 
     # kubectl
+    version=v1.17.0
     if test ! -f ~/bin/kubectl ; then
-    curl -s -L --url https://storage.googleapis.com/kubernetes-release/release/"$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)"/bin/linux/amd64/kubectl --output ~/bin/kubectl
+    curl -s -L --url curl -LO https://storage.googleapis.com/kubernetes-release/release/"${version}"/bin/linux/amd64/kubectl --output ~/bin/kubectl
     fi
 
     # k9s
