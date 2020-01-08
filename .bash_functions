@@ -54,6 +54,12 @@ parse_git_branch_and_add_brackets(){
     git clone https://git.suckless.org/slstatus ~/slstatus
     fi
 
+    # testssl
+    if test ! -d ~/testssl.sh ; then
+    cd || exit
+    git clone --depth 1 https://github.com/drwetter/testssl.sh.git
+    fi
+
     # terraform
     version=0.12.18
     if test ! -f ~/bin/terraform ; then

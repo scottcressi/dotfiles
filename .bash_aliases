@@ -12,8 +12,6 @@ alias get='sudo apt-get install'
 alias gip='curl -s ipinfo.io'
 alias pp='ps axuf'
 alias search='apt-cache search'
-alias testssl='docker run -ti drwetter/testssl.sh'
-alias vpn='curl -s https://mullvad.net/ -L | grep "has-text-weight-bold has-text-danger" | sed "s/.*\">//g" | sed "s/<.*//g"'
 alias ww='curl http://wttr.in/'
 
 # revisions
