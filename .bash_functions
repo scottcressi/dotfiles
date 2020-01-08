@@ -61,7 +61,7 @@ parse_git_branch_and_add_brackets(){
     fi
 
     # terraform
-    version=0.12.18
+    version=0.12.19
     if test ! -f ~/bin/terraform ; then
     curl -s -L https://releases.hashicorp.com/terraform/${version}/terraform_${version}_linux_amd64.zip --output ~/bin/terraform_${version}_linux_amd64.zip
     unzip -d ~/bin ~/bin/terraform_${version}_linux_amd64.zip
@@ -115,7 +115,7 @@ parse_git_branch_and_add_brackets(){
     fi
 
     # k9s
-    version=0.10.10
+    version=0.11.3
     if test ! -f ~/bin/k9s ; then
         curl -s -L --url https://github.com/derailed/k9s/releases/download/${version}/k9s_"${version}"_Linux_x86_64.tar.gz | gunzip | tar xv
         mv k9s ~/bin/k9s ; rm -f README.md LICENSE k9s_"${version}"_Linux_x86_64.tar
