@@ -342,10 +342,6 @@ parse_git_branch_and_add_brackets(){
 
 }
 
--random_cowsay(){
-    fortune | cowsay -f "$(find /usr/share/cowsay/cows/ | shuf -n1 | xargs basename)"
-}
-
 -sudo(){
     echo "$(whoami) ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/"$(whoami)"
 }
