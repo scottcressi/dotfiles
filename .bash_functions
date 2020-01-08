@@ -200,11 +200,6 @@ parse_git_branch_and_add_brackets(){
 
 }
 
--packages-python(){
-    yes | pip3 install --upgrade --quiet -r ~/repos/personal/dotfiles/requirements.txt
-
-}
-
 -kterminate(){
     echo enter pod:
     echo
