@@ -100,7 +100,6 @@ screenkey            gui
 sent                 terminal  markdown
 shellcheck           terminal  lint
 speedtest-cli        terminal  stats           network
-sshfs                terminal  mounting
 stow                 termianl
 stterm               gui       terminal        emulator
 suckless-tools       terminal
