@@ -1,5 +1,6 @@
 angband              terminal  game
 arandr               gui       resolution
+armagetronad         gui       game
 aspell               terminal  spelling
 aws-shell            terminal
 awscli               terminal
@@ -10,6 +11,7 @@ bc                   terminal  calculator
 bombardier           terminal  game
 bpython3             terminal  language
 bsdgames             terminal  game
+cataclysm-dda-curses terminal  game
 chafa                terminal  converter       images
 cifs-utils           terminal  mounting
 cmatrix              terminal  fun
