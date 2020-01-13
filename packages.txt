@@ -106,6 +106,7 @@ stow                 termianl
 stterm               gui       terminal        emulator
 suckless-tools       terminal
 sxiv                 gui       pictures
+testssl.sh           terminal
 texlive-xetex        terminal  converter       docs
 thefuck              terminal  spelling
 tig                  terminal  scm
