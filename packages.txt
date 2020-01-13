@@ -23,9 +23,9 @@ dnsutils             terminal  stats           dns
 docker-ce            terminal  virtualization
 docker-ce-cli        terminal  virtualization
 dstat                terminal  stats           multi
-dwm                  gui       graphics
+dwm                  gui       graphics        window manager
 empire               terminal  game
-espeak               gui       speech
+espeak               terminal  speech
 feh                  gui       pictures
 ffmpeg               gui       video
 fzf                  terminal
@@ -124,7 +124,7 @@ xautolock            gui       lock
 xcowsay              gui       fun
 xfce4-terminal       gui       terminal        emulator
 xfishtank            gui       fun
-xorg                 gui       graphics
+xorg                 gui       graphics        display server
 yamllint             terminal  lint
 youtube-dl           terminal  video
 zathura              gui       document        reader
