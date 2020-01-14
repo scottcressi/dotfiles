@@ -116,7 +116,7 @@ parse_git_branch_and_add_brackets(){
     fi
 
     # kind
-    version=v0.6.1
+    version=v0.7.0
     if test ! -f ~/bin/kind ; then
     curl -s -L --url https://github.com/kubernetes-sigs/kind/releases/download/${version}/kind-linux-amd64 --output ~/bin/kind
     fi
