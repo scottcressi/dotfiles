@@ -97,7 +97,7 @@ parse_git_branch_and_add_brackets(){
     fi
 
     # helmfile
-    version=v0.98.1
+    version=v0.98.2
     if test ! -f ~/bin/helmfile ; then
     curl -s -L --url https://github.com/roboll/helmfile/releases/download/${version}/helmfile_linux_amd64 --output ~/bin/helmfile
     fi
@@ -264,9 +264,7 @@ parse_git_branch_and_add_brackets(){
     if [ "$confirm" == "y" ] ; then
         kops delete cluster \
         --name "$cluster" \
-        --state s3://"$(aws sts get-caller-identity \
-        --output text \
-        --query 'Account')"-kops-test \
+        --state s3://"$(aws sts get-caller-identity --output text --query 'Account')"-kops-test \
         --yes ; fi
 }
 
