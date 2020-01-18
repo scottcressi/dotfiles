@@ -30,6 +30,7 @@ empire               terminal  game
 espeak               terminal  speech
 feh                  gui       pictures
 ffmpeg               gui       video
+freeciv              gui       game
 fzf                  terminal
 gawk                 prereq    trans
 gcc                  terminal  compiler
