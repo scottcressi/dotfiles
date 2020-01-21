@@ -21,6 +21,7 @@ cowsay               terminal  fun
 curl                 terminal  file            transfer
 curseofwar           terminal  game
 ddgr                 terminal  browser
+dialog               terminal  language
 dnsutils             terminal  stats           dns
 docker-ce            terminal  virtualization
 docker-ce-cli        terminal  virtualization
