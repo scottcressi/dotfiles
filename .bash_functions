@@ -149,7 +149,7 @@ parse_git_branch_and_add_brackets(){
     chmod 755 ~/bin/*
 
     # firefox
-    version=72.0.1
+    version=72.0.2
     if test ! -d ~/firefox ; then
     curl -s -L --url https://ftp.mozilla.org/pub/firefox/releases/${version}/linux-x86_64/en-US/firefox-${version}.tar.bz2 --output ~/firefox-${version}.tar.bz2
     bunzip2 ~/firefox-${version}.tar.bz2

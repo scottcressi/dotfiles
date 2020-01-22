@@ -27,6 +27,7 @@ docker-ce            terminal  virtualization
 docker-ce-cli        terminal  virtualization
 dstat                terminal  stats           multi
 dwm                  gui       graphics        window manager
+elinks               terminal  browser
 empire               terminal  game
 espeak               terminal  speech
 feh                  gui       pictures
@@ -122,6 +123,7 @@ typespeed            terminal  game
 units                terminal
 vifm                 terminal  file            manager
 vim                  terminal  editor
+w3m                  terminal  browser
 weather-util         terminal  weather
 wget                 terminal  file            transfer
 whois                terminal  stats
