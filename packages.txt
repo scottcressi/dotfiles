@@ -93,6 +93,7 @@ python3-flake8       terminal  language
 python3-ipython      terminal  language
 python3-pip          terminal  language
 python3-venv         terminal  language
+qutebrowser          gui       browser
 ranger               terminal  file            manager
 redis-tools          terminal  client          database
 rig                  terminal  fun
