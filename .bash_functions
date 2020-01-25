@@ -103,7 +103,7 @@ parse_git_branch_and_add_brackets(){
     fi
 
     # kubectl
-    version=v1.17.0
+    version=v1.17.2
     if test ! -f ~/bin/kubectl ; then
     curl -s -L --url curl -LO https://storage.googleapis.com/kubernetes-release/release/"${version}"/bin/linux/amd64/kubectl --output ~/bin/kubectl
     fi
