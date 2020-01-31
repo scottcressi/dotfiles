@@ -22,7 +22,7 @@ curl                  debian        terminal  file            transfer
 curseofwar            debian        terminal  game
 ddgr                  debian        terminal  browser
 dialog                debian        terminal  language
-dnsutils              debian        terminal  stats           dns
+dnsutils              debian centos terminal  stats           dns
 docker-ce             debian centos terminal  virtualization
 docker-ce-cli         debian centos terminal  virtualization
 dstat                 debian centos terminal  stats           multi
@@ -42,10 +42,10 @@ gnuchess              debian        terminal  game
 greed                 debian        terminal  game
 howdoi                debian        terminal  language
 htop                  debian centos terminal  stats           multi
-iftop                 debian        terminal  stats           network
-iotop                 debian        terminal  stats           disk
-ipcalc                debian        terminal  stats
-iptraf                debian        terminal  stats           network
+iftop                 debian centos terminal  stats           network
+iotop                 debian centos terminal  stats           disk
+ipcalc                debian centos terminal  stats
+iptraf                debian centos terminal  stats           network
 irssi                 debian        terminal  messaging
 jq                    debian        terminal  language
 jsonlint              debian        terminal  lint
