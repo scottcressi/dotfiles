@@ -192,11 +192,11 @@ parse_git_branch_and_add_brackets(){
         sudo $package_manager update --quiet --quiet
         fi
 
-        # packages
-        echo "# installing packages"
-        awk '{print $1}' ~/repos/personal/dotfiles/packages.txt | xargs sudo $package_manager install -y --quiet --quiet
-
     fi
+
+# packages
+echo "# installing packages"
+grep $OS ~/repos/personal/dotfiles/packages.txt | awk '{print $1}' | xargs sudo $package_manager install -y --quiet --quiet
 
 }
 
