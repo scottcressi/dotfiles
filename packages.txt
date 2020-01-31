@@ -55,7 +55,7 @@ libgtk-3-0            debian        prereq    firefox
 libnss3               debian        prereq    zoom
 links2                debian        terminal  browser
 lolcat                debian        terminal  fun
-lsof                  debian        terminal  stats
+lsof                  debian centos terminal  stats
 lynx                  debian        terminal  browser
 maim                  debian        gui       screenshot
 make                  debian        terminal  compiler
@@ -68,15 +68,15 @@ mpv                   debian        gui       video
 mutt                  debian        terminal  mail
 mycli                 debian        terminal  client          database
 ncmpcpp               debian        terminal  client          music
-neofetch              debian        terminal  stats
-netcat                debian        terminal  stats
+neofetch              debian centos terminal  stats
+netcat                debian centos terminal  stats
 nethack-console       debian        terminal  game
-nethogs               debian        terminal  stats           network
+nethogs               debian centos terminal  stats           network
 nettoe                debian        terminal  game
 newsboat              debian        terminal  rss
-nicstat               debian        terminal  stats           network
+nicstat               debian centos terminal  stats           network
 ninvaders             debian        terminal  game
-nmap                  debian        terminal  stats           network
+nmap                  debian centos terminal  stats           network
 nsnake                debian        terminal  game
 nudoku                debian        terminal  game
 oneko                 debian        gui       fun
@@ -126,7 +126,7 @@ vim                   debian centos terminal  editor
 w3m                   debian        terminal  browser
 weather-util          debian        terminal  weather
 wget                  debian        terminal  file            transfer
-whois                 debian        terminal  stats
+whois                 debian centos terminal  stats
 xautolock             debian        gui       lock
 xcowsay               debian        gui       fun
 xfce4-terminal        debian        gui       terminal        emulator
