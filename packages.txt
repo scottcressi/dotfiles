@@ -17,17 +17,17 @@ cifs-utils            debian        terminal  mounting
 cmatrix               debian        terminal  fun
 cmus                  debian        terminal  client          music
 containerd.io         debian centos terminal  virtualization
-cowsay                debian        terminal  fun
+cowsay                debian centos terminal  fun
 curl                  debian centos terminal  file            transfer
 curseofwar            debian        terminal  game
 ddgr                  debian        terminal  browser
-dialog                debian        terminal  language
+dialog                debian centos terminal  language
 dnsutils              debian        terminal  stats           dns
 docker-ce             debian centos terminal  virtualization
 docker-ce-cli         debian centos terminal  virtualization
 dstat                 debian centos terminal  stats           multi
 dwm                   debian        gui       graphics        window       manager
-elinks                debian        terminal  browser
+elinks                debian centos terminal  browser
 empire                debian        terminal  game
 espeak                debian        terminal  speech
 feh                   debian        gui       pictures
