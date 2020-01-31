@@ -25,7 +25,7 @@ dialog                debian        terminal  language
 dnsutils              debian        terminal  stats           dns
 docker-ce             debian        terminal  virtualization
 docker-ce-cli         debian        terminal  virtualization
-dstat                 debian        terminal  stats           multi
+dstat                 debian centos terminal  stats           multi
 dwm                   debian        gui       graphics        window       manager
 elinks                debian        terminal  browser
 empire                debian        terminal  game
@@ -122,7 +122,7 @@ ttyrec                debian        terminal  recording
 typespeed             debian        terminal  game
 units                 debian        terminal
 vifm                  debian        terminal  file            manager
-vim                   debian        terminal  editor
+vim                   debian centos terminal  editor
 w3m                   debian        terminal  browser
 weather-util          debian        terminal  weather
 wget                  debian        terminal  file            transfer
