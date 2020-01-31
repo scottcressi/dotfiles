@@ -195,17 +195,6 @@ parse_git_branch_and_add_brackets(){
 
 }
 
--kterminate(){
-    echo enter pod:
-    echo
-    read -r POD
-    echo enter namespace:
-    echo
-    read -r NAMESPACE
-    kubectl delete pod -n "$NAMESPACE" "$POD" --grace-period=0 --force &
-    kubectl patch pod -n "$NAMESPACE" "$POD" -p '{"metadata":{"finalizers":null}}'
-}
-
 -ds(){
     echo stop all containers? y/n
     read -r confirm
