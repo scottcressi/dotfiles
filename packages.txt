@@ -123,6 +123,7 @@ typespeed             debian        terminal  game
 units                 debian        terminal
 vifm                  debian        terminal  file            manager
 vim                   debian centos terminal  editor
+vitetris              debian        terminal  game
 w3m                   debian        terminal  browser
 weather-util          debian        terminal  weather
 wget                  debian centos terminal  file            transfer
