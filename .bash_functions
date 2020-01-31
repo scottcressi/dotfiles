@@ -33,6 +33,11 @@ parse_git_branch_and_add_brackets(){
     package_manager=apt-get
     fi
 
+    if grep --quiet ID=\"centos\" /etc/os-release ; then
+    OS=centos
+    package_manager=yum
+    fi
+
     # directories storage
     for i in "${DIRS[@]}" ; do
     mkdir -p ~/mnt/"$i"
