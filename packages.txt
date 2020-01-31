@@ -18,7 +18,7 @@ cmatrix               debian        terminal  fun
 cmus                  debian        terminal  client          music
 containerd.io         debian centos terminal  virtualization
 cowsay                debian        terminal  fun
-curl                  debian        terminal  file            transfer
+curl                  debian centos terminal  file            transfer
 curseofwar            debian        terminal  game
 ddgr                  debian        terminal  browser
 dialog                debian        terminal  language
@@ -35,7 +35,7 @@ ffmpeg                debian        gui       video
 freeciv               debian        gui       game
 fzf                   debian        terminal
 gawk                  debian        prereq    trans
-gcc                   debian        terminal  compiler
+gcc                   debian centos terminal  compiler
 git                   debian        terminal  scm
 git-extras            debian        terminal  scm
 gnuchess              debian        terminal  game
@@ -56,7 +56,7 @@ libnss3               debian        prereq    zoom
 links2                debian        terminal  browser
 lolcat                debian        terminal  fun
 lsof                  debian centos terminal  stats
-lynx                  debian        terminal  browser
+lynx                  debian centos terminal  browser
 maim                  debian        gui       screenshot
 make                  debian        terminal  compiler
 mdp                   debian        terminal  markdown
@@ -80,7 +80,7 @@ nmap                  debian centos terminal  stats           network
 nsnake                debian        terminal  game
 nudoku                debian        terminal  game
 oneko                 debian        gui       fun
-openssh-client        debian        terminal  client          ssh
+openssh-client        debian centos terminal  client          ssh
 p7zip                 debian        terminal
 pacman4console        debian        terminal  game
 pandoc                debian        terminal  converter       docs
@@ -125,7 +125,7 @@ vifm                  debian        terminal  file            manager
 vim                   debian centos terminal  editor
 w3m                   debian        terminal  browser
 weather-util          debian        terminal  weather
-wget                  debian        terminal  file            transfer
+wget                  debian centos terminal  file            transfer
 whois                 debian centos terminal  stats
 xautolock             debian        gui       lock
 xcowsay               debian        gui       fun
