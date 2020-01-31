@@ -22,7 +22,7 @@ curl                  debian centos terminal  file            transfer
 curseofwar            debian        terminal  game
 ddgr                  debian        terminal  browser
 dialog                debian        terminal  language
-dnsutils              debian centos terminal  stats           dns
+dnsutils              debian        terminal  stats           dns
 docker-ce             debian centos terminal  virtualization
 docker-ce-cli         debian centos terminal  virtualization
 dstat                 debian centos terminal  stats           multi
@@ -44,7 +44,7 @@ howdoi                debian        terminal  language
 htop                  debian centos terminal  stats           multi
 iftop                 debian centos terminal  stats           network
 iotop                 debian centos terminal  stats           disk
-ipcalc                debian centos terminal  stats
+ipcalc                debian        terminal  stats
 iptraf                debian centos terminal  stats           network
 irssi                 debian        terminal  messaging
 jq                    debian        terminal  language
@@ -68,19 +68,19 @@ mpv                   debian        gui       video
 mutt                  debian        terminal  mail
 mycli                 debian        terminal  client          database
 ncmpcpp               debian        terminal  client          music
-neofetch              debian centos terminal  stats
-netcat                debian centos terminal  stats
+neofetch              debian        terminal  stats
+netcat                debian        terminal  stats
 nethack-console       debian        terminal  game
 nethogs               debian centos terminal  stats           network
 nettoe                debian        terminal  game
 newsboat              debian        terminal  rss
-nicstat               debian centos terminal  stats           network
+nicstat               debian        terminal  stats           network
 ninvaders             debian        terminal  game
 nmap                  debian centos terminal  stats           network
 nsnake                debian        terminal  game
 nudoku                debian        terminal  game
 oneko                 debian        gui       fun
-openssh-client        debian centos terminal  client          ssh
+openssh-client        debian        terminal  client          ssh
 p7zip                 debian        terminal
 pacman4console        debian        terminal  game
 pandoc                debian        terminal  converter       docs
