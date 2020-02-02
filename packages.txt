@@ -63,7 +63,7 @@ mdp                   debian        terminal  markdown
 moon-buggy            debian        terminal  game
 mpc                   debian        terminal  client          music
 mpd                   debian        terminal  music           server
-mps-youtube           debian        terminal  video
+mps-youtube                         terminal  video
 mpv                   debian        gui       video
 mutt                  debian        terminal  mail
 mycli                 debian        terminal  client          database
