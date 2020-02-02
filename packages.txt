@@ -36,7 +36,7 @@ freeciv               debian        gui       game
 fzf                   debian        terminal
 gawk                  debian        prereq    trans
 gcc                   debian centos terminal  compiler
-git                   debian        terminal  scm
+git                   debian centos terminal  scm
 git-extras            debian        terminal  scm
 gnuchess              debian        terminal  game
 greed                 debian        terminal  game
@@ -47,7 +47,7 @@ iotop                 debian centos terminal  stats           disk
 ipcalc                debian        terminal  stats
 iptraf                debian centos terminal  stats           network
 irssi                 debian        terminal  messaging
-jq                    debian        terminal  language
+jq                    debian centos terminal  language
 jsonlint              debian        terminal  lint
 lftp                  debian        terminal  file            transfer
 libaa-bin             debian        terminal  fun
@@ -58,7 +58,7 @@ lolcat                debian        terminal  fun
 lsof                  debian centos terminal  stats
 lynx                  debian centos terminal  browser
 maim                  debian        gui       screenshot
-make                  debian        terminal  compiler
+make                  debian centos terminal  compiler
 mdp                   debian        terminal  markdown
 moon-buggy            debian        terminal  game
 mpc                   debian        terminal  client          music
@@ -97,7 +97,7 @@ ranger                debian        terminal  file            manager
 redis-tools           debian        terminal  client          database
 rig                   debian        terminal  fun
 robotfindskitten      debian        terminal  game
-rsync                 debian        terminal  file            transfer
+rsync                 debian centos terminal  file            transfer
 rtorrent              debian        terminal  file            transfer
 rtv                   debian        terminal  social          media
 s-tui                 debian        terminal  stats           multi
@@ -113,9 +113,9 @@ testssl.sh            debian        terminal
 texlive-xetex         debian        terminal  converter       docs
 thefuck               debian        terminal  spelling
 tig                   debian        terminal  scm
-tmux                  debian        terminal  terminal        multiplexer
+tmux                  debian centos terminal  terminal        multiplexer
 toilet                debian        terminal  fun
-tree                  debian        terminal  file            manager
+tree                  debian centos terminal  file            manager
 tty-clock             debian        terminal  time
 ttygif                debian        terminal  recording
 ttyrec                debian        terminal  recording
