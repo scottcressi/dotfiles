@@ -102,7 +102,7 @@ parse_git_branch_and_add_brackets(){
     fi
 
     # helmfile
-    version=v0.98.2
+    version=v0.98.3
     if test ! -f ~/bin/helmfile ; then
     curl -s -L --url https://github.com/roboll/helmfile/releases/download/${version}/helmfile_linux_amd64 --output ~/bin/helmfile
     fi
