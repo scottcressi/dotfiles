@@ -24,17 +24,20 @@ parse_git_branch_and_add_brackets(){
 -packages(){
 
     if grep --quiet ID=ubuntu /etc/os-release ; then
-    OS=ubuntu
+    ID=ubuntu
+    ID_LIKE=debian
     package_manager=apt-get
     fi
 
     if grep --quiet ID=debian /etc/os-release ; then
-    OS=debian
+    ID=debian
+    ID_LIKE=debian
     package_manager=apt-get
     fi
 
     if grep --quiet ID=\"centos\" /etc/os-release ; then
-    OS=centos
+    ID=centos
+    ID_LIKE=centos
     package_manager=yum
     fi
 
@@ -181,8 +184,8 @@ parse_git_branch_and_add_brackets(){
 
         # docker
         if ! grep -qF docker /etc/apt/sources.list.d/stretch-docker.list ; then
-        echo "deb [arch=amd64] https://download.docker.com/linux/$OS $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/stretch-docker.list > /dev/null
-        curl -fsSL https://download.docker.com/linux/$OS/gpg | sudo apt-key add -
+        echo "deb [arch=amd64] https://download.docker.com/linux/$ID $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/stretch-docker.list > /dev/null
+        curl -fsSL https://download.docker.com/linux/$ID/gpg | sudo apt-key add -
         sudo apt-key fingerprint 0EBFCD88
         fi
 
@@ -196,7 +199,7 @@ parse_git_branch_and_add_brackets(){
 
     # packages
     echo "# installing packages"
-    grep $OS ~/repos/personal/dotfiles/packages.txt | awk '{print $1}' | xargs sudo $package_manager install -y --quiet --quiet
+    grep $ID_LIKE ~/repos/personal/dotfiles/packages.txt | awk '{print $1}' | xargs sudo $package_manager install -y --quiet --quiet
 
 }
 
