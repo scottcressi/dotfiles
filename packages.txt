@@ -109,6 +109,7 @@ stow                  debian        termianl
 stterm                debian        gui       terminal        emulator
 suckless-tools        debian        terminal
 sxiv                  debian        gui       pictures
+tcpdump               debian        terminal  stats
 testssl.sh            debian        terminal
 texlive-xetex         debian        terminal  converter       docs
 thefuck               debian        terminal  spelling
