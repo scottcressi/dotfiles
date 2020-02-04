@@ -106,11 +106,11 @@ screenkey             debian        gui
 sent                  debian        terminal  markdown
 shellcheck            debian        terminal  lint
 speedtest-cli         debian        terminal  stats           network
-stow                  debian        termianl
+stow                  debian centos terminal
 stterm                debian        gui       terminal        emulator
 suckless-tools        debian        terminal
 sxiv                  debian        gui       pictures
-tcpdump               debian        terminal  stats
+tcpdump               debian centos terminal  stats
 testssl.sh            debian        terminal
 texlive-xetex         debian        terminal  converter       docs
 thefuck               debian        terminal  spelling
