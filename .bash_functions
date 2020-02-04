@@ -100,7 +100,6 @@ parse_git_branch_and_add_brackets(){
         https://get.helm.sh/helm-v2.16.1-linux-amd64.tar.gz
         curl -s -L --url https://get.helm.sh/helm-"${version}"-linux-amd64.tar.gz | gunzip | tar xv
     mv linux-amd64/helm ~/bin/helm ; rm -rf linux-amd64
-    helm plugin install https://github.com/futuresimple/helm-secrets
     helm plugin install https://github.com/databus23/helm-diff --version master
     fi
 
@@ -127,12 +126,6 @@ parse_git_branch_and_add_brackets(){
     version=v0.7.0
     if test ! -f ~/bin/kind ; then
     curl -s -L --url https://github.com/kubernetes-sigs/kind/releases/download/${version}/kind-linux-amd64 --output ~/bin/kind
-    fi
-
-    # sops
-    version=3.4.0
-    if test ! -f ~/bin/sops ; then
-        curl -s -L --url https://github.com/mozilla/sops/releases/download/${version}/sops-"${version}".linux --output ~/bin/sops
     fi
 
     # rakkess
