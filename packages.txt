@@ -122,11 +122,11 @@ tty-clock             debian        terminal  time
 ttygif                debian        terminal  recording
 ttyrec                debian        terminal  recording
 typespeed             debian        terminal  game
-units                 debian        terminal
+units                 debian centos terminal
 vifm                  debian        terminal  file            manager
 vim                   debian centos terminal  editor
 vitetris              debian        terminal  game
-w3m                   debian        terminal  browser
+w3m                   debian centos terminal  browser
 weather-util          debian        terminal  weather
 wget                  debian centos terminal  file            transfer
 whois                 debian centos terminal  stats
@@ -135,8 +135,8 @@ xcowsay               debian        gui       fun
 xfce4-terminal        debian        gui       terminal        emulator
 xfishtank             debian        gui       fun
 xorg                  debian        gui       graphics        display      server
-yamllint              debian        terminal  lint
+yamllint              debian centos terminal  lint
 youtube-dl            debian        terminal  video
-zathura               debian        gui       document        reader
+zathura               debian centos gui       document        reader
 zathura-cb            debian        gui       document        reader
 zathura-pdf-poppler   debian        gui       document        reader
