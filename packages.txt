@@ -66,7 +66,7 @@ mpc                   debian        terminal  client          music
 mpd                   debian        terminal  music           server
 mps-youtube                         terminal  video
 mpv                   debian        gui       video
-mutt                  debian        terminal  mail
+mutt                  debian centos terminal  mail
 mycli                 debian        terminal  client          database
 ncmpcpp               debian        terminal  client          music
 neofetch              debian        terminal  stats
@@ -82,7 +82,7 @@ nsnake                debian        terminal  game
 nudoku                debian        terminal  game
 oneko                 debian        gui       fun
 openssh-client        debian        terminal  client          ssh
-p7zip                 debian        terminal
+p7zip                 debian centos terminal
 pacman4console        debian        terminal  game
 pandoc                debian        terminal  converter       docs
 pgcli                 debian        terminal  client          database
