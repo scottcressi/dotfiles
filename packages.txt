@@ -35,11 +35,11 @@ feh                   debian        gui       pictures
 ffmpeg                debian        gui       video
 freeciv               debian        gui       game
 fzf                   debian        terminal
-gawk                  debian        prereq    trans
+gawk                  debian centos prereq    trans
 gcc                   debian centos terminal  compiler
 git                   debian centos terminal  scm
 git-extras            debian        terminal  scm
-gnuchess              debian        terminal  game
+gnuchess              debian centos terminal  game
 greed                 debian        terminal  game
 howdoi                debian        terminal  language
 htop                  debian centos terminal  stats           multi
