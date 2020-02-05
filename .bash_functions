@@ -99,7 +99,8 @@ parse_git_branch_and_add_brackets(){
     if test ! -f ~/bin/helm ; then
         https://get.helm.sh/helm-v2.16.1-linux-amd64.tar.gz
         curl -s -L --url https://get.helm.sh/helm-"${version}"-linux-amd64.tar.gz | gunzip | tar xv
-    mv linux-amd64/helm ~/bin/helm ; rm -rf linux-amd64
+    mv linux-amd64/helm ~/bin/helm
+    rm -rf linux-amd64
     helm plugin install https://github.com/databus23/helm-diff --version master
     fi
 
@@ -133,6 +134,14 @@ parse_git_branch_and_add_brackets(){
     if test ! -f ~/bin/rakkess ; then
     curl -s -L --url https://github.com/corneliusweig/rakkess/releases/download/${version}/rakkess-amd64-linux.tar.gz | gunzip | tar xv
     mv rakkess-amd64-linux ~/bin/rakkess ; rm -f LICENSE
+    fi
+
+    # istioctl
+    version=1.3.7
+    if test ! -f ~/bin/istioctl ; then
+    curl -s -L --url https://github.com/istio/istio/releases/download/${version}/istio-${version}-linux.tar.gz | gunzip | tar xv
+    mv istio-${version}/bin/istioctl ~/bin/istioctl
+    rm -rf istio-${version}
     fi
 
     # slack term
