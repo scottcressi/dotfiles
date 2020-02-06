@@ -1,10 +1,10 @@
 angband               debian        terminal  game
 arandr                debian        gui       resolution
 armagetronad          debian        gui       game
-aspell                debian        terminal  spelling
+aspell                debian centos terminal  spelling
 aws-shell             debian        terminal
-awscli                debian        terminal
-bash-completion       debian        terminal  completion
+awscli                debian centos terminal
+bash-completion       debian centos terminal  completion
 bastet                debian        terminal  game
 bb                    debian        terminal  fun
 bc                    debian        terminal  calculator
@@ -14,7 +14,7 @@ bsdgames              debian        terminal  game
 buku                  debian        terminal  bookmarks
 cataclysm-dda-curses  debian        terminal  game
 chafa                 debian        terminal  converter       images
-cifs-utils            debian        terminal  mounting
+cifs-utils            debian centos terminal  mounting
 cmatrix               debian        terminal  fun
 cmus                  debian        terminal  client          music
 containerd.io         debian centos terminal  virtualization
@@ -30,7 +30,7 @@ dstat                 debian centos terminal  stats           multi
 dwm                   debian        gui       graphics        window       manager
 elinks                debian centos terminal  browser
 empire                debian        terminal  game
-espeak                debian        terminal  speech
+espeak                debian centos terminal  speech
 feh                   debian        gui       pictures
 ffmpeg                debian        gui       video
 freeciv               debian        gui       game
