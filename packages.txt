@@ -21,7 +21,7 @@ containerd.io         debian centos terminal  virtualization
 cowsay                debian centos terminal  fun
 curl                  debian centos terminal  file            transfer
 curseofwar            debian        terminal  game
-ddgr                  debian        terminal  browser
+ddgr                  debian centos terminal  browser
 dialog                debian centos terminal  language
 dnsutils              debian        terminal  stats           dns
 docker-ce             debian centos terminal  virtualization
@@ -33,7 +33,7 @@ empire                debian        terminal  game
 espeak                debian centos terminal  speech
 feh                   debian        gui       pictures
 ffmpeg                debian        gui       video
-freeciv               debian        gui       game
+freeciv               debian centos gui       game
 fzf                   debian        terminal
 gawk                  debian centos prereq    trans
 gcc                   debian centos terminal  compiler
