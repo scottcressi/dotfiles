@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 
 # shellcheck source=/dev/null
-source ~/python/bin/activate
+if test -d ~/python/ ; then
+    source ~/python/bin/activate
+fi
 
 DIRS=(
 books
