@@ -325,10 +325,6 @@ parse_git_branch_and_add_brackets(){
 
 }
 
--sudo(){
-    echo "$(whoami) ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/"$(whoami)"
-}
-
 -brightness(){
     if (( $(echo "$1 > 1" | bc -l) )); then
         echo please enter 1 or less
