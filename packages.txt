@@ -74,6 +74,7 @@ netcat                debian        terminal  stats
 nethack-console       debian        terminal  game
 nethogs               debian centos terminal  stats           network
 nettoe                debian        terminal  game
+network-manager       debian        terminal  network
 newsboat              debian        terminal  rss
 nicstat               debian        terminal  stats           network
 ninvaders             debian        terminal  game
@@ -130,7 +131,6 @@ w3m                   debian centos terminal  browser
 weather-util          debian        terminal  weather
 wget                  debian centos terminal  file            transfer
 whois                 debian centos terminal  stats
-wicd                  debian        terminal  network
 xautolock             debian        gui       lock
 xcowsay               debian        gui       fun
 xfce4-terminal        debian        gui       terminal        emulator
