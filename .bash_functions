@@ -203,10 +203,6 @@ parse_git_branch_and_add_brackets(){
     rm -f ~/df_44_12_linux.tar
     fi
 
-    # packages
-    echo "# installing packages"
-    grep $ID_LIKE ~/repos/personal/dotfiles/packages.txt | awk '{print $1}' | xargs sudo $package_manager install -y --quiet --quiet
-
 }
 
 -ds(){
