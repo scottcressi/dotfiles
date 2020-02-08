@@ -28,7 +28,6 @@ alias mpv='mpv --ytdl-format="bestvideo[height<=?360]+bestaudio/best"'
 alias mv="mv -i"
 alias pwgen='pwgen 32 1 --no-capitalize --no-numerals --ambiguous'
 alias rm="rm -i"
-alias vi='vim'
 alias weather='weather $(curl -s ipinfo.io | jq .postal -r)'
 alias xfishtank='xfishtank -c black -r .1 -i .1 -b 20 -f 20'
 alias xterm='xterm -bg black -fg white'
