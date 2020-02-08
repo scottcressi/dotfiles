@@ -130,6 +130,7 @@ w3m                   debian centos terminal  browser
 weather-util          debian        terminal  weather
 wget                  debian centos terminal  file            transfer
 whois                 debian centos terminal  stats
+wicd                  debian        terminal  network
 xautolock             debian        gui       lock
 xcowsay               debian        gui       fun
 xfce4-terminal        debian        gui       terminal        emulator
