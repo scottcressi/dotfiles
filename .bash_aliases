@@ -12,7 +12,7 @@ alias get='sudo apt-get install'
 alias gip='curl -s ipinfo.io'
 alias pp='ps axuf'
 alias search='apt-cache search'
-alias webserver='python3 -m http.server 9000'
+alias webserver='ip -oneline a ; echo ; python3 -m http.server 9000'
 alias ww='curl http://wttr.in/'
 
 # revisions
