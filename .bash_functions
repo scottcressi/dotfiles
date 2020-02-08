@@ -165,7 +165,7 @@ parse_git_branch_and_add_brackets(){
     if test ! -d ~/firefox ; then
     curl -s -L --url https://ftp.mozilla.org/pub/firefox/releases/${version}/linux-x86_64/en-US/firefox-${version}.tar.bz2 --output ~/firefox-${version}.tar.bz2
     bunzip2 ~/firefox-${version}.tar.bz2
-    tar xvf ~/firefox-${version}.tar
+    tar xvf ~/firefox-${version}.tar -C "${HOME}"
     rm -f ~/firefox-${version}.tar
     fi
 
