@@ -195,9 +195,7 @@ parse_git_branch_and_add_brackets(){
 
         # update
         echo "# updating repos"
-        if [ -z "$(find /var/cache/apt/pkgcache.bin -mmin -1440)" ]; then
         sudo $package_manager update --quiet --quiet
-        fi
 
     fi
 
