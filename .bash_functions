@@ -43,6 +43,32 @@ parse_git_branch_and_add_brackets(){
     package_manager=yum
     fi
 
+    # deb based
+    if [ "$package_manager" == "apt-get" ] ; then
+
+        # zoom
+        if test ! -f ~/Downloads/zoom_amd64.deb ; then
+        curl -s -L https://zoom.us/client/latest/zoom_amd64.deb -o ~/Downloads/zoom_amd64.deb
+        sudo dpkg -i ~/Downloads/zoom_amd64.deb
+        fi
+
+        # docker
+        if ! grep -qF docker /etc/apt/sources.list.d/docker.list ; then
+        echo "deb [arch=amd64] https://download.docker.com/linux/$ID $(grep VERSION_CODENAME /etc/os-release | sed 's/.*=//g') stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+        curl -fsSL https://download.docker.com/linux/$ID/gpg | sudo apt-key add -
+        sudo apt-key fingerprint 0EBFCD88
+        fi
+
+        # update
+        echo "# updating repos"
+        sudo $package_manager update --quiet --quiet
+
+    fi
+
+    # packages
+    echo "# installing packages"
+    grep $ID_LIKE ~/repos/personal/dotfiles/packages.txt | awk '{print $1}' | xargs sudo $package_manager install -y --quiet --quiet
+
     # directories storage
     for i in "${DIRS[@]}" ; do
     mkdir -p ~/mnt/"$i"
@@ -175,28 +201,6 @@ parse_git_branch_and_add_brackets(){
     bunzip2 ~/df_44_12_linux.tar.bz2
     tar xvf ~/df_44_12_linux.tar -C "${HOME}"
     rm -f ~/df_44_12_linux.tar
-    fi
-
-    # deb based
-    if [ "$package_manager" == "apt-get" ] ; then
-
-        # zoom
-        if test ! -f ~/Downloads/zoom_amd64.deb ; then
-        curl -s -L https://zoom.us/client/latest/zoom_amd64.deb -o ~/Downloads/zoom_amd64.deb
-        sudo dpkg -i ~/Downloads/zoom_amd64.deb
-        fi
-
-        # docker
-        if ! grep -qF docker /etc/apt/sources.list.d/docker.list ; then
-        echo "deb [arch=amd64] https://download.docker.com/linux/$ID $(grep VERSION_CODENAME /etc/os-release | sed 's/.*=//g') stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-        curl -fsSL https://download.docker.com/linux/$ID/gpg | sudo apt-key add -
-        sudo apt-key fingerprint 0EBFCD88
-        fi
-
-        # update
-        echo "# updating repos"
-        sudo $package_manager update --quiet --quiet
-
     fi
 
     # packages
