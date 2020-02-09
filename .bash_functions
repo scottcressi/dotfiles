@@ -57,6 +57,7 @@ parse_git_branch_and_add_brackets(){
         echo "deb [arch=amd64] https://download.docker.com/linux/$ID $(grep VERSION_CODENAME /etc/os-release | sed 's/.*=//g') stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
         curl -fsSL https://download.docker.com/linux/$ID/gpg | sudo apt-key add -
         sudo apt-key fingerprint 0EBFCD88
+        sudo usermod -a -G docker "$USER"
         fi
 
     fi
