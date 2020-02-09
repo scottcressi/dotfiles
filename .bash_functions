@@ -43,17 +43,6 @@ parse_git_branch_and_add_brackets(){
     package_manager=yum
     fi
 
-    # distro packages
-    if [ "$package_manager" == "apt-get" ] ; then
-
-        echo "# updating repos"
-        sudo $package_manager update --quiet --quiet
-
-    fi
-
-    echo "# installing packages"
-    grep $ID_LIKE ~/repos/personal/dotfiles/packages.txt | awk '{print $1}' | xargs sudo $package_manager install -y --quiet --quiet
-
     # special packages
     if [ "$package_manager" == "apt-get" ] ; then
 
@@ -71,6 +60,17 @@ parse_git_branch_and_add_brackets(){
         fi
 
     fi
+
+    # distro packages
+    if [ "$package_manager" == "apt-get" ] ; then
+
+        echo "# updating repos"
+        sudo $package_manager update --quiet --quiet
+
+    fi
+
+    echo "# installing packages"
+    grep $ID_LIKE ~/repos/personal/dotfiles/packages.txt | awk '{print $1}' | xargs sudo $package_manager install -y --quiet --quiet
 
     # directories storage
     for i in "${DIRS[@]}" ; do

@@ -12,5 +12,5 @@ else
     package_manager=yum
 fi
 
-sudo $package_manager install -y --quiet --quiet stow
+sudo $package_manager install -y --quiet --quiet stow curl
 stow --verbose --stow --target ~/ .
