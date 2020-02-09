@@ -426,3 +426,8 @@ echo
 python3 -m http.server 9000
 
 }
+
+-nonfree() {
+dpkg-query -W -f='${Section}\t${Package}\n' | grep non-free
+
+}
