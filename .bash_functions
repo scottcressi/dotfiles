@@ -43,7 +43,7 @@ parse_git_branch_and_add_brackets(){
     package_manager=yum
     fi
 
-    # special packages
+    # distro packages
     if [ "$package_manager" == "apt-get" ] ; then
 
         # zoom
@@ -59,11 +59,6 @@ parse_git_branch_and_add_brackets(){
         sudo apt-key fingerprint 0EBFCD88
         sudo usermod -a -G docker "$USER"
         fi
-
-    fi
-
-    # distro packages
-    if [ "$package_manager" == "apt-get" ] ; then
 
         echo "# updating repos"
         sudo $package_manager update --quiet --quiet
