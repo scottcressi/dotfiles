@@ -27,7 +27,7 @@ dnsutils              debian        terminal  stats           dns
 docker-ce             debian centos terminal  virtualization
 docker-ce-cli         debian centos terminal  virtualization
 dstat                 debian centos terminal  stats           multi
-dwm                   debian        gui       graphics        window       manager
+dwm                   debian        gui       graphics        windowmanager
 elinks                debian centos terminal  browser
 empire                debian        terminal  game
 espeak                debian centos terminal  speech
@@ -54,6 +54,7 @@ lftp                  debian        terminal  file            transfer
 libaa-bin             debian        terminal  fun
 libgtk-3-0            debian        prereq    firefox
 libnss3               debian        prereq    zoom
+libx11-dev            debian        prereq    suckless
 links2                debian        terminal  browser
 lolcat                debian        terminal  fun
 lsof                  debian centos terminal  stats
@@ -136,7 +137,7 @@ xautolock             debian        gui       lock
 xcowsay               debian        gui       fun
 xfce4-terminal        debian        gui       terminal        emulator
 xfishtank             debian        gui       fun
-xorg                  debian        gui       graphics        display      server
+xorg                  debian        gui       graphics        xserver
 yamllint              debian centos terminal  lint
 youtube-dl            debian        terminal  video
 zathura               debian centos gui       document        reader
