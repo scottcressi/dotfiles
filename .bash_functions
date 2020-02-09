@@ -198,14 +198,6 @@ parse_git_branch_and_add_brackets(){
     rm -f ~/firefox-${version}.tar
     fi
 
-    # dwarf fortress
-    if test ! -d ~/df_linux ; then
-    curl -s -L --url http://www.bay12games.com/dwarves/df_44_12_linux.tar.bz2 --output ~/df_44_12_linux.tar.bz2
-    bunzip2 ~/df_44_12_linux.tar.bz2
-    tar xvf ~/df_44_12_linux.tar -C "${HOME}"
-    rm -f ~/df_44_12_linux.tar
-    fi
-
 }
 
 -ds(){
