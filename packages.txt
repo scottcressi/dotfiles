@@ -1,4 +1,5 @@
 angband               debian        terminal  game
+alsa-utils            debian        terminal  audio
 arandr                debian        gui       resolution
 armagetronad          debian        gui       game
 aspell                debian centos terminal  spelling
@@ -89,7 +90,7 @@ pacman4console        debian        terminal  game
 pandoc                debian        terminal  converter       docs
 pgcli                 debian        terminal  client          database
 pi                    debian        terminal  fun
-pulseaudio            debian        prereq    firefox
+pulseaudio            debian        prereq    firefox         audio
 pwgen                 debian        terminal  passwords
 python3               debian        terminal  language
 python3-flake8        debian        terminal  language
