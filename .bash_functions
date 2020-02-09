@@ -427,3 +427,10 @@ parse_git_branch_and_add_brackets(){
     openssl x509 -in "$1" -text -noout
 
 }
+
+-webserver() {
+ip -oneline -f inet a | grep -v docker | grep -v " lo " | awk '{print $4}' | sed 's/\/.*//g'
+echo
+python3 -m http.server 9000
+
+}
