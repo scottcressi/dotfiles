@@ -28,7 +28,6 @@ dnsutils              debian        terminal  stats           dns
 docker-ce             debian centos terminal  virtualization
 docker-ce-cli         debian centos terminal  virtualization
 dstat                 debian centos terminal  stats           multi
-dwarf-fortress        debian        terminal  game
 dwm                   debian        gui       graphics        windowmanager
 elinks                debian centos terminal  browser
 empire                debian        terminal  game
