@@ -267,7 +267,7 @@ parse_git_branch_and_add_brackets(){
         --yes ; fi
 }
 
--aws-records(){
+-aws-route53-records(){
     echo domain:
     read -r domain
     ZONE=$(aws route53 list-hosted-zones --query "HostedZones[?Name=='$domain.']".Id --output text | sed 's/\/hostedzone\///g')
@@ -275,7 +275,7 @@ parse_git_branch_and_add_brackets(){
 
 }
 
--awsc(){
+-aws-credentials(){
     if [ -z "$1" ] ; then echo enter profile ; echo ; grep "\\[" ~/.aws/credentials ; fi
     export AWS_DEFAULT_PROFILE=$1
 }
@@ -289,14 +289,14 @@ parse_git_branch_and_add_brackets(){
 
 }
 
--keksc(){
+-aws-eks-config(){
     if [ -z "$1" ] ; then echo enter region ; fi
     if [ -z "$2" ] ; then echo enter cluster ; fi
     aws eks update-kubeconfig --region "$1" --name "$2"
 
 }
 
--keksl(){
+-aws-eks-list(){
     echo region:
     read -r region
     aws eks list-clusters --region "$region"
