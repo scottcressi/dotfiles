@@ -122,7 +122,7 @@ parse_git_branch_and_add_brackets(){
     fi
 
     # helm
-    version=v2.16.1
+    version=v2.16.3
     if test ! -f ~/bin/helm ; then
         https://get.helm.sh/helm-v2.16.1-linux-amd64.tar.gz
         curl -s -L --url https://get.helm.sh/helm-"${version}"-linux-amd64.tar.gz | gunzip | tar xv
@@ -144,7 +144,7 @@ parse_git_branch_and_add_brackets(){
     fi
 
     # k9s
-    version=0.14.0
+    version=0.15.0
     if test ! -f ~/bin/k9s ; then
         curl -s -L --url https://github.com/derailed/k9s/releases/download/v${version}/k9s_${version}_Linux_x86_64.tar.gz | gunzip | tar xv
         mv k9s ~/bin/k9s ; rm -f README.md LICENSE k9s_"${version}"_Linux_x86_64.tar
