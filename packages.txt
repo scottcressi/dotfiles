@@ -112,13 +112,13 @@ speedtest-cli         debian        terminal  stats           network
 stow                  debian centos terminal
 stterm                debian        gui       terminal        emulator
 suckless-tools        debian        terminal
-sudo                  debian        terminal
+sudo                  debian centos terminal
 sxiv                  debian        gui       pictures
 tcpdump               debian centos terminal  stats
 testssl.sh            debian        terminal
 texlive-xetex         debian        terminal  converter       docs
 thefuck               debian        terminal  spelling
-tig                   debian        terminal  scm
+tig                   debian centos terminal  scm
 tmux                  debian centos terminal  terminal        multiplexer
 toilet                debian        terminal  fun
 tree                  debian centos terminal  file            manager
