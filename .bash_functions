@@ -117,7 +117,7 @@ parse_git_branch_and_add_brackets(){
 
     # kops
     version=1.15.2
-    if test ! -f ~/bin/kops ; then
+    if [ "$(kops version | awk '{print $2}')" != "$version" ] ; then
     curl -s -L --url https://github.com/kubernetes/kops/releases/download/v${version}/kops-linux-amd64 --output ~/bin/kops
     fi
 
