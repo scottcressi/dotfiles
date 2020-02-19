@@ -281,10 +281,12 @@ parse_git_branch_and_add_brackets(){
 }
 
 -is-webcam-on(){
-    if [ "$(lsmod | grep ^uvcvideo | awk '{print $3}')" == "0" ] ; then
-    echo no
-    else
-    echo yes
+    if test -d /sys/class/power_supply/BAT[0-9] ; then
+        if [ "$(lsmod | grep ^uvcvideo | awk '{print $3}')" == "0" ] ; then
+            echo no
+        else
+            echo yes
+        fi
     fi
 
 }
