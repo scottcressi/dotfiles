@@ -90,7 +90,7 @@ parse_git_branch_and_add_brackets(){
     fi
 
     # terraform
-    version=0.12.20
+    version=0.12.21
     if test ! -f ~/bin/terraform ; then
     curl -s -L https://releases.hashicorp.com/terraform/${version}/terraform_${version}_linux_amd64.zip --output ~/bin/terraform_${version}_linux_amd64.zip
     unzip -d ~/bin ~/bin/terraform_${version}_linux_amd64.zip
