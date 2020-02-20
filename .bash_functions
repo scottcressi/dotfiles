@@ -99,7 +99,7 @@ parse_git_branch_and_add_brackets(){
 
     # terragrunt
     version=v0.21.8
-    if test ! -f ~/bin/terragrunt ; then
+    if [ "$(terragrunt --version | awk '{print $3}')" != "$version" ] ; then
     curl -s -L https://github.com/gruntwork-io/terragrunt/releases/download/${version}/terragrunt_linux_amd64 --output ~/bin/terragrunt
     fi
 
