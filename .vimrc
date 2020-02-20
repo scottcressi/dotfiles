@@ -32,7 +32,7 @@ Plugin 'itchyny/lightline.vim' " statusbar
 Plugin 'ervandew/supertab' " tabbing
 Plugin 'davidhalter/jedi-vim' " completion
 Plugin 'scrooloose/syntastic' " syntax
-Plugin 'fatih/vim-go' " go
+" Plugin 'fatih/vim-go' " go
 
 "" AUTO-INITIALIZATION --------------------------------------------------------
 
@@ -103,12 +103,12 @@ set foldlevel=99 " Open all folds by default, set to 0 to close by default
 set laststatus=2 " status bar fix
 
 " syntactic
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_error_symbol = "✗"
-let g:syntastic_warning_symbol = "⚠"
-let g:syntastic_go_checkers = ['govet', 'errcheck', 'go']
-let g:go_version_warning = 0
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_check_on_open = 1
+" let g:syntastic_error_symbol = "✗"
+" let g:syntastic_warning_symbol = "⚠"
+" let g:syntastic_go_checkers = ['govet', 'errcheck', 'go']
+" let g:go_version_warning = 0
 
 "" REMAPPINGS -----------------------------------------------------------------
 
