@@ -111,7 +111,7 @@ parse_git_branch_and_add_brackets(){
 
     # skaffold
     version=v1.3.1
-    if test ! -f ~/bin/skaffold ; then
+    if [ "$(skaffold version)" != "$version" ] ; then
         curl -s -L --url https://github.com/GoogleContainerTools/skaffold/releases/download/${version}/skaffold-linux-amd64 --output ~/bin/skaffold
     fi
 
