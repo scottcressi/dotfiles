@@ -6,11 +6,9 @@ alias g='cd ~/repos'
 
 # misc
 alias am="alsamixer"
-alias compile="make clean install"
 alias fz='vim $(fzf)'
 alias get='sudo apt-get install'
 alias gip='curl -s ipinfo.io'
-alias pp='ps axuf'
 alias search='apt-cache search'
 alias ww='curl http://wttr.in/'
 
@@ -25,6 +23,7 @@ alias ls='ls --color=auto'
 alias maim='maim -s ~/screenshot-$(date "+%Y-%m-%d-%H-%M-%S").png'
 alias mpv='mpv --ytdl-format="bestvideo[height<=?360]+bestaudio/best"'
 alias mv="mv -i"
+alias ps='ps axuf'
 alias pwgen='pwgen 32 1 --no-capitalize --no-numerals --ambiguous'
 alias rm="rm -i"
 alias weather='weather $(curl -s ipinfo.io | jq .postal -r)'
