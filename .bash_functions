@@ -91,7 +91,7 @@ parse_git_branch_and_add_brackets(){
 
     # terraform
     version=0.12.21
-    if [ "$(terraform version | grep "v[0-9]" | awk '{print $2}')" != "$version" ] ; then
+    if [ "$(terraform version | grep "v[0-9]" | awk '{print $2}' | sed 's/v//g')" != "$version" ] ; then
     curl -s -L https://releases.hashicorp.com/terraform/${version}/terraform_${version}_linux_amd64.zip --output ~/bin/terraform_${version}_linux_amd64.zip
     unzip -d ~/bin -o ~/bin/terraform_${version}_linux_amd64.zip
     rm -f ~/bin/terraform_${version}_linux_amd64.zip
