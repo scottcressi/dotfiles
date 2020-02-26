@@ -41,6 +41,7 @@ gcc                   debian centos terminal  compiler
 git                   debian centos terminal  scm
 git-extras            debian        terminal  scm
 gnuchess              debian centos terminal  game
+googler               debian        terminal  browser
 greed                 debian        terminal  game
 howdoi                debian        terminal  language
 htop                  debian centos terminal  stats           multi
