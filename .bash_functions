@@ -105,7 +105,7 @@ parse_git_branch_and_add_brackets(){
 
     # docker compose
     version=1.24.1
-    if test ! -f ~/bin/docker-compose ; then
+    if [ "$(docker-compose --version |awk '{print $3}' | sed 's/,//g')" != "$version" ] ; then
     curl -s -L https://github.com/docker/compose/releases/download/${version}/docker-compose-"$(uname -s)"-"$(uname -m)" -o ~/bin/docker-compose
     fi
 
@@ -123,9 +123,8 @@ parse_git_branch_and_add_brackets(){
 
     # helm
     version=v2.16.3
-    if test ! -f ~/bin/helm ; then
-        https://get.helm.sh/helm-v2.16.1-linux-amd64.tar.gz
-        curl -s -L --url https://get.helm.sh/helm-"${version}"-linux-amd64.tar.gz | gunzip | tar xv
+    if [ "$(helm version --client | awk '{print $2}' | sed 's/.*:"//g' | sed 's/",//g')" != "$version" ] ; then
+    curl -s -L --url https://get.helm.sh/helm-"${version}"-linux-amd64.tar.gz | gunzip | tar xv
     mv linux-amd64/helm ~/bin/helm
     rm -rf linux-amd64
     helm plugin install https://github.com/databus23/helm-diff --version master
