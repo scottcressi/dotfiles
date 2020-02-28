@@ -131,7 +131,7 @@ parse_git_branch_and_add_brackets(){
     fi
 
     # helmfile
-    version=v0.101.0
+    version=v0.102.0
     if [ "$(helmfile --version | awk '{print $3}')" != "$version" ] ; then
     curl -s -L --url https://github.com/roboll/helmfile/releases/download/${version}/helmfile_linux_amd64 --output ~/bin/helmfile
     fi
@@ -143,7 +143,7 @@ parse_git_branch_and_add_brackets(){
     fi
 
     # k9s
-    version=0.17.0
+    version=0.17.1
     if test ! -f ~/bin/k9s ; then
         curl -s -L --url https://github.com/derailed/k9s/releases/download/v${version}/k9s_Linux_x86_64.tar.gz | gunzip | tar xv
         mv k9s ~/bin/k9s ; rm -f README.md LICENSE k9s_"${version}"_Linux_x86_64.tar
