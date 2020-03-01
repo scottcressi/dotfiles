@@ -144,7 +144,7 @@ parse_git_branch_and_add_brackets(){
 
     # k9s
     version=0.17.1
-    if test ! -f ~/bin/k9s ; then
+    if [ "$(k9s version | grep Version | awk '{print $2}')" != "$version" ] ; then
         curl -s -L --url https://github.com/derailed/k9s/releases/download/v${version}/k9s_Linux_x86_64.tar.gz | gunzip | tar xv
         mv k9s ~/bin/k9s ; rm -f README.md LICENSE k9s_"${version}"_Linux_x86_64.tar
     fi
