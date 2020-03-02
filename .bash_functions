@@ -138,7 +138,7 @@ parse_git_branch_and_add_brackets(){
 
     # kubectl
     version=v1.17.2
-    if test ! -f ~/bin/kubectl ; then
+    if [ "$(kubectl version --client | awk '{print $5}' | sed 's/.*:"//g' | sed 's/",//g')" != "$version" ] ; then
     curl -s -L --url curl -LO https://storage.googleapis.com/kubernetes-release/release/"${version}"/bin/linux/amd64/kubectl --output ~/bin/kubectl
     fi
 
@@ -151,13 +151,13 @@ parse_git_branch_and_add_brackets(){
 
     # kind
     version=v0.7.0
-    if test ! -f ~/bin/kind ; then
+    if [ "$(kind version | awk '{print $2}')" != "$version" ] ; then
     curl -s -L --url https://github.com/kubernetes-sigs/kind/releases/download/${version}/kind-linux-amd64 --output ~/bin/kind
     fi
 
     # rakkess
     version=v0.4.2
-    if test ! -f ~/bin/rakkess ; then
+    if [ "$(rakkess version)" != "$version-dirty" ] ; then
     curl -s -L --url https://github.com/corneliusweig/rakkess/releases/download/${version}/rakkess-amd64-linux.tar.gz | gunzip | tar xv
     mv rakkess-amd64-linux ~/bin/rakkess ; rm -f LICENSE
     fi
