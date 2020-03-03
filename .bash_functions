@@ -105,7 +105,7 @@ parse_git_branch_and_add_brackets(){
 
     # docker compose
     version=1.24.1
-    if [ "$(docker-compose --version |awk '{print $3}' | sed 's/,//g')" != "$version" ] ; then
+    if test ! -f ~/bin/docker-compose ; then
     curl -s -L https://github.com/docker/compose/releases/download/${version}/docker-compose-"$(uname -s)"-"$(uname -m)" -o ~/bin/docker-compose
     fi
 
