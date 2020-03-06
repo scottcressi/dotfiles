@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # shellcheck source=/dev/null
-if test -d ~/python/ ; then
+if [ -d ~/python/ ] ; then
     source ~/python/bin/activate
 fi
 
@@ -47,7 +47,7 @@ parse_git_branch_and_add_brackets(){
     if [ "$package_manager" == "apt-get" ] ; then
 
         # zoom
-        if test ! -f ~/Downloads/zoom_amd64.deb ; then
+        if [ ! -f ~/Downloads/zoom_amd64.deb ] ; then
         curl -s -L https://zoom.us/client/latest/zoom_amd64.deb -o ~/Downloads/zoom_amd64.deb
         sudo dpkg -i ~/Downloads/zoom_amd64.deb
         fi
@@ -79,13 +79,13 @@ parse_git_branch_and_add_brackets(){
     mkdir -p ~/wallpapers
 
     # venv
-    if test ! -d ~/python/ ; then
+    if [ ! -d ~/python/ ] ; then
     python3 -m venv ~/python
     fi
 
     # slstatus
     export DESTDIR="$HOME"
-    if test ! -d ~/slstatus ; then
+    if [ ! -d ~/slstatus ] ; then
     git clone https://git.suckless.org/slstatus ~/slstatus
     fi
 
@@ -364,7 +364,7 @@ parse_git_branch_and_add_brackets(){
 
 -mount(){
     # credentials file check
-    if test ! -f ~/.smbpasswd ; then
+    if [ ! -f ~/.smbpasswd ] ; then
         echo ~/.smbpasswd does not exist, format is password=foo
     else
         smbpasswd_status=1
