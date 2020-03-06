@@ -23,7 +23,7 @@ cowsay                debian centos terminal  fun
 curl                  debian centos terminal  file            transfer
 curseofwar            debian        terminal  game
 ddgr                  debian centos terminal  browser
-dialog                debian centos terminal  language
+dialog                debian centos terminal  language        dialogbox
 dnsutils              debian        terminal  stats           dns
 docker-ce             debian centos terminal  virtualization
 docker-ce-cli         debian centos terminal  virtualization
@@ -134,6 +134,7 @@ vitetris              debian        terminal  game
 w3m                   debian centos terminal  browser
 weather-util          debian        terminal  weather
 wget                  debian centos terminal  file            transfer
+whiptail              debian        terminal  language        dialogbox
 whois                 debian centos terminal  stats
 xautolock             debian        gui       lock
 xcowsay               debian        gui       fun
