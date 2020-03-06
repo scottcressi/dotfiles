@@ -383,7 +383,7 @@ parse_git_branch_and_add_brackets(){
         for i in "${DIRS[@]}" ; do
             sudo mount -t cifs //freenas/"$i" ~/mnt/"$i" -o credentials=~/.smbpasswd -v
         done
-            sudo mount -t cifs //freenas/drop ~/docker-compose/transmission/data -o credentials=~/.smbpasswd -v
+            sudo mount -t cifs //freenas/drop ~/repos/personal/docker-compose/transmission/data -o credentials=~/.smbpasswd -v
     fi
 }
 
@@ -391,7 +391,7 @@ parse_git_branch_and_add_brackets(){
     for i in "${DIRS[@]}" ; do
     sudo umount -l ~/mnt/"$i"
     done
-    sudo umount -l ~/docker-compose/transmission/data
+    sudo umount -l ~/repos/personal/docker-compose/transmission/data
 }
 
 -extract(){
