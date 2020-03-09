@@ -163,8 +163,8 @@ parse_git_branch_and_add_brackets(){
     fi
 
     # istioctl
-    version=1.3.7
-    if test ! -f ~/bin/istioctl ; then
+    version=1.5.0
+    if [ "$(istioctl version --remote=false)" != "$version" ] ; then
     curl -s -L --url https://github.com/istio/istio/releases/download/${version}/istio-${version}-linux.tar.gz | gunzip | tar xv
     mv istio-${version}/bin/istioctl ~/bin/istioctl
     rm -rf istio-${version}
