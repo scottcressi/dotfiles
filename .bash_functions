@@ -280,7 +280,7 @@ parse_git_branch_and_add_brackets(){
 }
 
 -is-webcam-on(){
-    if test -d /sys/class/power_supply/BAT[0-9] ; then
+    if [ "$(ls /sys/class/power_supply/ | grep -c BAT)" -ge 1 ] ; then
         if [ "$(lsmod | grep ^uvcvideo | awk '{print $3}')" == "0" ] ; then
             echo no
         else
