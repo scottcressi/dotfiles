@@ -109,6 +109,7 @@ rtorrent              debian        terminal  file            transfer
 rtv                   debian        terminal  social          media
 s-tui                 debian        terminal  stats           multi
 screenkey             debian        gui
+scrot                 debian        gui       screenshot
 sent                  debian        terminal  markdown
 shellcheck            debian        terminal  lint
 speedtest-cli         debian        terminal  stats           network
