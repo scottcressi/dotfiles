@@ -23,7 +23,6 @@ alias ls='ls --color=auto'
 alias maim='maim -s ~/screenshot-$(date "+%Y-%m-%d-%H-%M-%S").png'
 alias mpv='mpv --ytdl-format="bestvideo[height<=?360]+bestaudio/best"'
 alias mv="mv -i"
-alias ps='ps axuf'
 alias pwgen='pwgen 32 1 --no-capitalize --no-numerals --ambiguous'
 alias rm="rm -i"
 alias weather='weather $(curl -s ipinfo.io | jq .postal -r)'
