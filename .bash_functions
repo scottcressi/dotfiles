@@ -189,7 +189,6 @@ parse_git_branch_and_add_brackets(){
     if [ "$(pgrep firefox | wc -l)" -ge 1 ] ; then
         echo firefox open, close to update
     else
-        echo firefox not open
         rm -rf  ~/firefox
         curl -s -L --url https://ftp.mozilla.org/pub/firefox/releases/${version}/linux-x86_64/en-US/firefox-${version}.tar.bz2 --output ~/firefox-${version}.tar.bz2
         bunzip2 ~/firefox-${version}.tar.bz2
