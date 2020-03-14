@@ -73,6 +73,7 @@ mutt                  debian centos terminal  mail
 mycli                 debian        terminal  client          database
 ncmpcpp               debian        terminal  client          music
 neofetch              debian        terminal  stats
+net-tools             debian        terminal  stats
 netcat                debian        terminal  stats
 nethack-console       debian        terminal  game
 nethogs               debian centos terminal  stats           network
