@@ -186,14 +186,17 @@ parse_git_branch_and_add_brackets(){
 
     # firefox
     version=73.0.1
+    current_version=$(grep ^Version firefox/application.ini | sed 's/Version=//g')
     if [ "$(pgrep firefox | wc -l)" -ge 1 ] ; then
         echo firefox open, close to update
     else
+        if [ "$version" != "$current_version" ] ; then
         rm -rf  ~/firefox
         curl -s -L --url https://ftp.mozilla.org/pub/firefox/releases/${version}/linux-x86_64/en-US/firefox-${version}.tar.bz2 --output ~/firefox-${version}.tar.bz2
         bunzip2 ~/firefox-${version}.tar.bz2
         tar xvf ~/firefox-${version}.tar -C "${HOME}"
         rm -f ~/firefox-${version}.tar
+        fi
     fi
 
     # dwarf fortress
