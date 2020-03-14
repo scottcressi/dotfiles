@@ -24,6 +24,11 @@ curl                  debian centos terminal  file            transfer
 curseofwar            debian        terminal  game
 ddgr                  debian centos terminal  browser
 dialog                debian centos terminal  language        dialogbox
+dict-freedict-eng-fra debian        terminal  language        translation
+dict-freedict-eng-spa debian        terminal  language        translation
+dict-gcide            debian        terminal  language        translation
+dict-moby-thesaurus   debian        terminal  language        translation
+dictd                 debian        terminal  language        translation
 dnsutils              debian        terminal  stats           dns
 docker-ce             debian centos terminal  virtualization
 docker-ce-cli         debian centos terminal  virtualization
