@@ -185,17 +185,17 @@ parse_git_branch_and_add_brackets(){
     chmod 755 ~/bin/*
 
     # firefox
-    version=74.0
+    version=$(curl -s https://www.mozilla.org/en-US/firefox/releases/ | grep data-latest-firefox | sed 's/.*data-latest-firefox="//g' | sed 's/".*//g')
     current_version=$(grep ^Version ~/firefox/application.ini | sed 's/Version=//g')
     if [ "$(pgrep firefox | wc -l)" -ge 1 ] ; then
-        echo firefox open, close to update
+        echo close firefox to update to "$version"
     else
         if [ "$version" != "$current_version" ] ; then
         rm -rf  ~/firefox
-        curl -s -L --url https://ftp.mozilla.org/pub/firefox/releases/${version}/linux-x86_64/en-US/firefox-${version}.tar.bz2 --output ~/firefox-${version}.tar.bz2
-        bunzip2 ~/firefox-${version}.tar.bz2
-        tar xvf ~/firefox-${version}.tar -C "${HOME}"
-        rm -f ~/firefox-${version}.tar
+        curl -s -L --url https://ftp.mozilla.org/pub/firefox/releases/"${version}"/linux-x86_64/en-US/firefox-"${version}".tar.bz2 --output ~/firefox-"${version}".tar.bz2
+        bunzip2 ~/firefox-"${version}".tar.bz2
+        tar xvf ~/firefox-"${version}".tar -C "${HOME}"
+        rm -f ~/firefox-"${version}".tar
         fi
     fi
 
