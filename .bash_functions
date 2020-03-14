@@ -198,7 +198,7 @@ parse_git_branch_and_add_brackets(){
     fi
 
     # dwarf fortress
-    version=47_02
+    version=47_04
     if test ! -d ~/df_linux ; then
     curl -s -L --url http://www.bay12games.com/dwarves/df_${version}_linux.tar.bz2 --output ~/df_${version}_linux.tar.bz2
     bunzip2 ~/df_${version}_linux.tar.bz2
