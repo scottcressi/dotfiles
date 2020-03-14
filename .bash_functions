@@ -185,7 +185,7 @@ parse_git_branch_and_add_brackets(){
     chmod 755 ~/bin/*
 
     # firefox
-    version=73.0.1
+    version=74.0
     current_version=$(grep ^Version ~/firefox/application.ini | sed 's/Version=//g')
     if [ "$(pgrep firefox | wc -l)" -ge 1 ] ; then
         echo firefox open, close to update
