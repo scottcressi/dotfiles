@@ -327,8 +327,7 @@ parse_git_branch_and_add_brackets(){
 }
 
 -brightness(){
-    if (( $(echo "$1 > 1" | bc -l) )); then
-        echo please enter 1 or less
+    if [ -z "$1" ] ; then
         brightness=1
     else
         brightness=$1
