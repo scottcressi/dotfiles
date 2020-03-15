@@ -442,3 +442,8 @@ python3 -m http.server 3333
 dpkg-query -W -f='${Section}\t${Package}\n' | grep non-free
 
 }
+
+-disable-suspend() {
+sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target
+
+}
