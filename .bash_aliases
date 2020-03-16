@@ -95,13 +95,11 @@ alias tfa='terragrunt apply --terragrunt-source-update '
 
 # docker
 alias di='docker images'
-alias dp='docker ps'
-alias dpa='docker ps --all'
+alias dp='docker ps --all'
 alias dc='docker system prune --volumes -a'
-alias dn='docker network ls'
 alias dcu='docker-compose up -d'
 alias dcd='docker-compose down'
-alias dcp='docker-compose pull ; docker-compose restart'
+alias dcp='docker-compose pull'
 
 # aws
 alias aws-test='aws sts get-caller-identity ; aws s3 ls'
