@@ -47,7 +47,9 @@ parse_git_branch_and_add_brackets(){
     if [ "$package_manager" == "apt-get" ] ; then
 
         # zoom
-        if [ ! -f ~/Downloads/zoom_amd64.deb ] ; then
+        VERSION="$(curl -s -L https://support.zoom.us/hc/en-us/articles/205759689-New-Updates-for-Linux | grep -i version | head -1 | sed 's/.*version <strong>//g' | sed 's/<.*//g')"
+        CURRENT_VERSION="$(dpkg -l | grep zoom | awk '{print $3}')"
+        if [ "$VERSION" != "$CURRENT_VERSION" ] ; then
         curl -s -L https://zoom.us/client/latest/zoom_amd64.deb -o ~/Downloads/zoom_amd64.deb
         sudo dpkg -i ~/Downloads/zoom_amd64.deb
         fi
