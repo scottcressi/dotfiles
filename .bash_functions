@@ -187,7 +187,7 @@ parse_git_branch_and_add_brackets(){
     chmod 755 ~/bin/*
 
     # firefox
-    version=$(curl -s https://www.mozilla.org/en-US/firefox/releases/ | grep data-latest-firefox | sed 's/.*data-latest-firefox="//g' | sed 's/".*//g')
+    version=74.0
     current_version=$(grep ^Version ~/firefox/application.ini | sed 's/Version=//g')
     if [ "$version" != "$current_version" ] ; then
         if [ "$(pgrep firefox | wc -l)" -ge 1 ] ; then
