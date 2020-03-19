@@ -47,9 +47,9 @@ parse_git_branch_and_add_brackets(){
     if [ "$package_manager" == "apt-get" ] ; then
 
         # zoom
-        VERSION="$(curl -s -L https://support.zoom.us/hc/en-us/articles/205759689-New-Updates-for-Linux | grep -i version | head -1 | sed 's/.*version <strong>//g' | sed 's/<.*//g')"
-        CURRENT_VERSION="$(dpkg -l | grep zoom | awk '{print $3}')"
-        if [ "$VERSION" != "$CURRENT_VERSION" ] ; then
+        current_version="$(dpkg -l | grep zoom | awk '{print $3}')"
+        version=3.5.361976.0301
+        if [ "$version" != "$current_version" ] ; then
         curl -s -L https://zoom.us/client/latest/zoom_amd64.deb -o ~/Downloads/zoom_amd64.deb
         sudo dpkg -i ~/Downloads/zoom_amd64.deb
         fi
@@ -189,16 +189,16 @@ parse_git_branch_and_add_brackets(){
     # firefox
     version=$(curl -s https://www.mozilla.org/en-US/firefox/releases/ | grep data-latest-firefox | sed 's/.*data-latest-firefox="//g' | sed 's/".*//g')
     current_version=$(grep ^Version ~/firefox/application.ini | sed 's/Version=//g')
-    if [ "$(pgrep firefox | wc -l)" -ge 1 ] ; then
-        echo close firefox to update to "$version"
-    else
-        if [ "$version" != "$current_version" ] ; then
-        rm -rf  ~/firefox
-        curl -s -L --url https://ftp.mozilla.org/pub/firefox/releases/"${version}"/linux-x86_64/en-US/firefox-"${version}".tar.bz2 --output ~/firefox-"${version}".tar.bz2
-        bunzip2 ~/firefox-"${version}".tar.bz2
-        tar xvf ~/firefox-"${version}".tar -C "${HOME}"
-        rm -f ~/firefox-"${version}".tar
-        fi
+    if [ "$version" != "$current_version" ] ; then
+        if [ "$(pgrep firefox | wc -l)" -ge 1 ] ; then
+            echo close firefox to update to "$version"
+        else
+            rm -rf  ~/firefox
+            curl -s -L --url https://ftp.mozilla.org/pub/firefox/releases/"${version}"/linux-x86_64/en-US/firefox-"${version}".tar.bz2 --output ~/firefox-"${version}".tar.bz2
+            bunzip2 ~/firefox-"${version}".tar.bz2
+            tar xvf ~/firefox-"${version}".tar -C "${HOME}"
+            rm -f ~/firefox-"${version}".tar
+            fi
     fi
 
     # dwarf fortress
