@@ -112,7 +112,7 @@ parse_git_branch_and_add_brackets(){
     fi
 
     # skaffold
-    version=v1.5.0
+    version=v1.6.0
     if [ "$(skaffold version)" != "$version" ] ; then
         curl -s -L --url https://github.com/GoogleContainerTools/skaffold/releases/download/${version}/skaffold-linux-amd64 --output ~/bin/skaffold
     fi
@@ -133,7 +133,7 @@ parse_git_branch_and_add_brackets(){
     fi
 
     # helmfile
-    version=v0.102.0
+    version=v0.104.0
     if [ "$(helmfile --version | awk '{print $3}')" != "$version" ] ; then
     curl -s -L --url https://github.com/roboll/helmfile/releases/download/${version}/helmfile_linux_amd64 --output ~/bin/helmfile
     fi
