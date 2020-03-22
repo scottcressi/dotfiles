@@ -47,8 +47,8 @@ parse_git_branch_and_add_brackets(){
     if [ "$package_manager" == "apt-get" ] ; then
 
         # zoom
-        current_version="$(dpkg -l | grep zoom | awk '{print $3}')"
         version=3.5.361976.0301
+        current_version="$(dpkg -l | grep zoom | awk '{print $3}')"
         if [ "$version" != "$current_version" ] ; then
         curl -s -L https://zoom.us/client/latest/zoom_amd64.deb -o ~/Downloads/zoom_amd64.deb
         sudo dpkg -i ~/Downloads/zoom_amd64.deb
