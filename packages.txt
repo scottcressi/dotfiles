@@ -18,15 +18,12 @@ chafa                 debian        terminal  converter       images
 cifs-utils            debian centos terminal  mounting
 cmatrix               debian        terminal  fun
 cmus                  debian        terminal  client          music
-containerd.io         debian centos terminal  virtualization
 cowsay                debian centos terminal  fun
 curl                  debian centos terminal  file            transfer
 curseofwar            debian        terminal  game
 ddgr                  debian centos terminal  browser
 dialog                debian centos terminal  language        dialogbox
 dnsutils              debian        terminal  stats           dns
-docker-ce             debian centos terminal  virtualization
-docker-ce-cli         debian centos terminal  virtualization
 dstat                 debian centos terminal  stats           multi
 dwm                   debian        gui       graphics        windowmanager
 elinks                debian centos terminal  browser

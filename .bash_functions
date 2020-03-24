@@ -70,6 +70,14 @@ parse_git_branch_and_add_brackets(){
     echo "# installing packages"
     grep $ID_LIKE ~/repos/personal/dotfiles/packages.txt | awk '{print $1}' | xargs sudo $package_manager install -y --quiet --quiet
 
+    # docker
+    if [ "$(docker ps | grep -v CONTAINER | wc -l)" == "0" ] ; then
+        echo "# installing docker"
+        sudo apt-get install -y --quiet --quiet containerd.io docker-ce docker-ce-cli
+    else
+        echo please stop all containers
+    fi
+
     # directories storage
     for i in "${DIRS[@]}" ; do
     mkdir -p ~/mnt/"$i"
