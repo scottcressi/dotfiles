@@ -101,7 +101,7 @@ alias dn='docker volume ls'
 alias dv='docker network ls'
 alias dcu='docker-compose up -d'
 alias dcd='docker-compose down'
-alias dcp='docker-compose pull'
+alias dcp='docker-compose pull --include-deps'
 
 # aws
 alias aws-test='aws sts get-caller-identity ; aws s3 ls'
