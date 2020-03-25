@@ -457,3 +457,7 @@ dpkg-query -W -f='${Section}\t${Package}\n' | grep non-free
 sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target
 
 }
+
+-videochat(){
+docker run --rm --name spreed-webrtc -p 8000:8080 -p 8443:8443 -i -t spreed/webrtc
+}
