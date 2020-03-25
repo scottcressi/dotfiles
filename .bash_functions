@@ -132,7 +132,7 @@ parse_git_branch_and_add_brackets(){
     fi
 
     # helm
-    version=v2.16.3
+    version=v2.16.4
     if [ "$(helm version --client | awk '{print $2}' | sed 's/.*:"//g' | sed 's/",//g')" != "$version" ] ; then
     curl -s -L --url https://get.helm.sh/helm-"${version}"-linux-amd64.tar.gz | gunzip | tar xv
     mv linux-amd64/helm ~/bin/helm
@@ -153,7 +153,7 @@ parse_git_branch_and_add_brackets(){
     fi
 
     # k9s
-    version=0.17.7
+    version=0.18.1
     if [ "$(k9s version --short | grep Version | awk '{print $2}')" != "$version" ] ; then
     curl -s -L --url https://github.com/derailed/k9s/releases/download/v${version}/k9s_Linux_x86_64.tar.gz | gunzip | tar xv
     mv k9s ~/bin/k9s ; rm -f README.md LICENSE k9s_"${version}"_Linux_x86_64.tar
