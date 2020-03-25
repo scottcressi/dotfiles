@@ -52,6 +52,7 @@ parse_git_branch_and_add_brackets(){
         if [ "$version" != "$current_version" ] ; then
         curl -s -L https://zoom.us/client/latest/zoom_amd64.deb -o ~/Downloads/zoom_amd64.deb
         sudo dpkg -i ~/Downloads/zoom_amd64.deb
+        rm -f ~/Downloads/zoom_amd64.deb
         fi
 
         # docker
@@ -71,7 +72,7 @@ parse_git_branch_and_add_brackets(){
     grep $ID_LIKE ~/repos/personal/dotfiles/packages.txt | awk '{print $1}' | xargs sudo $package_manager install -y --quiet --quiet
 
     # docker
-    if [ "$(docker ps | grep -v CONTAINER | wc -l)" == "0" ] ; then
+    if [ "$(docker ps | grep -cv CONTAINER)" == "0" ] ; then
         echo "# installing docker"
         sudo apt-get install -y --quiet --quiet containerd.io docker-ce docker-ce-cli
     else
