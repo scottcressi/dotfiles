@@ -110,6 +110,7 @@ screenkey             debian        gui
 scrot                 debian        gui       screenshot
 sent                  debian        terminal  markdown
 shellcheck            debian        terminal  lint
+signal-desktop        debian        gui       messaging
 speedpad              debian        terminal  typing
 speedtest-cli         debian        terminal  stats           network
 stow                  debian centos terminal
