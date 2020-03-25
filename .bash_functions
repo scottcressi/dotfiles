@@ -56,7 +56,7 @@ parse_git_branch_and_add_brackets(){
         fi
 
         # docker
-        if ! grep -qF docker /etc/apt/sources.list.d/docker.list ; then
+        if [ ! -f /etc/apt/sources.list.d/docker.list ] ; then
         echo "deb [arch=amd64] https://download.docker.com/linux/$ID $(grep VERSION_CODENAME /etc/os-release | sed 's/.*=//g') stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
         curl -fsSL https://download.docker.com/linux/$ID/gpg | sudo apt-key add -
         sudo apt-key fingerprint 0EBFCD88
@@ -64,8 +64,10 @@ parse_git_branch_and_add_brackets(){
         fi
 
         # signal
+        if [ ! -f /etc/apt/sources.list.d/signal-xenial.list ] ; then
         curl -s https://updates.signal.org/desktop/apt/keys.asc | sudo apt-key add -
-        echo "deb [arch=amd64] https://updates.signal.org/desktop/apt xenial main" | sudo tee /etc/apt/sources.list.d/signal-xenial.list
+        echo "deb [arch=amd64] https://updates.signal.org/desktop/apt xenial main" | sudo tee /etc/apt/sources.list.d/signal-xenial.list > /dev/null
+        fi
 
         # repos
         echo "# updating repos"
