@@ -86,7 +86,7 @@ parse_git_branch_and_add_brackets(){
     # docker
     if [ "$(docker ps | grep -cv CONTAINER)" == "0" ] ; then
         echo "# installing docker"
-        sudo apt-get install -y --quiet --quiet containerd.io docker-ce docker-ce-cli
+        sudo $package_manager install -y --quiet --quiet containerd.io docker-ce docker-ce-cli
     else
         echo please stop all containers
     fi
