@@ -2,7 +2,6 @@
 
 if [ "$(find /sys/class/power_supply/* -type l | grep -c BAT)" -ge 1 ] ; then
     MACHINE=laptop
-    echo $MACHINE
 fi
 
 if grep --quiet ID=ubuntu /etc/os-release ; then
