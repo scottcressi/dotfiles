@@ -105,7 +105,6 @@ parse_git_branch_and_add_brackets(){
 
     # statusbar
     [[ ! -d ~/repos/personal/dwmblocks ]] && git clone https://github.com/torrinfail/dwmblocks ~/repos/personal/dwmblocks
-    [[ ! -d ~/repos/personal/slstatus ]] && git clone https://git.suckless.org/slstatus ~/repos/personal/slstatus
 
     # terraform
     version=0.12.21
