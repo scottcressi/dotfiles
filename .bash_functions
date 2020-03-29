@@ -107,8 +107,8 @@ parse_git_branch_and_add_brackets(){
 
     # slstatus
     export DESTDIR="$HOME"
-    if [ ! -d ~/slstatus ] ; then
-    git clone https://git.suckless.org/slstatus ~/slstatus
+    if [ ! -d ~/repos/personal/slstatus ] ; then
+    git clone https://git.suckless.org/slstatus ~/repos/personal/slstatus
     fi
 
     # terraform
