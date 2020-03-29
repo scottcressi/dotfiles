@@ -473,3 +473,11 @@ sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.ta
 -videochat(){
 docker run --rm --name spreed-webrtc -p 8000:8080 -p 8443:8443 -i -t spreed/webrtc
 }
+
+-corona(){
+curl 'https://corona-stats.online?top=5&minimal=true&emojis=true'
+}
+
+-corona-news(){
+curl 'https://corona-stats.online?top=5&minimal=true&emojis=true'
+}
