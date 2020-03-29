@@ -144,6 +144,7 @@ xcowsay               debian        gui       fun
 xfce4-terminal        debian        gui       terminal        emulator
 xfishtank             debian        gui       fun
 xorg                  debian        gui       graphics        xserver
+xwallpaper            debian        gui       wallpaper
 yamllint              debian centos terminal  lint
 youtube-dl            debian        terminal  video
 zathura               debian centos gui       document        reader
