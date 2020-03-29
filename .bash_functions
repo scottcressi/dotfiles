@@ -479,5 +479,5 @@ curl 'https://corona-stats.online?top=5&minimal=true&emojis=true'
 }
 
 -corona-news(){
-curl 'https://corona-stats.online?top=5&minimal=true&emojis=true'
+curl 'https://corona-stats.online/updates'
 }
