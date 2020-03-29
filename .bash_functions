@@ -144,7 +144,7 @@ parse_git_branch_and_add_brackets(){
     fi
 
     # helm
-    version=v2.16.4
+    version=v2.16.5
     if [ "$(helm version --client | awk '{print $2}' | sed 's/.*:"//g' | sed 's/",//g')" != "$version" ] ; then
     curl -s -L --url https://get.helm.sh/helm-"${version}"-linux-amd64.tar.gz | gunzip | tar xv
     mv linux-amd64/helm ~/bin/helm
@@ -153,7 +153,7 @@ parse_git_branch_and_add_brackets(){
     fi
 
     # helmfile
-    version=v0.104.0
+    version=v0.106.2
     if [ "$(helmfile --version | awk '{print $3}')" != "$version" ] ; then
     curl -s -L --url https://github.com/roboll/helmfile/releases/download/${version}/helmfile_linux_amd64 --output ~/bin/helmfile
     fi
