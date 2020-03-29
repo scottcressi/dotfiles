@@ -23,9 +23,7 @@ if grep --quiet ID=\"centos\" /etc/os-release ; then
 fi
 
 # shellcheck source=/dev/null
-if [ -d ~/python/ ] ; then
-    source ~/python/bin/activate
-fi
+[[ -d ~/python/ ]] && source ~/python/bin/activate
 
 DIRS=(
 books
@@ -105,11 +103,9 @@ parse_git_branch_and_add_brackets(){
     python3 -m venv ~/python
     fi
 
-    # slstatus
-    export DESTDIR="$HOME"
-    if [ ! -d ~/repos/personal/slstatus ] ; then
-    git clone https://git.suckless.org/slstatus ~/repos/personal/slstatus
-    fi
+    # statusbar
+    [[ ! -d ~/repos/personal/dwmblocks ]] && git clone https://github.com/torrinfail/dwmblocks ~/repos/personal/dwmblocks
+    [[ ! -d ~/repos/personal/slstatus ]] && git clone https://git.suckless.org/slstatus ~/repos/personal/slstatus
 
     # terraform
     version=0.12.21
@@ -199,9 +195,7 @@ parse_git_branch_and_add_brackets(){
     fi
 
     # translate
-    if test ! -f ~/bin/trans ; then
-    curl -s -L git.io/trans -o ~/bin/trans
-    fi
+    [[ ! -f ~/bin/trans ]] && curl -s -L git.io/trans -o ~/bin/trans
 
     # permissions
     chmod 755 ~/bin/*
