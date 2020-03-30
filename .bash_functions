@@ -368,7 +368,7 @@ parse_git_branch_and_add_brackets(){
 
 -record-security(){
     ffmpeg -i /dev/video0 \
-        -vf "select=gt(scene\\,0.0003),setpts=N/(20*TB)" /var/tmp/ffmpeg-security-"$(date +"%Y-%m-%d-%I-%m-%S")".mkv
+        -vf "select=gt(scene\\,0.0003),setpts=N/(10*TB)" /var/tmp/ffmpeg-security-"$(date +"%Y-%m-%d-%I-%m-%S")".mkv
 }
 
 -kpeee(){
