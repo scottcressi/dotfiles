@@ -55,6 +55,7 @@ libgtk-3-0            debian        prereq    firefox
 libnss3               debian        prereq    zoom
 libx11-dev            debian        prereq    suckless
 links2                debian        terminal  browser
+lm-sensors            debian        terminal  stats
 lolcat                debian        terminal  fun
 lsof                  debian centos terminal  stats
 lynx                  debian centos terminal  browser
