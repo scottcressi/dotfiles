@@ -477,5 +477,6 @@ curl 'https://corona-stats.online/updates'
 
 -dwmblocks(){
 if pgrep dwmblocks; then pkill dwmblocks; fi
+cp ~/repos/personal/suckless/dwmblocks.blocks.h ~/repos/personal/dwmblocks/blocks.h
 cd ~/repos/personal/dwmblocks && make clean install ; ./dwmblocks &
 }
