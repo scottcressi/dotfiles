@@ -91,6 +91,7 @@ pandoc                debian        terminal  converter       docs
 pavucontrol           debian        gui       audio
 pgcli                 debian        terminal  client          database
 pi                    debian        terminal  fun
+pkg-config            debian        prereq    suckless
 pulseaudio            debian        prereq    firefox         audio
 pwgen                 debian        terminal  passwords
 python3               debian        terminal  language
