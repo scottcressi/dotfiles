@@ -29,7 +29,6 @@ dwm                   debian        gui       graphics        windowmanager
 elinks                debian centos terminal  browser
 empire                debian        terminal  game
 espeak                debian centos terminal  speech
-feh                   debian        gui       pictures
 ffmpeg                debian        gui       video
 freeciv               debian centos gui       game
 fzf                   debian        terminal
