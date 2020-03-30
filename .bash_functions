@@ -25,6 +25,8 @@ fi
 # shellcheck source=/dev/null
 [[ -d ~/python/ ]] && source ~/python/bin/activate
 
+NOW=$(date +"%Y-%m-%d-%I-%m-%S")
+
 DIRS=(
 books
 comics
@@ -359,11 +361,15 @@ parse_git_branch_and_add_brackets(){
 
 -record-screen(){
     RESOLUTION=$(xrandr | grep "\\*" | awk '{print $1}')
-    ffmpeg -f x11grab -s "$RESOLUTION" -i :0.0 out.mkv
+    ffmpeg -f x11grab -s "$RESOLUTION" -i :0.0 /var/tmp/ffmpeg-screen-"$NOW".mkv
 }
 
 -record-camera(){
-    ffmpeg -i /dev/video0 out.mkv
+    ffmpeg -i /dev/video0 /var/tmp/ffmpeg-camera-"$NOW".mkv
+}
+
+-record-security(){
+    ffmpeg -i /dev/video0 -vf "select=gt(scene\\,0.0003),setpts=N/(20*TB)" /var/tmp/ffmpeg-security-"$NOW".mkv
 }
 
 -kpeee(){
