@@ -474,3 +474,8 @@ curl 'https://corona-stats.online?top=5&minimal=true&emojis=true'
 -corona-news(){
 curl 'https://corona-stats.online/updates'
 }
+
+-dwmblocks(){
+if pgrep dwmblocks; then pkill dwmblocks; fi
+cd ~/repos/personal/dwmblocks && ./dwmblocks &
+}
