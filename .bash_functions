@@ -473,7 +473,7 @@ docker run --rm --name spreed-webrtc -p 8000:8080 -p 8443:8443 -i -t spreed/webr
 }
 
 -corona(){
-curl 'https://corona-stats.online?top=5&minimal=true&emojis=true'
+curl 'https://corona-stats.online?top=10&minimal=true&emojis=true'
 }
 
 -corona-news(){
