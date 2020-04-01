@@ -48,15 +48,6 @@ parse_git_branch_and_add_brackets(){
     # distro packages
     if [ "$package_manager" == "apt-get" ] ; then
 
-        # zoom
-        version=3.5.374815.0324
-        current_version="$(dpkg -l | grep zoom | awk '{print $3}')"
-        if [ "$version" != "$current_version" ] ; then
-        curl -s -L https://zoom.us/client/latest/zoom_amd64.deb -o ~/Downloads/zoom_amd64.deb
-        sudo dpkg -i ~/Downloads/zoom_amd64.deb
-        rm -f ~/Downloads/zoom_amd64.deb
-        fi
-
         # docker
         if [ ! -f /etc/apt/sources.list.d/docker.list ] ; then
         echo "deb [arch=amd64] https://download.docker.com/linux/$ID $(grep VERSION_CODENAME /etc/os-release | sed 's/.*=//g') stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
@@ -484,4 +475,12 @@ curl 'https://corona-stats.online/updates'
 if pgrep dwmblocks; then pkill dwmblocks; fi
 cp ~/repos/personal/suckless/dwmblocks.blocks.h ~/repos/personal/dwmblocks/blocks.h
 cd ~/repos/personal/dwmblocks && make clean install ; ./dwmblocks &
+}
+
+-cowsay-normal(){
+fortune | `ls /usr/games/cow* | shuf -n 1` -f `ls /usr/share/cowsay/cows/ | shuf -n 1`
+}
+
+-cowsay-custom(){
+fortune | cowsay -f "$(find ~/repos/personal/cowsay-files/cows | shuf | head -1)"
 }
