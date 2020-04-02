@@ -417,44 +417,44 @@ parse_git_branch_and_add_brackets(){
 }
 
 -webserver() {
-ip -oneline -f inet a | grep -v docker | grep -v " lo " | awk '{print $4}' | sed 's/\/.*//g'
-echo
-python3 -m http.server 3333
+    ip -oneline -f inet a | grep -v docker | grep -v " lo " | awk '{print $4}' | sed 's/\/.*//g'
+    echo
+    python3 -m http.server 3333
 
 }
 
 -nonfree() {
-dpkg-query -W -f='${Section}\t${Package}\n' | grep non-free
+    dpkg-query -W -f='${Section}\t${Package}\n' | grep non-free
 
 }
 
 -disable-suspend() {
-sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target
+    sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target
 
 }
 
 -videochat(){
-docker run --rm --name spreed-webrtc -p 8000:8080 -p 8443:8443 -i -t spreed/webrtc
+    docker run --rm --name spreed-webrtc -p 8000:8080 -p 8443:8443 -i -t spreed/webrtc
 }
 
 -corona(){
-curl 'https://corona-stats.online?top=10&minimal=true'
+    curl 'https://corona-stats.online?top=10&minimal=true'
 }
 
 -corona-news(){
-curl 'https://corona-stats.online/updates'
+    curl 'https://corona-stats.online/updates'
 }
 
 -dwmblocks(){
-[[ "$(pgrep dwmblocks)" ]] && pkill dwmblocks
-cp ~/repos/personal/suckless/dwmblocks.blocks.h ~/repos/personal/dwmblocks/blocks.h
-cd ~/repos/personal/dwmblocks && make clean install ; ./dwmblocks &
+    [[ "$(pgrep dwmblocks)" ]] && pkill dwmblocks
+    cp ~/repos/personal/suckless/dwmblocks.blocks.h ~/repos/personal/dwmblocks/blocks.h
+    cd ~/repos/personal/dwmblocks && make clean install ; ./dwmblocks &
 }
 
 -cowsay-normal(){
-fortune | cowsay -f "$(find /usr/share/cowsay/cows/ | shuf | head -1)"
+    fortune | cowsay -f "$(find /usr/share/cowsay/cows/ | shuf | head -1)"
 }
 
 -cowsay-custom(){
-fortune | cowsay -f "$(find ~/repos/personal/cowsay-files/cows | shuf | head -1)"
+    fortune | cowsay -f "$(find ~/repos/personal/cowsay-files/cows | shuf | head -1)"
 }
