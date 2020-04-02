@@ -417,7 +417,7 @@ parse_git_branch_and_add_brackets(){
 }
 
 -webserver() {
-    ip -oneline -f inet a | grep -v docker | grep -v " lo " | awk '{print $4}' | sed 's/\/.*//g'
+    ip -oneline -f inet a | grep dynamic | awk '{print $4}' | sed 's/\/.*//g'
     echo
     python3 -m http.server 3333
 
