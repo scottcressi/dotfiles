@@ -48,21 +48,25 @@ parse_git_branch_and_add_brackets(){
     # distro packages
     if [ "$package_manager" == "apt-get" ] ; then
 
-        # docker
-        if [ ! -f /etc/apt/sources.list.d/docker.list ] ; then
+        # repos
         echo "deb [arch=amd64] https://download.docker.com/linux/$ID $(grep VERSION_CODENAME /etc/os-release | sed 's/.*=//g') stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-        curl -fsSL https://download.docker.com/linux/$ID/gpg | sudo apt-key add -
+        echo "deb [arch=amd64] https://updates.signal.org/desktop/apt xenial main" | sudo tee /etc/apt/sources.list.d/signal-xenial.list > /dev/null
+
+        # key docker
+        if [ ! -f /var/tmp/docker.gpg ] ; then
+        curl -s -L --url https://download.docker.com/linux/$ID/gpg --output /var/tmp/docker.gpg
+        sudo apt-key add /var/tmp/docker.gpg
         sudo apt-key fingerprint 0EBFCD88
         sudo usermod -a -G docker "$USER"
         fi
 
-        # signal
-        if [ ! -f /etc/apt/sources.list.d/signal-xenial.list ] ; then
-        curl -s https://updates.signal.org/desktop/apt/keys.asc | sudo apt-key add -
-        echo "deb [arch=amd64] https://updates.signal.org/desktop/apt xenial main" | sudo tee /etc/apt/sources.list.d/signal-xenial.list > /dev/null
+        # key signal
+        if [ ! -f /var/tmp/keys.asc ] ; then
+        curl -s -L --url https://updates.signal.org/desktop/apt/keys.asc --output /var/tmp/keys.asc
+        sudo apt-key add /var/tmp/keys.asc
         fi
 
-        # repos
+        # update
         echo "# updating repos"
         sudo $package_manager update --quiet --quiet
 
