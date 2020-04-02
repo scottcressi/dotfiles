@@ -176,6 +176,7 @@ parse_git_branch_and_add_brackets(){
             bunzip2 ~/firefox-"${version}".tar.bz2
             tar xvf ~/firefox-"${version}".tar -C "${HOME}"
             rm -f ~/firefox-"${version}".tar
+            ./firefox/firefox -CreateProfile default
             fi
     fi
 
