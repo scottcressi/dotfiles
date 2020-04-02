@@ -360,6 +360,7 @@ parse_git_branch_and_add_brackets(){
     fi
 
     # freenas check
+
     status=$(nc -z freenas 80 ; echo $?)
     if [ "$status" != "0" ] ; then
         echo freenas down or not in /etc/hosts
@@ -445,7 +446,7 @@ curl 'https://corona-stats.online/updates'
 }
 
 -dwmblocks(){
-if pgrep dwmblocks; then pkill dwmblocks; fi
+[[ "$(pgrep dwmblocks)" ]] && pkill dwmblocks
 cp ~/repos/personal/suckless/dwmblocks.blocks.h ~/repos/personal/dwmblocks/blocks.h
 cd ~/repos/personal/dwmblocks && make clean install ; ./dwmblocks &
 }
