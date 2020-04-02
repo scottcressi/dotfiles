@@ -23,7 +23,7 @@ if grep --quiet ID=\"centos\" /etc/os-release ; then
 fi
 
 # shellcheck source=/dev/null
-[[ -d ~/python/ ]] && source ~/python/bin/activate
+[[ $(type -P "python3") ]] && [[ -d ~/python ]] && source ~/python/bin/activate
 
 DIRS=(
 books
@@ -52,19 +52,15 @@ parse_git_branch_and_add_brackets(){
         echo "deb [arch=amd64] https://download.docker.com/linux/$ID $(grep VERSION_CODENAME /etc/os-release | sed 's/.*=//g') stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
         echo "deb [arch=amd64] https://updates.signal.org/desktop/apt xenial main" | sudo tee /etc/apt/sources.list.d/signal-xenial.list > /dev/null
 
-        # key docker
-        if [ ! -f /var/tmp/docker.gpg ] ; then
-        curl -s -L --url https://download.docker.com/linux/$ID/gpg --output /var/tmp/docker.gpg
-        sudo apt-key add /var/tmp/docker.gpg
+        # keys
+        [[ ! -f /var/tmp/docker.gpg ]] && \
+        curl -s -L --url https://download.docker.com/linux/$ID/gpg --output /var/tmp/docker.gpg && \
+        sudo apt-key add /var/tmp/docker.gpg && \
         sudo apt-key fingerprint 0EBFCD88
-        sudo usermod -a -G docker "$USER"
-        fi
 
-        # key signal
-        if [ ! -f /var/tmp/keys.asc ] ; then
-        curl -s -L --url https://updates.signal.org/desktop/apt/keys.asc --output /var/tmp/keys.asc
+        [[ ! -f /var/tmp/keys.asc ]] && \
+        curl -s -L --url https://updates.signal.org/desktop/apt/keys.asc --output /var/tmp/keys.asc && \
         sudo apt-key add /var/tmp/keys.asc
-        fi
 
         # update
         echo "# updating repos"
@@ -76,12 +72,9 @@ parse_git_branch_and_add_brackets(){
     grep $ID_LIKE ~/repos/personal/dotfiles/packages.txt | awk '{print $1}' | xargs sudo $package_manager install -y --quiet --quiet
 
     # docker
-    if [ "$(docker ps | grep -cv CONTAINER)" == "0" ] ; then
-        echo "# installing docker"
-        sudo $package_manager install -y --quiet --quiet containerd.io docker-ce docker-ce-cli
-    else
-        echo please stop all containers
-    fi
+    [[ ! "$(pgrep containerd-shim)" ]] && \
+    sudo $package_manager install -y --quiet --quiet containerd.io docker-ce docker-ce-cli && \
+    sudo usermod -a -G docker "$USER"
 
     # directories storage
     for i in "${DIRS[@]}" ; do
@@ -94,99 +87,76 @@ parse_git_branch_and_add_brackets(){
     mkdir -p ~/wallpapers
 
     # venv
-    if [ ! -d ~/python/ ] ; then
-    python3 -m venv ~/python
-    fi
+    [[ ! -d ~/python/ ]] && python3 -m venv ~/python
 
     # statusbar
     [[ ! -d ~/repos/personal/dwmblocks ]] && git clone https://github.com/torrinfail/dwmblocks ~/repos/personal/dwmblocks
 
     # terraform
     version=0.12.21
-    if [ "$(terraform version | grep "v[0-9]" | awk '{print $2}' | sed 's/v//g')" != "$version" ] ; then
-    curl -s -L https://releases.hashicorp.com/terraform/${version}/terraform_${version}_linux_amd64.zip --output ~/bin/terraform_${version}_linux_amd64.zip
-    unzip -d ~/bin -o ~/bin/terraform_${version}_linux_amd64.zip
+    [[ "$(terraform version | grep "v[0-9]" | awk '{print $2}' | sed 's/v//g')" != "$version" ]] && \
+    curl -s -L https://releases.hashicorp.com/terraform/${version}/terraform_${version}_linux_amd64.zip --output ~/bin/terraform_${version}_linux_amd64.zip && \
+    unzip -d ~/bin -o ~/bin/terraform_${version}_linux_amd64.zip && \
     rm -f ~/bin/terraform_${version}_linux_amd64.zip
-    fi
 
     # terragrunt
     version=v0.21.8
-    if [ "$(terragrunt --version | awk '{print $3}')" != "$version" ] ; then
-    curl -s -L https://github.com/gruntwork-io/terragrunt/releases/download/${version}/terragrunt_linux_amd64 --output ~/bin/terragrunt
-    fi
+    [[ "$(terragrunt --version | awk '{print $3}')" != "$version" ]] && curl -s -L https://github.com/gruntwork-io/terragrunt/releases/download/${version}/terragrunt_linux_amd64 --output ~/bin/terragrunt
 
     # docker compose
     version=1.25.4
-    if test ! -f ~/bin/docker-compose ; then
-    curl -s -L https://github.com/docker/compose/releases/download/${version}/docker-compose-"$(uname -s)"-"$(uname -m)" -o ~/bin/docker-compose
-    fi
+    [[ ! -f ~/bin/docker-compose ]] && curl -s -L https://github.com/docker/compose/releases/download/${version}/docker-compose-"$(uname -s)"-"$(uname -m)" -o ~/bin/docker-compose
 
     # skaffold
     version=v1.6.0
-    if [ "$(skaffold version)" != "$version" ] ; then
-        curl -s -L --url https://github.com/GoogleContainerTools/skaffold/releases/download/${version}/skaffold-linux-amd64 --output ~/bin/skaffold
-    fi
+    [[ "$(skaffold version)" != "$version" ]] && curl -s -L --url https://github.com/GoogleContainerTools/skaffold/releases/download/${version}/skaffold-linux-amd64 --output ~/bin/skaffold
 
     # kops
     version=1.16.0
-    if [ "$(kops version | awk '{print $2}')" != "$version" ] ; then
-    curl -s -L --url https://github.com/kubernetes/kops/releases/download/v${version}/kops-linux-amd64 --output ~/bin/kops
-    fi
+    [[ "$(kops version | awk '{print $2}')" != "$version" ]] && curl -s -L --url https://github.com/kubernetes/kops/releases/download/v${version}/kops-linux-amd64 --output ~/bin/kops
 
     # helm
     version=v2.16.5
-    if [ "$(helm version --client | awk '{print $2}' | sed 's/.*:"//g' | sed 's/",//g')" != "$version" ] ; then
-    curl -s -L --url https://get.helm.sh/helm-"${version}"-linux-amd64.tar.gz | gunzip | tar xv
-    mv linux-amd64/helm ~/bin/helm
-    rm -rf linux-amd64
+    [[ "$(helm version --client | awk '{print $2}' | sed 's/.*:"//g' | sed 's/",//g')" != "$version" ]] && \
+    curl -s -L --url https://get.helm.sh/helm-"${version}"-linux-amd64.tar.gz | gunzip | tar xv && \
+    mv linux-amd64/helm ~/bin/helm && \
+    rm -rf linux-amd64 && \
     helm plugin install https://github.com/databus23/helm-diff --version master
-    fi
 
     # helmfile
     version=v0.106.2
-    if [ "$(helmfile --version | awk '{print $3}')" != "$version" ] ; then
-    curl -s -L --url https://github.com/roboll/helmfile/releases/download/${version}/helmfile_linux_amd64 --output ~/bin/helmfile
-    fi
+    [[ "$(helmfile --version | awk '{print $3}')" != "$version" ]] && curl -s -L --url https://github.com/roboll/helmfile/releases/download/${version}/helmfile_linux_amd64 --output ~/bin/helmfile
 
     # kubectl
     version=v1.17.2
-    if [ "$(kubectl version --client | awk '{print $5}' | sed 's/.*:"//g' | sed 's/",//g')" != "$version" ] ; then
-    curl -s -L --url curl -LO https://storage.googleapis.com/kubernetes-release/release/"${version}"/bin/linux/amd64/kubectl --output ~/bin/kubectl
-    fi
+    [[ "$(kubectl version --client | awk '{print $5}' | sed 's/.*:"//g' | sed 's/",//g')" != "$version" ]] && curl -s -L --url curl -LO https://storage.googleapis.com/kubernetes-release/release/"${version}"/bin/linux/amd64/kubectl --output ~/bin/kubectl
 
     # k9s
     version=0.18.1
-    if [ "$(k9s version --short | grep Version | awk '{print $2}')" != "$version" ] ; then
-    curl -s -L --url https://github.com/derailed/k9s/releases/download/v${version}/k9s_Linux_x86_64.tar.gz | gunzip | tar xv
+    [[ "$(k9s version --short | grep Version | awk '{print $2}')" != "$version" ]] && \
+    curl -s -L --url https://github.com/derailed/k9s/releases/download/v${version}/k9s_Linux_x86_64.tar.gz | gunzip | tar xv && \
     mv k9s ~/bin/k9s ; rm -f README.md LICENSE k9s_"${version}"_Linux_x86_64.tar
-    fi
 
     # kind
     version=v0.7.0
-    if [ "$(kind version | awk '{print $2}')" != "$version" ] ; then
-    curl -s -L --url https://github.com/kubernetes-sigs/kind/releases/download/${version}/kind-linux-amd64 --output ~/bin/kind
-    fi
+    [[ "$(kind version | awk '{print $2}')" != "$version" ]] && curl -s -L --url https://github.com/kubernetes-sigs/kind/releases/download/${version}/kind-linux-amd64 --output ~/bin/kind
 
     # rakkess
     version=v0.4.2
-    if [ "$(rakkess version)" != "$version-dirty" ] ; then
-    curl -s -L --url https://github.com/corneliusweig/rakkess/releases/download/${version}/rakkess-amd64-linux.tar.gz | gunzip | tar xv
+    [[ "$(rakkess version)" != "$version-dirty" ]] && \
+    curl -s -L --url https://github.com/corneliusweig/rakkess/releases/download/${version}/rakkess-amd64-linux.tar.gz | gunzip | tar xv && \
     mv rakkess-amd64-linux ~/bin/rakkess ; rm -f LICENSE
-    fi
 
     # istioctl
     version=1.5.0
-    if [ "$(istioctl version --remote=false)" != "$version" ] ; then
-    curl -s -L --url https://github.com/istio/istio/releases/download/${version}/istio-${version}-linux.tar.gz | gunzip | tar xv
-    mv istio-${version}/bin/istioctl ~/bin/istioctl
+    [[ "$(istioctl version --remote=false)" != "$version" ]] && \
+    curl -s -L --url https://github.com/istio/istio/releases/download/${version}/istio-${version}-linux.tar.gz | gunzip | tar xv && \
+    mv istio-${version}/bin/istioctl ~/bin/istioctl && \
     rm -rf istio-${version}
-    fi
 
     # slack term
     version=v0.4.1
-    if test ! -f ~/bin/slack-term ; then
-    curl -s -L --url https://github.com/erroneousboat/slack-term/releases/download/${version}/slack-term-linux-amd64 --output ~/bin/slack-term
-    fi
+    [[ ! -f ~/bin/slack-term ]] && curl -s -L --url https://github.com/erroneousboat/slack-term/releases/download/${version}/slack-term-linux-amd64 --output ~/bin/slack-term
 
     # translate
     [[ ! -f ~/bin/trans ]] && curl -s -L git.io/trans -o ~/bin/trans
@@ -211,12 +181,11 @@ parse_git_branch_and_add_brackets(){
 
     # dwarf fortress
     version=47_04
-    if test ! -d ~/df_linux ; then
-    curl -s -L --url http://www.bay12games.com/dwarves/df_${version}_linux.tar.bz2 --output ~/df_${version}_linux.tar.bz2
-    bunzip2 ~/df_${version}_linux.tar.bz2
-    tar xvf ~/df_${version}_linux.tar -C "${HOME}"
+    [[ ! -d ~/df_linux ]] && \
+    curl -s -L --url http://www.bay12games.com/dwarves/df_${version}_linux.tar.bz2 --output ~/df_${version}_linux.tar.bz2 && \
+    bunzip2 ~/df_${version}_linux.tar.bz2 && \
+    tar xvf ~/df_${version}_linux.tar -C "${HOME}" && \
     rm -f ~/df_${version}_linux.tar
-    fi
 
 }
 
@@ -482,7 +451,7 @@ cd ~/repos/personal/dwmblocks && make clean install ; ./dwmblocks &
 }
 
 -cowsay-normal(){
-fortune | `ls /usr/games/cow* | shuf -n 1` -f `ls /usr/share/cowsay/cows/ | shuf -n 1`
+fortune | cowsay -f "$(find /usr/share/cowsay/cows/ | shuf | head -1)"
 }
 
 -cowsay-custom(){
