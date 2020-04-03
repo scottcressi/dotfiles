@@ -108,7 +108,7 @@ parse_git_branch_and_add_brackets(){
     [[ ! -f ~/bin/docker-compose ]] && curl -s -L https://github.com/docker/compose/releases/download/${version}/docker-compose-"$(uname -s)"-"$(uname -m)" -o ~/bin/docker-compose
 
     # skaffold
-    version=v1.6.0
+    version=v1.7.0
     [[ "$(skaffold version)" != "$version" ]] && curl -s -L --url https://github.com/GoogleContainerTools/skaffold/releases/download/${version}/skaffold-linux-amd64 --output ~/bin/skaffold
 
     # kops
@@ -132,7 +132,7 @@ parse_git_branch_and_add_brackets(){
     [[ "$(kubectl version --client | awk '{print $5}' | sed 's/.*:"//g' | sed 's/",//g')" != "$version" ]] && curl -s -L --url curl -LO https://storage.googleapis.com/kubernetes-release/release/"${version}"/bin/linux/amd64/kubectl --output ~/bin/kubectl
 
     # k9s
-    version=0.18.1
+    version=0.19.0
     [[ "$(k9s version --short | grep Version | awk '{print $2}')" != "$version" ]] && \
     curl -s -L --url https://github.com/derailed/k9s/releases/download/v${version}/k9s_Linux_x86_64.tar.gz | gunzip | tar xv && \
     mv k9s ~/bin/k9s ; rm -f README.md LICENSE k9s_"${version}"_Linux_x86_64.tar
