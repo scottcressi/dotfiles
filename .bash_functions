@@ -273,9 +273,11 @@ parse_git_branch_and_add_brackets(){
 }
 
 -aws-eks-config(){
-    if [ -z "$1" ] ; then echo enter region ; fi
-    if [ -z "$2" ] ; then echo enter cluster ; fi
-    aws eks update-kubeconfig --region "$1" --name "$2"
+    echo region:
+    read -r region
+    echo cluster name:
+    read -r cluster
+    aws eks update-kubeconfig --region "$region" --name "$cluster"
 
 }
 
@@ -283,6 +285,17 @@ parse_git_branch_and_add_brackets(){
     echo region:
     read -r region
     aws eks list-clusters --region "$region"
+
+}
+
+-aws-certs(){
+    echo region:
+    read -r region
+    aws acm list-certificates --region "$region"
+}
+
+-aws-test(){
+    aws sts get-caller-identity ; aws s3 ls
 
 }
 
