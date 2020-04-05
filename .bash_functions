@@ -124,7 +124,7 @@ parse_git_branch_and_add_brackets(){
     helm plugin install https://github.com/databus23/helm-diff --version master
 
     # helmfile
-    version=v0.107.0
+    version=v0.108.0
     [[ "$(helmfile --version | awk '{print $3}')" != "$version" ]] && curl -s -L --url https://github.com/roboll/helmfile/releases/download/${version}/helmfile_linux_amd64 --output ~/bin/helmfile
 
     # kubectl
@@ -132,7 +132,7 @@ parse_git_branch_and_add_brackets(){
     [[ "$(kubectl version --client | awk '{print $5}' | sed 's/.*:"//g' | sed 's/",//g')" != "$version" ]] && curl -s -L --url curl -LO https://storage.googleapis.com/kubernetes-release/release/"${version}"/bin/linux/amd64/kubectl --output ~/bin/kubectl
 
     # k9s
-    version=0.19.0
+    version=0.19.1
     [[ "$(k9s version --short | grep Version | awk '{print $2}')" != "$version" ]] && \
     curl -s -L --url https://github.com/derailed/k9s/releases/download/v${version}/k9s_Linux_x86_64.tar.gz | gunzip | tar xv && \
     mv k9s ~/bin/k9s ; rm -f README.md LICENSE k9s_"${version}"_Linux_x86_64.tar
