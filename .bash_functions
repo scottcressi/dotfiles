@@ -167,19 +167,13 @@ parse_git_branch_and_add_brackets(){
     # firefox
     version=75.0
     [[ ! -d ~/firefox ]] && \
-    curl -s -L --url https://ftp.mozilla.org/pub/firefox/releases/${version}/linux-x86_64/en-US/firefox-${version}.tar.bz2 --output ~/firefox-"${version}".tar.bz2 && \
-    bunzip2 ~/firefox-"${version}".tar.bz2 && \
-    tar xvf ~/firefox-"${version}".tar -C "${HOME}" && \
-    rm -f ~/firefox-"${version}".tar && \
+    cd ~/ && curl -s -L --url https://ftp.mozilla.org/pub/firefox/releases/${version}/linux-x86_64/en-US/firefox-${version}.tar.bz2 | tar -xj && \
     ./firefox/firefox -CreateProfile default
 
     # dwarf fortress
     version=47_04
     [[ ! -d ~/df_linux ]] && \
-    curl -s -L --url http://www.bay12games.com/dwarves/df_${version}_linux.tar.bz2 --output ~/df_${version}_linux.tar.bz2 && \
-    bunzip2 ~/df_${version}_linux.tar.bz2 && \
-    tar xvf ~/df_${version}_linux.tar -C "${HOME}" && \
-    rm -f ~/df_${version}_linux.tar
+    curl -s -L --url http://www.bay12games.com/dwarves/df_${version}_linux.tar.bz2 | tar -xj
 
 }
 
