@@ -1,27 +1,5 @@
 #!/usr/bin/env bash
 
-if [ "$(find /sys/class/power_supply/* -type l | grep -c BAT)" -ge 1 ] ; then
-    MACHINE=laptop
-fi
-
-if grep --quiet ID=ubuntu /etc/os-release ; then
-    ID=ubuntu
-    ID_LIKE=debian
-    package_manager=apt-get
-fi
-
-if grep --quiet ID=debian /etc/os-release ; then
-    ID=debian
-    ID_LIKE=debian
-    package_manager=apt-get
-fi
-
-if grep --quiet ID=\"centos\" /etc/os-release ; then
-    ID=centos
-    ID_LIKE=centos
-    package_manager=yum
-fi
-
 # shellcheck source=/dev/null
 [[ $(type -P "python3") ]] && [[ -d ~/python ]] && source ~/python/bin/activate
 
@@ -44,6 +22,24 @@ parse_git_branch_and_add_brackets(){
 }
 
 -packages(){
+
+    if grep --quiet ID=ubuntu /etc/os-release ; then
+        ID=ubuntu
+        ID_LIKE=debian
+        package_manager=apt-get
+    fi
+
+    if grep --quiet ID=debian /etc/os-release ; then
+        ID=debian
+        ID_LIKE=debian
+        package_manager=apt-get
+    fi
+
+    if grep --quiet ID=\"centos\" /etc/os-release ; then
+        ID=centos
+        ID_LIKE=centos
+        package_manager=yum
+    fi
 
     # distro packages
     if [ "$package_manager" == "apt-get" ] ; then
@@ -253,7 +249,7 @@ parse_git_branch_and_add_brackets(){
 }
 
 -is-webcam-on(){
-    if [ "$MACHINE" == "laptop" ] ; then
+    if [ "$(find /sys/class/power_supply/* -type l | grep -c BAT)" -ge 1 ] ; then
         if [ "$(lsmod | grep ^uvcvideo | awk '{print $3}')" == "0" ] ; then
             echo no
         else
