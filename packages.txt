@@ -9,6 +9,7 @@ bash-completion       debian centos terminal  completion
 bastet                debian        terminal  game
 bb                    debian        terminal  fun
 bc                    debian        terminal  calculator
+bmon                  debian        terminal  stats           network
 bombardier            debian        terminal  game
 bpython3              debian        terminal  language
 bsdgames              debian        terminal  game
