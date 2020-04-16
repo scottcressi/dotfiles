@@ -31,6 +31,7 @@ elinks                debian centos terminal  browser
 empire                debian        terminal  game
 espeak                debian centos terminal  speech
 ffmpeg                debian        gui       video
+flake8                debian        terminal  language
 freeciv               debian centos gui       game
 fzf                   debian        terminal
 gawk                  debian centos prereq    trans
@@ -46,6 +47,7 @@ iftop                 debian centos terminal  stats           network
 iotop                 debian centos terminal  stats           disk
 ipcalc                debian        terminal  stats
 iptraf                debian centos terminal  stats           network
+ipython3              debian        terminal  language
 irssi                 debian centos terminal  messaging
 jq                    debian centos terminal  language
 jsonlint              debian        terminal  lint
@@ -96,7 +98,6 @@ pulseaudio            debian        prereq    firefox         audio
 pwgen                 debian        terminal  passwords
 python3               debian        terminal  language
 python3-flake8        debian        terminal  language
-python3-ipython       debian        terminal  language
 python3-pip           debian        terminal  language
 python3-venv          debian        terminal  language
 ranger                debian        terminal  file            manager
