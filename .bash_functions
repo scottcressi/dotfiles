@@ -4,6 +4,8 @@
 [[ $(type -P "python3") ]] && [[ -d ~/python ]] && source ~/python/bin/activate
 
 DIRS=(
+SORT
+_misc
 books
 comics
 documents
