@@ -80,6 +80,7 @@ netris                debian        terminal  game
 nettoe                debian        terminal  game
 network-manager       debian        terminal  network
 newsboat              debian        terminal  rss
+nfs-common            debian        terminal  mounting
 nicstat               debian        terminal  stats           network
 ninvaders             debian        terminal  game
 nmap                  debian centos terminal  stats           network
