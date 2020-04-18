@@ -9,6 +9,7 @@ _misc
 books
 comics
 documents
+drop
 emulators
 games
 music
@@ -371,7 +372,7 @@ parse_git_branch_and_add_brackets(){
         for i in "${DIRS[@]}" ; do
             sudo mount -t cifs //freenas/"$i" ~/mnt/"$i" -o credentials=~/.smbpasswd -v
         done
-            sudo mount -t cifs //freenas/drop ~/repos/personal/docker-compose/data/transmission/data -o credentials=~/.smbpasswd -v
+            sudo mount freenas:/mnt/data/drop ~/repos/personal/docker-compose/data/transmission/data
     fi
 }
 
