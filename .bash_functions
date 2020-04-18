@@ -122,7 +122,7 @@ parse_git_branch_and_add_brackets(){
     helm plugin install https://github.com/databus23/helm-diff --version master
 
     # helmfile
-    version=v0.109.0
+    version=v0.110.0
     [[ "$(helmfile --version | awk '{print $3}')" != "$version" ]] && curl -s -L --url https://github.com/roboll/helmfile/releases/download/${version}/helmfile_linux_amd64 --output ~/bin/helmfile
 
     # kubectl
@@ -456,4 +456,12 @@ parse_git_branch_and_add_brackets(){
 
 -cowsay-custom(){
     fortune | cowsay -f "$(find ~/repos/personal/cowsay-files/cows | shuf | head -1)"
+}
+
+-camera-web-html(){
+docker run --device=/dev/video0:/dev/video0 -p56000:56000 -it gen2brain/cam2ip -bind-addr 0.0.0.0:56000
+}
+
+-camera-web-rtsp(){
+docker run --net host --device=/dev/video0 -p 8000:8000 -it mpromonet/webrtc-streamer
 }
