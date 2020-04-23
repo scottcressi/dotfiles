@@ -27,6 +27,10 @@ Plug 'scrooloose/syntastic' " syntax
 
 call plug#end()
 
+"" VIMRC START
+
+if !empty(glob('~/.vim/plugged/'))
+
 "" AUTO-INITIALIZATION --------------------------------------------------------
 
 " nerdtree
@@ -128,3 +132,6 @@ noremap <C-K> :set nonumber<CR>
 
 " generic disable ex mode
 noremap Q <NOP>
+
+"" VIMRC END
+endif
