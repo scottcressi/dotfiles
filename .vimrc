@@ -1,38 +1,31 @@
-"" VUNDLE
+"" PLUG INIT ------------------------------------------------------------------
 
-let iCanHazVundle=1
-let vundle_readme=expand('~/.vim/bundle/Vundle.vim/README.md')
-if !filereadable(vundle_readme)
-  echo "Installing Vundle.."
-  echo ""
-  silent !mkdir -p ~/.vim/bundle
-  silent !git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-  let iCanHazVundle=0
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
-set rtp+=~/.vim/bundle/Vundle.vim/
-call vundle#rc()
 
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-if iCanHazVundle == 0
-  echo "Installing Bundles, please ignore error messages"
-  echo ""
-  :source $MYVIMRC
-  :PluginInstall
-endif
+"" PLUG START -----------------------------------------------------------------
+
+call plug#begin('~/.vim/plugged')
 
 "" PLUGINS --------------------------------------------------------------------
 
-Plugin 'scrooloose/nerdtree' " file drawer
-Plugin 'morhetz/gruvbox' " colors
-Plugin 'pseewald/vim-anyfold' " folding
-Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " fzf
-Plugin 'junegunn/fzf.vim' " fzf
-Plugin 'itchyny/lightline.vim' " statusbar
-Plugin 'ervandew/supertab' " tabbing
-Plugin 'davidhalter/jedi-vim' " completion
-Plugin 'scrooloose/syntastic' " syntax
+Plug 'scrooloose/nerdtree' " file drawer
+Plug 'morhetz/gruvbox' " colors
+Plug 'pseewald/vim-anyfold' " folding
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " fzf
+Plug 'junegunn/fzf.vim' " fzf
+Plug 'itchyny/lightline.vim' " statusbar
+Plug 'ervandew/supertab' " tabbing
+Plug 'davidhalter/jedi-vim' " completion
+Plug 'scrooloose/syntastic' " syntax
 " Plugin 'fatih/vim-go' " go
+
+"" PLUG END
+
+call plug#end()
 
 "" AUTO-INITIALIZATION --------------------------------------------------------
 
