@@ -31,6 +31,7 @@ elinks                debian centos terminal  browser
 empire                debian        terminal  game
 espeak                debian centos terminal  speech
 ffmpeg                debian        gui       video
+filezilla             debian        gui       file            transfer
 flake8                debian        terminal  language
 freeciv               debian centos gui       game
 fzf                   debian        terminal
