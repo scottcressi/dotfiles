@@ -70,7 +70,8 @@ parse_git_branch_and_add_brackets(){
     grep $ID_LIKE ~/repos/personal/dotfiles/packages.txt | awk '{print $1}' | xargs sudo $package_manager install -y --quiet --quiet
 
     # docker
-    [[ ! "$(pgrep containerd-shim)" ]] && \
+    [[ "$(docker ps -a | grep -c "Up ")" -ge "0" ]] && \
+    echo "# installing docker" && \
     sudo $package_manager install -y --quiet --quiet containerd.io docker-ce docker-ce-cli && \
     sudo usermod -a -G docker "$USER"
 
