@@ -11,6 +11,7 @@ alias get='sudo apt-get install'
 alias gip='curl -s ipinfo.io'
 alias search='apt-cache search'
 alias ww='curl http://wttr.in/'
+alias ycm='cd ~/.vim/plugged/YouCompleteMe && python3 install.py --clangd-completer --java-completer'
 
 # revisions
 alias dd='dd status="progress"'

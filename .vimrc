@@ -1,8 +1,7 @@
 "" PLUG INIT ------------------------------------------------------------------
 
 if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC | :q
 endif
 
@@ -19,9 +18,10 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " fzf
 Plug 'junegunn/fzf.vim' " fzf
 Plug 'itchyny/lightline.vim' " statusbar
 Plug 'ervandew/supertab' " tabbing
-Plug 'davidhalter/jedi-vim' " completion
 Plug 'scrooloose/syntastic' " syntax
-" Plugin 'fatih/vim-go' " go
+Plug 'Valloric/YouCompleteMe' " completion
+Plug 'nvie/vim-flake8' " flake8
+Plug 'vim-scripts/indentpython.vim' " python indentation
 
 "" PLUG END
 
@@ -99,13 +99,10 @@ set foldlevel=99 " Open all folds by default, set to 0 to close by default
 " lightline
 set laststatus=2 " status bar fix
 
-" syntactic
-" let g:syntastic_always_populate_loc_list = 1
-" let g:syntastic_check_on_open = 1
-" let g:syntastic_error_symbol = "✗"
-" let g:syntastic_warning_symbol = "⚠"
-" let g:syntastic_go_checkers = ['govet', 'errcheck', 'go']
-" let g:go_version_warning = 0
+" youcompleteme
+map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+let python_highlight_all=1
+set encoding=utf-8
 
 "" REMAPPINGS -----------------------------------------------------------------
 
