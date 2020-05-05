@@ -142,7 +142,7 @@ parse_git_branch_and_add_brackets(){
 
     # rakkess
     version=v0.4.4
-    [[ "$(rakkess version)" != "$version-dirty" ]] && \
+    [[ "$(rakkess version)" != "$version" ]] && \
     curl -s -L --url https://github.com/corneliusweig/rakkess/releases/download/${version}/rakkess-amd64-linux.tar.gz | gunzip | tar xv && \
     mv rakkess-amd64-linux ~/bin/rakkess ; rm -f LICENSE
 
