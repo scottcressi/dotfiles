@@ -127,7 +127,7 @@ parse_git_branch_and_add_brackets(){
     [[ "$(helmfile --version | awk '{print $3}')" != "$version" ]] && curl -s -L --url https://github.com/roboll/helmfile/releases/download/${version}/helmfile_linux_amd64 --output ~/bin/helmfile
 
     # kubectl
-    version=v1.17.2
+    version=v1.18.2
     [[ "$(kubectl version --client | awk '{print $5}' | sed 's/.*:"//g' | sed 's/",//g')" != "$version" ]] && curl -s -L --url curl -LO https://storage.googleapis.com/kubernetes-release/release/"${version}"/bin/linux/amd64/kubectl --output ~/bin/kubectl
 
     # k9s
@@ -141,13 +141,13 @@ parse_git_branch_and_add_brackets(){
     [[ "$(kind version | awk '{print $2}')" != "$version" ]] && curl -s -L --url https://github.com/kubernetes-sigs/kind/releases/download/${version}/kind-linux-amd64 --output ~/bin/kind
 
     # rakkess
-    version=v0.4.2
+    version=v0.4.4
     [[ "$(rakkess version)" != "$version-dirty" ]] && \
     curl -s -L --url https://github.com/corneliusweig/rakkess/releases/download/${version}/rakkess-amd64-linux.tar.gz | gunzip | tar xv && \
     mv rakkess-amd64-linux ~/bin/rakkess ; rm -f LICENSE
 
     # istioctl
-    version=1.5.0
+    version=1.5.2
     [[ "$(istioctl version --remote=false)" != "$version" ]] && \
     curl -s -L --url https://github.com/istio/istio/releases/download/${version}/istio-${version}-linux.tar.gz | gunzip | tar xv && \
     mv istio-${version}/bin/istioctl ~/bin/istioctl && \
