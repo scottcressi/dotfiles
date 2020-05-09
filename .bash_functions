@@ -164,7 +164,7 @@ parse_git_branch_and_add_brackets(){
     chmod 755 ~/bin/*
 
     # firefox
-    version=76.0
+    version=76.0.1
     [[ ! -d ~/firefox ]] && \
     cd ~/ && curl -s -L --url https://ftp.mozilla.org/pub/firefox/releases/${version}/linux-x86_64/en-US/firefox-${version}.tar.bz2 | tar -xj && \
     ./firefox/firefox -CreateProfile default
