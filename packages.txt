@@ -17,6 +17,7 @@ buku                  debian        terminal  bookmarks
 cataclysm-dda-curses  debian        terminal  game
 chafa                 debian        terminal  converter       images
 cifs-utils            debian centos terminal  mounting
+cmake                 debian        prereq    youcompleteme
 cmatrix               debian        terminal  fun
 cmus                  debian        terminal  client          music
 cowsay                debian centos terminal  fun
