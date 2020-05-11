@@ -479,4 +479,6 @@ parse_git_branch_and_add_brackets(){
     cp -rp ~/repos/personal/suckless/st-* ~/repos/personal/st/
     cd ~/repos/personal/st/ && patch --merge -i st-*
     cd ~/repos/personal/st/ && make clean install
+    cd ~/repos/personal/st/ && make clean install
+    cp -rp ~/repos/personal/st/st ~/bin/
 }
