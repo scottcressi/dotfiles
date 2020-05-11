@@ -382,7 +382,9 @@ parse_git_branch_and_add_brackets(){
     for i in "${DIRS[@]}" ; do
     sudo umount -l ~/mnt/"$i"
     done
-    sudo umount -l ~/repos/personal/docker-compose/data/transmission/data
+    sudo umount -l ~/repos/personal/docker-compose/data/transmission/incomplete
+    sudo umount -l ~/repos/personal/docker-compose/data/transmission/completed
+
 }
 
 -extract(){
