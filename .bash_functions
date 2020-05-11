@@ -174,6 +174,12 @@ parse_git_branch_and_add_brackets(){
     [[ ! -d ~/df_linux ]] && \
     curl -s -L --url http://www.bay12games.com/dwarves/df_${version}_linux.tar.bz2 | tar -xj
 
+    # st
+    [[ ! -d ~/repos/personal/st ]] && git clone https://git.suckless.org/st ~/repos/personal/st
+
+    # dwm
+    [[ ! -d ~/repos/personal/dwm ]] && git clone https://git.suckless.org/dwm ~/repos/personal/dwm
+
 }
 
 -ds(){
@@ -461,9 +467,21 @@ parse_git_branch_and_add_brackets(){
 }
 
 -camera-web-html(){
-docker run --device=/dev/video0:/dev/video0 -p56000:56000 -it gen2brain/cam2ip -bind-addr 0.0.0.0:56000
+    docker run --device=/dev/video0:/dev/video0 -p56000:56000 -it gen2brain/cam2ip -bind-addr 0.0.0.0:56000
 }
 
 -camera-web-rtsp(){
-docker run --net host --device=/dev/video0 -p 8000:8000 -it mpromonet/webrtc-streamer
+    docker run --net host --device=/dev/video0 -p 8000:8000 -it mpromonet/webrtc-streamer
+}
+
+-suckless-st(){
+    cd ~/repos/personal/st/ && git checkout . && git clean -df
+    cp -rp ~/repos/personal/suckless/st-* ~/repos/personal/st/
+    cd ~/repos/personal/st/ && patch --merge -i st-* && make clean install
+}
+
+-suckless-dwm(){
+    cd ~/repos/personal/dwm/ && git checkout . && git clean -df
+    cp -rp ~/repos/personal/suckless/dwm-* ~/repos/personal/dwm/
+    cd ~/repos/personal/dwm/ && patch --merge -i dwm-* && make clean install
 }

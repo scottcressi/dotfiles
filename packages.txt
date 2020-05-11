@@ -55,8 +55,13 @@ jq                    debian centos terminal  language
 jsonlint              debian        terminal  lint
 lftp                  debian        terminal  file            transfer
 libaa-bin             debian        terminal  fun
+libfontconfig1-dev    debian        prereq    suckless
+libfreetype6-dev      debian        prereq    suckless
 libgtk-3-0            debian        prereq    firefox
 libx11-dev            debian        prereq    suckless
+libx11-dev            debian        prereq    suckless
+libxft-dev            debian        prereq    suckless
+libxinerama-dev       debian        prereq    suckless
 links2                debian        terminal  browser
 lm-sensors            debian        terminal  stats
 lolcat                debian        terminal  fun
@@ -96,6 +101,7 @@ pandoc                debian        terminal  converter       docs
 pavucontrol           debian        gui       audio
 pgcli                 debian        terminal  client          database
 pi                    debian        terminal  fun
+pkg-config            debian        prereq    suckless
 pkg-config            debian        prereq    suckless
 pulseaudio            debian        prereq    firefox         audio
 pwgen                 debian        terminal  passwords
