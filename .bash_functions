@@ -473,10 +473,10 @@ parse_git_branch_and_add_brackets(){
     [[ ! -f ~/st-${version}.tar.gz ]] && curl -s -L --url https://dl.suckless.org/st/st-${version}.tar.gz --output ~/st-${version}.tar.gz
     export DESTDIR="$HOME"
     cd && \
-    rm -rf st-0.8.3 && \
-    tar zxvf ~/st-0.8.3.tar.gz && \
-    cp -rp ~/repos/personal/suckless/st-* ~/st-0.8.3/ && \
-    cd ~/st-0.8.3 && \
+    rm -rf st-${version} && \
+    tar zxvf ~/st-${version}.tar.gz && \
+    cp -rp ~/repos/personal/suckless/st-* ~/st-${version}/ && \
+    cd ~/st-${version} && \
     patch --merge -i st-* && \
     make clean install
 }
