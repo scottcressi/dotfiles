@@ -174,12 +174,6 @@ parse_git_branch_and_add_brackets(){
     [[ ! -d ~/df_linux ]] && \
     curl -s -L --url http://www.bay12games.com/dwarves/df_${version}_linux.tar.bz2 | tar -xj
 
-    # st
-    [[ ! -d ~/repos/personal/st ]] && git clone https://git.suckless.org/st ~/repos/personal/st
-
-    # dwm
-    [[ ! -d ~/repos/personal/dwm ]] && git clone https://git.suckless.org/dwm ~/repos/personal/dwm
-
 }
 
 -ds(){
@@ -475,10 +469,14 @@ parse_git_branch_and_add_brackets(){
 }
 
 -suckless-st(){
-    cd ~/repos/personal/st/ && git checkout . && git clean -df
-    cp -rp ~/repos/personal/suckless/st-* ~/repos/personal/st/
-    cd ~/repos/personal/st/ && patch --merge -i st-*
-    cd ~/repos/personal/st/ && make clean install
-    cd ~/repos/personal/st/ && make clean install
-    cp -rp ~/repos/personal/st/st ~/bin/
+    version=0.8.3
+    [[ ! -f ~/st-${version}.tar.gz ]] && curl -s -L --url https://dl.suckless.org/st/st-${version}.tar.gz --output ~/st-${version}.tar.gz
+    export DESTDIR="$HOME"
+    cd && \
+    rm -rf st-0.8.3 && \
+    tar zxvf ~/st-0.8.3.tar.gz && \
+    cp -rp ~/repos/personal/suckless/st-* ~/st-0.8.3/ && \
+    cd ~/st-0.8.3 && \
+    patch --merge -i st-* && \
+    make clean install
 }
