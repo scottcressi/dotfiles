@@ -126,7 +126,6 @@ signal-desktop        debian        gui       messaging
 speedpad              debian        terminal  typing
 speedtest-cli         debian        terminal  stats           network
 stow                  debian centos terminal
-stterm                debian        gui       terminal        emulator
 suckless-tools        debian        terminal
 sudo                  debian centos terminal
 sxiv                  debian        gui       pictures
