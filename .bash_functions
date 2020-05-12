@@ -470,7 +470,7 @@ parse_git_branch_and_add_brackets(){
     docker run --net host --device=/dev/video0 -p 8000:8000 -it mpromonet/webrtc-streamer
 }
 
--suckless-st(){
+-package-st(){
     version=0.8.3
     [[ ! -f ~/st-${version}.tar.gz ]] && curl -s -L --url https://dl.suckless.org/st/st-${version}.tar.gz --output ~/st-${version}.tar.gz
     export DESTDIR="$HOME"
