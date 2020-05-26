@@ -482,3 +482,7 @@ parse_git_branch_and_add_brackets(){
     patch --merge -i st-* && \
     make clean install
 }
+
+-stock(){
+    curl stonks.icu/$1
+}
