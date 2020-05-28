@@ -56,7 +56,7 @@ fi
     fi
 
     echo "# installing packages"
-    grep $ID_LIKE ~/repos/personal/dotfiles/packages.txt | awk '{print $1}' | xargs sudo $package_manager "$package_manager_options"
+    grep $ID_LIKE ~/repos/personal/dotfiles/packages.txt | awk '{print $1}' | xargs sudo $package_manager $package_manager_options
 
     # directories storage
     for i in "${DIRS[@]}" ; do
