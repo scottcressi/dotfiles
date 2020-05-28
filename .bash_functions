@@ -27,18 +27,21 @@ if grep --quiet ID=ubuntu /etc/os-release ; then
     ID=ubuntu
     ID_LIKE=debian
     package_manager=apt-get
+    package_manager_options="install -y --quiet --quiet"
 fi
 
 if grep --quiet ID=debian /etc/os-release ; then
     ID=debian
     ID_LIKE=debian
     package_manager=apt-get
+    package_manager_options="install -y --quiet --quiet"
 fi
 
 if grep --quiet ID=\"centos\" /etc/os-release ; then
     ID=centos
     ID_LIKE=centos
     package_manager=yum
+    package_manager_options="install -y --quiet --quiet"
 fi
 
 -packages(){
@@ -53,7 +56,7 @@ fi
     fi
 
     echo "# installing packages"
-    grep $ID_LIKE ~/repos/personal/dotfiles/packages.txt | awk '{print $1}' | xargs sudo $package_manager install -y --quiet --quiet
+    grep $ID_LIKE ~/repos/personal/dotfiles/packages.txt | awk '{print $1}' | xargs sudo $package_manager "$package_manager_options"
 
     # directories storage
     for i in "${DIRS[@]}" ; do
@@ -160,7 +163,7 @@ fi
     echo "deb [arch=amd64] https://download.docker.com/linux/$ID $(grep VERSION_CODENAME /etc/os-release | sed 's/.*=//g') stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
     curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
     sudo apt-key fingerprint 0EBFCD88
-    sudo $package_manager install -y --quiet --quiet containerd.io docker-ce docker-ce-cli
+    sudo $package_manager "$package_manager_options" containerd.io docker-ce docker-ce-cli
     sudo usermod -a -G docker "$USER"
 
 }
@@ -169,7 +172,7 @@ fi
     echo "deb [arch=amd64] https://updates.signal.org/desktop/apt xenial main" | sudo tee /etc/apt/sources.list.d/signal-xenial.list > /dev/null
     curl -s -L --url https://updates.signal.org/desktop/apt/keys.asc --output /var/tmp/keys.asc
     sudo apt-key add /var/tmp/keys.asc
-    sudo $package_manager install -y --quiet --quiet signal-desktop
+    sudo $package_manager "$package_manager_options" signal-desktop
 
 }
 
@@ -481,5 +484,5 @@ fi
 }
 
 -stock(){
-    curl stonks.icu/$1
+    curl stonks.icu/"$1"
 }
