@@ -23,42 +23,28 @@ parse_git_branch_and_add_brackets(){
     git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\ \[\1\]/'
 }
 
+if grep --quiet ID=ubuntu /etc/os-release ; then
+    ID=ubuntu
+    ID_LIKE=debian
+    package_manager=apt-get
+fi
+
+if grep --quiet ID=debian /etc/os-release ; then
+    ID=debian
+    ID_LIKE=debian
+    package_manager=apt-get
+fi
+
+if grep --quiet ID=\"centos\" /etc/os-release ; then
+    ID=centos
+    ID_LIKE=centos
+    package_manager=yum
+fi
+
 -packages(){
-
-    if grep --quiet ID=ubuntu /etc/os-release ; then
-        ID=ubuntu
-        ID_LIKE=debian
-        package_manager=apt-get
-    fi
-
-    if grep --quiet ID=debian /etc/os-release ; then
-        ID=debian
-        ID_LIKE=debian
-        package_manager=apt-get
-    fi
-
-    if grep --quiet ID=\"centos\" /etc/os-release ; then
-        ID=centos
-        ID_LIKE=centos
-        package_manager=yum
-    fi
 
     # distro packages
     if [ "$package_manager" == "apt-get" ] ; then
-
-        # repos
-        echo "deb [arch=amd64] https://download.docker.com/linux/$ID $(grep VERSION_CODENAME /etc/os-release | sed 's/.*=//g') stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-        echo "deb [arch=amd64] https://updates.signal.org/desktop/apt xenial main" | sudo tee /etc/apt/sources.list.d/signal-xenial.list > /dev/null
-
-        # keys
-        [[ ! -f /var/tmp/docker.gpg ]] && \
-        curl -s -L --url https://download.docker.com/linux/$ID/gpg --output /var/tmp/docker.gpg && \
-        sudo apt-key add /var/tmp/docker.gpg && \
-        sudo apt-key fingerprint 0EBFCD88
-
-        [[ ! -f /var/tmp/keys.asc ]] && \
-        curl -s -L --url https://updates.signal.org/desktop/apt/keys.asc --output /var/tmp/keys.asc && \
-        sudo apt-key add /var/tmp/keys.asc
 
         # update
         echo "# updating repos"
@@ -68,12 +54,6 @@ parse_git_branch_and_add_brackets(){
 
     echo "# installing packages"
     grep $ID_LIKE ~/repos/personal/dotfiles/packages.txt | awk '{print $1}' | xargs sudo $package_manager install -y --quiet --quiet
-
-    # docker
-    [[ "$(docker ps -a | grep -c 'Up ')" == 0 ]] && \
-    echo "# installing docker" && \
-    sudo $package_manager install -y --quiet --quiet containerd.io docker-ce docker-ce-cli && \
-    sudo usermod -a -G docker "$USER"
 
     # directories storage
     for i in "${DIRS[@]}" ; do
@@ -173,6 +153,23 @@ parse_git_branch_and_add_brackets(){
     version=47_04
     [[ ! -d ~/df_linux ]] && \
     curl -s -L --url http://www.bay12games.com/dwarves/df_${version}_linux.tar.bz2 | tar -xj
+
+}
+
+-packages-docker(){
+    echo "deb [arch=amd64] https://download.docker.com/linux/$ID $(grep VERSION_CODENAME /etc/os-release | sed 's/.*=//g') stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+    curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
+    sudo apt-key fingerprint 0EBFCD88
+    sudo $package_manager install -y --quiet --quiet containerd.io docker-ce docker-ce-cli
+    sudo usermod -a -G docker "$USER"
+
+}
+
+-packages-signal(){
+    echo "deb [arch=amd64] https://updates.signal.org/desktop/apt xenial main" | sudo tee /etc/apt/sources.list.d/signal-xenial.list > /dev/null
+    curl -s -L --url https://updates.signal.org/desktop/apt/keys.asc --output /var/tmp/keys.asc
+    sudo apt-key add /var/tmp/keys.asc
+    sudo $package_manager install -y --quiet --quiet signal-desktop
 
 }
 
