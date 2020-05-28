@@ -170,8 +170,7 @@ fi
 
 -packages-signal(){
     echo "deb [arch=amd64] https://updates.signal.org/desktop/apt xenial main" | sudo tee /etc/apt/sources.list.d/signal-xenial.list > /dev/null
-    curl -s -L --url https://updates.signal.org/desktop/apt/keys.asc --output /var/tmp/keys.asc
-    sudo apt-key add /var/tmp/keys.asc
+    curl -s https://updates.signal.org/desktop/apt/keys.asc | sudo apt-key add -
     sudo $package_manager $package_manager_options signal-desktop
 
 }
