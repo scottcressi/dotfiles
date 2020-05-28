@@ -163,7 +163,7 @@ fi
     echo "deb [arch=amd64] https://download.docker.com/linux/$ID $(grep VERSION_CODENAME /etc/os-release | sed 's/.*=//g') stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
     curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
     sudo apt-key fingerprint 0EBFCD88
-    sudo $package_manager "$package_manager_options" containerd.io docker-ce docker-ce-cli
+    sudo $package_manager $package_manager_options containerd.io docker-ce docker-ce-cli
     sudo usermod -a -G docker "$USER"
 
 }
@@ -172,7 +172,7 @@ fi
     echo "deb [arch=amd64] https://updates.signal.org/desktop/apt xenial main" | sudo tee /etc/apt/sources.list.d/signal-xenial.list > /dev/null
     curl -s -L --url https://updates.signal.org/desktop/apt/keys.asc --output /var/tmp/keys.asc
     sudo apt-key add /var/tmp/keys.asc
-    sudo $package_manager "$package_manager_options" signal-desktop
+    sudo $package_manager $package_manager_options signal-desktop
 
 }
 
