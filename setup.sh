@@ -6,11 +6,5 @@ if [ "$dir" != "dotfiles" ] ; then
     exit 0
 fi
 
-if [ -f /etc/debian_version ] ; then
-    package_manager=apt-get
-else
-    package_manager=yum
-fi
-
-sudo $package_manager install -y --quiet --quiet stow curl
+sudo apt-get install -y --quiet --quiet stow curl
 stow --verbose --stow --target ~/ .
