@@ -23,25 +23,18 @@ parse_git_branch_and_add_brackets(){
     git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\ \[\1\]/'
 }
 
-if grep --quiet ID=ubuntu /etc/os-release ; then
-    ID=ubuntu
-    ID_LIKE=debian
-    package_manager=apt-get
-    package_manager_options="install -y --quiet --quiet"
-fi
+YUM_CMD=$(command -v yum)
+APT_GET_CMD=$(command -v apt-get)
 
-if grep --quiet ID=debian /etc/os-release ; then
-    ID=debian
-    ID_LIKE=debian
-    package_manager=apt-get
-    package_manager_options="install -y --quiet --quiet"
-fi
-
-if grep --quiet ID=\"centos\" /etc/os-release ; then
-    ID=centos
-    ID_LIKE=centos
-    package_manager=yum
-    package_manager_options="install -y --quiet --quiet"
+if [[ ! -z $YUM_CMD ]]; then
+   package_manager=yum
+   package_manager_options="install -y --quiet --quiet"
+elif [[ ! -z $APT_GET_CMD ]]; then
+   package_manager=apt-get
+   package_manager_options="install -y --quiet --quiet"
+else
+   echo "error can't install package $PACKAGE"
+   exit 1;
 fi
 
 -packages(){
@@ -51,12 +44,12 @@ fi
 
         # update
         echo "# updating repos"
-        sudo $package_manager update --quiet --quiet
+        sudo apt-get update --quiet --quiet
 
     fi
 
     echo "# installing packages"
-    grep $ID_LIKE ~/repos/personal/dotfiles/packages.txt | awk '{print $1}' | xargs sudo $package_manager $package_manager_options
+    grep "$(grep ^ID /etc/os-release | sed 's/ID=//g')" ~/repos/personal/dotfiles/packages.txt | awk '{print $1}' | xargs sudo "$package_manager" $package_manager_options
 
     # directories storage
     for i in "${DIRS[@]}" ; do
@@ -160,10 +153,10 @@ fi
 }
 
 -packages-docker(){
-    echo "deb [arch=amd64] https://download.docker.com/linux/$ID $(grep VERSION_CODENAME /etc/os-release | sed 's/.*=//g') stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+echo "deb [arch=amd64] https://download.docker.com/linux/$(grep ^ID /etc/os-release | sed 's/ID=//g') $(grep VERSION_CODENAME /etc/os-release | sed 's/.*=//g') stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
     curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
     sudo apt-key fingerprint 0EBFCD88
-    sudo $package_manager $package_manager_options containerd.io docker-ce docker-ce-cli
+    sudo "$package_manager" "$package_manager_options" containerd.io docker-ce docker-ce-cli
     sudo usermod -a -G docker "$USER"
 
 }
@@ -171,7 +164,7 @@ fi
 -packages-signal(){
     echo "deb [arch=amd64] https://updates.signal.org/desktop/apt xenial main" | sudo tee /etc/apt/sources.list.d/signal-xenial.list > /dev/null
     curl -s https://updates.signal.org/desktop/apt/keys.asc | sudo apt-key add -
-    sudo $package_manager $package_manager_options signal-desktop
+    sudo "$package_manager" "$package_manager_options" signal-desktop
 
 }
 
