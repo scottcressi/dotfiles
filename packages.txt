@@ -1,4 +1,3 @@
-alsa-utils            debian terminal  audio
 angband               debian terminal  game
 arandr                debian gui       resolution
 armagetronad          debian gui       game
@@ -102,7 +101,6 @@ pavucontrol           debian gui       audio
 pgcli                 debian terminal  client          database
 pi                    debian terminal  fun
 pkg-config            debian prereq    suckless
-pulseaudio            debian prereq    firefox         audio
 pwgen                 debian terminal  passwords
 python3               debian terminal  language
 python3-flake8        debian terminal  language
