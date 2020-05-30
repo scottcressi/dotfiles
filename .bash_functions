@@ -149,6 +149,12 @@ parse_git_branch_and_add_brackets(){
 
 }
 
+-packages-python(){
+    pip install \
+        awscli
+
+}
+
 -ds(){
     echo stop all containers? y/n
     read -r confirm
