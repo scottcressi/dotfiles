@@ -467,7 +467,3 @@ parse_git_branch_and_add_brackets(){
 -stock(){
     curl stonks.icu/"$1"
 }
-
--volume(){
-    pactl set-sink-volume 0 "$1"%
-}
