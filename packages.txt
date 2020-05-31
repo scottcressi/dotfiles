@@ -97,7 +97,6 @@ openssh-client        debian terminal  client          ssh
 p7zip                 debian terminal
 pacman4console        debian terminal  game
 pandoc                debian terminal  converter       docs
-pavucontrol           debian gui       audio
 pgcli                 debian terminal  client          database
 pi                    debian terminal  fun
 pkg-config            debian prereq    suckless
