@@ -66,7 +66,6 @@ lm-sensors            debian terminal  stats
 lolcat                debian terminal  fun
 lsof                  debian terminal  stats
 lynx                  debian terminal  browser
-maim                  debian gui       screenshot
 make                  debian terminal  compiler
 mdp                   debian terminal  markdown
 moon-buggy            debian terminal  game

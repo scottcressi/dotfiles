@@ -5,7 +5,6 @@ alias l='ls -lh --color=auto'
 alias g='cd ~/repos'
 
 # misc
-alias am="alsamixer"
 alias fz='vim $(fzf)'
 alias get='sudo apt-get install'
 alias gip='curl -s ipinfo.io'
@@ -20,7 +19,6 @@ alias dstat='dstat --net --disk --top-bio --top-cpu --top-cputime --top-io --top
 alias firefox='~/firefox/firefox -ProfileManager & disown ; exit'
 alias grep='grep --color=auto'
 alias ls='ls --color=auto'
-alias maim='maim -s ~/screenshot-$(date "+%Y-%m-%d-%H-%M-%S").png'
 alias mpv='mpv --ytdl-format="bestvideo[height<=?360]+bestaudio/best"'
 alias mv="mv -i"
 alias pwgen='pwgen 32 1 --no-capitalize --no-numerals --ambiguous'
