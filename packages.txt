@@ -30,7 +30,7 @@ dwm                   debian gui       graphics        windowmanager
 elinks                debian terminal  browser
 empire                debian terminal  game
 espeak                debian terminal  speech
-ffmpeg                debian gui       video
+ffmpeg                debian terminal  video
 filezilla             debian gui       file            transfer
 flake8                debian terminal  language
 freeciv               debian gui       game
@@ -73,7 +73,7 @@ moon-buggy            debian terminal  game
 mpc                   debian terminal  client          music
 mpd                          terminal  music           server
 mps-youtube                  terminal  video
-mpv                   debian gui       video
+mpv                   debian terminal  video
 mutt                  debian terminal  mail
 mycli                 debian terminal  client          database
 ncmpcpp               debian terminal  client          music
@@ -124,7 +124,7 @@ speedtest-cli         debian terminal  stats           network
 stow                  debian terminal
 suckless-tools        debian terminal
 sudo                  debian terminal
-sxiv                  debian gui       pictures
+sxiv                  debian terminal  pictures
 tcpdump               debian terminal  stats
 testssl.sh            debian terminal
 texlive-xetex         debian terminal  converter       docs
@@ -152,7 +152,7 @@ xcowsay               debian gui       fun
 xfce4-terminal        debian gui       terminal        emulator
 xfishtank             debian gui       fun
 xorg                  debian gui       graphics        xserver
-xwallpaper            debian gui       wallpaper
+xwallpaper            debian terminal  wallpaper
 yamllint              debian terminal  lint
 youtube-dl            debian terminal  video
 zathura               debian gui       document        reader
