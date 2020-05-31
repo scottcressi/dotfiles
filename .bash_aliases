@@ -5,6 +5,7 @@ alias l='ls -lh --color=auto'
 alias g='cd ~/repos'
 
 # misc
+alias am='pulsemixer'
 alias fz='vim $(fzf)'
 alias get='sudo apt-get install'
 alias gip='curl -s ipinfo.io'
