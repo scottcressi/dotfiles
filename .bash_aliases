@@ -9,6 +9,7 @@ alias fz='vim $(fzf)'
 alias get='sudo apt-get install'
 alias gip='curl -s ipinfo.io'
 alias search='apt-cache search'
+alias tm='transmission-remote debian:8080 -l'
 alias ww='curl http://wttr.in/'
 alias ycm='cd ~/.vim/plugged/YouCompleteMe && python3 install.py --all'
 
