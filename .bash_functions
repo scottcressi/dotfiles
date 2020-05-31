@@ -153,7 +153,8 @@ parse_git_branch_and_add_brackets(){
 
 -packages-python(){
     pip install \
-        awscli
+        awscli \
+        tuir \
 
 }
 
@@ -466,4 +467,10 @@ parse_git_branch_and_add_brackets(){
 
 -stock(){
     curl stonks.icu/"$1"
+}
+
+-terminus(){
+    git clone https://github.com/wtheisen/TerminusBrowser.git ~/repos/personal/TerminusBrowser
+    cd ~/repos/personal/TerminusBrowser || exit
+    pip install -r requirements.txt
 }
