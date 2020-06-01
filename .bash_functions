@@ -474,3 +474,7 @@ parse_git_branch_and_add_brackets(){
     cd ~/repos/personal/TerminusBrowser || exit
     pip install -r requirements.txt
 }
+
+-volume(){
+    pulsemixer --set-volume-all "$1":"$1"
+}
