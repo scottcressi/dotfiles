@@ -32,6 +32,10 @@ parse_git_branch_and_add_brackets(){
     echo "# installing packages"
     grep "$(grep ^ID /etc/os-release | sed 's/ID=//g')" ~/repos/personal/dotfiles/packages.txt | awk '{print $1}' | xargs sudo apt-get install -y --quiet --quiet
 
+}
+
+-packages-other(){
+
     # directories storage
     for i in "${DIRS[@]}" ; do
     mkdir -p ~/mnt/"$i"
@@ -47,6 +51,37 @@ parse_git_branch_and_add_brackets(){
 
     # statusbar
     [[ ! -d ~/repos/personal/dwmblocks ]] && git clone https://github.com/torrinfail/dwmblocks ~/repos/personal/dwmblocks
+
+    # docker
+    if [[ "$(docker ps -a | grep -c 'Up ')" == 0 ]] ; then
+    echo "deb [arch=amd64] https://download.docker.com/linux/$(grep ^ID /etc/os-release | sed 's/ID=//g') $(grep VERSION_CODENAME /etc/os-release | sed 's/.*=//g') stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+    curl -fsSL https://download.docker.com/linux/"$(grep ^ID /etc/os-release | sed 's/ID=//g')"/gpg | sudo apt-key add -
+    sudo apt-key fingerprint 0EBFCD88
+    sudo apt-get install -y --quiet --quiet containerd.io docker-ce docker-ce-cli
+    sudo usermod -a -G docker "$USER"
+    fi
+
+    # signal
+    echo "deb [arch=amd64] https://updates.signal.org/desktop/apt xenial main" | sudo tee /etc/apt/sources.list.d/signal-xenial.list > /dev/null
+    curl -s https://updates.signal.org/desktop/apt/keys.asc | sudo apt-key add -
+    sudo apt-get install -y --quiet --quiet signal-desktop
+
+    # python
+    pip install --quiet \
+        awscli \
+        tuir \
+
+    # st
+    version=0.8.3
+    [[ ! -f ~/st-${version}.tar.gz ]] && curl -s -L --url https://dl.suckless.org/st/st-${version}.tar.gz --output ~/st-${version}.tar.gz
+    export DESTDIR="$HOME"
+    cd && \
+    rm -rf st-${version} && \
+    tar zxf ~/st-${version}.tar.gz && \
+    cp -rp ~/repos/personal/suckless/st-* ~/st-${version}/ && \
+    cd ~/st-${version} && \
+    patch --quiet --merge -i st-* && \
+    make clean install --quiet
 
     # terraform
     version=0.12.26
@@ -117,11 +152,8 @@ parse_git_branch_and_add_brackets(){
     # translate
     [[ ! -f ~/bin/trans ]] && curl -s -L git.io/trans -o ~/bin/trans
 
-    # permissions
-    chmod 755 ~/bin/*
-
     # firefox
-    version=76.0.1
+    version=77.0
     [[ ! -d ~/firefox ]] && \
     cd ~/ && curl -s -L --url https://ftp.mozilla.org/pub/firefox/releases/${version}/linux-x86_64/en-US/firefox-${version}.tar.bz2 | tar -xj && \
     ./firefox/firefox -CreateProfile default
@@ -131,30 +163,8 @@ parse_git_branch_and_add_brackets(){
     [[ ! -d ~/df_linux ]] && \
     curl -s -L --url http://www.bay12games.com/dwarves/df_${version}_linux.tar.bz2 | tar -xj
 
-}
-
--packages-docker(){
-    if [[ "$(docker ps -a | grep -c 'Up ')" == 0 ]] ; then
-    echo "deb [arch=amd64] https://download.docker.com/linux/$(grep ^ID /etc/os-release | sed 's/ID=//g') $(grep VERSION_CODENAME /etc/os-release | sed 's/.*=//g') stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-    curl -fsSL https://download.docker.com/linux/"$(grep ^ID /etc/os-release | sed 's/ID=//g')"/gpg | sudo apt-key add -
-    sudo apt-key fingerprint 0EBFCD88
-    sudo apt-get install -y --quiet --quiet containerd.io docker-ce docker-ce-cli
-    sudo usermod -a -G docker "$USER"
-    fi
-
-}
-
--packages-signal(){
-    echo "deb [arch=amd64] https://updates.signal.org/desktop/apt xenial main" | sudo tee /etc/apt/sources.list.d/signal-xenial.list > /dev/null
-    curl -s https://updates.signal.org/desktop/apt/keys.asc | sudo apt-key add -
-    sudo apt-get install -y --quiet --quiet signal-desktop
-
-}
-
--packages-python(){
-    pip install \
-        awscli \
-        tuir \
+    # permissions
+    chmod 755 ~/bin/*
 
 }
 
@@ -450,19 +460,6 @@ parse_git_branch_and_add_brackets(){
 
 -camera-web-rtsp(){
     docker run --net host --device=/dev/video0 -p 8000:8000 -it mpromonet/webrtc-streamer
-}
-
--packages-st(){
-    version=0.8.3
-    [[ ! -f ~/st-${version}.tar.gz ]] && curl -s -L --url https://dl.suckless.org/st/st-${version}.tar.gz --output ~/st-${version}.tar.gz
-    export DESTDIR="$HOME"
-    cd && \
-    rm -rf st-${version} && \
-    tar zxvf ~/st-${version}.tar.gz && \
-    cp -rp ~/repos/personal/suckless/st-* ~/st-${version}/ && \
-    cd ~/st-${version} && \
-    patch --merge -i st-* && \
-    make clean install
 }
 
 -stock(){
