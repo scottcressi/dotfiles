@@ -166,6 +166,9 @@ parse_git_branch_and_add_brackets(){
     # permissions
     chmod 755 ~/bin/*
 
+    # return
+    cd || exit
+
 }
 
 -ds(){
