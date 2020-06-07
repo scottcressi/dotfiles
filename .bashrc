@@ -1,9 +1,5 @@
 #!/usr/bin/env bash
 
-if [ -f ~/.bash_execution ]; then
-    source ~/.bash_execution
-fi
-
 if [ -f ~/.bash_functions ]; then
     source ~/.bash_functions
 fi
