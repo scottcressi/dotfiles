@@ -168,6 +168,9 @@ parse_git_branch_and_add_brackets(){
     cd ~/repos/personal/TerminusBrowser && \
     pip install -r requirements.txt
 
+    # kubectl completion
+    [[ ! -f /etc/bash_completion.d/kubectl ]] && kubectl completion bash | sudo tee /etc/bash_completion.d/kubectl
+
     # permissions
     chmod 755 ~/bin/*
 
