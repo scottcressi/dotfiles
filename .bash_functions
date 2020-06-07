@@ -168,8 +168,9 @@ parse_git_branch_and_add_brackets(){
     cd ~/repos/personal/TerminusBrowser && \
     pip install -r requirements.txt
 
-    # kubectl completion
+    # completions
     [[ ! -f /etc/bash_completion.d/kubectl ]] && kubectl completion bash | sudo tee /etc/bash_completion.d/kubectl
+    [[ ! -f /etc/bash_completion.d/docker-compose ]] && sudo curl -L https://raw.githubusercontent.com/docker/compose/1.26.0/contrib/completion/bash/docker-compose -o /etc/bash_completion.d/docker-compose
 
     # permissions
     chmod 755 ~/bin/*
