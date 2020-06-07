@@ -199,16 +199,14 @@ parse_git_branch_and_add_brackets(){
 
 -kops-create(){
     echo
-    echo enter domain, ex. foo.com:
-    read -r domain
-    echo enter cluster name, ex. asdf:
-    read -r name
-    echo create cluster "$name"."$domain"? y/n
+    echo enter cluster name, ex. test.example.com:
+    read -r cluster
+    echo create cluster "$cluster"? y/n
     read -r confirm
     if [ "$confirm" == "y" ] ; then
     kops create cluster \
         --node-count 4 \
-        --name "$name"."$domain" \
+        --name "$cluster" \
         --state s3://"$(aws sts get-caller-identity --output text --query 'Account')"-kops-test \
         --cloud aws  \
         --zones us-east-1a,us-east-1b \
@@ -216,7 +214,7 @@ parse_git_branch_and_add_brackets(){
     kops update \
         --state s3://"$(aws sts get-caller-identity --output text --query 'Account')"-kops-test \
         cluster \
-        --name "$name"."$domain"\
+        --name "$cluster"\
         --yes
     fi
 }
@@ -248,7 +246,7 @@ parse_git_branch_and_add_brackets(){
 }
 
 -aws-credentials(){
-    if [ -z "$1" ] ; then echo enter profile ; echo ; grep "\\[" ~/.aws/credentials ; fi
+    [[ -z "$1" ]] && echo enter profile ; echo ; grep "\\[" ~/.aws/credentials
     export AWS_DEFAULT_PROFILE=$1
 }
 
@@ -302,13 +300,9 @@ parse_git_branch_and_add_brackets(){
 }
 
 -kind(){
-    if [ "$(systemctl show --property ActiveState docker)" == "ActiveState=active" ] ; then
-        kind create cluster
-        helm init
-        kubectl create clusterrolebinding add-on-cluster-admin --clusterrole=cluster-admin --serviceaccount=kube-system:default
-    else
-        echo please start docker
-    fi
+    kind create cluster
+    helm init
+    kubectl create clusterrolebinding add-on-cluster-admin --clusterrole=cluster-admin --serviceaccount=kube-system:default
 
 }
 
