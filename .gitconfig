@@ -12,5 +12,3 @@
         diff    = auto
 [push]
         default = tracking
-[diff "sopsdiffer"]
-	textconv = sops -d
