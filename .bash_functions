@@ -72,8 +72,8 @@ parse_git_branch_and_add_brackets(){
 
     # st
     version=0.8.3
-    [[ ! -f ~/st-${version}.tar.gz ]] && curl -s -L --url https://dl.suckless.org/st/st-${version}.tar.gz --output ~/st-${version}.tar.gz
-    export DESTDIR="$HOME"
+    [[ ! -f ~/st-${version}.tar.gz ]] && curl -s -L --url https://dl.suckless.org/st/st-${version}.tar.gz --output ~/st-${version}.tar.gz && \
+    export DESTDIR="$HOME" && \
     cd && \
     rm -rf st-${version} && \
     tar zxf ~/st-${version}.tar.gz && \
@@ -84,8 +84,8 @@ parse_git_branch_and_add_brackets(){
 
     # dwm
     version=6.2
-    [[ ! -f ~/dwm-${version}.tar.gz ]] && curl -s -L --url https://dl.suckless.org/dwm/dwm-${version}.tar.gz --output ~/dwm-${version}.tar.gz
-    export DESTDIR="$HOME"
+    [[ ! -f ~/dwm-${version}.tar.gz ]] && curl -s -L --url https://dl.suckless.org/dwm/dwm-${version}.tar.gz --output ~/dwm-${version}.tar.gz && \
+    export DESTDIR="$HOME" && \
     cd && \
     rm -rf dwm-${version} && \
     tar zxf ~/dwm-${version}.tar.gz && \
