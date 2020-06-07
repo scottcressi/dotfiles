@@ -82,6 +82,16 @@ parse_git_branch_and_add_brackets(){
     patch --quiet --merge -i st-* && \
     make clean install --quiet
 
+    # dwm
+    version=6.2
+    [[ ! -f ~/dwm-${version}.tar.gz ]] && curl -s -L --url https://dl.suckless.org/dwm/dwm-${version}.tar.gz --output ~/dwm-${version}.tar.gz
+    export DESTDIR="$HOME"
+    cd && \
+    rm -rf dwm-${version} && \
+    tar zxf ~/dwm-${version}.tar.gz && \
+    cd ~/dwm-${version} && \
+    make clean install --quiet
+
     # terraform
     version=0.12.26
     [[ "$(terraform version | grep "v[0-9]" | awk '{print $2}' | sed 's/v//g')" != "$version" ]] && \
