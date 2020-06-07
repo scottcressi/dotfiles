@@ -153,7 +153,7 @@ parse_git_branch_and_add_brackets(){
     [[ ! -f ~/bin/trans ]] && curl -s -L git.io/trans -o ~/bin/trans
 
     # firefox
-    version=77.0
+    version=77.0.1
     [[ ! -d ~/firefox ]] && \
     cd ~/ && curl -s -L --url https://ftp.mozilla.org/pub/firefox/releases/${version}/linux-x86_64/en-US/firefox-${version}.tar.bz2 | tar -xj && \
     ./firefox/firefox -CreateProfile default
@@ -162,6 +162,12 @@ parse_git_branch_and_add_brackets(){
     version=47_04
     [[ ! -d ~/df_linux ]] && \
     curl -s -L --url http://www.bay12games.com/dwarves/df_${version}_linux.tar.bz2 | tar -xj
+
+    # terminus
+    [[ ! -d ~/repos/personal/TerminusBrowser ]] && \
+    git clone https://github.com/wtheisen/TerminusBrowser.git ~/repos/personal/TerminusBrowser && \
+    cd ~/repos/personal/TerminusBrowser && \
+    pip install -r requirements.txt
 
     # permissions
     chmod 755 ~/bin/*
@@ -467,12 +473,6 @@ parse_git_branch_and_add_brackets(){
 
 -stock(){
     curl stonks.icu/"$1"
-}
-
--terminus(){
-    git clone https://github.com/wtheisen/TerminusBrowser.git ~/repos/personal/TerminusBrowser
-    cd ~/repos/personal/TerminusBrowser || exit
-    pip install -r requirements.txt
 }
 
 -volume(){
