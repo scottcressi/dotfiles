@@ -35,7 +35,6 @@ parse_git_branch_and_add_brackets(){
 }
 
 -packages-other(){
-
     # directories storage
     for i in "${DIRS[@]}" ; do
     mkdir -p ~/mnt/"$i"
@@ -54,16 +53,16 @@ parse_git_branch_and_add_brackets(){
 
     # docker
     if [[ "$(docker ps -a | grep -c 'Up ')" == 0 ]] ; then
-    echo "deb [arch=amd64] https://download.docker.com/linux/$(grep ^ID /etc/os-release | sed 's/ID=//g') $(grep VERSION_CODENAME /etc/os-release | sed 's/.*=//g') stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-    curl -fsSL https://download.docker.com/linux/"$(grep ^ID /etc/os-release | sed 's/ID=//g')"/gpg | sudo apt-key add -
+    [[ ! -f /etc/apt/sources.list.d/docker.list ]] && curl -fsSL https://download.docker.com/linux/"$(grep ^ID /etc/os-release | sed 's/ID=//g')"/gpg | sudo apt-key add - && \
     sudo apt-key fingerprint 0EBFCD88
+    echo "deb [arch=amd64] https://download.docker.com/linux/$(grep ^ID /etc/os-release | sed 's/ID=//g') $(grep VERSION_CODENAME /etc/os-release | sed 's/.*=//g') stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
     sudo apt-get install -y --quiet --quiet containerd.io docker-ce docker-ce-cli
     sudo usermod -a -G docker "$USER"
     fi
 
     # signal
+    [[ ! -f /etc/apt/sources.list.d/signal-xenial.list ]] && curl -s https://updates.signal.org/desktop/apt/keys.asc | sudo apt-key add -
     echo "deb [arch=amd64] https://updates.signal.org/desktop/apt xenial main" | sudo tee /etc/apt/sources.list.d/signal-xenial.list > /dev/null
-    curl -s https://updates.signal.org/desktop/apt/keys.asc | sudo apt-key add -
     sudo apt-get install -y --quiet --quiet signal-desktop
 
     # python
