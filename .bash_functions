@@ -153,9 +153,6 @@ parse_git_branch_and_add_brackets(){
     version=v0.4.1
     [[ ! -f ~/bin/slack-term ]] && curl -s -L --url https://github.com/erroneousboat/slack-term/releases/download/${version}/slack-term-linux-amd64 --output ~/bin/slack-term
 
-    # translate
-    [[ ! -f ~/bin/trans ]] && curl -s -L git.io/trans -o ~/bin/trans
-
     # firefox
     version=77.0.1
     [[ ! -d ~/firefox ]] && \
