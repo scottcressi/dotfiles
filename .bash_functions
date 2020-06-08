@@ -60,11 +60,6 @@ parse_git_branch_and_add_brackets(){
     sudo usermod -a -G docker "$USER"
     fi
 
-    # signal
-    [[ ! -f /etc/apt/sources.list.d/signal-xenial.list ]] && curl -s https://updates.signal.org/desktop/apt/keys.asc | sudo apt-key add -
-    echo "deb [arch=amd64] https://updates.signal.org/desktop/apt xenial main" | sudo tee /etc/apt/sources.list.d/signal-xenial.list > /dev/null
-    sudo apt-get install -y --quiet --quiet signal-desktop
-
     # python
     pip install --quiet \
         awscli \
