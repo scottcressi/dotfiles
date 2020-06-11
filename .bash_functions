@@ -111,7 +111,7 @@ parse_git_branch_and_add_brackets(){
     [[ "$(kops version | awk '{print $2}')" != "$version" ]] && curl -s -L --url https://github.com/kubernetes/kops/releases/download/v${version}/kops-linux-amd64 --output ~/bin/kops
 
     # helm
-    version=v2.16.8
+    version=v2.16.7
     [[ "$(helm version --client | awk '{print $2}' | sed 's/.*:"//g' | sed 's/",//g')" != "$version" ]] && \
     curl -s -L --url https://get.helm.sh/helm-"${version}"-linux-amd64.tar.gz | gunzip | tar xv && \
     mv linux-amd64/helm ~/bin/helm && \
@@ -119,7 +119,7 @@ parse_git_branch_and_add_brackets(){
     helm plugin install https://github.com/databus23/helm-diff --version master
 
     # helmfile
-    version=v0.118.7
+    version=v0.118.6
     [[ "$(helmfile --version | awk '{print $3}')" != "$version" ]] && curl -s -L --url https://github.com/roboll/helmfile/releases/download/${version}/helmfile_linux_amd64 --output ~/bin/helmfile
 
     # kubectl
