@@ -48,7 +48,6 @@ iftop                 debian terminal  stats           network
 iotop                 debian terminal  stats           disk
 ipcalc                debian terminal  stats
 iptraf                debian terminal  stats           network
-ipython3              debian terminal  language
 irssi                 debian terminal  messaging
 jq                    debian terminal  language
 jsonlint              debian terminal  lint
