@@ -34,7 +34,6 @@ filezilla             debian gui       file            transfer
 flake8                debian terminal  language
 freeciv               debian gui       game
 fzf                   debian terminal
-gawk                  debian prereq    trans
 gcc                   debian terminal  compiler
 git                   debian terminal  scm
 git-extras            debian terminal  scm
