@@ -26,10 +26,9 @@ parse_git_branch_and_add_brackets(){
 -packages(){
 
     # update
-    echo "# updating repos"
     sudo apt-get update --quiet --quiet
 
-    echo "# installing packages"
+    # install
     grep "$(grep ^ID /etc/os-release | sed 's/ID=//g')" ~/repos/personal/dotfiles/packages.txt | awk '{print $1}' | xargs sudo apt-get install -y --quiet --quiet
 
 }
@@ -49,7 +48,7 @@ parse_git_branch_and_add_brackets(){
     [[ ! -d ~/python/ ]] && python3 -m venv ~/python
 
     # statusbar
-    [[ ! -d ~/repos/personal/dwmblocks ]] && git clone https://github.com/torrinfail/dwmblocks ~/repos/personal/dwmblocks
+    [[ ! -d ~/repos/thirdparty/dwmblocks ]] && git clone https://github.com/torrinfail/dwmblocks ~/repos/thirdparty/dwmblocks
 
     # docker
     if [[ "$(docker ps -a | grep -c 'Up ')" == 0 ]] ; then
@@ -111,7 +110,7 @@ parse_git_branch_and_add_brackets(){
     [[ "$(kops version | awk '{print $2}')" != "$version" ]] && curl -s -L --url https://github.com/kubernetes/kops/releases/download/v${version}/kops-linux-amd64 --output ~/bin/kops
 
     # helm
-    version=v2.16.8
+    version=v2.16.9
     [[ "$(helm version --client | awk '{print $2}' | sed 's/.*:"//g' | sed 's/",//g')" != "$version" ]] && \
     curl -s -L --url https://get.helm.sh/helm-"${version}"-linux-amd64.tar.gz | gunzip | tar xv && \
     mv linux-amd64/helm ~/bin/helm && \
@@ -165,9 +164,9 @@ parse_git_branch_and_add_brackets(){
     curl -s -L --url http://www.bay12games.com/dwarves/df_${version}_linux.tar.bz2 | tar -xj
 
     # terminus
-    [[ ! -d ~/repos/personal/TerminusBrowser ]] && \
-    git clone https://github.com/wtheisen/TerminusBrowser.git ~/repos/personal/TerminusBrowser && \
-    cd ~/repos/personal/TerminusBrowser && \
+    [[ ! -d ~/repos/thirdparty/TerminusBrowser ]] && \
+    git clone https://github.com/wtheisen/TerminusBrowser.git ~/repos/thirdparty/TerminusBrowser && \
+    cd ~/repos/thirdparty/TerminusBrowser && \
     pip install -r requirements.txt
 
     # completions
@@ -452,8 +451,8 @@ parse_git_branch_and_add_brackets(){
 
 -dwmblocks(){
     [[ "$(pgrep dwmblocks)" ]] && pkill dwmblocks
-    cp ~/repos/personal/suckless/dwmblocks.blocks.h ~/repos/personal/dwmblocks/blocks.h
-    cd ~/repos/personal/dwmblocks && make clean install ; ./dwmblocks &
+    cp ~/repos/personal/suckless/dwmblocks.blocks.h ~/repos/thirdparty/dwmblocks/blocks.h
+    cd ~/repos/thirdparty/dwmblocks && make clean install ; ./dwmblocks &
 }
 
 -cowsay-normal(){
