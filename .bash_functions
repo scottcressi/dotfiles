@@ -53,7 +53,7 @@ parse_git_branch_and_add_brackets(){
     # user.js
     [[ ! -d ~/repos/thirdparty/ghacks-user.js ]] && git clone https://github.com/ghacksuserjs/ghacks-user.js.git ~/repos/thirdparty/ghacks-user.js
     ln -s ~/repos/thirdparty/ghacks-user.js/user.js "$(find  ~/.mozilla/firefox/ -maxdepth 1 -type d -name "*.default")"/user.js
-    cd ~/repos/thirdparty/ghacks-user.js/ && bash updater.sh -s
+    ln -s ~/repos/personal/suckless/prefs.js "$(find  ~/.mozilla/firefox/ -maxdepth 1 -type d -name "*.default")"/prefs.js
 
     # docker
     if [[ "$(docker ps -a | grep -c 'Up ')" == 0 ]] ; then
