@@ -50,6 +50,11 @@ parse_git_branch_and_add_brackets(){
     # statusbar
     [[ ! -d ~/repos/thirdparty/dwmblocks ]] && git clone https://github.com/torrinfail/dwmblocks ~/repos/thirdparty/dwmblocks
 
+    # user.js
+    [[ ! -d ~/repos/thirdparty/ghacks-user.js ]] && git clone https://github.com/ghacksuserjs/ghacks-user.js.git ~/repos/thirdparty/ghacks-user.js
+    ln -s ~/repos/thirdparty/ghacks-user.js/user.js "$(find  ~/.mozilla/firefox/ -maxdepth 1 -type d -name "*.default")"/user.js
+    cd ~/repos/thirdparty/ghacks-user.js/ && bash updater.sh -s
+
     # docker
     if [[ "$(docker ps -a | grep -c 'Up ')" == 0 ]] ; then
     [[ ! -f /etc/apt/sources.list.d/docker.list ]] && curl -fsSL https://download.docker.com/linux/"$(grep ^ID /etc/os-release | sed 's/ID=//g')"/gpg | sudo apt-key add - && \
