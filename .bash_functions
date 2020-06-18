@@ -51,9 +51,9 @@ parse_git_branch_and_add_brackets(){
     [[ ! -d ~/repos/thirdparty/dwmblocks ]] && git clone https://github.com/torrinfail/dwmblocks ~/repos/thirdparty/dwmblocks
 
     # user.js
-    [[ ! -d ~/repos/thirdparty/ghacks-user.js ]] && git clone https://github.com/ghacksuserjs/ghacks-user.js.git ~/repos/thirdparty/ghacks-user.js
-    ln -s ~/repos/thirdparty/ghacks-user.js/user.js "$(find  ~/.mozilla/firefox/ -maxdepth 1 -type d -name "*.default")"/user.js
-    ln -s ~/repos/personal/suckless/prefs.js "$(find  ~/.mozilla/firefox/ -maxdepth 1 -type d -name "*.default")"/prefs.js
+    #[[ ! -d ~/repos/thirdparty/ghacks-user.js ]] && git clone https://github.com/ghacksuserjs/ghacks-user.js.git ~/repos/thirdparty/ghacks-user.js
+    #ln -s ~/repos/thirdparty/ghacks-user.js/user.js "$(find  ~/.mozilla/firefox/ -maxdepth 1 -type d -name "*.default")"/user.js
+    #ln -s ~/repos/personal/suckless/prefs.js "$(find  ~/.mozilla/firefox/ -maxdepth 1 -type d -name "*.default")"/prefs.js
 
     # docker
     if [[ "$(docker ps -a | grep -c 'Up ')" == 0 ]] ; then
@@ -180,11 +180,10 @@ parse_git_branch_and_add_brackets(){
     [[ ! -f /etc/bash_completion.d/docker-compose ]] && sudo curl -L https://raw.githubusercontent.com/docker/compose/1.26.0/contrib/completion/bash/docker-compose -o /etc/bash_completion.d/docker-compose
 
     # buku
-    [[ ! -f ~/build-linux-x64.zip ]] && curl -s -L --url "https://dev.azure.com/samhhweb/c4881929-de62-4804-b34b-8fcf8f4b5212/_apis/build/builds/80/artifacts?artifactName=Host+for+Linux&fileId=53FAADEBA105FF84397813FBD25F3454F592E09A1D47009F1174FB164BF0D38A02&fileName=build-linux-x64.zip&api-version=5.0-preview.3" --output ~/bin/build-linux-x64.zip && \
-    unzip -d ~/bin -o ~/bin/build-linux-x64.zip
-    rm -f ~/bin/build-linux-x64.zip
-    ~/bin/bukubrow-linux-x64 --install-firefox
-    ln -sf ~/repos/personal/suckless/bookmarks.db ~/.local/share/buku/bookmarks.db
+    [[ ! -f ~/bin/bukubrow-linux-x64 ]] && curl -s -L --url "https://dev.azure.com/samhhweb/c4881929-de62-4804-b34b-8fcf8f4b5212/_apis/build/builds/80/artifacts?artifactName=Host+for+Linux&fileId=53FAADEBA105FF84397813FBD25F3454F592E09A1D47009F1174FB164BF0D38A02&fileName=build-linux-x64.zip&api-version=5.0-preview.3" --output ~/bin/build-linux-x64.zip && \
+    unzip -d ~/bin -o ~/bin/build-linux-x64.zip && \
+    ~/bin/build-linux-x64.zip && \
+    ~/bin/bukubrow-linux-x64 --install-firefox && \
 
     # permissions
     chmod 755 ~/bin/*
