@@ -159,6 +159,12 @@ parse_git_branch_and_add_brackets(){
     cd ~/ && curl -s -L --url https://ftp.mozilla.org/pub/firefox/releases/${version}/linux-x86_64/en-US/firefox-${version}.tar.bz2 | tar -xj && \
     ./firefox/firefox -CreateProfile default
 
+    # addons
+    [[ ! -f ~/firefox-bukubrow.xpi ]] && curl -s -L --url https://addons.mozilla.org/firefox/downloads/file/3506550/bukubrow-5.0.2.0-fx.xpi?src=dp-btn-primary --output ~/firefox-bukubrow.xpi
+    [[ ! -f ~/firefox-ublock.xpi ]] && curl -s -L --url https://addons.mozilla.org/firefox/downloads/file/3579401/ublock_origin-1.27.10-an+fx.xpi?src=search --output ~/firefox-ublock.xpi
+    [[ ! -f ~/firefox-bitwarden.xpi ]] && curl -s -L --url https://addons.mozilla.org/firefox/downloads/file/3582922/bitwarden_free_password_manager-1.44.3-an+fx.xpi?src=search --output ~/firefox-bitwarden.xpi
+    [[ ! -f ~/transmission.xpi ]] && curl -s -L --url https://addons.mozilla.org/firefox/downloads/file/3566579/torrent_control-0.2.18-fx.xpi?src=search --output ~/firefox-transmission.xpi
+
     # dwarf fortress
     version=47_04
     [[ ! -d ~/df_linux ]] && \
