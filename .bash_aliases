@@ -6,9 +6,9 @@ alias g='cd ~/repos'
 
 # misc
 alias am='pulsemixer'
-alias bs='buku --db ~/repos/personal/suckless/bookmarks.db --np --sreg '
-alias bi='buku --db ~/repos/personal/suckless/bookmarks.db --ai'
-alias bp='buku --db ~/repos/personal/suckless/bookmarks.db --print'
+alias bs='buku --np --sreg '
+alias bi='buku --ai'
+alias bp='buku --print'
 alias fz='vim $(fzf)'
 alias get='sudo apt-get install'
 alias gip='curl -s ipinfo.io'
