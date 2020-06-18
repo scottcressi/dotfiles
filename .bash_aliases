@@ -57,7 +57,7 @@ alias gpa='for i in $(find ~/repos/ -type d -name .git) ; do cd $i/../ ; echo $P
 alias gpp='git pull'
 alias gpu='git push origin `git rev-parse --abbrev-ref HEAD`'
 alias gs='git status'
-alias gsa='for i in `find ~/repos -maxdepth 3 -name .git | grep -v forge` ; do cd $i/../ ; pwd ; git status ; echo ; done'
+alias gsa='for i in $(find ~/repos/ -type d -name .git) ; do cd $i/../ ; echo $PWD ; git status ; echo ; done'
 alias gstat='for i in `find ~/repos -name .git | grep -v forge | grep -v "\.terraform" ` ; do cd $i/../ ; pwd ; git shortlog -s -n --all --no-merges ; done'
 alias gt='git tag -l'
 
