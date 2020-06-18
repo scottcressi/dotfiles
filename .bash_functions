@@ -184,6 +184,7 @@ parse_git_branch_and_add_brackets(){
     unzip -d ~/bin -o ~/bin/build-linux-x64.zip
     rm -f ~/bin/build-linux-x64.zip
     ~/bin/bukubrow-linux-x64 --install-firefox
+    ln -sf ~/repos/personal/suckless/bookmarks.db ~/.local/share/buku/bookmarks.db
 
     # permissions
     chmod 755 ~/bin/*
