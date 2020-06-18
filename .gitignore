@@ -3,6 +3,7 @@
 .config/QtProject.conf
 .config/Signal
 .config/TerminusBrowser
+.config/buku/
 .config/cmus
 .config/coc
 .config/dconf
