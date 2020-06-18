@@ -26,6 +26,7 @@ ddgr                  debian terminal  browser
 dialog                debian terminal  language        dialogbox
 dnsutils              debian terminal  stats           dns
 dstat                 debian terminal  stats           multi
+dwm                   debian gui       wm
 elinks                debian terminal  browser
 empire                debian terminal  game
 espeak                debian terminal  speech
