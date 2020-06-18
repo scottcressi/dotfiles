@@ -160,11 +160,12 @@ parse_git_branch_and_add_brackets(){
     ./firefox/firefox -CreateProfile default
 
     # addons
-    [[ ! -f ~/firefox-bukubrow.xpi ]] && curl -s -L --url https://addons.mozilla.org/firefox/downloads/file/3506550/bukubrow-5.0.2.0-fx.xpi?src=dp-btn-primary --output ~/firefox-bukubrow.xpi
-    [[ ! -f ~/firefox-ublock.xpi ]] && curl -s -L --url https://addons.mozilla.org/firefox/downloads/file/3579401/ublock_origin-1.27.10-an+fx.xpi?src=search --output ~/firefox-ublock.xpi
-    [[ ! -f ~/firefox-bitwarden.xpi ]] && curl -s -L --url https://addons.mozilla.org/firefox/downloads/file/3582922/bitwarden_free_password_manager-1.44.3-an+fx.xpi?src=search --output ~/firefox-bitwarden.xpi
-    [[ ! -f ~/transmission.xpi ]] && curl -s -L --url https://addons.mozilla.org/firefox/downloads/file/3566579/torrent_control-0.2.18-fx.xpi?src=search --output ~/firefox-transmission.xpi
-    [[ ! -f ~/ageless.xpi ]] && curl -s -L --url https://addons.mozilla.org/firefox/downloads/file/717262/ageless_for_youtube-1.3-an+fx.xpi?src=search --output ~/ageless.xpi
+    profile_dir=$(find ~/.mozilla/firefox/*.default/extensions/ -maxdepth 0)
+    [[ ! -f $profile_dir/bukubrow@samhh.com.xpi ]] && curl -s -L --url https://addons.mozilla.org/firefox/downloads/file/3506550/bukubrow-5.0.2.0-fx.xpi?src=dp-btn-primary --output "$profile_dir"/bukubrow@samhh.com.xpi
+    [[ ! -f $profile_dir/uBlock0@raymondhill.net.xpi ]] && curl -s -L --url https://addons.mozilla.org/firefox/downloads/file/3579401/ublock_origin-1.27.10-an+fx.xpi?src=search --output "$profile_dir"/uBlock0@raymondhill.net.xpi
+    [[ ! -f $profile_dir/{446900e4-71c2-419f-a6a7-df9c091e268b}.xpi ]] && curl -s -L --url https://addons.mozilla.org/firefox/downloads/file/3582922/bitwarden_free_password_manager-1.44.3-an+fx.xpi?src=search --output "$profile_dir"/{446900e4-71c2-419f-a6a7-df9c091e268b}.xpi
+    [[ ! -f $profile_dir/{e6e36c9a-8323-446c-b720-a176017e38ff}.xpi ]] && curl -s -L --url https://addons.mozilla.org/firefox/downloads/file/3566579/torrent_control-0.2.18-fx.xpi?src=search --output "$profile_dir"/{e6e36c9a-8323-446c-b720-a176017e38ff}.xpi
+    [[ ! -f $profile_dir/2341n4m3@gmail.com.xpi ]] && curl -s -L --url https://addons.mozilla.org/firefox/downloads/file/717262/ageless_for_youtube-1.3-an+fx.xpi?src=search --output "$profile_dir"/2341n4m3@gmail.com.xpi
 
     # dwarf fortress
     version=47_04
