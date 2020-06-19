@@ -72,7 +72,7 @@ parse_git_branch_and_add_brackets(){
     cd && \
     rm -rf st-${version} && \
     tar zxf ~/st-${version}.tar.gz && \
-    cp -rp ~/repos/personal/suckless/st-* ~/st-${version}/ && \
+    cp -rp ~/repos/personal/suckless/st/st-* ~/st-${version}/ && \
     cd ~/st-${version} && \
     patch --quiet --merge -i st-* && \
     make clean install --quiet
@@ -163,7 +163,7 @@ parse_git_branch_and_add_brackets(){
     profile=$(find ~/.mozilla/firefox/*.default/ -maxdepth 0)
     profile_dir=$profile/extensions
     mkdir "$profile_dir"
-    cp -rp ~/repos/personal/suckless/prefs.js ~/repos/personal/suckless/search.json.mozlz4 "$profile"
+    cp -rp ~/repos/personal/suckless/firefox/prefs.js ~/repos/personal/suckless/firefox/search.json.mozlz4 "$profile"
 
     # addons
     [[ ! -f $profile_dir/bukubrow@samhh.com.xpi ]] && curl -s -L --url https://addons.mozilla.org/firefox/downloads/file/3506550/bukubrow-5.0.2.0-fx.xpi?src=dp-btn-primary --output "$profile_dir"/bukubrow@samhh.com.xpi
@@ -471,7 +471,7 @@ parse_git_branch_and_add_brackets(){
 
 -dwmblocks(){
     [[ "$(pgrep dwmblocks)" ]] && pkill dwmblocks
-    cp ~/repos/personal/suckless/dwmblocks.blocks.h ~/repos/thirdparty/dwmblocks/blocks.h
+    cp ~/repos/personal/suckless/dwmblocks/dwmblocks.blocks.h ~/repos/thirdparty/dwmblocks/blocks.h
     cd ~/repos/thirdparty/dwmblocks && make clean install ; ./dwmblocks &
 }
 
