@@ -157,12 +157,15 @@ parse_git_branch_and_add_brackets(){
     version=77.0.1
     [[ ! -d ~/firefox ]] && \
     cd ~/ && curl -s -L --url https://ftp.mozilla.org/pub/firefox/releases/${version}/linux-x86_64/en-US/firefox-${version}.tar.bz2 | tar -xj
-    ./firefox/firefox -CreateProfile default
 
-    # addons
+    # firefox profile
+    ./firefox/firefox -CreateProfile default
     profile=$(find ~/.mozilla/firefox/*.default/ -maxdepth 0)
     profile_dir=$profile/extensions
     mkdir "$profile_dir"
+    cp -rp ~/repos/personal/suckless/prefs.js ~/repos/personal/suckless/search.json.mozlz4 "$profile"
+
+    # addons
     [[ ! -f $profile_dir/bukubrow@samhh.com.xpi ]] && curl -s -L --url https://addons.mozilla.org/firefox/downloads/file/3506550/bukubrow-5.0.2.0-fx.xpi?src=dp-btn-primary --output "$profile_dir"/bukubrow@samhh.com.xpi
     [[ ! -f $profile_dir/uBlock0@raymondhill.net.xpi ]] && curl -s -L --url https://addons.mozilla.org/firefox/downloads/file/3579401/ublock_origin-1.27.10-an+fx.xpi?src=search --output "$profile_dir"/uBlock0@raymondhill.net.xpi
     [[ ! -f $profile_dir/{446900e4-71c2-419f-a6a7-df9c091e268b}.xpi ]] && curl -s -L --url https://addons.mozilla.org/firefox/downloads/file/3582922/bitwarden_free_password_manager-1.44.3-an+fx.xpi?src=search --output "$profile_dir"/{446900e4-71c2-419f-a6a7-df9c091e268b}.xpi
