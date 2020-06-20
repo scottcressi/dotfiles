@@ -163,7 +163,8 @@ parse_git_branch_and_add_brackets(){
     profile=$(find ~/.mozilla/firefox/*.default/ -maxdepth 0)
     profile_dir=$profile/extensions
     [[ ! -d $profile_dir ]] && mkdir "$profile_dir"
-    cp -rp ~/repos/personal/suckless/firefox/prefs.js ~/repos/personal/suckless/firefox/search.json.mozlz4 "$profile"
+    cd "$profile" && ~/repos/thirdparty/ghacks-user.js/updater.sh -s -o ~/repos/personal/suckless/firefox/user-overrides.js -p $profile
+    cp -rp ~/repos/personal/suckless/firefox/search.json.mozlz4 "$profile"
 
     # addons
     [[ ! -f $profile_dir/bukubrow@samhh.com.xpi ]] && curl -s -L --url https://addons.mozilla.org/firefox/downloads/file/3506550/bukubrow-5.0.2.0-fx.xpi?src=dp-btn-primary --output "$profile_dir"/bukubrow@samhh.com.xpi
