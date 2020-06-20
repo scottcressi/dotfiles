@@ -163,7 +163,11 @@ parse_git_branch_and_add_brackets(){
     profile=$(find ~/.mozilla/firefox/*.default/ -maxdepth 0)
     profile_dir=$profile/extensions
     [[ ! -d $profile_dir ]] && mkdir "$profile_dir"
-    cd "$profile" && ~/repos/thirdparty/ghacks-user.js/updater.sh -s -o ~/repos/personal/suckless/firefox/user-overrides.js -p $profile
+
+    # ghacks + overrides
+    cd "$profile" && ~/repos/thirdparty/ghacks-user.js/updater.sh -s -o ~/repos/personal/suckless/firefox/user-overrides.js -p "$profile"
+
+    # search
     cp -rp ~/repos/personal/suckless/firefox/search.json.mozlz4 "$profile"
 
     # addons
