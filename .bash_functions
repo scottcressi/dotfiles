@@ -165,7 +165,7 @@ parse_git_branch_and_add_brackets(){
     [[ ! -d $profile_dir ]] && mkdir "$profile_dir"
 
     # ghacks + overrides
-    git clone https://github.com/ghacksuserjs/ghacks-user.js.git ~/repos/thirdparty/ghacks-user.js
+    [[ ! -d ~/repos/thirdparty/ghacks-user.js ]] && git clone https://github.com/ghacksuserjs/ghacks-user.js.git ~/repos/thirdparty/ghacks-user.js
     cd "$profile" && ~/repos/thirdparty/ghacks-user.js/updater.sh -s -o ~/repos/personal/suckless/firefox/user-overrides.js -p "$profile"
 
     # search
@@ -196,8 +196,8 @@ parse_git_branch_and_add_brackets(){
     # buku
     [[ ! -f ~/bin/bukubrow-linux-x64 ]] && curl -s -L --url "https://dev.azure.com/samhhweb/c4881929-de62-4804-b34b-8fcf8f4b5212/_apis/build/builds/80/artifacts?artifactName=Host+for+Linux&fileId=53FAADEBA105FF84397813FBD25F3454F592E09A1D47009F1174FB164BF0D38A02&fileName=build-linux-x64.zip&api-version=5.0-preview.3" --output ~/bin/build-linux-x64.zip && \
     unzip -d ~/bin -o ~/bin/build-linux-x64.zip && \
-    rm -f ~/bin/build-linux-x64.zip && \
-    ~/bin/bukubrow-linux-x64 --install-firefox && \
+    rm -f ~/bin/build-linux-x64.zip
+    [[ ! -f ~/.mozilla/native-messaging-hosts/com.samhh.bukubrow.json ]] && ~/bin/bukubrow-linux-x64 --install-firefox
 
     # permissions
     chmod 755 ~/bin/*
