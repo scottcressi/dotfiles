@@ -400,8 +400,8 @@ parse_git_branch_and_add_brackets(){
         for i in "${DIRS[@]}" ; do
             sudo mount -t cifs //freenas/"$i" ~/mnt/"$i" -o credentials=~/.smbpasswd -v
         done
-            sudo mount freenas:/mnt/data/drop/incomplete ~/repos/personal/docker-compose/data/transmission/incomplete
-            sudo mount freenas:/mnt/data/drop/completed ~/repos/personal/docker-compose/data/transmission/completed
+            sudo mount freenas:/mnt/data/drop/incomplete ~/data/transmission/incomplete
+            sudo mount freenas:/mnt/data/drop/completed ~/data/transmission/completed
     fi
 }
 
@@ -409,8 +409,8 @@ parse_git_branch_and_add_brackets(){
     for i in "${DIRS[@]}" ; do
     sudo umount -l ~/mnt/"$i"
     done
-    sudo umount -l ~/repos/personal/docker-compose/data/transmission/incomplete
-    sudo umount -l ~/repos/personal/docker-compose/data/transmission/completed
+    sudo umount -l ~/data/transmission/incomplete
+    sudo umount -l ~/data/transmission/completed
 
 }
 
