@@ -166,7 +166,7 @@ parse_git_branch_and_add_brackets(){
 
     # ghacks + overrides
     [[ ! -d ~/repos/thirdparty/ghacks-user.js ]] && git clone https://github.com/ghacksuserjs/ghacks-user.js.git ~/repos/thirdparty/ghacks-user.js
-    cd "$profile" && ~/repos/thirdparty/ghacks-user.js/updater.sh -s -o ~/repos/personal/suckless/firefox/user-overrides.js -p "$profile"
+    [[ ! -f $profile/user.js ]] && cd "$profile" && ~/repos/thirdparty/ghacks-user.js/updater.sh -s -o ~/repos/personal/suckless/firefox/user-overrides.js -p "$profile"
 
     # search
     cp -rp ~/repos/personal/suckless/firefox/search.json.mozlz4 "$profile"
