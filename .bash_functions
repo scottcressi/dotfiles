@@ -199,6 +199,9 @@ parse_git_branch_and_add_brackets(){
     rm -f ~/bin/build-linux-x64.zip
     [[ ! -f ~/.mozilla/native-messaging-hosts/com.samhh.bukubrow.json ]] && ~/bin/bukubrow-linux-x64 --install-firefox
 
+    # buku_run
+    [[ ! -d ~/repos/thirdparty/buku_run ]] && git clone https://github.com/carnager/buku_run.git ~/repos/thirdparty/buku_run
+
     # permissions
     chmod 755 ~/bin/*
 
