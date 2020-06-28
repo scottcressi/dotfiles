@@ -482,6 +482,7 @@ parse_git_branch_and_add_brackets(){
     [[ "$(pgrep dwmblocks)" ]] && pkill dwmblocks
     cp ~/repos/personal/suckless/dwmblocks/dwmblocks.blocks.h ~/repos/thirdparty/dwmblocks/blocks.h
     cd ~/repos/thirdparty/dwmblocks && make clean install ; ./dwmblocks &
+    cd ~/repos/thirdparty/dwmblocks && git checkout .
 }
 
 -cowsay-normal(){
