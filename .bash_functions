@@ -79,7 +79,7 @@ parse_git_branch_and_add_brackets(){
 
     # dwm
     version=6.2
-    [[ ! -f ~/dwm-${version}.tar.gz ]] && curl -s -L --url https://dl.suckless.org/dwm/dwm-${version}.tar.gz --output ~/dwm-${version}.tar.gz && \
+    [[ -f ~/.xinitrc ]] && curl -s -L --url https://dl.suckless.org/dwm/dwm-${version}.tar.gz --output ~/dwm-${version}.tar.gz && \
     export DESTDIR="$HOME" && \
     cd && \
     rm -rf dwm-${version} && \
