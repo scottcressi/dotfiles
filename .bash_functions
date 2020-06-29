@@ -512,3 +512,7 @@ parse_git_branch_and_add_brackets(){
 -translate(){
     docker run -ti soimort/translate-shell
 }
+
+-person(){
+    curl -s -o /tmp/person https://thispersondoesnotexist.com/image && sxiv /tmp/person && rm -f /tmp/person
+}
