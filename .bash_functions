@@ -71,7 +71,7 @@ parse_git_branch_and_add_brackets(){
     cd && \
     rm -rf st-${version} && \
     tar zxf ~/st-${version}.tar.gz && \
-    cp -rp ~/repos/personal/suckless/st/st-* ~/st-${version}/ && \
+    curl -s -L --url https://st.suckless.org/patches/scrollback/st-scrollback-20200419-72e3f6c.diff --output ~/st-${version}/st-scrollback-20200419-72e3f6c.diff && \
     cd ~/st-${version} && \
     patch --quiet --merge -i st-* && \
     make clean install --quiet
