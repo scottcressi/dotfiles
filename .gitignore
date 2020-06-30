@@ -2,5 +2,3 @@
 .newsboat/cache.db.lock
 .newsboat/history.cmdline
 .newsboat/history.search
-.local/share/buku
-.local/share/clone-buku-here
