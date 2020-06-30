@@ -107,11 +107,6 @@ alias dcd='docker-compose down'
 alias dcp='docker-compose pull --include-deps'
 alias dcr='docker-compose restart'
 
-# buku
-alias bs='buku --np --sreg '
-alias bi='buku --ai'
-alias bp='buku --print'
-alias bpb='buku -S blank --np'
-alias bl='7z a -p`cat ~/.bookmarkspasswd` ~/repos/personal/buku/bookmarks.db.7z ~/.local/share/buku/bookmarks.db'
-alias bu='cd ~/repos/personal/buku ; 7z x -p`cat ~/.bookmarkspasswd` ~/repos/personal/buku/bookmarks.db.7z ; mv ~/repos/personal/buku/bookmarks.db ~/.local/share/buku/'
-alias br='buku_run & disown ; exit'
+# bookmarks
+alias bl='7z a -p`cat ~/.bookmarkspasswd` ~/repos/personal/buku/places.sqlite.7z $(find ~/.mozilla/firefox/*.default/ -maxdepth 0)/places.sqlite'
+alias bu='cd ~/repos/personal/buku ; 7z x -p`cat ~/.bookmarkspasswd` ~/repos/personal/buku/places.sqlite.7z ; mv ~/repos/personal/buku/places.sqlite $(find ~/.mozilla/firefox/*.default/ -maxdepth 0)/places.sqlite'

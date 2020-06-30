@@ -12,7 +12,6 @@ bmon                  debian terminal  stats           network
 bombardier            debian terminal  game
 bpython3              debian terminal  language
 bsdgames              debian terminal  game
-buku                  debian terminal  bookmarks
 cataclysm-dda-curses  debian terminal  game
 chafa                 debian terminal  converter       images
 cifs-utils            debian terminal  mounting
