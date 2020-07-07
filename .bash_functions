@@ -152,6 +152,31 @@ parse_git_branch_and_add_brackets(){
     version=v0.5.0
     [[ ! -f ~/bin/slack-term ]] && curl -s -L --url https://github.com/erroneousboat/slack-term/releases/download/${version}/slack-term-linux-amd64 --output ~/bin/slack-term
 
+    # dwarf fortress
+    version=47_04
+    [[ ! -d ~/df_linux ]] && \
+    curl -s -L --url http://www.bay12games.com/dwarves/df_${version}_linux.tar.bz2 | tar -xj
+
+    # terminus
+    [[ ! -d ~/repos/thirdparty/TerminusBrowser ]] && \
+    git clone https://github.com/wtheisen/TerminusBrowser.git ~/repos/thirdparty/TerminusBrowser && \
+    cd ~/repos/thirdparty/TerminusBrowser && \
+    pip install -r requirements.txt
+
+    # completions
+    [[ ! -f /etc/bash_completion.d/kubectl ]] && kubectl completion bash | sudo tee /etc/bash_completion.d/kubectl
+    [[ ! -f /etc/bash_completion.d/docker-compose ]] && sudo curl -L https://raw.githubusercontent.com/docker/compose/1.26.0/contrib/completion/bash/docker-compose -o /etc/bash_completion.d/docker-compose
+
+    # permissions
+    chmod 755 ~/bin/*
+
+    # return
+    cd || exit
+
+}
+
+-packages-firefox(){
+
     # firefox
     version=78.0.1
     [[ ! -d ~/firefox ]] && \
@@ -175,27 +200,6 @@ parse_git_branch_and_add_brackets(){
     [[ ! -f $profile_dir/{446900e4-71c2-419f-a6a7-df9c091e268b}.xpi ]] && curl -s -L --url https://addons.mozilla.org/firefox/downloads/file/3582922/bitwarden_free_password_manager-1.44.3-an+fx.xpi?src=search --output "$profile_dir"/{446900e4-71c2-419f-a6a7-df9c091e268b}.xpi
     [[ ! -f $profile_dir/{e6e36c9a-8323-446c-b720-a176017e38ff}.xpi ]] && curl -s -L --url https://addons.mozilla.org/firefox/downloads/file/3566579/torrent_control-0.2.18-fx.xpi?src=search --output "$profile_dir"/{e6e36c9a-8323-446c-b720-a176017e38ff}.xpi
     [[ ! -f $profile_dir/2341n4m3@gmail.com.xpi ]] && curl -s -L --url https://addons.mozilla.org/firefox/downloads/file/717262/ageless_for_youtube-1.3-an+fx.xpi?src=search --output "$profile_dir"/2341n4m3@gmail.com.xpi
-
-    # dwarf fortress
-    version=47_04
-    [[ ! -d ~/df_linux ]] && \
-    curl -s -L --url http://www.bay12games.com/dwarves/df_${version}_linux.tar.bz2 | tar -xj
-
-    # terminus
-    [[ ! -d ~/repos/thirdparty/TerminusBrowser ]] && \
-    git clone https://github.com/wtheisen/TerminusBrowser.git ~/repos/thirdparty/TerminusBrowser && \
-    cd ~/repos/thirdparty/TerminusBrowser && \
-    pip install -r requirements.txt
-
-    # completions
-    [[ ! -f /etc/bash_completion.d/kubectl ]] && kubectl completion bash | sudo tee /etc/bash_completion.d/kubectl
-    [[ ! -f /etc/bash_completion.d/docker-compose ]] && sudo curl -L https://raw.githubusercontent.com/docker/compose/1.26.0/contrib/completion/bash/docker-compose -o /etc/bash_completion.d/docker-compose
-
-    # permissions
-    chmod 755 ~/bin/*
-
-    # return
-    cd || exit
 
 }
 
