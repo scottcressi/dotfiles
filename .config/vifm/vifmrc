@@ -10,5 +10,12 @@ filextype *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm
         \ {View in sxiv}
         \ sxiv %f,
 
+" Audio
+filetype *.wav,*.mp3,*.flac,*.m4a,*.wma,*.ape,*.ac3,*.og[agx],*.spx,*.opus
+        \ {View in mpv}
+        \ mpv %f,
+fileviewer *.mp3 mp3info
+fileviewer *.flac soxi
+
 " single pane
 only
