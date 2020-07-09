@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 
 # single letters
-alias l='ls -lh --color=auto'
+alias f='vim $(fzf)'
 alias g='cd ~/repos'
+alias l='ls -lh --color=auto'
 
 # misc
 alias am='pulsemixer'
-alias fz='vim $(fzf)'
 alias get='sudo apt-get install'
 alias gip='curl -s ipinfo.io'
 alias ipa='ip -family inet -oneline addr | grep -v docker | grep -v 127.0.0.1 | grep -Eo "inet (addr:)?([0-9]*\.){3}[0-9]*" | grep -Eo "([0-9]*\.){3}[0-9]*"'
