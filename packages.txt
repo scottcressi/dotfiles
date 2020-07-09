@@ -104,7 +104,6 @@ python3-flake8        debian terminal  language
 python3-pip           debian terminal  language
 python3-venv          debian terminal  language
 qutebrowser           debian terminal  browser
-ranger                debian terminal  file            manager
 redis-tools           debian terminal  client          database
 rig                   debian terminal  fun
 robotfindskitten      debian terminal  game
