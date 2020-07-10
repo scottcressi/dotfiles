@@ -133,7 +133,6 @@ ttygif                debian terminal  recording
 ttyrec                debian terminal  recording
 typespeed             debian terminal  game
 units                 debian terminal
-unrar                 debian terminal
 vifm                  debian terminal  file            manager
 vim                   debian terminal  editor
 vim-python-jedi       debian terminal  editor
