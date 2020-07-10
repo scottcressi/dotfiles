@@ -22,3 +22,12 @@ only
 
 " search cases insensitive
 set ignorecase
+
+" remap quit
+nnoremap <c-Q> :quit<cr>
+
+" remap search
+nnoremap <c-S> :sort<cr>
+
+" remap backspace
+nnoremap <bs> <left>
