@@ -64,18 +64,6 @@ parse_git_branch_and_add_brackets(){
         awscli \
         tuir \
 
-    # st
-    version=0.8.3
-    [[ ! -f ~/st-${version}.tar.gz ]] && curl -s -L --url https://dl.suckless.org/st/st-${version}.tar.gz --output ~/st-${version}.tar.gz && \
-    export DESTDIR="$HOME" && \
-    cd && \
-    rm -rf st-${version} && \
-    tar zxf ~/st-${version}.tar.gz && \
-    curl -s -L --url https://st.suckless.org/patches/scrollback/st-scrollback-20200419-72e3f6c.diff --output ~/st-${version}/st-scrollback-20200419-72e3f6c.diff && \
-    cd ~/st-${version} && \
-    patch --quiet --merge -i st-* && \
-    make clean install --quiet
-
     # dwm
     version=6.2
     [[ -f ~/.xinitrc ]] && curl -s -L --url https://dl.suckless.org/dwm/dwm-${version}.tar.gz --output ~/dwm-${version}.tar.gz && \
@@ -167,39 +155,56 @@ parse_git_branch_and_add_brackets(){
     [[ ! -f /etc/bash_completion.d/kubectl ]] && kubectl completion bash | sudo tee /etc/bash_completion.d/kubectl
     [[ ! -f /etc/bash_completion.d/docker-compose ]] && sudo curl -L https://raw.githubusercontent.com/docker/compose/1.26.0/contrib/completion/bash/docker-compose -o /etc/bash_completion.d/docker-compose
 
+    # if wm
+    if pgrep startx > /dev/null ; then
+
+        # st
+        version=0.8.3
+        [[ ! -f ~/st-${version}.tar.gz ]] && curl -s -L --url https://dl.suckless.org/st/st-${version}.tar.gz --output ~/st-${version}.tar.gz && \
+        export DESTDIR="$HOME" && \
+        cd && \
+        rm -rf st-${version} && \
+        tar zxf ~/st-${version}.tar.gz && \
+        curl -s -L --url https://st.suckless.org/patches/scrollback/st-scrollback-20200419-72e3f6c.diff --output ~/st-${version}/st-scrollback-20200419-72e3f6c.diff && \
+        cd ~/st-${version} && \
+        patch --quiet --merge -i st-* && \
+        make clean install --quiet
+
+        # firefox
+        version=78.0.1
+        [[ ! -d ~/firefox ]] && \
+        cd ~/ && curl -s -L --url https://ftp.mozilla.org/pub/firefox/releases/${version}/linux-x86_64/en-US/firefox-${version}.tar.bz2 | tar -xj
+
+        # firefox profile
+        ~/firefox/firefox -CreateProfile default
+        profile=$(find ~/.mozilla/firefox/*.default/ -maxdepth 0)
+        profile_dir=$profile/extensions
+        [[ ! -d $profile_dir ]] && mkdir "$profile_dir"
+
+        # ghacks + overrides
+        [[ ! -d ~/repos/thirdparty/ghacks-user.js ]] && git clone https://github.com/ghacksuserjs/ghacks-user.js.git ~/repos/thirdparty/ghacks-user.js
+        [[ ! -f $profile/user.js ]] && grep ^user_pref ~/repos/thirdparty/ghacks-user.js/user.js ~/repos/personal/suckless/firefox/user-overrides.js | sed 's/.*user_pref/user_pref/g' > "$profile"/user.js
+
+        # search
+        cp -rp ~/repos/personal/suckless/firefox/search.json.mozlz4 "$profile"/
+
+        # addons
+        [[ ! -f $profile_dir/uBlock0@raymondhill.net.xpi ]] && curl -s -L --url https://addons.mozilla.org/firefox/downloads/file/3579401/ublock_origin-1.27.10-an+fx.xpi?src=search --output "$profile_dir"/uBlock0@raymondhill.net.xpi
+        [[ ! -f $profile_dir/{446900e4-71c2-419f-a6a7-df9c091e268b}.xpi ]] && curl -s -L --url https://addons.mozilla.org/firefox/downloads/file/3582922/bitwarden_free_password_manager-1.44.3-an+fx.xpi?src=search --output "$profile_dir"/{446900e4-71c2-419f-a6a7-df9c091e268b}.xpi
+        [[ ! -f $profile_dir/{e6e36c9a-8323-446c-b720-a176017e38ff}.xpi ]] && curl -s -L --url https://addons.mozilla.org/firefox/downloads/file/3566579/torrent_control-0.2.18-fx.xpi?src=search --output "$profile_dir"/{e6e36c9a-8323-446c-b720-a176017e38ff}.xpi
+        [[ ! -f $profile_dir/2341n4m3@gmail.com.xpi ]] && curl -s -L --url https://addons.mozilla.org/firefox/downloads/file/717262/ageless_for_youtube-1.3-an+fx.xpi?src=search --output "$profile_dir"/2341n4m3@gmail.com.xpi
+
+    else
+
+        echo not running x
+
+    fi
+
     # permissions
     chmod 755 ~/bin/*
 
     # return
     cd || exit
-
-}
-
--packages-firefox(){
-
-    # firefox
-    version=78.0.1
-    [[ ! -d ~/firefox ]] && \
-    cd ~/ && curl -s -L --url https://ftp.mozilla.org/pub/firefox/releases/${version}/linux-x86_64/en-US/firefox-${version}.tar.bz2 | tar -xj
-
-    # firefox profile
-    ~/firefox/firefox -CreateProfile default
-    profile=$(find ~/.mozilla/firefox/*.default/ -maxdepth 0)
-    profile_dir=$profile/extensions
-    [[ ! -d $profile_dir ]] && mkdir "$profile_dir"
-
-    # ghacks + overrides
-    [[ ! -d ~/repos/thirdparty/ghacks-user.js ]] && git clone https://github.com/ghacksuserjs/ghacks-user.js.git ~/repos/thirdparty/ghacks-user.js
-    [[ ! -f $profile/user.js ]] && grep ^user_pref ~/repos/thirdparty/ghacks-user.js/user.js ~/repos/personal/suckless/firefox/user-overrides.js | sed 's/.*user_pref/user_pref/g' > "$profile"/user.js
-
-    # search
-    cp -rp ~/repos/personal/suckless/firefox/search.json.mozlz4 "$profile"
-
-    # addons
-    [[ ! -f $profile_dir/uBlock0@raymondhill.net.xpi ]] && curl -s -L --url https://addons.mozilla.org/firefox/downloads/file/3579401/ublock_origin-1.27.10-an+fx.xpi?src=search --output "$profile_dir"/uBlock0@raymondhill.net.xpi
-    [[ ! -f $profile_dir/{446900e4-71c2-419f-a6a7-df9c091e268b}.xpi ]] && curl -s -L --url https://addons.mozilla.org/firefox/downloads/file/3582922/bitwarden_free_password_manager-1.44.3-an+fx.xpi?src=search --output "$profile_dir"/{446900e4-71c2-419f-a6a7-df9c091e268b}.xpi
-    [[ ! -f $profile_dir/{e6e36c9a-8323-446c-b720-a176017e38ff}.xpi ]] && curl -s -L --url https://addons.mozilla.org/firefox/downloads/file/3566579/torrent_control-0.2.18-fx.xpi?src=search --output "$profile_dir"/{e6e36c9a-8323-446c-b720-a176017e38ff}.xpi
-    [[ ! -f $profile_dir/2341n4m3@gmail.com.xpi ]] && curl -s -L --url https://addons.mozilla.org/firefox/downloads/file/717262/ageless_for_youtube-1.3-an+fx.xpi?src=search --output "$profile_dir"/2341n4m3@gmail.com.xpi
 
 }
 
