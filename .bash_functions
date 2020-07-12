@@ -86,6 +86,13 @@ parse_git_branch_and_add_brackets(){
     version=1.25.4
     [[ ! -f ~/bin/docker-compose ]] && curl -s -L https://github.com/docker/compose/releases/download/${version}/docker-compose-"$(uname -s)"-"$(uname -m)" -o ~/bin/docker-compose
 
+    # octant
+    version=0.13.1
+    [[ "$(octant version | grep Version | awk '{print $2}')" != "$version" ]] && \
+    curl -s -L --url https://github.com/vmware-tanzu/octant/releases/download/v${version}/octant_${version}_Linux-64bit.tar.gz | gunzip | tar xv && \
+    mv octant_${version}_Linux-64bit/octant ~/bin/octant && \
+    rm -rf octant_${version}_Linux-64bit.tar.gz octant_${version}_Linux-64bit && \
+
     # skaffold
     version=v1.12.0
     [[ "$(skaffold version)" != "$version" ]] && curl -s -L --url https://github.com/GoogleContainerTools/skaffold/releases/download/${version}/skaffold-linux-amd64 --output ~/bin/skaffold
