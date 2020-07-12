@@ -496,10 +496,6 @@ parse_git_branch_and_add_brackets(){
     curl stonks.icu/"$1"
 }
 
--volume(){
-    pulsemixer --set-volume-all "$1":"$1"
-}
-
 -translate(){
     docker run -ti soimort/translate-shell
 }
