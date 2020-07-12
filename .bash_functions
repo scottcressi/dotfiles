@@ -91,7 +91,7 @@ parse_git_branch_and_add_brackets(){
     [[ "$(octant version | grep Version | awk '{print $2}')" != "$version" ]] && \
     curl -s -L --url https://github.com/vmware-tanzu/octant/releases/download/v${version}/octant_${version}_Linux-64bit.tar.gz | gunzip | tar xv && \
     mv octant_${version}_Linux-64bit/octant ~/bin/octant && \
-    rm -rf octant_${version}_Linux-64bit.tar.gz octant_${version}_Linux-64bit && \
+    rm -rf octant_${version}_Linux-64bit.tar.gz octant_${version}_Linux-64bit
 
     # skaffold
     version=v1.12.0
