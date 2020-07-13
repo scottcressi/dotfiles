@@ -1,152 +1,153 @@
-angband               debian terminal  game
-arandr                debian gui       resolution
-armagetronad          debian gui       game
-aspell                debian terminal  spelling
-bash-completion       debian terminal  completion
-bastet                debian terminal  game
-bb                    debian terminal  fun
-bc                    debian terminal  calculator
-bmon                  debian terminal  stats           network
-bombardier            debian terminal  game
-bpython3              debian terminal  language
-bsdgames              debian terminal  game
-cataclysm-dda-curses  debian terminal  game
-chafa                 debian terminal  converter       images
-cifs-utils            debian terminal  mounting
-cmake                 debian prereq    youcompleteme
-cmatrix               debian terminal  fun
-cmus                  debian terminal  client          music
-cowsay                debian terminal  fun
-curl                  debian terminal  file            transfer
-curseofwar            debian terminal  game
-dialog                debian terminal  language        dialogbox
-dnsutils              debian terminal  stats           dns
-dstat                 debian terminal  stats           multi
-dwm                   debian gui       wm
-elinks                debian terminal  browser
-empire                debian terminal  game
-espeak                debian terminal  speech
-ffmpeg                debian terminal  video
-filezilla             debian gui       file            transfer
-flake8                debian terminal  language
-freeciv               debian gui       game
-fzf                   debian terminal
-gcc                   debian terminal  compiler
-git                   debian terminal  scm
-git-extras            debian terminal  scm
-gnuchess              debian terminal  game
-gnupg                 debian prereq    apt-key
-greed                 debian terminal  game
-howdoi                debian terminal  language
-htop                  debian terminal  stats           multi
-iftop                 debian terminal  stats           network
-iotop                 debian terminal  stats           disk
-ipcalc                debian terminal  stats
-iptraf                debian terminal  stats           network
-ipython3              debian terminal  language
-irssi                 debian terminal  messaging
-jq                    debian terminal  language
-jsonlint              debian terminal  lint
-lftp                  debian terminal  file            transfer
-libaa-bin             debian terminal  fun
-libfontconfig1-dev    debian prereq    st
-libfreetype6-dev      debian prereq    st
-libgtk-3-0            debian prereq    firefox
-libx11-dev            debian prereq    dwm
-libxft-dev            debian prereq    dwm
-libxinerama-dev       debian prereq    dwm
-links2                debian terminal  browser
-lm-sensors            debian terminal  stats
-lolcat                debian terminal  fun
-lsof                  debian terminal  stats
-lynx                  debian terminal  browser
-make                  debian terminal  compiler
-mdp                   debian terminal  markdown
-moon-buggy            debian terminal  game
-mpc                   debian terminal  client          music
-mpd                          terminal  music           server
-mps-youtube                  terminal  video
-mpv                   debian terminal  video
-mutt                  debian terminal  mail
-mycli                 debian terminal  client          database
-ncmpcpp               debian terminal  client          music
-neofetch              debian terminal  stats
-net-tools             debian terminal  stats
-netcat                debian terminal  stats
-nethack-console       debian terminal  game
-nethogs               debian terminal  stats           network
-netris                debian terminal  game
-nettoe                debian terminal  game
-network-manager       debian terminal  network
-newsboat              debian terminal  rss
-nfs-common            debian terminal  mounting
-nicstat               debian terminal  stats           network
-ninvaders             debian terminal  game
-nmap                  debian terminal  stats           network
-nsnake                debian terminal  game
-nudoku                debian terminal  game
-oneko                 debian gui       fun
-openssh-client        debian terminal  client          ssh
-p7zip-full            debian terminal
-pacman4console        debian terminal  game
-pandoc                debian terminal  converter       docs
-pgcli                 debian terminal  client          database
-pi                    debian terminal  fun
-pkg-config            debian prereq    st
-pulsemixer            debian terminal  audio
-pwgen                 debian terminal  passwords
-python3               debian terminal  language
-python3-flake8        debian terminal  language
-python3-pip           debian terminal  language
-python3-venv          debian terminal  language
-redis-tools           debian terminal  client          database
-rig                   debian terminal  fun
-robotfindskitten      debian terminal  game
-rsync                 debian terminal  file            transfer
-rtorrent              debian terminal  file            transfer
-rtv                   debian terminal  social          media
-s-tui                 debian terminal  stats           multi
-screenkey             debian gui
-scrot                 debian gui       screenshot
-sent                  debian terminal  markdown
-shellcheck            debian terminal  lint
-smplayer              debian gui       audio
-speedpad              debian terminal  typing
-speedtest-cli         debian terminal  stats           network
-stow                  debian terminal
-suckless-tools        debian terminal
-sudo                  debian terminal
-sxiv                  debian terminal  pictures
-tcpdump               debian terminal  stats
-testssl.sh            debian terminal
-texlive-xetex         debian terminal  converter       docs
-thefuck               debian terminal  spelling
-tig                   debian terminal  scm
-tmux                  debian terminal  terminal        multiplexer
-toilet                debian terminal  fun
-tree                  debian terminal  file            manager
-tty-clock             debian terminal  time
-ttygif                debian terminal  recording
-ttyrec                debian terminal  recording
-typespeed             debian terminal  game
-units                 debian terminal
-vifm                  debian terminal  file            manager
-vim                   debian terminal  editor
-vim-python-jedi       debian terminal  editor
-vitetris              debian terminal  game
-w3m                   debian terminal  browser
-weather-util          debian terminal  weather
-wget                  debian terminal  file            transfer
-whiptail              debian terminal  language        dialogbox
-whois                 debian terminal  stats
-xautolock             debian gui       lock
-xcowsay               debian gui       fun
-xfce4-terminal        debian gui       terminal        emulator
-xfishtank             debian gui       fun
-xorg                  debian gui       graphics        xserver
-xwallpaper            debian terminal  wallpaper
-yamllint              debian terminal  lint
-youtube-dl            debian terminal  video
-zathura               debian gui       document        reader
-zathura-cb            debian gui       document        reader
-zathura-pdf-poppler   debian gui       document        reader
+angband                 debian terminal  game
+arandr                  debian gui       resolution
+armagetronad            debian gui       game
+aspell                  debian terminal  spelling
+bash-completion         debian terminal  completion
+bastet                  debian terminal  game
+bb                      debian terminal  fun
+bc                      debian terminal  calculator
+bmon                    debian terminal  stats           network
+bombardier              debian terminal  game
+bpython3                debian terminal  language
+bsdgames                debian terminal  game
+cataclysm-dda-curses    debian terminal  game
+chafa                   debian terminal  converter       images
+cifs-utils              debian terminal  mounting
+cmake                   debian prereq    youcompleteme
+cmatrix                 debian terminal  fun
+cmus                    debian terminal  client          music
+cowsay                  debian terminal  fun
+curl                    debian terminal  file            transfer
+curseofwar              debian terminal  game
+dialog                  debian terminal  language        dialogbox
+dnsutils                debian terminal  stats           dns
+dstat                   debian terminal  stats           multi
+dwm                     debian gui       wm
+elinks                  debian terminal  browser
+empire                  debian terminal  game
+espeak                  debian terminal  speech
+ffmpeg                  debian terminal  video
+filezilla               debian gui       file            transfer
+flake8                  debian terminal  language
+freeciv                 debian gui       game
+fzf                     debian terminal
+gcc                     debian terminal  compiler
+git                     debian terminal  scm
+git-extras              debian terminal  scm
+gnuchess                debian terminal  game
+gnupg                   debian prereq    apt-key
+greed                   debian terminal  game
+howdoi                  debian terminal  language
+htop                    debian terminal  stats           multi
+iftop                   debian terminal  stats           network
+iotop                   debian terminal  stats           disk
+ipcalc                  debian terminal  stats
+iptraf                  debian terminal  stats           network
+ipython3                debian terminal  language
+irssi                   debian terminal  messaging
+jq                      debian terminal  language
+jsonlint                debian terminal  lint
+lftp                    debian terminal  file            transfer
+libaa-bin               debian terminal  fun
+libfontconfig1-dev      debian prereq    st
+libfreetype6-dev        debian prereq    st
+libgtk-3-0              debian prereq    firefox
+libx11-dev              debian prereq    dwm
+libxft-dev              debian prereq    dwm
+libxinerama-dev         debian prereq    dwm
+links2                  debian terminal  browser
+lm-sensors              debian terminal  stats
+lolcat                  debian terminal  fun
+lsof                    debian terminal  stats
+lynx                    debian terminal  browser
+make                    debian terminal  compiler
+mdp                     debian terminal  markdown
+moon-buggy              debian terminal  game
+mpc                     debian terminal  client          music
+mpd                            terminal  music           server
+mps-youtube                    terminal  video
+mpv                     debian terminal  video
+mutt                    debian terminal  mail
+mycli                   debian terminal  client          database
+ncmpcpp                 debian terminal  client          music
+neofetch                debian terminal  stats
+net-tools               debian terminal  stats
+netcat                  debian terminal  stats
+nethack-console         debian terminal  game
+nethogs                 debian terminal  stats           network
+netris                  debian terminal  game
+nettoe                  debian terminal  game
+network-manager         debian terminal  network
+newsboat                debian terminal  rss
+nfs-common              debian terminal  mounting
+nicstat                 debian terminal  stats           network
+ninvaders               debian terminal  game
+nmap                    debian terminal  stats           network
+nsnake                  debian terminal  game
+nudoku                  debian terminal  game
+oneko                   debian gui       fun
+openssh-client          debian terminal  client          ssh
+p7zip-full              debian terminal
+pacman4console          debian terminal  game
+pandoc                  debian terminal  converter       docs
+pgcli                   debian terminal  client          database
+pi                      debian terminal  fun
+pkg-config              debian prereq    st
+pulsemixer              debian terminal  audio
+pwgen                   debian terminal  passwords
+python3                 debian terminal  language
+python3-flake8          debian terminal  language
+python3-pip             debian terminal  language
+python3-venv            debian terminal  language
+redis-tools             debian terminal  client          database
+rig                     debian terminal  fun
+robotfindskitten        debian terminal  game
+rsync                   debian terminal  file            transfer
+rtorrent                debian terminal  file            transfer
+rtv                     debian terminal  social          media
+s-tui                   debian terminal  stats           multi
+screenkey               debian gui
+scrot                   debian gui       screenshot
+sent                    debian terminal  markdown
+shellcheck              debian terminal  lint
+smplayer                debian gui       audio
+speedpad                debian terminal  typing
+speedtest-cli           debian terminal  stats           network
+stow                    debian terminal
+suckless-tools          debian terminal
+sudo                    debian terminal
+sxiv                    debian terminal  pictures
+tcpdump                 debian terminal  stats
+testssl.sh              debian terminal
+texlive-xetex           debian terminal  converter       docs
+thefuck                 debian terminal  spelling
+tig                     debian terminal  scm
+tmux                    debian terminal  terminal        multiplexer
+toilet                  debian terminal  fun
+transmission-remote-cli debian terminal
+tree                    debian terminal  file            manager
+tty-clock               debian terminal  time
+ttygif                  debian terminal  recording
+ttyrec                  debian terminal  recording
+typespeed               debian terminal  game
+units                   debian terminal
+vifm                    debian terminal  file            manager
+vim                     debian terminal  editor
+vim-python-jedi         debian terminal  editor
+vitetris                debian terminal  game
+w3m                     debian terminal  browser
+weather-util            debian terminal  weather
+wget                    debian terminal  file            transfer
+whiptail                debian terminal  language        dialogbox
+whois                   debian terminal  stats
+xautolock               debian gui       lock
+xcowsay                 debian gui       fun
+xfce4-terminal          debian gui       terminal        emulator
+xfishtank               debian gui       fun
+xorg                    debian gui       graphics        xserver
+xwallpaper              debian terminal  wallpaper
+yamllint                debian terminal  lint
+youtube-dl              debian terminal  video
+zathura                 debian gui       document        reader
+zathura-cb              debian gui       document        reader
+zathura-pdf-poppler     debian gui       document        reader
