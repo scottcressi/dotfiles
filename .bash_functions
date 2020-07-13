@@ -40,6 +40,7 @@ parse_git_branch_and_add_brackets(){
     mkdir -p ~/Downloads
     mkdir -p ~/bin
     mkdir -p ~/wallpapers
+    mkdir -p ~/.bash_completion.d
 
     # venv
     [[ ! -d ~/python/ ]] && python3 -m venv ~/python
@@ -49,7 +50,7 @@ parse_git_branch_and_add_brackets(){
 
     # docker
     if [[ "$(docker ps -a | grep -c 'Up ')" == 0 ]] ; then
-    [[ ! -f /etc/apt/sources.list.d/docker.list ]] && curl -fsSL https://download.docker.com/linux/"$(grep ^ID /etc/os-release | sed 's/ID=//g')"/gpg | sudo apt-key add - && \
+    [[ ! -f /etc/apt/sources.list.d/docker.list ]] && curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add - && \
     sudo apt-key fingerprint 0EBFCD88
     echo "deb [arch=amd64] https://download.docker.com/linux/$(grep ^ID /etc/os-release | sed 's/ID=//g') $(grep VERSION_CODENAME /etc/os-release | sed 's/.*=//g') stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
     sudo apt-get install -y --quiet --quiet containerd.io docker-ce docker-ce-cli
@@ -61,7 +62,7 @@ parse_git_branch_and_add_brackets(){
     cd && unzip awscli-bundle.zip && \
     ./awscli-bundle/install -b ~/bin/aws
     cd ~/bin && ln -sf /home/debian/.local/lib/aws/bin/aws_completer aws_completer
-    sudo cp ~/.local/lib/aws/bin/aws_bash_completer /etc/bash_completion.d/aws_bash_completer
+    sudo cp ~/.local/lib/aws/bin/aws_bash_completer ~/bash_completion.d/aws_bash_completer
 
     # dwm
     version=6.2
@@ -152,8 +153,8 @@ parse_git_branch_and_add_brackets(){
     curl -s -L --url http://www.bay12games.com/dwarves/df_${version}_linux.tar.bz2 | tar -xj
 
     # completions
-    [[ ! -f /etc/bash_completion.d/kubectl ]] && kubectl completion bash | sudo tee /etc/bash_completion.d/kubectl
-    [[ ! -f /etc/bash_completion.d/docker-compose ]] && sudo curl -L https://raw.githubusercontent.com/docker/compose/1.26.0/contrib/completion/bash/docker-compose -o /etc/bash_completion.d/docker-compose
+    [[ ! -f ~/.bash_completion.d/kubectl ]] && kubectl completion bash | sudo tee ~/.bash_completion.d/kubectl
+    [[ ! -f ~/.bash_completion.d/docker-compose ]] && sudo curl -L https://raw.githubusercontent.com/docker/compose/1.26.0/contrib/completion/bash/docker-compose -o ~/.bash_completion.d/docker-compose
 
     # if wm
     if pgrep startx > /dev/null ; then
@@ -387,7 +388,7 @@ parse_git_branch_and_add_brackets(){
 
     status=$(nc -z freenas 80 ; echo $?)
     if [ "$status" != "0" ] ; then
-        echo freenas down or not in /etc/hosts
+        echo freenas down or not in hosts file
     else
         freenas_status=1
     fi
