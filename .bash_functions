@@ -41,6 +41,7 @@ parse_git_branch_and_add_brackets(){
     mkdir -p ~/bin
     mkdir -p ~/wallpapers
     mkdir -p ~/.bash_completion.d
+    mkdir -p ~/tmp
 
     # venv
     [[ ! -d ~/python/ ]] && python3 -m venv ~/python
@@ -61,7 +62,7 @@ parse_git_branch_and_add_brackets(){
     [[ ! -f ~/awscli-bundle.zip ]] && curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" --output ~/awscli-bundle.zip && \
     cd && unzip awscli-bundle.zip && \
     ./awscli-bundle/install -b ~/bin/aws
-    cd ~/bin && ln -sf /home/debian/.local/lib/aws/bin/aws_completer aws_completer
+    cd ~/bin && ln -sf ~/.local/lib/aws/bin/aws_completer aws_completer
     sudo cp ~/.local/lib/aws/bin/aws_bash_completer ~/bash_completion.d/aws_bash_completer
 
     # dwm
@@ -346,16 +347,16 @@ parse_git_branch_and_add_brackets(){
 
 -record-screen(){
     RESOLUTION=$(xrandr | grep "\\*" | awk '{print $1}')
-    ffmpeg -f x11grab -s "$RESOLUTION" -i :0.0 /var/tmp/ffmpeg-screen-"$(date +"%Y-%m-%d-%I-%m-%S")".mkv
+    ffmpeg -f x11grab -s "$RESOLUTION" -i :0.0 ~/tmp/ffmpeg-screen-"$(date +"%Y-%m-%d-%I-%m-%S")".mkv
 }
 
 -record-camera(){
-    ffmpeg -i /dev/video0 /var/tmp/ffmpeg-camera-"$(date +"%Y-%m-%d-%I-%m-%S")".mkv
+    ffmpeg -i /dev/video0 ~/tmp/ffmpeg-camera-"$(date +"%Y-%m-%d-%I-%m-%S")".mkv
 }
 
 -record-security(){
     ffmpeg -i /dev/video0 \
-        -vf "select=gt(scene\\,0.0003),setpts=N/(10*TB)" /var/tmp/ffmpeg-security-"$(date +"%Y-%m-%d-%I-%m-%S")".mkv
+        -vf "select=gt(scene\\,0.0003),setpts=N/(10*TB)" ~/tmp/ffmpeg-security-"$(date +"%Y-%m-%d-%I-%m-%S")".mkv
 }
 
 -kpeee(){
@@ -505,5 +506,5 @@ parse_git_branch_and_add_brackets(){
 }
 
 -generate-person(){
-    curl -s -o /tmp/person https://thispersondoesnotexist.com/image && sxiv /tmp/person && rm -f /tmp/person
+    curl -s -o ~/tmp/person https://thispersondoesnotexist.com/image && sxiv ~/tmp/person && rm -f ~/tmp/person
 }
