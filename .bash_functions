@@ -63,7 +63,7 @@ parse_git_branch_and_add_brackets(){
     cd && unzip awscli-bundle.zip && \
     ./awscli-bundle/install -b ~/bin/aws
     cd ~/bin && ln -sf ~/.local/lib/aws/bin/aws_completer aws_completer
-    sudo cp ~/.local/lib/aws/bin/aws_bash_completer ~/bash_completion.d/aws_bash_completer
+    sudo cp ~/.local/lib/aws/bin/aws_bash_completer ~/.bash_completion.d/aws_bash_completer
 
     # dwm
     version=6.2
