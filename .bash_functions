@@ -149,12 +149,6 @@ parse_git_branch_and_add_brackets(){
     [[ ! -d ~/df_linux ]] && \
     curl -s -L --url http://www.bay12games.com/dwarves/df_${version}_linux.tar.bz2 | tar -xj
 
-    # terminus
-    [[ ! -d ~/repos/thirdparty/TerminusBrowser ]] && \
-    git clone https://github.com/wtheisen/TerminusBrowser.git ~/repos/thirdparty/TerminusBrowser && \
-    cd ~/repos/thirdparty/TerminusBrowser && \
-    pip install -r requirements.txt
-
     # completions
     [[ ! -f /etc/bash_completion.d/kubectl ]] && kubectl completion bash | sudo tee /etc/bash_completion.d/kubectl
     [[ ! -f /etc/bash_completion.d/docker-compose ]] && sudo curl -L https://raw.githubusercontent.com/docker/compose/1.26.0/contrib/completion/bash/docker-compose -o /etc/bash_completion.d/docker-compose
