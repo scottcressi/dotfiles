@@ -2,7 +2,6 @@ angband               debian terminal  game
 arandr                debian gui       resolution
 armagetronad          debian gui       game
 aspell                debian terminal  spelling
-aws-shell             debian terminal
 bash-completion       debian terminal  completion
 bastet                debian terminal  game
 bb                    debian terminal  fun
