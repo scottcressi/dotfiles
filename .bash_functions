@@ -60,6 +60,8 @@ parse_git_branch_and_add_brackets(){
     [[ ! -f ~/awscli-bundle.zip ]] && curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" --output ~/awscli-bundle.zip && \
     cd && unzip awscli-bundle.zip && \
     ./awscli-bundle/install -b ~/bin/aws
+    cd ~/bin && ln -s /home/debian/.local/lib/aws/bin/aws_completer aws_completer
+    sudo cp ~/.local/lib/aws/bin/aws_bash_completer /etc/bash_completion.d/aws_bash_completer
 
     # dwm
     version=6.2
