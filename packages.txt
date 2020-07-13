@@ -19,7 +19,6 @@ cmus                  debian terminal  client          music
 cowsay                debian terminal  fun
 curl                  debian terminal  file            transfer
 curseofwar            debian terminal  game
-ddgr                  debian terminal  browser
 dialog                debian terminal  language        dialogbox
 dnsutils              debian terminal  stats           dns
 dstat                 debian terminal  stats           multi
@@ -37,7 +36,6 @@ git                   debian terminal  scm
 git-extras            debian terminal  scm
 gnuchess              debian terminal  game
 gnupg                 debian prereq    apt-key
-googler               debian terminal  browser
 greed                 debian terminal  game
 howdoi                debian terminal  language
 htop                  debian terminal  stats           multi
