@@ -109,5 +109,5 @@ alias dcp='docker-compose pull --include-deps'
 alias dcr='docker-compose restart'
 
 # bookmarks
-alias bl='7z a -p`cat ~/.bookmarkspasswd` ~/repos/personal/buku/places.sqlite.7z $(find ~/.mozilla/firefox/*.default/ -maxdepth 0)/places.sqlite'
-alias bu='cd ~/repos/personal/buku ; 7z x -p`cat ~/.bookmarkspasswd` ~/repos/personal/buku/places.sqlite.7z ; mv ~/repos/personal/buku/places.sqlite $(find ~/.mozilla/firefox/*.default/ -maxdepth 0)/places.sqlite'
+alias bookmark-backup='7z a -p`cat ~/.bookmarkspasswd` ~/repos/personal/buku/places.sqlite.7z $(find ~/.mozilla/firefox/*.default/ -maxdepth 0)/places.sqlite'
+alias bookmark-restore='cd ~/repos/personal/buku ; 7z x -p`cat ~/.bookmarkspasswd` ~/repos/personal/buku/places.sqlite.7z ; mv ~/repos/personal/buku/places.sqlite $(find ~/.mozilla/firefox/*.default/ -maxdepth 0)/places.sqlite'
