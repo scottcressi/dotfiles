@@ -293,16 +293,10 @@ parse_git_branch_and_add_brackets(){
 -aws-eks-config(){
     echo region:
     read -r region
+    aws eks list-clusters --region "$region"
     echo cluster name:
     read -r cluster
     aws eks update-kubeconfig --region "$region" --name "$cluster"
-
-}
-
--aws-eks-list(){
-    echo region:
-    read -r region
-    aws eks list-clusters --region "$region"
 
 }
 
