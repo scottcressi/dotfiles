@@ -76,7 +76,7 @@ parse_git_branch_and_add_brackets(){
     make clean install --quiet
 
     # terraform
-    version=0.12.26
+    version=0.12.28
     [[ "$(terraform version | grep "v[0-9]" | awk '{print $2}' | sed 's/v//g')" != "$version" ]] && \
     curl -s -L https://releases.hashicorp.com/terraform/${version}/terraform_${version}_linux_amd64.zip --output ~/bin/terraform_${version}_linux_amd64.zip && \
     unzip -d ~/bin -o ~/bin/terraform_${version}_linux_amd64.zip && \
