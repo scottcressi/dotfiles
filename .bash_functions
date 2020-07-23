@@ -76,7 +76,7 @@ parse_git_branch_and_add_brackets(){
     make clean install --quiet
 
     # terraform
-    version=0.12.28
+    version=0.12.29
     [[ "$(terraform version | grep "v[0-9]" | awk '{print $2}' | sed 's/v//g')" != "$version" ]] && \
     curl -s -L https://releases.hashicorp.com/terraform/${version}/terraform_${version}_linux_amd64.zip --output ~/bin/terraform_${version}_linux_amd64.zip && \
     unzip -d ~/bin -o ~/bin/terraform_${version}_linux_amd64.zip && \
@@ -114,7 +114,7 @@ parse_git_branch_and_add_brackets(){
     helm plugin install https://github.com/databus23/helm-diff --version master
 
     # helmfile
-    version=v0.122.1
+    version=v0.125.0
     [[ "$(helmfile --version | awk '{print $3}')" != "$version" ]] && curl -s -L --url https://github.com/roboll/helmfile/releases/download/${version}/helmfile_linux_amd64 --output ~/bin/helmfile
 
     # kubectl
