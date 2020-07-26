@@ -106,8 +106,8 @@ parse_git_branch_and_add_brackets(){
     [[ "$(kops version | awk '{print $2}')" != "$version" ]] && curl -s -L --url https://github.com/kubernetes/kops/releases/download/v${version}/kops-linux-amd64 --output ~/bin/kops
 
     # helm
-    version=v2.16.9
-    [[ "$(helm version --client | awk '{print $2}' | sed 's/.*:"//g' | sed 's/",//g')" != "$version" ]] && \
+    version=v3.2.4
+    [[ "$(helm version --client | awk '{print $1}' | sed 's/.*:"//g' | sed 's/",//g')" != "$version" ]] && \
     curl -s -L --url https://get.helm.sh/helm-"${version}"-linux-amd64.tar.gz | gunzip | tar xv && \
     mv linux-amd64/helm ~/bin/helm && \
     rm -rf linux-amd64 && \
@@ -324,8 +324,6 @@ parse_git_branch_and_add_brackets(){
 
 -kind(){
     kind create cluster
-    helm init
-    kubectl create clusterrolebinding add-on-cluster-admin --clusterrole=cluster-admin --serviceaccount=kube-system:default
 
 }
 

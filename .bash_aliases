@@ -62,8 +62,8 @@ alias gt='git tag -l'
 alias tl='tmux list-windows'
 
 # helm
-alias hl='helm ls'
-alias hdp='helm delete --purge'
+alias hl='helm ls -A'
+alias hdp='helm delete'
 
 # kops
 alias kgc='kops --state s3://kubernetes-`aws sts get-caller-identity --output text --query "Account"` get cluster'
