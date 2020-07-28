@@ -500,3 +500,11 @@ parse_git_branch_and_add_brackets(){
 -generate-person(){
     curl -s -o ~/tmp/person https://thispersondoesnotexist.com/image && sxiv ~/tmp/person && rm -f ~/tmp/person
 }
+
+-git-push-all-remotes(){
+    if [ "$(pwd | grep personal && echo $?)" == "0" ] ; then
+        git remote | xargs -L1 git push --all
+    else
+        echo nope
+    fi
+}
