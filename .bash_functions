@@ -98,7 +98,7 @@ parse_git_branch_and_add_brackets(){
     rm -rf octant_${version}_Linux-64bit.tar.gz octant_${version}_Linux-64bit
 
     # skaffold
-    version=v1.12.1
+    version=v1.13.0
     [[ "$(skaffold version)" != "$version" ]] && curl -s -L --url https://github.com/GoogleContainerTools/skaffold/releases/download/${version}/skaffold-linux-amd64 --output ~/bin/skaffold
 
     # kops
@@ -114,7 +114,7 @@ parse_git_branch_and_add_brackets(){
     helm plugin install https://github.com/databus23/helm-diff --version master
 
     # helmfile
-    version=v0.125.0
+    version=v0.125.1
     [[ "$(helmfile --version | awk '{print $3}')" != "$version" ]] && curl -s -L --url https://github.com/roboll/helmfile/releases/download/${version}/helmfile_linux_amd64 --output ~/bin/helmfile
 
     # kubectl
