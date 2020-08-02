@@ -31,6 +31,11 @@ parse_git_branch_and_add_brackets(){
     # install
     grep "$(grep ^ID /etc/os-release | sed 's/ID=//g')" ~/repos/personal/dotfiles/packages.txt | awk '{print $1}' | xargs sudo apt-get install -y --quiet --quiet
 
+    # drivers
+    if [ "$(lspci | grep VGA | awk '{print $5}')" == "NVIDIA" ] ; then
+        sudo apt-get install -y --quiet --quiet nvidia-driver
+    fi
+
     # directories storage
     for i in "${DIRS[@]}" ; do
     mkdir -p ~/mnt/"$i"
@@ -173,7 +178,7 @@ parse_git_branch_and_add_brackets(){
         make clean install --quiet
 
         # firefox
-        version=78.0.2
+        version=79.0
         [[ ! -d ~/firefox ]] && \
         cd ~/ && curl -s -L --url https://ftp.mozilla.org/pub/firefox/releases/${version}/linux-x86_64/en-US/firefox-${version}.tar.bz2 | tar -xj
 
