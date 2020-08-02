@@ -15,7 +15,7 @@ alias search='apt-cache search'
 alias tm='transmission-remote debian:8080 -l'
 alias vf='vifm .'
 alias ww='curl http://wttr.in/'
-alias xrandr-tv='xrandr -s 1024x768'
+alias xrandr-tv='xrandr -s 1360x768'
 alias ycm='cd ~/.vim/plugged/YouCompleteMe && python3 install.py --all'
 
 # revisions
