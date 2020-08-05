@@ -104,7 +104,7 @@ parse_git_branch_and_add_brackets(){
     cp -rp ~/tmp/octant_${version}_Linux-64bit/octant ~/bin/
 
     # skaffold
-    version=v1.13.0
+    version=v1.13.1
     [[ "$(skaffold version)" != "$version" ]] && \
     curl -s -L --url https://github.com/GoogleContainerTools/skaffold/releases/download/${version}/skaffold-linux-amd64 --output ~/bin/skaffold
 
