@@ -36,6 +36,15 @@ parse_git_branch_and_add_brackets(){
         sudo apt-get install -y --quiet --quiet nvidia-driver
     fi
 
+    # docker
+    if [[ "$(docker ps -a | grep -c 'Up ')" == 0 ]] ; then
+    [[ ! -f /etc/apt/sources.list.d/docker.list ]] && curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add - && \
+    sudo apt-key fingerprint 0EBFCD88
+    echo "deb [arch=amd64] https://download.docker.com/linux/$(grep ^ID /etc/os-release | sed 's/ID=//g') $(grep VERSION_CODENAME /etc/os-release | sed 's/.*=//g') stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+    sudo apt-get install -y --quiet --quiet containerd.io docker-ce docker-ce-cli
+    sudo usermod -a -G docker "$USER"
+    fi
+
     # directories storage
     for i in "${DIRS[@]}" ; do
     mkdir -p ~/mnt/"$i"
@@ -53,15 +62,6 @@ parse_git_branch_and_add_brackets(){
 
     # statusbar
     [[ ! -d ~/repos/thirdparty/dwmblocks ]] && git clone https://github.com/torrinfail/dwmblocks ~/repos/thirdparty/dwmblocks
-
-    # docker
-    if [[ "$(docker ps -a | grep -c 'Up ')" == 0 ]] ; then
-    [[ ! -f /etc/apt/sources.list.d/docker.list ]] && curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add - && \
-    sudo apt-key fingerprint 0EBFCD88
-    echo "deb [arch=amd64] https://download.docker.com/linux/$(grep ^ID /etc/os-release | sed 's/ID=//g') $(grep VERSION_CODENAME /etc/os-release | sed 's/.*=//g') stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-    sudo apt-get install -y --quiet --quiet containerd.io docker-ce docker-ce-cli
-    sudo usermod -a -G docker "$USER"
-    fi
 
     # aws cli
     [[ ! -f ~/awscli-bundle.zip ]] && curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" --output ~/awscli-bundle.zip && \
@@ -285,7 +285,7 @@ parse_git_branch_and_add_brackets(){
 }
 
 -is-webcam-on(){
-    if [ "$(find /sys/class/power_supply/* -type l | grep -c BAT)" -ge 1 ] ; then
+    if [ -d /sys/module/battery ] ; then
         if [ "$(lsmod | grep ^uvcvideo | awk '{print $3}')" == "0" ] ; then
             echo no
         else
