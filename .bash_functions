@@ -74,11 +74,10 @@ parse_git_branch_and_add_brackets(){
 
     # dwm
     version=6.2
-    [[ ! -f ~/dwm-${version}.tar.gz ]] && \
-    curl -s -L --url https://dl.suckless.org/dwm/dwm-${version}.tar.gz --output ~/dwm-${version}.tar.gz && \
+    [[ ! -d ~/dwm ]] && \
+    git clone git://git.suckless.org/dwm ~/dwm && \
     export DESTDIR="$HOME" && \
-    tar zxf ~/dwm-${version}.tar.gz --directory ~/ && \
-    cd ~/dwm-${version} && \
+    cd ~/dwm && git checkout ${version} && \
     make clean install --quiet
 
     # terraform
