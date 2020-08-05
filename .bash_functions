@@ -38,7 +38,8 @@ parse_git_branch_and_add_brackets(){
 
     # docker
     if [[ "$(docker ps -a | grep -c 'Up ')" == 0 ]] ; then
-    [[ ! -f /etc/apt/sources.list.d/docker.list ]] && curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add - && \
+    [[ ! -f /etc/apt/sources.list.d/docker.list ]] && \
+    curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add - && \
     sudo apt-key fingerprint 0EBFCD88
     echo "deb [arch=amd64] https://download.docker.com/linux/$(grep ^ID /etc/os-release | sed 's/ID=//g') $(grep VERSION_CODENAME /etc/os-release | sed 's/.*=//g') stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
     sudo apt-get install -y --quiet --quiet containerd.io docker-ce docker-ce-cli
@@ -64,7 +65,8 @@ parse_git_branch_and_add_brackets(){
     [[ ! -d ~/repos/thirdparty/dwmblocks ]] && git clone https://github.com/torrinfail/dwmblocks ~/repos/thirdparty/dwmblocks
 
     # aws cli
-    [[ ! -f ~/awscli-bundle.zip ]] && curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" --output ~/awscli-bundle.zip && \
+    [[ ! -f ~/awscli-bundle.zip ]] && \
+    curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" --output ~/awscli-bundle.zip && \
     cd && unzip awscli-bundle.zip && \
     ./awscli-bundle/install -b ~/bin/aws
     cd ~/bin && ln -sf ~/.local/lib/aws/bin/aws_completer aws_completer
@@ -72,86 +74,93 @@ parse_git_branch_and_add_brackets(){
 
     # dwm
     version=6.2
-    [[ ! -f ~/dwm-${version}.tar.gz ]] && curl -s -L --url https://dl.suckless.org/dwm/dwm-${version}.tar.gz --output ~/dwm-${version}.tar.gz && \
+    [[ ! -f ~/dwm-${version}.tar.gz ]] && \
+    curl -s -L --url https://dl.suckless.org/dwm/dwm-${version}.tar.gz --output ~/dwm-${version}.tar.gz && \
     export DESTDIR="$HOME" && \
-    cd && \
-    rm -rf dwm-${version} && \
-    tar zxf ~/dwm-${version}.tar.gz && \
+    tar zxf ~/dwm-${version}.tar.gz --directory ~/ && \
     cd ~/dwm-${version} && \
     make clean install --quiet
 
     # terraform
     version=0.12.29
     [[ "$(terraform version | grep "v[0-9]" | awk '{print $2}' | sed 's/v//g')" != "$version" ]] && \
-    curl -s -L https://releases.hashicorp.com/terraform/${version}/terraform_${version}_linux_amd64.zip --output ~/bin/terraform_${version}_linux_amd64.zip && \
-    unzip -d ~/bin -o ~/bin/terraform_${version}_linux_amd64.zip && \
-    rm -f ~/bin/terraform_${version}_linux_amd64.zip
+    curl -s -L https://releases.hashicorp.com/terraform/${version}/terraform_${version}_linux_amd64.zip --output ~/tmp/terraform_${version}_linux_amd64.zip && \
+    unzip -d ~/bin -o ~/tmp/terraform_${version}_linux_amd64.zip
 
     # terragrunt
     version=v0.21.8
-    [[ "$(terragrunt --version | awk '{print $3}')" != "$version" ]] && curl -s -L https://github.com/gruntwork-io/terragrunt/releases/download/${version}/terragrunt_linux_amd64 --output ~/bin/terragrunt
+    [[ "$(terragrunt --version | awk '{print $3}')" != "$version" ]] && \
+    curl -s -L https://github.com/gruntwork-io/terragrunt/releases/download/${version}/terragrunt_linux_amd64 --output ~/bin/terragrunt
 
     # docker compose
     version=1.25.4
-    [[ ! -f ~/bin/docker-compose ]] && curl -s -L https://github.com/docker/compose/releases/download/${version}/docker-compose-"$(uname -s)"-"$(uname -m)" -o ~/bin/docker-compose
+    [[ ! -f ~/bin/docker-compose ]] && \
+    curl -s -L https://github.com/docker/compose/releases/download/${version}/docker-compose-"$(uname -s)"-"$(uname -m)" -o ~/bin/docker-compose
 
     # octant
     version=0.14.0
     [[ "$(octant version | grep Version | awk '{print $2}')" != "$version" ]] && \
-    curl -s -L --url https://github.com/vmware-tanzu/octant/releases/download/v${version}/octant_${version}_Linux-64bit.tar.gz | gunzip | tar xv && \
-    mv octant_${version}_Linux-64bit/octant ~/bin/octant && \
-    rm -rf octant_${version}_Linux-64bit.tar.gz octant_${version}_Linux-64bit
+    curl -s -L --url https://github.com/vmware-tanzu/octant/releases/download/v${version}/octant_${version}_Linux-64bit.tar.gz --output ~/tmp/octant_${version}_Linux-64bit.tar.gz && \
+    tar xvf ~/tmp/octant_${version}_Linux-64bit.tar.gz --directory ~/tmp/ && \
+    cp -rp ~/tmp/octant_${version}_Linux-64bit/octant ~/bin/
 
     # skaffold
     version=v1.13.0
-    [[ "$(skaffold version)" != "$version" ]] && curl -s -L --url https://github.com/GoogleContainerTools/skaffold/releases/download/${version}/skaffold-linux-amd64 --output ~/bin/skaffold
+    [[ "$(skaffold version)" != "$version" ]] && \
+    curl -s -L --url https://github.com/GoogleContainerTools/skaffold/releases/download/${version}/skaffold-linux-amd64 --output ~/bin/skaffold
 
     # kops
     version=1.18.0
-    [[ "$(kops version | awk '{print $2}')" != "$version" ]] && curl -s -L --url https://github.com/kubernetes/kops/releases/download/v${version}/kops-linux-amd64 --output ~/bin/kops
+    [[ "$(kops version | awk '{print $2}')" != "$version" ]] && \
+    curl -s -L --url https://github.com/kubernetes/kops/releases/download/v${version}/kops-linux-amd64 --output ~/bin/kops
 
     # helm
     version=v3.2.4
     [[ "$(helm version --client | awk '{print $1}' | sed 's/.*:"//g' | sed 's/",//g')" != "$version" ]] && \
-    curl -s -L --url https://get.helm.sh/helm-"${version}"-linux-amd64.tar.gz | gunzip | tar xv && \
-    mv linux-amd64/helm ~/bin/helm && \
-    rm -rf linux-amd64 && \
-    helm plugin install https://github.com/databus23/helm-diff --version master
+    curl -s -L --url https://get.helm.sh/helm-"${version}"-linux-amd64.tar.gz --output ~/tmp/helm-"${version}"-linux-amd64.tar.gz && \
+    tar xvf ~/tmp/helm-"${version}"-linux-amd64.tar.gz --directory ~/tmp/ && \
+    cp -rp ~/tmp/linux-amd64/helm ~/bin/helm
 
     # helmfile
     version=v0.125.2
-    [[ "$(helmfile --version | awk '{print $3}')" != "$version" ]] && curl -s -L --url https://github.com/roboll/helmfile/releases/download/${version}/helmfile_linux_amd64 --output ~/bin/helmfile
+    [[ "$(helmfile --version | awk '{print $3}')" != "$version" ]] && \
+    curl -s -L https://github.com/roboll/helmfile/releases/download/${version}/helmfile_linux_amd64 --output ~/bin/helmfile
 
     # kubectl
     version=v1.18.2
-    [[ "$(kubectl version --client | awk '{print $5}' | sed 's/.*:"//g' | sed 's/",//g')" != "$version" ]] && curl -s -LO https://storage.googleapis.com/kubernetes-release/release/"${version}"/bin/linux/amd64/kubectl --output ~/bin/kubectl
+    [[ "$(kubectl version --client | awk '{print $5}' | sed 's/.*:"//g' | sed 's/",//g')" != "$version" ]] && \
+    curl -s -LO https://storage.googleapis.com/kubernetes-release/release/"${version}"/bin/linux/amd64/kubectl --output ~/bin/kubectl
 
     # k9s
     version=0.21.4
     [[ "$(k9s version --short | grep Version | awk '{print $2}')" != "$version" ]] && \
-    curl -s -L --url https://github.com/derailed/k9s/releases/download/v${version}/k9s_Linux_x86_64.tar.gz | gunzip | tar xv && \
-    mv k9s ~/bin/k9s ; rm -f README.md LICENSE k9s_"${version}"_Linux_x86_64.tar
+    curl -s -L --url https://github.com/derailed/k9s/releases/download/v${version}/k9s_Linux_x86_64.tar.gz --output ~/tmp/k9s_Linux_x86_64.tar.gz && \
+    tar xvf ~/tmp/k9s_Linux_x86_64.tar.gz --directory ~/tmp/ && \
+    cp -rp ~/tmp/k9s ~/bin/
 
     # kind
     version=v0.8.1
-    [[ "$(kind version | awk '{print $2}')" != "$version" ]] && curl -s -L --url https://github.com/kubernetes-sigs/kind/releases/download/${version}/kind-linux-amd64 --output ~/bin/kind
+    [[ "$(kind version | awk '{print $2}')" != "$version" ]] && \
+    curl -s -L --url https://github.com/kubernetes-sigs/kind/releases/download/${version}/kind-linux-amd64 --output ~/bin/kind
 
     # rakkess
     version=v0.4.4
     [[ "$(rakkess version)" != "$version" ]] && \
-    curl -s -L --url https://github.com/corneliusweig/rakkess/releases/download/${version}/rakkess-amd64-linux.tar.gz | gunzip | tar xv && \
-    mv rakkess-amd64-linux ~/bin/rakkess ; rm -f LICENSE
+    curl -s -L --url https://github.com/corneliusweig/rakkess/releases/download/${version}/rakkess-amd64-linux.tar.gz --output ~/tmp/rakkess-amd64-linux.tar.gz && \
+    tar xvf ~/tmp/rakkess-amd64-linux.tar.gz --directory ~/tmp/ && \
+    cp -rp ~/tmp/rakkess-amd64-linux ~/bin/rakkess
 
     # istioctl
     version=1.5.2
     [[ "$(istioctl version --remote=false)" != "$version" ]] && \
-    curl -s -L --url https://github.com/istio/istio/releases/download/${version}/istio-${version}-linux.tar.gz | gunzip | tar xv && \
-    mv istio-${version}/bin/istioctl ~/bin/istioctl && \
-    rm -rf istio-${version}
+    curl -s -L --url https://github.com/istio/istio/releases/download/${version}/istio-${version}-linux.tar.gz --output ~/tmp/istio-${version}-linux.tar.gz && \
+    tar xvf ~/tmp/istio-${version}-linux.tar.gz --directory ~/tmp/ && \
+    cp -rp ~/tmp/istio-${version}/bin/istioctl ~/bin/
 
     # slack term
     version=v0.5.0
-    [[ ! -f ~/bin/slack-term ]] && curl -s -L --url https://github.com/erroneousboat/slack-term/releases/download/${version}/slack-term-linux-amd64 --output ~/bin/slack-term
+    [[ ! -f ~/bin/slack-term ]] && \
+    curl -s -L --url https://github.com/erroneousboat/slack-term/releases/download/${version}/slack-term-linux-amd64 --output ~/bin/slack-term
 
     # dwarf fortress
     version=47_04
@@ -160,20 +169,19 @@ parse_git_branch_and_add_brackets(){
 
     # completions
     [[ ! -f ~/.bash_completion.d/kubectl ]] && kubectl completion bash | sudo tee ~/.bash_completion.d/kubectl
-    [[ ! -f ~/.bash_completion.d/docker-compose ]] && sudo curl -L https://raw.githubusercontent.com/docker/compose/1.26.0/contrib/completion/bash/docker-compose -o ~/.bash_completion.d/docker-compose
+    [[ ! -f ~/.bash_completion.d/docker-compose ]] && \
+    sudo curl -L https://raw.githubusercontent.com/docker/compose/1.26.0/contrib/completion/bash/docker-compose -o ~/.bash_completion.d/docker-compose
 
     # if wm
     if pgrep startx > /dev/null ; then
 
         # st
         version=0.8.3
-        [[ ! -f ~/st-${version}.tar.gz ]] && curl -s -L --url https://dl.suckless.org/st/st-${version}.tar.gz --output ~/st-${version}.tar.gz && \
+        [[ ! -d ~/st ]] && git clone https://git.suckless.org/st ~/st && \
+        cd ~/st && git checkout ${version} && \
         export DESTDIR="$HOME" && \
-        cd && \
-        rm -rf st-${version} && \
-        tar zxf ~/st-${version}.tar.gz && \
-        curl -s -L --url https://st.suckless.org/patches/scrollback/st-scrollback-20200419-72e3f6c.diff --output ~/st-${version}/st-scrollback-20200419-72e3f6c.diff && \
-        cd ~/st-${version} && \
+        curl -s -L --url https://st.suckless.org/patches/scrollback/st-scrollback-20200419-72e3f6c.diff --output ~/st/st-scrollback-20200419-72e3f6c.diff && \
+        cd ~/st && \
         patch --quiet --merge -i st-* && \
         make clean install --quiet
 
@@ -196,10 +204,14 @@ parse_git_branch_and_add_brackets(){
         cp -rp ~/repos/personal/suckless/firefox/search.json.mozlz4 "$profile"/
 
         # addons
-        [[ ! -f $profile_dir/uBlock0@raymondhill.net.xpi ]] && curl -s -L --url https://addons.mozilla.org/firefox/downloads/file/3579401/ublock_origin-1.27.10-an+fx.xpi?src=search --output "$profile_dir"/uBlock0@raymondhill.net.xpi
-        [[ ! -f $profile_dir/\{446900e4-71c2-419f-a6a7-df9c091e268b\}.xpi ]] && curl -s -L --url https://addons.mozilla.org/firefox/downloads/file/3582922/bitwarden_free_password_manager-1.44.3-an+fx.xpi?src=search --output "$profile_dir"/\{446900e4-71c2-419f-a6a7-df9c091e268b\}.xpi
-        [[ ! -f $profile_dir/\{e6e36c9a-8323-446c-b720-a176017e38ff\}.xpi ]] && curl -s -L --url https://addons.mozilla.org/firefox/downloads/file/3566579/torrent_control-0.2.18-fx.xpi?src=search --output "$profile_dir"/\{e6e36c9a-8323-446c-b720-a176017e38ff\}.xpi
-        [[ ! -f $profile_dir/2341n4m3@gmail.com.xpi ]] && curl -s -L --url https://addons.mozilla.org/firefox/downloads/file/717262/ageless_for_youtube-1.3-an+fx.xpi?src=search --output "$profile_dir"/2341n4m3@gmail.com.xpi
+        [[ ! -f $profile_dir/uBlock0@raymondhill.net.xpi ]] && \
+        curl -s -L --url https://addons.mozilla.org/firefox/downloads/file/3579401/ublock_origin-1.27.10-an+fx.xpi?src=search --output "$profile_dir"/uBlock0@raymondhill.net.xpi
+        [[ ! -f $profile_dir/\{446900e4-71c2-419f-a6a7-df9c091e268b\}.xpi ]] && \
+        curl -s -L --url https://addons.mozilla.org/firefox/downloads/file/3582922/bitwarden_free_password_manager-1.44.3-an+fx.xpi?src=search --output "$profile_dir"/\{446900e4-71c2-419f-a6a7-df9c091e268b\}.xpi
+        [[ ! -f $profile_dir/\{e6e36c9a-8323-446c-b720-a176017e38ff\}.xpi ]] && \
+        curl -s -L --url https://addons.mozilla.org/firefox/downloads/file/3566579/torrent_control-0.2.18-fx.xpi?src=search --output "$profile_dir"/\{e6e36c9a-8323-446c-b720-a176017e38ff\}.xpi
+        [[ ! -f $profile_dir/2341n4m3@gmail.com.xpi ]] && \
+        curl -s -L --url https://addons.mozilla.org/firefox/downloads/file/717262/ageless_for_youtube-1.3-an+fx.xpi?src=search --output "$profile_dir"/2341n4m3@gmail.com.xpi
 
     fi
 
@@ -460,7 +472,7 @@ parse_git_branch_and_add_brackets(){
 }
 
 -videochat(){
-    docker run --rm --name spreed-webrtc -p 8000:8080 -p 8443:8443 -i -t spreed/webrtc
+    docker run --name spreed-webrtc -p 8000:8080 -p 8443:8443 -i -t spreed/webrtc
 }
 
 -corona(){
@@ -503,7 +515,7 @@ parse_git_branch_and_add_brackets(){
 }
 
 -generate-person(){
-    curl -s -o ~/tmp/person https://thispersondoesnotexist.com/image && sxiv ~/tmp/person && rm -f ~/tmp/person
+    curl -s -o ~/tmp/person https://thispersondoesnotexist.com/image && sxiv ~/tmp/person
 }
 
 -git-push-all-remotes(){
