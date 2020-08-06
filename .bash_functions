@@ -169,7 +169,7 @@ parse_git_branch_and_add_brackets(){
     if pgrep startx > /dev/null ; then
 
         # firefox
-        version=79.0
+        version=$(curl -s https://www.mozilla.org/en-US/firefox/releases/| grep data-latest | awk '{print $7}' | sed 's/.*=//g' | sed 's/"//g')
         [[ ! -d ~/firefox ]] && \
         cd ~/ && curl -s -L --url https://ftp.mozilla.org/pub/firefox/releases/${version}/linux-x86_64/en-US/firefox-${version}.tar.bz2 | tar -xj
 
