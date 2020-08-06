@@ -47,6 +47,9 @@ autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 " folding
 autocmd Filetype * AnyFoldActivate "activate for all filetypes
 
+" autocompile suckless
+autocmd! bufwritepost config.h !make clean install
+
 "" GENERAL CONFIGURATION ------------------------------------------------------
 
 " history
