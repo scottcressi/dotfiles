@@ -156,8 +156,9 @@ parse_git_branch_and_add_brackets(){
 
     # dwarf fortress
     version=47_04
-    [[ ! -d ~/df_linux ]] && \
-    curl -s -L --url http://www.bay12games.com/dwarves/df_${version}_linux.tar.bz2 | tar -xj
+    [[ ! -d ~/repos/thirdparty/df_linux ]] && \
+    curl -s -L --url http://www.bay12games.com/dwarves/df_${version}_linux.tar.bz2 --output ~/repos/thirdparty/df_${version}_linux.tar.bz2 && \
+    tar xvf ~/repos/thirdparty/df_${version}_linux.tar.bz2 --directory ~/repos/thirdparty/ && \
 
     # completions
     [[ ! -f ~/.bash_completion.d/kubectl ]] && kubectl completion bash | sudo tee ~/.bash_completion.d/kubectl
@@ -469,10 +470,10 @@ parse_git_branch_and_add_brackets(){
 -suckless(){
     # dwm
     version=6.2
-    [[ ! -d ~/dwm ]] && \
-    git clone git://git.suckless.org/dwm ~/dwm
+    [[ ! -d ~/repos/thirdparty/dwm ]] && \
+    git clone git://git.suckless.org/dwm ~/repos/thirdparty/dwm
     export DESTDIR="$HOME" && \
-    cd ~/dwm && git checkout ${version} && git clean -df && \
+    cd ~/repos/thirdparty/dwm && git checkout ${version} && git clean -df && \
     make clean install --quiet
 
     # dwmblocks
@@ -485,11 +486,11 @@ parse_git_branch_and_add_brackets(){
 
     # st
     version=0.8.3
-    [[ ! -d ~/st ]] && \
-    git clone https://git.suckless.org/st ~/st
-    cd ~/st && git checkout ${version} && git clean -df && git checkout . && \
+    [[ ! -d ~//repo/thirdparty/st ]] && \
+    git clone https://git.suckless.org/st ~/repos/thirdparty/st
+    cd ~/repos/thirdparty/st && git checkout ${version} && git clean -df && git checkout . && \
     export DESTDIR="$HOME" && \
-    curl -s -L --url https://st.suckless.org/patches/scrollback/st-scrollback-20200419-72e3f6c.diff --output ~/st/st-scrollback-20200419-72e3f6c.diff && \
+    curl -s -L --url https://st.suckless.org/patches/scrollback/st-scrollback-20200419-72e3f6c.diff --output ~/repos/thirdparty/st/st-scrollback-20200419-72e3f6c.diff && \
     patch --quiet --merge -i st-* && \
     make clean install --quiet
 }
