@@ -487,7 +487,7 @@ parse_git_branch_and_add_brackets(){
 
     # st
     version=0.8.3
-    [[ ! -d ~//repo/thirdparty/st ]] && \
+    [[ ! -d ~/repos/thirdparty/st ]] && \
     git clone https://git.suckless.org/st ~/repos/thirdparty/st
     cd ~/repos/thirdparty/st && git checkout ${version} && \
     export DESTDIR="$HOME" && \
