@@ -65,9 +65,6 @@ parse_git_branch_and_add_brackets(){
     # venv
     [[ ! -d ~/python/ ]] && python3 -m venv ~/python
 
-    # statusbar
-    [[ ! -d ~/repos/thirdparty/dwmblocks ]] && git clone https://github.com/torrinfail/dwmblocks ~/repos/thirdparty/dwmblocks
-
     # aws cli
     [[ ! -f ~/awscli-bundle.zip ]] && \
     curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" --output ~/awscli-bundle.zip && \
@@ -75,14 +72,6 @@ parse_git_branch_and_add_brackets(){
     ./awscli-bundle/install -b ~/bin/aws
     cd ~/bin && ln -sf ~/.local/lib/aws/bin/aws_completer aws_completer
     sudo cp ~/.local/lib/aws/bin/aws_bash_completer ~/.bash_completion.d/aws_bash_completer
-
-    # dwm
-    version=6.2
-    [[ ! -d ~/dwm ]] && \
-    git clone git://git.suckless.org/dwm ~/dwm && \
-    export DESTDIR="$HOME" && \
-    cd ~/dwm && git checkout ${version} && \
-    make clean install --quiet
 
     # terraform
     version=0.12.29
@@ -178,16 +167,6 @@ parse_git_branch_and_add_brackets(){
     # if wm
     if pgrep startx > /dev/null ; then
 
-        # st
-        version=0.8.3
-        [[ ! -d ~/st ]] && git clone https://git.suckless.org/st ~/st && \
-        cd ~/st && git checkout ${version} && \
-        export DESTDIR="$HOME" && \
-        curl -s -L --url https://st.suckless.org/patches/scrollback/st-scrollback-20200419-72e3f6c.diff --output ~/st/st-scrollback-20200419-72e3f6c.diff && \
-        cd ~/st && \
-        patch --quiet --merge -i st-* && \
-        make clean install --quiet
-
         # firefox
         version=79.0
         [[ ! -d ~/firefox ]] && \
@@ -200,7 +179,8 @@ parse_git_branch_and_add_brackets(){
         [[ ! -d $profile_dir ]] && mkdir "$profile_dir"
 
         # ghacks + overrides
-        [[ ! -d ~/repos/thirdparty/ghacks-user.js ]] && git clone https://github.com/ghacksuserjs/ghacks-user.js.git ~/repos/thirdparty/ghacks-user.js
+        [[ ! -d ~/repos/thirdparty/ghacks-user.js ]] && \
+        git clone https://github.com/ghacksuserjs/ghacks-user.js.git ~/repos/thirdparty/ghacks-user.js
         [[ ! -f $profile/user.js ]] && grep ^user_pref ~/repos/thirdparty/ghacks-user.js/user.js ~/repos/personal/suckless/firefox/user-overrides.js | sed 's/.*user_pref/user_pref/g' > "$profile"/user.js
 
         # search
@@ -486,11 +466,32 @@ parse_git_branch_and_add_brackets(){
     curl 'https://corona-stats.online/updates'
 }
 
--dwmblocks(){
+-suckless(){
+    # dwm
+    version=6.2
+    [[ ! -d ~/dwm ]] && \
+    git clone git://git.suckless.org/dwm ~/dwm
+    export DESTDIR="$HOME" && \
+    cd ~/dwm && git checkout ${version} && git clean -df && \
+    make clean install --quiet
+
+    # dwmblocks
+    [[ ! -d ~/repos/thirdparty/dwmblocks ]] && \
+    git clone https://github.com/torrinfail/dwmblocks ~/repos/thirdparty/dwmblocks
     [[ "$(pgrep dwmblocks)" ]] && pkill dwmblocks
     cp ~/repos/personal/suckless/dwmblocks/dwmblocks.blocks.h ~/repos/thirdparty/dwmblocks/blocks.h
     cd ~/repos/thirdparty/dwmblocks && make clean install ; ./dwmblocks &
     cd ~/repos/thirdparty/dwmblocks && git checkout .
+
+    # st
+    version=0.8.3
+    [[ ! -d ~/st ]] && \
+    git clone https://git.suckless.org/st ~/st
+    cd ~/st && git checkout ${version} && git clean -df && git checkout . && \
+    export DESTDIR="$HOME" && \
+    curl -s -L --url https://st.suckless.org/patches/scrollback/st-scrollback-20200419-72e3f6c.diff --output ~/st/st-scrollback-20200419-72e3f6c.diff && \
+    patch --quiet --merge -i st-* && \
+    make clean install --quiet
 }
 
 -cowsay-normal(){
