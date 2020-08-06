@@ -26,17 +26,21 @@ parse_git_branch_and_add_brackets(){
 -packages(){
 
     # update
+    echo updating repos
     sudo apt-get update --quiet --quiet
 
     # install
+    echo installing debian packages
     grep "$(grep ^ID /etc/os-release | sed 's/ID=//g')" ~/repos/personal/dotfiles/packages.txt | awk '{print $1}' | xargs sudo apt-get install -y --quiet --quiet
 
     # drivers
+    echo installing drivers
     if [ "$(lspci | grep VGA | awk '{print $5}')" == "NVIDIA" ] ; then
         sudo apt-get install -y --quiet --quiet nvidia-driver
     fi
 
     # docker
+    echo installing docker
     if [[ "$(docker ps -a | grep -c 'Up ')" == 0 ]] ; then
     [[ ! -f /etc/apt/sources.list.d/docker.list ]] && \
     curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add - && \
