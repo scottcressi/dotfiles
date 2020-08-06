@@ -473,8 +473,9 @@ parse_git_branch_and_add_brackets(){
     [[ ! -d ~/repos/thirdparty/dwm ]] && \
     git clone git://git.suckless.org/dwm ~/repos/thirdparty/dwm
     export DESTDIR="$HOME" && \
-    cd ~/repos/thirdparty/dwm && git checkout ${version} && git clean -df && \
-    make clean install --quiet
+    cd ~/repos/thirdparty/dwm && \
+    make clean install --quiet && \
+    git checkout ${version} && git clean -df
 
     # dwmblocks
     [[ ! -d ~/repos/thirdparty/dwmblocks ]] && \
@@ -488,11 +489,12 @@ parse_git_branch_and_add_brackets(){
     version=0.8.3
     [[ ! -d ~//repo/thirdparty/st ]] && \
     git clone https://git.suckless.org/st ~/repos/thirdparty/st
-    cd ~/repos/thirdparty/st && git checkout ${version} && git clean -df && git checkout . && \
+    cd ~/repos/thirdparty/st && git checkout ${version} && \
     export DESTDIR="$HOME" && \
     curl -s -L --url https://st.suckless.org/patches/scrollback/st-scrollback-20200419-72e3f6c.diff --output ~/repos/thirdparty/st/st-scrollback-20200419-72e3f6c.diff && \
     patch --quiet --merge -i st-* && \
-    make clean install --quiet
+    make clean install --quiet && \
+    cd ~/repos/thirdparty/st && git clean -df && git checkout .
 }
 
 -cowsay-normal(){
