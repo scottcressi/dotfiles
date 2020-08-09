@@ -227,6 +227,16 @@ parse_git_branch_and_add_brackets(){
     fi
 }
 
+-dl(){
+    docker network ls
+    echo
+    docker image ls --all
+    echo
+    docker container ls --all
+    echo
+    docker volume ls
+}
+
 -kops-create(){
     echo
     echo enter cluster name, ex. test.example.com:
