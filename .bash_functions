@@ -44,7 +44,7 @@ parse_git_branch_and_add_brackets(){
     if [[ "$(docker ps -a | grep -c 'Up ')" == 0 ]] ; then
     [[ ! -f /etc/apt/sources.list.d/docker.list ]] && \
     curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add - && \
-    sudo apt-key fingerprint 0EBFCD88
+    sudo apt-key fingerprint 0EBFCD88 && \
     echo "deb [arch=amd64] https://download.docker.com/linux/$(grep ^ID /etc/os-release | sed 's/ID=//g') $(grep VERSION_CODENAME /etc/os-release | sed 's/.*=//g') stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
     sudo apt-get install -y --quiet --quiet containerd.io docker-ce docker-ce-cli
     sudo usermod -a -G docker "$USER"
