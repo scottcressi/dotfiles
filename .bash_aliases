@@ -100,7 +100,7 @@ alias tfa='terragrunt apply --terragrunt-source-update '
 # docker
 alias di='docker images'
 alias dp='docker ps --all'
-alias dc='docker container prune -f && docker network prune -f'
+alias dc='docker container prune -f && docker network prune -f && docker volume prune -f'
 alias dca='docker system prune --volumes --all'
 alias dn='docker volume ls'
 alias dv='docker network ls'
