@@ -74,7 +74,7 @@ parse_git_branch_and_add_brackets(){
     sudo cp ~/.local/lib/aws/bin/aws_bash_completer ~/.bash_completion.d/aws_bash_completer
 
     # terraform
-    version=0.12.29
+    version=0.13.0
     [[ "$(terraform version | grep "v[0-9]" | awk '{print $2}' | sed 's/v//g')" != "$version" ]] && \
     curl -s -L https://releases.hashicorp.com/terraform/${version}/terraform_${version}_linux_amd64.zip --output ~/tmp/terraform_${version}_linux_amd64.zip && \
     unzip -d ~/bin -o ~/tmp/terraform_${version}_linux_amd64.zip
