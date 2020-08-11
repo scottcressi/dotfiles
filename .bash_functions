@@ -171,7 +171,7 @@ parse_git_branch_and_add_brackets(){
         # firefox
         version=$(curl -s https://www.mozilla.org/en-US/firefox/releases/| grep data-latest | awk '{print $7}' | sed 's/.*=//g' | sed 's/"//g')
         [[ ! -d ~/firefox ]] && \
-        cd ~/ && curl -s -L --url https://ftp.mozilla.org/pub/firefox/releases/${version}/linux-x86_64/en-US/firefox-${version}.tar.bz2 | tar -xj
+        cd ~/ && curl -s -L --url https://ftp.mozilla.org/pub/firefox/releases/"${version}"/linux-x86_64/en-US/firefox-"${version}".tar.bz2 | tar -xj
 
         # firefox profile
         ~/firefox/firefox -CreateProfile default
@@ -481,7 +481,7 @@ parse_git_branch_and_add_brackets(){
     # dwm
     version=6.2
     [[ ! -d ~/repos/thirdparty/dwm ]] && \
-    git clone git://git.suckless.org/dwm ~/repos/thirdparty/dwm
+    git clone https://git.suckless.org/dwm ~/repos/thirdparty/dwm
     export DESTDIR="$HOME" && \
     cd ~/repos/thirdparty/dwm && \
     make clean install --quiet && \
