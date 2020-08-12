@@ -496,7 +496,7 @@ parse_git_branch_and_add_brackets(){
     cd ~/repos/thirdparty/dwmblocks && git checkout .
 
     # st
-    version=0.8.3
+    version=0.8.4
     [[ ! -d ~/repos/thirdparty/st ]] && \
     git clone https://git.suckless.org/st ~/repos/thirdparty/st
     cd ~/repos/thirdparty/st && git checkout ${version} && \
