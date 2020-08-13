@@ -108,6 +108,7 @@ alias dcu='docker-compose up -d'
 alias dcd='docker-compose down'
 alias dcp='docker-compose pull --include-deps'
 alias dcr='docker-compose restart'
+alias dl='docker network ls && echo && docker image ls --all && echo && docker container ls --all && echo && docker volume ls'
 
 # bookmarks
 alias bookmark-backup='7z a -p`cat ~/.bookmarkspasswd` ~/repos/personal/buku/places.sqlite.7z $(find ~/.mozilla/firefox/*.default/ -maxdepth 0)/places.sqlite'
