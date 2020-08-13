@@ -207,7 +207,7 @@ parse_git_branch_and_add_brackets(){
 
 }
 
--ds(){
+-docker-stop-all(){
     echo stop all containers? y/n
     read -r confirm
     if [ "$confirm" == "y" ] ; then
@@ -217,7 +217,7 @@ parse_git_branch_and_add_brackets(){
     fi
 }
 
--dk(){
+-docker-kill-all(){
     echo kill all containers? y/n
     read -r confirm
     if [ "$confirm" == "y" ] ; then
@@ -459,7 +459,7 @@ parse_git_branch_and_add_brackets(){
     docker run --name spreed-webrtc -p 8000:8080 -p 8443:8443 -i -t spreed/webrtc
 }
 
--corona(){
+-corona-stats(){
     curl 'https://corona-stats.online?top=10&minimal=true'
 }
 
