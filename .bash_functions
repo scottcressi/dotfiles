@@ -114,7 +114,7 @@ parse_git_branch_and_add_brackets(){
     cp -rp ~/tmp/linux-amd64/helm ~/bin/helm
 
     # helmfile
-    version=v0.125.2
+    version=v0.125.6
     [[ "$(helmfile --version | awk '{print $3}')" != "$version" ]] && \
     curl -s -L https://github.com/roboll/helmfile/releases/download/${version}/helmfile_linux_amd64 --output ~/bin/helmfile
 
