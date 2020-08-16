@@ -183,6 +183,7 @@ parse_git_branch_and_add_brackets(){
         version=79.0
         [[ ! -d ~/repos/thirdparty/ghacks-user.js ]] && \
         git clone https://github.com/ghacksuserjs/ghacks-user.js.git ~/repos/thirdparty/ghacks-user.js
+        [[ $(cd ~/repos/thirdparty/ghacks-user.js && git branch | awk '{print $5}' | sed s/\)//g | head -1) != "$version" ]] && \
         cd ~/repos/thirdparty/ghacks-user.js && git checkout $version
         [[ ! -f $profile/user.js ]] && grep ^user_pref ~/repos/thirdparty/ghacks-user.js/user.js ~/repos/personal/suckless/firefox/user-overrides.js | sed 's/.*user_pref/user_pref/g' > "$profile"/user.js
 
