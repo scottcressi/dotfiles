@@ -537,9 +537,9 @@ parse_git_branch_and_add_brackets(){
 }
 
 -ssh-port-forward(){
-echo port:
-read -r port
-echo host:
-read -r host
-ssh -L "$port":localhost:"$port" "$host"
+    echo port:
+    read -r port
+    echo host:
+    read -r host
+    ssh -L "$port":localhost:"$port" "$host"
 }
