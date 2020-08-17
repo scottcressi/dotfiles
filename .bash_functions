@@ -76,7 +76,7 @@ parse_git_branch_and_add_brackets(){
     # youtube-dl
     version=2020.07.28
     [[ ! -f ~/bin/youtube-dl ]] && \
-    curl "https://github.com/ytdl-org/youtube-dl/releases/download/${version}/youtube-dl" --output ~/bin/youtube-dl
+    curl -s -L https://github.com/ytdl-org/youtube-dl/releases/download/${version}/youtube-dl --output ~/bin/youtube-dl
 
     # terraform
     version=0.13.0
