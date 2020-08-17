@@ -147,7 +147,6 @@ xfishtank               debian gui       fun
 xorg                    debian gui       graphics        xserver
 xwallpaper              debian terminal  wallpaper
 yamllint                debian terminal  lint
-youtube-dl              debian terminal  video
 zathura                 debian gui       document        reader
 zathura-cb              debian gui       document        reader
 zathura-pdf-poppler     debian gui       document        reader

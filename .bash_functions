@@ -73,6 +73,11 @@ parse_git_branch_and_add_brackets(){
     cd ~/bin && ln -sf ~/.local/lib/aws/bin/aws_completer aws_completer
     sudo cp ~/.local/lib/aws/bin/aws_bash_completer ~/.bash_completion.d/aws_bash_completer
 
+    # youtube-dl
+    version=2020.07.28
+    [[ ! -f ~/bin/youtube-dl ]] && \
+    curl "https://github.com/ytdl-org/youtube-dl/releases/download/${version}/youtube-dl" --output ~/bin/youtube-dl
+
     # terraform
     version=0.13.0
     [[ "$(terraform version | grep "v[0-9]" | awk '{print $2}' | sed 's/v//g')" != "$version" ]] && \
