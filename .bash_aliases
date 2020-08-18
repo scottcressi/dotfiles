@@ -9,7 +9,6 @@ alias l='ls -lh --color=auto'
 alias am='pulsemixer'
 alias get='sudo apt-get install'
 alias gip='curl -s ipinfo.io'
-alias ipa="ip -oneline address show dynamic"
 alias pf='pip freeze'
 alias search='apt-cache search'
 alias test-disk-speed='dd if=/dev/zero of=~/tmp/testfile.bin bs=1M count=4K conv=fdatasync status=progress;rm -f ~/tmp/testfile.bin'

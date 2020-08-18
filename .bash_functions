@@ -558,3 +558,8 @@ cd ~/repos/personal/buku || exit
 7z x -p"$(cat ~/.bookmarkspasswd)" ~/repos/personal/buku/places.sqlite.7z
 mv ~/repos/personal/buku/places.sqlite "$(find ~/.mozilla/firefox/*.default/ -maxdepth 0)"/places.sqlite
 }
+
+-ip(){
+DEVICE=$(nmcli device | grep connected | awk '{print $1}')
+nmcli -g ip4.address device show "$DEVICE"
+}
