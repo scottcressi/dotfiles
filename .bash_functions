@@ -548,3 +548,13 @@ parse_git_branch_and_add_brackets(){
     read -r host
     ssh -L "$port":localhost:"$port" "$host"
 }
+
+-bookmarks-backup(){
+7z a -p"$(cat ~/.bookmarkspasswd)" ~/repos/personal/buku/places.sqlite.7z "$(find ~/.mozilla/firefox/*.default/ -maxdepth 0)"/places.sqlite
+}
+
+-bookmarks-restore(){
+cd ~/repos/personal/buku || exit
+7z x -p"$(cat ~/.bookmarkspasswd)" ~/repos/personal/buku/places.sqlite.7z
+mv ~/repos/personal/buku/places.sqlite "$(find ~/.mozilla/firefox/*.default/ -maxdepth 0)"/places.sqlite
+}

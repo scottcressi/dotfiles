@@ -9,9 +9,10 @@ alias l='ls -lh --color=auto'
 alias am='pulsemixer'
 alias get='sudo apt-get install'
 alias gip='curl -s ipinfo.io'
-alias ipa='ip -family inet -oneline addr | grep -v docker | grep -v 127.0.0.1 | grep -Eo "inet (addr:)?([0-9]*\.){3}[0-9]*" | grep -Eo "([0-9]*\.){3}[0-9]*"'
+alias ipa="ip -oneline address show dynamic"
 alias pf='pip freeze'
 alias search='apt-cache search'
+alias test-disk-speed='dd if=/dev/zero of=~/tmp/testfile.bin bs=1M count=4K conv=fdatasync status=progress;rm -f ~/tmp/testfile.bin'
 alias tm='transmission-remote debian:8080 -l'
 alias vf='vifm .'
 alias ww='curl http://wttr.in/'
@@ -65,9 +66,6 @@ alias tl='tmux list-windows'
 alias hl='helm ls -A'
 alias hdp='helm delete'
 
-# kops
-alias kgc='kops --state s3://kubernetes-`aws sts get-caller-identity --output text --query "Account"` get cluster'
-
 # kube
 alias ka='kubectl get all --all-namespaces'
 alias kae='kubectl get all --all-namespaces -o wide'
@@ -109,7 +107,3 @@ alias dcd='docker-compose down'
 alias dcp='docker-compose pull --include-deps'
 alias dcr='docker-compose restart'
 alias dl='docker network ls && echo && docker image ls --all && echo && docker container ls --all && echo && docker volume ls'
-
-# bookmarks
-alias bookmark-backup='7z a -p`cat ~/.bookmarkspasswd` ~/repos/personal/buku/places.sqlite.7z $(find ~/.mozilla/firefox/*.default/ -maxdepth 0)/places.sqlite'
-alias bookmark-restore='cd ~/repos/personal/buku ; 7z x -p`cat ~/.bookmarkspasswd` ~/repos/personal/buku/places.sqlite.7z ; mv ~/repos/personal/buku/places.sqlite $(find ~/.mozilla/firefox/*.default/ -maxdepth 0)/places.sqlite'
