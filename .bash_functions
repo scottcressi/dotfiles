@@ -550,16 +550,15 @@ parse_git_branch_and_add_brackets(){
 }
 
 -bookmarks-backup(){
-7z a -p"$(cat ~/.bookmarkspasswd)" ~/repos/personal/buku/places.sqlite.7z "$(find ~/.mozilla/firefox/*.default/ -maxdepth 0)"/places.sqlite
+    7z a -p"$(cat ~/.bookmarkspasswd)" ~/repos/personal/buku/places.sqlite.7z "$(find ~/.mozilla/firefox/*.default/ -maxdepth 0)"/places.sqlite
 }
 
 -bookmarks-restore(){
-cd ~/repos/personal/buku || exit
-7z x -p"$(cat ~/.bookmarkspasswd)" ~/repos/personal/buku/places.sqlite.7z
-mv ~/repos/personal/buku/places.sqlite "$(find ~/.mozilla/firefox/*.default/ -maxdepth 0)"/places.sqlite
+    cd ~/repos/personal/buku || exit
+    7z x -p"$(cat ~/.bookmarkspasswd)" ~/repos/personal/buku/places.sqlite.7z
+    mv ~/repos/personal/buku/places.sqlite "$(find ~/.mozilla/firefox/*.default/ -maxdepth 0)"/places.sqlite
 }
 
 -ip(){
-DEVICE=$(nmcli device | grep connected | awk '{print $1}')
-nmcli -g ip4.address device show "$DEVICE"
+    ip -oneline -f inet a | grep dynamic | awk '{print $4}' | sed 's/\/.*//g'
 }
