@@ -106,7 +106,7 @@ parse_git_branch_and_add_brackets(){
     curl -L https://github.com/bloodorangeio/octant-helm/releases/download/v0.1.0/octant-helm_0.1.0_linux_amd64.tar.gz | tar zx -C ~/.config/octant/plugins/ octant-helm
 
     # skaffold
-    version=v1.13.1
+    version=v1.13.2
     [[ "$(skaffold version)" != "$version" ]] && \
     curl -s -L --url https://github.com/GoogleContainerTools/skaffold/releases/download/${version}/skaffold-linux-amd64 --output ~/bin/skaffold
 
