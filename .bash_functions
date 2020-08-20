@@ -95,11 +95,15 @@ parse_git_branch_and_add_brackets(){
     curl -s -L https://github.com/docker/compose/releases/download/${version}/docker-compose-"$(uname -s)"-"$(uname -m)" -o ~/bin/docker-compose
 
     # octant
-    version=0.14.0
+    version=0.15.0
     [[ "$(octant version | grep Version | awk '{print $2}')" != "$version" ]] && \
     curl -s -L --url https://github.com/vmware-tanzu/octant/releases/download/v${version}/octant_${version}_Linux-64bit.tar.gz --output ~/tmp/octant_${version}_Linux-64bit.tar.gz && \
     tar xvf ~/tmp/octant_${version}_Linux-64bit.tar.gz --directory ~/tmp/ && \
     cp -rp ~/tmp/octant_${version}_Linux-64bit/octant ~/bin/
+
+    # octant plugin
+    mkdir -p ~/.config/octant/plugins/ && \
+    curl -L https://github.com/bloodorangeio/octant-helm/releases/download/v0.1.0/octant-helm_0.1.0_linux_amd64.tar.gz | tar zx -C ~/.config/octant/plugins/ octant-helm
 
     # skaffold
     version=v1.13.1
