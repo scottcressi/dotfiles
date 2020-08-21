@@ -12,6 +12,7 @@ alias gip='curl -s ipinfo.io'
 alias pf='pip freeze'
 alias search='apt-cache search'
 alias stocks='~/repos/thirdparty/ticker.sh/ticker.sh'
+alias test-cpu='for i in 1 2 3 4; do while : ; do : ; done & done'
 alias test-disk-speed='dd if=/dev/zero of=~/tmp/testfile.bin bs=1M count=4K conv=fdatasync status=progress;rm -f ~/tmp/testfile.bin'
 alias tm='transmission-remote debian:8080 -l'
 alias vf='vifm .'
@@ -30,6 +31,7 @@ alias mpv='mpv --ytdl-format="bestvideo[height<=?360]+bestaudio/best"'
 alias mv="mv -i"
 alias pwgen='pwgen 32 1 --no-capitalize --no-numerals --ambiguous'
 alias rm="rm -i"
+alias top="top -i"
 alias weather='weather $(curl -s ipinfo.io | jq .postal -r)'
 alias xfishtank='xfishtank -c black -r .1 -i .1 -b 20 -f 20'
 alias xterm='xterm -bg black -fg white'
