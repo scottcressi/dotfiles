@@ -102,6 +102,7 @@ parse_git_branch_and_add_brackets(){
     cp -rp ~/tmp/octant_${version}_Linux-64bit/octant ~/bin/
 
     # octant plugin
+    [[ ! -d ~/.config/octant/plugins/ ]] && \
     mkdir -p ~/.config/octant/plugins/ && \
     curl -L https://github.com/bloodorangeio/octant-helm/releases/download/v0.1.0/octant-helm_0.1.0_linux_amd64.tar.gz | tar zx -C ~/.config/octant/plugins/ octant-helm
 
