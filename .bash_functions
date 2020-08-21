@@ -284,7 +284,7 @@ parse_git_branch_and_add_brackets(){
         --yes ; fi
 }
 
--aws-route53-records(){
+-aws-get-route53-records(){
     echo domain:
     read -r domain
     ZONE=$(aws route53 list-hosted-zones --query "HostedZones[?Name=='$domain.']".Id --output text | sed 's/\/hostedzone\///g')
@@ -292,7 +292,7 @@ parse_git_branch_and_add_brackets(){
 
 }
 
--aws-credentials(){
+-aws-config-credentials(){
     [[ -z "$1" ]] && echo enter profile ; echo ; grep "\\[" ~/.aws/credentials
     export AWS_DEFAULT_PROFILE=$1
 }
@@ -308,7 +308,7 @@ parse_git_branch_and_add_brackets(){
 
 }
 
--aws-eks-config(){
+-aws-config-eks(){
     echo region:
     read -r region
     aws eks list-clusters --region "$region"
@@ -318,7 +318,7 @@ parse_git_branch_and_add_brackets(){
 
 }
 
--aws-certs(){
+-aws-get-certs(){
     echo region:
     read -r region
     aws acm list-certificates --region "$region"
