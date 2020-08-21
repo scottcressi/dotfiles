@@ -104,7 +104,7 @@ parse_git_branch_and_add_brackets(){
     # octant plugin
     [[ ! -d ~/.config/octant/plugins/ ]] && \
     mkdir -p ~/.config/octant/plugins/ && \
-    curl -L https://github.com/bloodorangeio/octant-helm/releases/download/v0.1.0/octant-helm_0.1.0_linux_amd64.tar.gz | tar zx -C ~/.config/octant/plugins/ octant-helm
+    curl -s -L https://github.com/bloodorangeio/octant-helm/releases/download/v0.1.0/octant-helm_0.1.0_linux_amd64.tar.gz | tar zx -C ~/.config/octant/plugins/ octant-helm
 
     # skaffold
     version=v1.13.2
@@ -173,7 +173,7 @@ parse_git_branch_and_add_brackets(){
     # completions
     [[ ! -f ~/.bash_completion.d/kubectl ]] && kubectl completion bash | sudo tee ~/.bash_completion.d/kubectl
     [[ ! -f ~/.bash_completion.d/docker-compose ]] && \
-    sudo curl -L https://raw.githubusercontent.com/docker/compose/1.26.0/contrib/completion/bash/docker-compose -o ~/.bash_completion.d/docker-compose
+    sudo curl -s -L https://raw.githubusercontent.com/docker/compose/1.26.0/contrib/completion/bash/docker-compose -o ~/.bash_completion.d/docker-compose
 
     # if wm
     if pgrep startx > /dev/null ; then
@@ -196,6 +196,10 @@ parse_git_branch_and_add_brackets(){
         [[ $(cd ~/repos/thirdparty/ghacks-user.js && git branch | awk '{print $5}' | sed s/\)//g | head -1) != "$version" ]] && \
         cd ~/repos/thirdparty/ghacks-user.js && git checkout $version
         [[ ! -f $profile/user.js ]] && grep ^user_pref ~/repos/thirdparty/ghacks-user.js/user.js ~/repos/personal/suckless/firefox/user-overrides.js | sed 's/.*user_pref/user_pref/g' > "$profile"/user.js
+
+        # stocks
+        [[ ! -d ~/repos/thirdparty/ticker.sh ]] && \
+        git clone https://github.com/pstadler/ticker.sh.git ~/repos/thirdparty/ticker.sh
 
         # search
         cp -rp ~/repos/personal/suckless/firefox/search.json.mozlz4 "$profile"/
@@ -524,10 +528,6 @@ parse_git_branch_and_add_brackets(){
 
 -camera-web-rtsp(){
     docker run --net host --device=/dev/video0 -p 8000:8000 -it mpromonet/webrtc-streamer
-}
-
--stock(){
-    curl stonks.icu/"$1"
 }
 
 -translate(){
