@@ -216,7 +216,7 @@ parse_git_branch_and_add_brackets(){
     chmod 755 ~/bin/*
 
     # return
-    cd || exit
+    cd || return
 
 }
 
@@ -327,7 +327,7 @@ parse_git_branch_and_add_brackets(){
 
 -lock-auto(){
     pkill xautolock
-    xautolock -time 1 -locker slock & disown ; exit
+    xautolock -time 1 -locker slock & disown
 
 }
 
@@ -495,7 +495,7 @@ parse_git_branch_and_add_brackets(){
     git clone https://github.com/torrinfail/dwmblocks ~/repos/thirdparty/dwmblocks
     [[ "$(pgrep dwmblocks)" ]] && pkill dwmblocks
     cp ~/repos/personal/suckless/dwmblocks/dwmblocks.blocks.h ~/repos/thirdparty/dwmblocks/blocks.h
-    cd ~/repos/thirdparty/dwmblocks && make clean install ; ./dwmblocks &
+    cd ~/repos/thirdparty/dwmblocks && make clean install ; ./dwmblocks & disown
     cd ~/repos/thirdparty/dwmblocks && git checkout .
 
     # st
@@ -559,7 +559,6 @@ parse_git_branch_and_add_brackets(){
 }
 
 -bookmarks-restore(){
-    cd ~/repos/personal/buku || exit
     7z x -p"$(cat ~/.bookmarkspasswd)" ~/repos/personal/buku/places.sqlite.7z
     mv ~/repos/personal/buku/places.sqlite "$(find ~/.mozilla/firefox/*.default/ -maxdepth 0)"/places.sqlite
 }
