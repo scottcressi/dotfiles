@@ -111,7 +111,7 @@ scrot                   debian gui       screenshot
 sent                    debian terminal  markdown
 shellcheck              debian terminal  lint
 smplayer                debian gui       audio
-speedpad                debian terminal  typing
+speedpad                debian terminal  fun             typing
 speedtest-cli           debian terminal  stats           network
 stow                    debian terminal
 suckless-tools          debian terminal
