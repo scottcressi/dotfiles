@@ -66,6 +66,7 @@ alias tl='tmux list-windows'
 
 # helm
 alias hl='helm ls -A'
+alias hlw='watch -n 1 "helm ls -A"'
 alias hdp='helm delete'
 
 # kube
