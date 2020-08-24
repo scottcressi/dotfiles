@@ -185,6 +185,7 @@ parse_git_branch_and_add_brackets(){
 
         # firefox profile
         ~/firefox/firefox -CreateProfile default
+        ~/firefox/firefox -CreateProfile guest
         profile=$(find ~/.mozilla/firefox/*.default/ -maxdepth 0)
         profile_dir=$profile/extensions
         [[ ! -d $profile_dir ]] && mkdir "$profile_dir"
