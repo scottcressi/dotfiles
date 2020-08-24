@@ -560,6 +560,7 @@ parse_git_branch_and_add_brackets(){
 }
 
 -bookmarks-restore(){
+    cd ~/repos/personal/buku/
     7z x -p"$(cat ~/.bookmarkspasswd)" ~/repos/personal/buku/places.sqlite.7z
     mv ~/repos/personal/buku/places.sqlite "$(find ~/.mozilla/firefox/*.default/ -maxdepth 0)"/places.sqlite
 }
