@@ -1,3 +1,5 @@
+""TODO: implement easymotion
+
 "" PLUG INIT ------------------------------------------------------------------
 
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -11,7 +13,6 @@ call plug#begin('~/.vim/plugged')
 
 "" PLUGINS --------------------------------------------------------------------
 
-Plug 'scrooloose/nerdtree' " file drawer
 Plug 'morhetz/gruvbox' " colors
 Plug 'pseewald/vim-anyfold' " folding
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " fzf
@@ -22,6 +23,7 @@ Plug 'scrooloose/syntastic' " syntax
 Plug 'Valloric/YouCompleteMe' " completion
 Plug 'nvie/vim-flake8' " flake8
 Plug 'vim-scripts/indentpython.vim' " python indentation
+Plug 'easymotion/vim-easymotion' " easymotion
 
 "" PLUG END
 
@@ -33,8 +35,11 @@ if !empty(glob('~/.vim/plugged/'))
 
 "" AUTO-INITIALIZATION --------------------------------------------------------
 
-" nerdtree
-" autocmd vimenter * NERDTree
+" file tree
+" augroup ProjectDrawer
+"   autocmd!
+"   autocmd VimEnter * :Vexplore
+" augroup END
 
 " Automatic reloading of .vimrc
 autocmd! bufwritepost _vimrc source %
@@ -107,13 +112,36 @@ map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 let python_highlight_all=1
 set encoding=utf-8
 
+" file tree
+let g:netrw_banner = 0
+let g:netrw_liststyle = 3
+let g:netrw_browse_split = 4
+let g:netrw_altv = 1
+let g:netrw_winsize = 25
+let g:NetrwIsOpen=0
+function! ToggleNetrw()
+    if g:NetrwIsOpen
+        let i = bufnr("$")
+        while (i >= 1)
+            if (getbufvar(i, "&filetype") == "netrw")
+                silent exe "bwipeout " . i
+            endif
+            let i-=1
+        endwhile
+        let g:NetrwIsOpen=0
+    else
+        let g:NetrwIsOpen=1
+        silent Lexplore
+    endif
+endfunction
+
 "" REMAPPINGS -----------------------------------------------------------------
 
 " fzf set location to ~/repos
 noremap <C-P> :Files ~/repos<CR>
 
-" nerdtree toggle
-nmap <C-W> :NERDTreeToggle<CR>
+" file tree toggle
+noremap <silent> <C-W> :call ToggleNetrw()<CR>
 
 " folding toggle
 noremap <C-F> :set foldlevel=0<CR>
