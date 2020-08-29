@@ -99,6 +99,7 @@ alias kc='kubectl config use-context'
 alias tp='terraform plan'
 alias ta='terraform apply'
 alias ti='terraform init'
+alias td='terraform destroy'
 
 # docker
 alias di='docker images'
