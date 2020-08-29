@@ -84,11 +84,6 @@ parse_git_branch_and_add_brackets(){
     curl -s -L https://releases.hashicorp.com/terraform/${version}/terraform_${version}_linux_amd64.zip --output ~/tmp/terraform_${version}_linux_amd64.zip && \
     unzip -d ~/bin -o ~/tmp/terraform_${version}_linux_amd64.zip
 
-    # terragrunt
-    version=v0.21.8
-    [[ "$(terragrunt --version | awk '{print $3}')" != "$version" ]] && \
-    curl -s -L https://github.com/gruntwork-io/terragrunt/releases/download/${version}/terragrunt_linux_amd64 --output ~/bin/terragrunt
-
     # docker compose
     version=1.25.4
     [[ ! -f ~/bin/docker-compose ]] && \
