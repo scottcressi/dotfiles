@@ -86,7 +86,7 @@ parse_git_branch_and_add_brackets(){
 
     # aws-iam-authenticator
     [[ ! -f ~/bin/aws-iam-authenticator ]] && \
-    curl -o aws-iam-authenticator https://amazon-eks.s3.us-west-2.amazonaws.com/1.17.9/2020-08-04/bin/linux/amd64/aws-iam-authenticator ~/bin/aws-iam-authenticator
+    curl -s https://amazon-eks.s3.us-west-2.amazonaws.com/1.17.9/2020-08-04/bin/linux/amd64/aws-iam-authenticator --output ~/bin/aws-iam-authenticator
 
     # docker compose
     version=1.25.4
