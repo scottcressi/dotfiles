@@ -96,8 +96,9 @@ alias kl='kubectl config get-contexts'
 alias kc='kubectl config use-context'
 
 # terraform
-alias tfp='rm -rf .terragrunt-cache ; terragrunt plan --terragrunt-source ../../../../../../terraform-modules/modules/networking/ '
-alias tfa='terragrunt apply --terragrunt-source-update '
+alias tp='terraform plan'
+alias ta='terraform apply'
+alias ti='terraform init'
 
 # docker
 alias di='docker images'
