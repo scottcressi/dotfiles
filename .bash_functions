@@ -100,6 +100,12 @@ parse_git_branch_and_add_brackets(){
     tar xvf ~/tmp/octant_${version}_Linux-64bit.tar.gz --directory ~/tmp/ && \
     cp -rp ~/tmp/octant_${version}_Linux-64bit/octant ~/bin/
 
+    # pluto
+    version=3.4.1
+    cd ~/bin || exit
+    [[ "$(pluto version | awk '{print $1}' | sed 's/Version://g')" != "$version" ]] && \
+    curl -s -L --url https://github.com/FairwindsOps/pluto/releases/download/v3.4.1/pluto_3.4.1_linux_amd64.tar.gz | tar zx
+
     # octant plugin
     [[ ! -d ~/.config/octant/plugins/ ]] && \
     mkdir -p ~/.config/octant/plugins/ && \
