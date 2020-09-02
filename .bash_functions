@@ -122,14 +122,14 @@ parse_git_branch_and_add_brackets(){
     curl -s -L --url https://github.com/kubernetes/kops/releases/download/v${version}/kops-linux-amd64 --output ~/bin/kops
 
     # helm
-    version=v3.3.0
+    version=v3.3.1
     [[ "$(helm version --client | awk '{print $1}' | sed 's/.*:"//g' | sed 's/",//g')" != "$version" ]] && \
     curl -s -L --url https://get.helm.sh/helm-"${version}"-linux-amd64.tar.gz --output ~/tmp/helm-"${version}"-linux-amd64.tar.gz && \
     tar xvf ~/tmp/helm-"${version}"-linux-amd64.tar.gz --directory ~/tmp/ && \
     cp -rp ~/tmp/linux-amd64/helm ~/bin/helm
 
     # helmfile
-    version=v0.125.6
+    version=v0.127.0
     [[ "$(helmfile --version | awk '{print $3}')" != "$version" ]] && \
     curl -s -L https://github.com/roboll/helmfile/releases/download/${version}/helmfile_linux_amd64 --output ~/bin/helmfile
 
