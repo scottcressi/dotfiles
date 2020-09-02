@@ -504,7 +504,7 @@ if [ "$(find /dev/ | grep -c video)" -gt 0 ] ; then
     [[ ! -d ~/repos/thirdparty/dwmblocks ]] && \
     git clone https://github.com/torrinfail/dwmblocks ~/repos/thirdparty/dwmblocks
     [[ "$(pgrep dwmblocks)" ]] && pkill dwmblocks
-    cp ~/repos/personal/suckless/dwmblocks/dwmblocks.blocks.h ~/repos/thirdparty/dwmblocks/blocks.h
+    cp ~/repos/personal/dwmblocks/dwmblocks.blocks.h ~/repos/thirdparty/dwmblocks/blocks.h
     cd ~/repos/thirdparty/dwmblocks && make clean install ; ./dwmblocks & disown
     cd ~/repos/thirdparty/dwmblocks && git checkout .
 
