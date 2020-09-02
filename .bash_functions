@@ -207,9 +207,6 @@ parse_git_branch_and_add_brackets(){
         [[ ! -d ~/repos/thirdparty/ticker.sh ]] && \
         git clone https://github.com/pstadler/ticker.sh.git ~/repos/thirdparty/ticker.sh
 
-        # search
-        cp -rp ~/repos/personal/firefox/search.json.mozlz4 "$profile"/
-
         # addons
         [[ ! -f $profile_dir/uBlock0@raymondhill.net.xpi ]] && \
         curl -s -L --url https://addons.mozilla.org/firefox/downloads/file/3579401/ublock_origin-1.27.10-an+fx.xpi?src=search --output "$profile_dir"/uBlock0@raymondhill.net.xpi
@@ -219,8 +216,6 @@ parse_git_branch_and_add_brackets(){
         curl -s -L --url https://addons.mozilla.org/firefox/downloads/file/3566579/torrent_control-0.2.18-fx.xpi?src=search --output "$profile_dir"/\{e6e36c9a-8323-446c-b720-a176017e38ff\}.xpi
         [[ ! -f $profile_dir/2341n4m3@gmail.com.xpi ]] && \
         curl -s -L --url https://addons.mozilla.org/firefox/downloads/file/717262/ageless_for_youtube-1.3-an+fx.xpi?src=search --output "$profile_dir"/2341n4m3@gmail.com.xpi
-        [[ ! -f $profile_dir/newtaboverride@agenedia.com.xpi ]] && \
-        curl -s -L --url https://addons.mozilla.org/firefox/downloads/file/3619582/new_tab_override-15.0.0-fx.xpi?src=dp-btn-primary --output "$profile_dir"/newtaboverride@agenedia.com.xpi
 
     fi
 
