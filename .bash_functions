@@ -196,7 +196,7 @@ parse_git_branch_and_add_brackets(){
         [[ ! -d $profile_dir ]] && mkdir "$profile_dir"
 
         # ghacks + overrides
-        version=79.0
+        version=80.0
         [[ ! -d ~/repos/thirdparty/ghacks-user.js ]] && \
         git clone https://github.com/ghacksuserjs/ghacks-user.js.git ~/repos/thirdparty/ghacks-user.js
         [[ $(cd ~/repos/thirdparty/ghacks-user.js && git branch | awk '{print $5}' | sed s/\)//g | head -1) != "$version" ]] && \
