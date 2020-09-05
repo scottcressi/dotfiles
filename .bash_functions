@@ -50,6 +50,13 @@ parse_git_branch_and_add_brackets(){
     sudo usermod -a -G docker "$USER"
     fi
 
+    # signal
+    echo installing signal
+    [[ ! -f /etc/apt/sources.list.d/signal-xenial.list ]] && \
+    echo "deb [arch=amd64] https://updates.signal.org/desktop/apt xenial main" | sudo tee -a /etc/apt/sources.list.d/signal-xenial.list && \
+    curl -s https://updates.signal.org/desktop/apt/keys.asc | sudo apt-key add -
+    sudo apt-get install -y --quiet --quiet signal-desktop
+
     # directories storage
     for i in "${DIRS[@]}" ; do
     mkdir -p ~/mnt/"$i"
