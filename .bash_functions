@@ -577,3 +577,7 @@ if [ "$(find /dev/ | grep -c video)" -gt 0 ] ; then
 -ip(){
     ip -oneline -f inet a | grep dynamic | awk '{print $4}' | sed 's/\/.*//g'
 }
+
+-wallpaper(){
+    find ~/wallpapers/ -type f | shuf | head -1 | xargs xwallpaper --maximize
+}
