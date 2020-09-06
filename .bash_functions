@@ -96,7 +96,7 @@ parse_git_branch_and_add_brackets(){
     curl -s https://amazon-eks.s3.us-west-2.amazonaws.com/1.17.9/2020-08-04/bin/linux/amd64/aws-iam-authenticator --output ~/bin/aws-iam-authenticator
 
     # docker compose
-    version=1.25.4
+    version=1.26.2
     [[ ! -f ~/bin/docker-compose ]] && \
     curl -s -L https://github.com/docker/compose/releases/download/${version}/docker-compose-"$(uname -s)"-"$(uname -m)" -o ~/bin/docker-compose
 
