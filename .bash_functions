@@ -565,11 +565,15 @@ if [ "$(find /dev/ | grep -c video)" -gt 0 ] ; then
 }
 
 -bookmarks-backup(){
-    7z a -p"$(cat ~/.bookmarkspasswd)" ~/repos/personal/buku/places.sqlite.7z "$(find ~/.mozilla/firefox/*.default/ -maxdepth 0)"/places.sqlite
+    if [ -d /sys/module/battery ] ; then
+        echo not allowed from this machine
+    else
+        7z a -p"$(cat ~/.bookmarkspasswd)" ~/repos/personal/buku/places.sqlite.7z "$(find ~/.mozilla/firefox/*.default/ -maxdepth 0)"/places.sqlite
+    fi
 }
 
 -bookmarks-restore(){
-    cd ~/repos/personal/buku/
+    cd ~/repos/personal/buku/ || exit
     7z x -p"$(cat ~/.bookmarkspasswd)" ~/repos/personal/buku/places.sqlite.7z
     mv ~/repos/personal/buku/places.sqlite "$(find ~/.mozilla/firefox/*.default/ -maxdepth 0)"/places.sqlite
 }
