@@ -8,7 +8,6 @@ bb                      debian terminal  fun
 bc                      debian terminal  calculator
 bmon                    debian terminal  stats           network
 bombardier              debian terminal  game
-bpython3                debian terminal  language
 bsdgames                debian terminal  game
 cataclysm-dda-curses    debian terminal  game
 chafa                   debian terminal  converter       images
@@ -28,7 +27,6 @@ empire                  debian terminal  game
 espeak                  debian terminal  speech
 ffmpeg                  debian terminal  video
 filezilla               debian gui       file            transfer
-flake8                  debian terminal  language
 freeciv                 debian gui       game
 fzf                     debian terminal
 gcc                     debian terminal  compiler
@@ -43,7 +41,6 @@ iftop                   debian terminal  stats           network
 iotop                   debian terminal  stats           disk
 ipcalc                  debian terminal  stats
 iptraf                  debian terminal  stats           network
-ipython3                debian terminal  language
 irssi                   debian terminal  messaging
 jq                      debian terminal  language
 jsonlint                debian terminal  lint
@@ -96,7 +93,6 @@ pkg-config              debian prereq    st
 pulsemixer              debian terminal  audio
 pwgen                   debian terminal  passwords
 python3                 debian terminal  language
-python3-flake8          debian terminal  language
 python3-pip             debian terminal  language
 python3-venv            debian terminal  language
 redis-tools             debian terminal  client          database
