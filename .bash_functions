@@ -24,6 +24,8 @@ parse_git_branch_and_add_brackets(){
 }
 
 -packages(){
+    # venv
+    [[ ! -d ~/python/ ]] && python3 -m venv ~/python
 
     # update
     echo updating repos
@@ -57,6 +59,14 @@ parse_git_branch_and_add_brackets(){
     curl -s https://updates.signal.org/desktop/apt/keys.asc | sudo apt-key add -
     sudo apt-get install -y --quiet --quiet signal-desktop
 
+    # pip
+    echo installing pip
+    [[ -d ~/python/ ]] && pip install --quiet \
+    awscli \
+    bpython \
+    ipython \
+    pylint \
+
     # directories storage
     for i in "${DIRS[@]}" ; do
     mkdir -p ~/mnt/"$i"
@@ -68,9 +78,6 @@ parse_git_branch_and_add_brackets(){
     mkdir -p ~/wallpapers
     mkdir -p ~/.bash_completion.d
     mkdir -p ~/tmp
-
-    # venv
-    [[ ! -d ~/python/ ]] && python3 -m venv ~/python
 
     # aws cli
     [[ ! -f ~/awscli-bundle.zip ]] && \
@@ -136,7 +143,7 @@ parse_git_branch_and_add_brackets(){
     cp -rp ~/tmp/linux-amd64/helm ~/bin/helm
 
     # helmfile
-    version=v0.127.0
+    version=v0.128.2
     [[ "$(helmfile --version | awk '{print $3}')" != "$version" ]] && \
     curl -s -L https://github.com/roboll/helmfile/releases/download/${version}/helmfile_linux_amd64 --output ~/bin/helmfile
 
