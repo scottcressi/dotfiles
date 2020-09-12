@@ -58,6 +58,7 @@ parse_git_branch_and_add_brackets(){
     echo "deb [arch=amd64] https://updates.signal.org/desktop/apt xenial main" | sudo tee -a /etc/apt/sources.list.d/signal-xenial.list && \
     curl -s https://updates.signal.org/desktop/apt/keys.asc | sudo apt-key add -
     sudo apt-get install -y --quiet --quiet signal-desktop
+    chmod 4755 /opt/Signal/chrome-sandbox
 
     # pip
     echo installing pip
@@ -153,7 +154,7 @@ parse_git_branch_and_add_brackets(){
     curl -s -LO https://storage.googleapis.com/kubernetes-release/release/"${version}"/bin/linux/amd64/kubectl --output ~/bin/kubectl
 
     # k9s
-    version=0.21.4
+    version=0.21.9
     [[ "$(k9s version --short | grep Version | awk '{print $2}')" != "$version" ]] && \
     curl -s -L --url https://github.com/derailed/k9s/releases/download/v${version}/k9s_Linux_x86_64.tar.gz --output ~/tmp/k9s_Linux_x86_64.tar.gz && \
     tar xvf ~/tmp/k9s_Linux_x86_64.tar.gz --directory ~/tmp/ && \
