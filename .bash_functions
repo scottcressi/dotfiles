@@ -143,11 +143,6 @@ parse_git_branch_and_add_brackets(){
     tar xvf ~/tmp/helm-"${version}"-linux-amd64.tar.gz --directory ~/tmp/ && \
     cp -rp ~/tmp/linux-amd64/helm ~/bin/helm
 
-    # helmfile
-    version=v0.128.2
-    [[ "$(helmfile --version | awk '{print $3}')" != "$version" ]] && \
-    curl -s -L https://github.com/roboll/helmfile/releases/download/${version}/helmfile_linux_amd64 --output ~/bin/helmfile
-
     # kubectl
     version=v1.18.2
     [[ "$(kubectl version --client | awk '{print $5}' | sed 's/.*:"//g' | sed 's/",//g')" != "$version" ]] && \
