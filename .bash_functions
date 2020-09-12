@@ -58,7 +58,7 @@ parse_git_branch_and_add_brackets(){
     echo "deb [arch=amd64] https://updates.signal.org/desktop/apt xenial main" | sudo tee -a /etc/apt/sources.list.d/signal-xenial.list && \
     curl -s https://updates.signal.org/desktop/apt/keys.asc | sudo apt-key add -
     sudo apt-get install -y --quiet --quiet signal-desktop
-    chmod 4755 /opt/Signal/chrome-sandbox
+    sudo chmod 4755 /opt/Signal/chrome-sandbox
 
     # pip
     echo installing pip
