@@ -99,6 +99,7 @@ alias tp='terraform plan'
 alias ta='terraform apply'
 alias ti='terraform init'
 alias td='terraform destroy'
+alias tdaa='td -auto-approve ; ta -auto-approve'
 
 # docker
 alias di='docker images'
