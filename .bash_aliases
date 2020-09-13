@@ -95,11 +95,11 @@ alias kl='kubectl config get-contexts'
 alias kc='kubectl config use-context'
 
 # terraform
-alias tp='terraform plan'
-alias ta='terraform apply'
+alias tp='terraform init && terraform plan'
+alias ta='terraform init && terraform apply'
 alias ti='terraform init'
 alias td='terraform destroy'
-alias tdaa='td -auto-approve ; ta -auto-approve'
+alias tdaa='terraform init && td -auto-approve && ta -auto-approve'
 
 # docker
 alias di='docker images'
