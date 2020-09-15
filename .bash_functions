@@ -155,7 +155,7 @@ parse_git_branch_and_add_brackets(){
     cp -rp ~/tmp/k9s ~/bin/
 
     # kind
-    version=v0.8.1
+    version=v0.9.0
     [[ "$(kind version | awk '{print $2}')" != "$version" ]] && \
     curl -s -L --url https://github.com/kubernetes-sigs/kind/releases/download/${version}/kind-linux-amd64 --output ~/bin/kind
 
