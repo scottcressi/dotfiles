@@ -93,7 +93,7 @@ parse_git_branch_and_add_brackets(){
     curl -s -L https://github.com/ytdl-org/youtube-dl/releases/download/${version}/youtube-dl --output ~/bin/youtube-dl
 
     # terraform
-    version=0.13.2
+    version=0.13.3
     [[ "$(terraform version | grep "v[0-9]" | awk '{print $2}' | sed 's/v//g')" != "$version" ]] && \
     curl -s -L https://releases.hashicorp.com/terraform/${version}/terraform_${version}_linux_amd64.zip --output ~/tmp/terraform_${version}_linux_amd64.zip && \
     unzip -d ~/bin -o ~/tmp/terraform_${version}_linux_amd64.zip
@@ -148,7 +148,7 @@ parse_git_branch_and_add_brackets(){
     curl -s -LO https://storage.googleapis.com/kubernetes-release/release/"${version}"/bin/linux/amd64/kubectl --output ~/bin/kubectl
 
     # k9s
-    version=0.21.9
+    version=0.22.0
     [[ "$(k9s version --short | grep Version | awk '{print $2}')" != "$version" ]] && \
     curl -s -L --url https://github.com/derailed/k9s/releases/download/v${version}/k9s_Linux_x86_64.tar.gz --output ~/tmp/k9s_Linux_x86_64.tar.gz && \
     tar xvf ~/tmp/k9s_Linux_x86_64.tar.gz --directory ~/tmp/ && \
