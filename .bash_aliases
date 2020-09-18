@@ -93,6 +93,7 @@ alias ksm='kubectl get servicemonitors --all-namespaces'
 alias ktest='kubectl run -it foo --image=centos --restart=Never -- /bin/bash'
 alias kl='kubectl config get-contexts'
 alias kc='kubectl config use-context'
+alias kpn='watch -n 1 "kubectl get pods --all-namespaces | grep 0\/ | grep -v Completed"'
 
 # terraform
 alias tp='terraform init && terraform plan'
