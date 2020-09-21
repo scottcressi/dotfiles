@@ -43,7 +43,7 @@ parse_git_branch_and_add_brackets(){
 
     # docker
     echo installing docker
-    if [[ "$(docker ps -a | grep -c 'Up ')" == 0 ]] ; then
+    if ! pgrep docker$ > /dev/null ; then
     [[ ! -f /etc/apt/sources.list.d/docker.list ]] && \
     curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add - && \
     sudo apt-key fingerprint 0EBFCD88 && \
