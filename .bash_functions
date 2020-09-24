@@ -304,7 +304,7 @@ parse_git_branch_and_add_brackets(){
 
 }
 
--aws-config-credentials(){
+-aws-set-credentials(){
     [[ -z "$1" ]] && echo enter profile ; echo ; grep "\\[" ~/.aws/credentials
     export AWS_DEFAULT_PROFILE=$1
 }
@@ -320,7 +320,7 @@ if [ "$(find /dev/ | grep -c video)" -gt 0 ] ; then
 
 }
 
--aws-config-eks(){
+-aws-set-eks(){
     echo region:
     read -r region
     aws eks list-clusters --region "$region"
