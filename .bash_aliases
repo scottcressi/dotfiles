@@ -21,6 +21,7 @@ alias xrandr-tv='xrandr -s 1360x768'
 alias ycm='cd ~/.vim/plugged/YouCompleteMe && python3 install.py --all'
 
 # revisions
+alias cp='cp -i'
 alias dd='dd status="progress"'
 alias df='df -h'
 alias dstat='dstat --net --disk --top-bio --top-cpu --top-cputime --top-io --top-latency --top-mem --top-oom'
