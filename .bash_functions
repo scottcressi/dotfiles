@@ -189,6 +189,9 @@ parse_git_branch_and_add_brackets(){
     [[ ! -f ~/.bash_completion.d/docker-compose ]] && \
     sudo curl -s -L https://raw.githubusercontent.com/docker/compose/1.26.0/contrib/completion/bash/docker-compose -o ~/.bash_completion.d/docker-compose
 
+    # stocks
+    [[ ! -d ~/repos/thirdparty/ticker.sh ]] && git clone https://github.com/pstadler/ticker.sh.git ~/repos/thirdparty/ticker.sh
+
     # if wm
     if pgrep startx > /dev/null ; then
 
@@ -200,31 +203,37 @@ parse_git_branch_and_add_brackets(){
         # firefox profile
         ~/firefox/firefox -CreateProfile default
         ~/firefox/firefox -CreateProfile guest
-        profile=$(find ~/.mozilla/firefox/*.default/ -maxdepth 0)
-        profile_dir=$profile/extensions
-        [[ ! -d $profile_dir ]] && mkdir "$profile_dir"
+        profile_default=$(find ~/.mozilla/firefox/*.default/ -maxdepth 0)
+        profile_guest=$(find ~/.mozilla/firefox/*.guest/ -maxdepth 0)
+        profile_default_extensions=$profile_default/extensions
+        profile_guest_extensions=$profile_guest/extensions
+        [[ ! -d $profile_default_extensions ]] && mkdir "$profile_default_extensions"
+        [[ ! -d $profile_guest_extensions ]] && mkdir "$profile_guest_extensions"
 
-        # ghacks + overrides
+        # ghacks
         version=80.0
-        [[ ! -d ~/repos/thirdparty/ghacks-user.js ]] && \
-        git clone https://github.com/ghacksuserjs/ghacks-user.js.git ~/repos/thirdparty/ghacks-user.js
-        [[ $(cd ~/repos/thirdparty/ghacks-user.js && git branch | awk '{print $5}' | sed s/\)//g | head -1) != "$version" ]] && \
-        cd ~/repos/thirdparty/ghacks-user.js && git checkout $version
-        [[ ! -f $profile/user.js ]] && grep ^user_pref ~/repos/thirdparty/ghacks-user.js/user.js ~/repos/personal/firefox/user-overrides.js | sed 's/.*user_pref/user_pref/g' > "$profile"/user.js
+        [[ ! -d ~/repos/thirdparty/ghacks-user.js ]] && git clone https://github.com/ghacksuserjs/ghacks-user.js.git ~/repos/thirdparty/ghacks-user.js
+        [[ $(cd ~/repos/thirdparty/ghacks-user.js && git branch | awk '{print $5}' | sed s/\)//g | head -1) != "$version" ]] && cd ~/repos/thirdparty/ghacks-user.js && git checkout $version
 
-        # stocks
-        [[ ! -d ~/repos/thirdparty/ticker.sh ]] && \
-        git clone https://github.com/pstadler/ticker.sh.git ~/repos/thirdparty/ticker.sh
+        # ghacks default
+        grep ^user_pref ~/repos/thirdparty/ghacks-user.js/user.js | sed 's/.*user_pref/user_pref/g' > "$profile_default"/user.js
+        echo 'user_pref("browser.ctrlTab.recentlyUsedOrder", false);' >> "$profile_guest"/user.js # General - Tabs - Ctrl+Tab cycles through tabs in recently used order
+        echo 'user_pref("extensions.autoDisableScopes", 0);' >> "$profile_guest"/user.js # not in settings - auto enable addons
 
-        # addons
-        [[ ! -f $profile_dir/uBlock0@raymondhill.net.xpi ]] && \
-        curl -s -L --url https://addons.mozilla.org/firefox/downloads/file/3579401/ublock_origin-1.27.10-an+fx.xpi?src=search --output "$profile_dir"/uBlock0@raymondhill.net.xpi
-        [[ ! -f $profile_dir/\{446900e4-71c2-419f-a6a7-df9c091e268b\}.xpi ]] && \
-        curl -s -L --url https://addons.mozilla.org/firefox/downloads/file/3582922/bitwarden_free_password_manager-1.44.3-an+fx.xpi?src=search --output "$profile_dir"/\{446900e4-71c2-419f-a6a7-df9c091e268b\}.xpi
-        [[ ! -f $profile_dir/\{e6e36c9a-8323-446c-b720-a176017e38ff\}.xpi ]] && \
-        curl -s -L --url https://addons.mozilla.org/firefox/downloads/file/3566579/torrent_control-0.2.18-fx.xpi?src=search --output "$profile_dir"/\{e6e36c9a-8323-446c-b720-a176017e38ff\}.xpi
-        [[ ! -f $profile_dir/2341n4m3@gmail.com.xpi ]] && \
-        curl -s -L --url https://addons.mozilla.org/firefox/downloads/file/717262/ageless_for_youtube-1.3-an+fx.xpi?src=search --output "$profile_dir"/2341n4m3@gmail.com.xpi
+        # ghacks guest
+        echo 'user_pref("app.update.auto", false);' > "$profile_guest"/user.js
+
+        # addons default
+        [[ ! -f $profile_default_extensions/uBlock0@raymondhill.net.xpi ]] && curl -s -L --url https://addons.mozilla.org/firefox/downloads/file/3579401/ublock_origin-1.27.10-an+fx.xpi?src=search --output "$profile_default_extensions"/uBlock0@raymondhill.net.xpi
+        [[ ! -f $profile_default_extensions/\{446900e4-71c2-419f-a6a7-df9c091e268b\}.xpi ]] && curl -s -L --url https://addons.mozilla.org/firefox/downloads/file/3582922/bitwarden_free_password_manager-1.44.3-an+fx.xpi?src=search --output "$profile_default_extensions"/\{446900e4-71c2-419f-a6a7-df9c091e268b\}.xpi
+        [[ ! -f $profile_default_extensions/\{e6e36c9a-8323-446c-b720-a176017e38ff\}.xpi ]] && curl -s -L --url https://addons.mozilla.org/firefox/downloads/file/3566579/torrent_control-0.2.18-fx.xpi?src=search --output "$profile_default_extensions"/\{e6e36c9a-8323-446c-b720-a176017e38ff\}.xpi
+        [[ ! -f $profile_default_extensions/2341n4m3@gmail.com.xpi ]] && curl -s -L --url https://addons.mozilla.org/firefox/downloads/file/717262/ageless_for_youtube-1.3-an+fx.xpi?src=search --output "$profile_default_extensions"/2341n4m3@gmail.com.xpi
+
+        # addons guest
+        [[ ! -f $profile_guest_extensions/uBlock0@raymondhill.net.xpi ]] && curl -s -L --url https://addons.mozilla.org/firefox/downloads/file/3579401/ublock_origin-1.27.10-an+fx.xpi?src=search --output "$profile_guest_extensions"/uBlock0@raymondhill.net.xpi
+        [[ ! -f $profile_guest_extensions/\{446900e4-71c2-419f-a6a7-df9c091e268b\}.xpi ]] && curl -s -L --url https://addons.mozilla.org/firefox/downloads/file/3582922/bitwarden_free_password_manager-1.44.3-an+fx.xpi?src=search --output "$profile_guest_extensions"/\{446900e4-71c2-419f-a6a7-df9c091e268b\}.xpi
+        [[ ! -f $profile_guest_extensions/\{e6e36c9a-8323-446c-b720-a176017e38ff\}.xpi ]] && curl -s -L --url https://addons.mozilla.org/firefox/downloads/file/3566579/torrent_control-0.2.18-fx.xpi?src=search --output "$profile_guest_extensions"/\{e6e36c9a-8323-446c-b720-a176017e38ff\}.xpi
+        [[ ! -f $profile_guest_extensions/2341n4m3@gmail.com.xpi ]] && curl -s -L --url https://addons.mozilla.org/firefox/downloads/file/717262/ageless_for_youtube-1.3-an+fx.xpi?src=search --output "$profile_guest_extensions"/2341n4m3@gmail.com.xpi
 
     fi
 
