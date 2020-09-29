@@ -217,8 +217,8 @@ parse_git_branch_and_add_brackets(){
 
         # ghacks default
         grep ^user_pref ~/repos/thirdparty/ghacks-user.js/user.js | sed 's/.*user_pref/user_pref/g' > "$profile_default"/user.js
-        echo 'user_pref("browser.ctrlTab.recentlyUsedOrder", false);' >> "$profile_guest"/user.js # General - Tabs - Ctrl+Tab cycles through tabs in recently used order
-        echo 'user_pref("extensions.autoDisableScopes", 0);' >> "$profile_guest"/user.js # not in settings - auto enable addons
+        echo 'user_pref("browser.ctrlTab.recentlyUsedOrder", false);' >> "$profile_default"/user.js # General - Tabs - Ctrl+Tab cycles through tabs in recently used order
+        echo 'user_pref("extensions.autoDisableScopes", 0);' >> "$profile_default"/user.js # not in settings - auto enable addons
 
         # ghacks guest
         echo 'user_pref("app.update.auto", false);' > "$profile_guest"/user.js
