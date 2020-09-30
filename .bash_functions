@@ -217,13 +217,18 @@ parse_git_branch_and_add_brackets(){
 
         # ghacks default
         grep ^user_pref ~/repos/thirdparty/ghacks-user.js/user.js | sed 's/.*user_pref/user_pref/g' > "$profile_default"/user.js
-        echo 'user_pref("browser.ctrlTab.recentlyUsedOrder", false);' >> "$profile_default"/user.js # General - Tabs - Ctrl+Tab cycles through tabs in recently used order
-        echo 'user_pref("extensions.autoDisableScopes", 0);' >> "$profile_default"/user.js # not in settings - auto enable addons
+        echo '''
+        user_pref("browser.ctrlTab.recentlyUsedOrder", false); # General - Tabs - Ctrl+Tab cycles through tabs in recently used order
+        user_pref("extensions.autoDisableScopes", 0); # not in settings - auto enable addons
+        ''' >> "$profile_default"/user.js
 
         # ghacks guest
-        echo 'user_pref("browser.ctrlTab.recentlyUsedOrder", false);' >> "$profile_guest"/user.js # General - Tabs - Ctrl+Tab cycles through tabs in recently used order
-        echo 'user_pref("extensions.autoDisableScopes", 0);' >> "$profile_guest"/user.js # not in settings - auto enable addons
-        echo 'user_pref("app.update.auto", false);' > "$profile_guest"/user.js
+        echo > "$profile_guest"/user.js
+        echo '''
+        user_pref("browser.ctrlTab.recentlyUsedOrder", false); # General - Tabs - Ctrl+Tab cycles through tabs in recently used order
+        user_pref("extensions.autoDisableScopes", 0); # not in settings - auto enable addons
+        user_pref("app.update.auto", false);
+        ''' >> "$profile_guest"/user.js
 
         # addons default
         [[ ! -f $profile_default_extensions/uBlock0@raymondhill.net.xpi ]] && curl -s -L --url https://addons.mozilla.org/firefox/downloads/file/3579401/ublock_origin-1.27.10-an+fx.xpi?src=search --output "$profile_default_extensions"/uBlock0@raymondhill.net.xpi
