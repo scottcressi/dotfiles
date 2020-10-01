@@ -274,7 +274,7 @@ parse_git_branch_and_add_brackets(){
 }
 
 -is-webcam-on(){
-if [ "$(find /dev/ | grep -c video)" -gt 0 ] ; then
+    if [ "$(find /dev/ | grep -c video)" -gt 0 ] ; then
         if [ "$(lsmod | grep ^uvcvideo | awk '{print $3}')" == "0" ] ; then
             echo no
         else
