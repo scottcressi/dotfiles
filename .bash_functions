@@ -559,8 +559,6 @@ if [ "$(find /dev/ | grep -c video)" -gt 0 ] ; then
     [[ ! -d ~/firefox ]] && \
     cd ~/ && curl -s -L --url https://ftp.mozilla.org/pub/firefox/releases/"${version}"/linux-x86_64/en-US/firefox-"${version}".tar.bz2 | tar -xj
 
-    if [ ! -d /sys/module/battery ] ; then
-
     # firefox profile
     ~/firefox/firefox -CreateProfile default
     ~/firefox/firefox -CreateProfile guest
@@ -570,6 +568,8 @@ if [ "$(find /dev/ | grep -c video)" -gt 0 ] ; then
     profile_guest_extensions=$profile_guest/extensions
     [[ ! -d $profile_default_extensions ]] && mkdir "$profile_default_extensions"
     [[ ! -d $profile_guest_extensions ]] && mkdir "$profile_guest_extensions"
+
+    if [ ! -d /sys/module/battery ] ; then
 
     # ghacks
     version=80.0
