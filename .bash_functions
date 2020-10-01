@@ -553,55 +553,56 @@ if [ "$(find /dev/ | grep -c video)" -gt 0 ] ; then
 }
 
 -firefox(){
-    # if wm
-    if pgrep startx > /dev/null ; then
 
-        # firefox
-        version=$(curl -s https://www.mozilla.org/en-US/firefox/releases/| grep data-latest | awk '{print $7}' | sed 's/.*=//g' | sed 's/"//g')
-        [[ ! -d ~/firefox ]] && \
-        cd ~/ && curl -s -L --url https://ftp.mozilla.org/pub/firefox/releases/"${version}"/linux-x86_64/en-US/firefox-"${version}".tar.bz2 | tar -xj
+    # firefox
+    version=$(curl -s https://www.mozilla.org/en-US/firefox/releases/| grep data-latest | awk '{print $7}' | sed 's/.*=//g' | sed 's/"//g')
+    [[ ! -d ~/firefox ]] && \
+    cd ~/ && curl -s -L --url https://ftp.mozilla.org/pub/firefox/releases/"${version}"/linux-x86_64/en-US/firefox-"${version}".tar.bz2 | tar -xj
 
-        # firefox profile
-        ~/firefox/firefox -CreateProfile default
-        ~/firefox/firefox -CreateProfile guest
-        profile_default=$(find ~/.mozilla/firefox/*.default/ -maxdepth 0)
-        profile_guest=$(find ~/.mozilla/firefox/*.guest/ -maxdepth 0)
-        profile_default_extensions=$profile_default/extensions
-        profile_guest_extensions=$profile_guest/extensions
-        [[ ! -d $profile_default_extensions ]] && mkdir "$profile_default_extensions"
-        [[ ! -d $profile_guest_extensions ]] && mkdir "$profile_guest_extensions"
+    if [ ! -d /sys/module/battery ] ; then
 
-        # ghacks
-        version=80.0
-        [[ ! -d ~/repos/thirdparty/ghacks-user.js ]] && git clone https://github.com/ghacksuserjs/ghacks-user.js.git ~/repos/thirdparty/ghacks-user.js
-        [[ $(cd ~/repos/thirdparty/ghacks-user.js && git branch | awk '{print $5}' | sed s/\)//g | head -1) != "$version" ]] && cd ~/repos/thirdparty/ghacks-user.js && git checkout $version
+    # firefox profile
+    ~/firefox/firefox -CreateProfile default
+    ~/firefox/firefox -CreateProfile guest
+    profile_default=$(find ~/.mozilla/firefox/*.default/ -maxdepth 0)
+    profile_guest=$(find ~/.mozilla/firefox/*.guest/ -maxdepth 0)
+    profile_default_extensions=$profile_default/extensions
+    profile_guest_extensions=$profile_guest/extensions
+    [[ ! -d $profile_default_extensions ]] && mkdir "$profile_default_extensions"
+    [[ ! -d $profile_guest_extensions ]] && mkdir "$profile_guest_extensions"
 
-        # ghacks default
-        grep ^user_pref ~/repos/thirdparty/ghacks-user.js/user.js | sed 's/.*user_pref/user_pref/g' > "$profile_default"/user.js
-        echo '''
-        user_pref("browser.ctrlTab.recentlyUsedOrder", false); # General - Tabs - Ctrl+Tab cycles through tabs in recently used order
-        user_pref("extensions.autoDisableScopes", 0); # not in settings - auto enable addons
-        ''' >> "$profile_default"/user.js
+    # ghacks
+    version=80.0
+    [[ ! -d ~/repos/thirdparty/ghacks-user.js ]] && git clone https://github.com/ghacksuserjs/ghacks-user.js.git ~/repos/thirdparty/ghacks-user.js
+    [[ $(cd ~/repos/thirdparty/ghacks-user.js && git branch | awk '{print $5}' | sed s/\)//g | head -1) != "$version" ]] && cd ~/repos/thirdparty/ghacks-user.js && git checkout $version
 
-        # ghacks guest
-        echo > "$profile_guest"/user.js
-        echo '''
-        user_pref("browser.ctrlTab.recentlyUsedOrder", false); # General - Tabs - Ctrl+Tab cycles through tabs in recently used order
-        user_pref("extensions.autoDisableScopes", 0); # not in settings - auto enable addons
-        user_pref("app.update.auto", false);
-        ''' >> "$profile_guest"/user.js
+    # ghacks default
+    grep ^user_pref ~/repos/thirdparty/ghacks-user.js/user.js | sed 's/.*user_pref/user_pref/g' > "$profile_default"/user.js
+    echo '''
+    user_pref("browser.ctrlTab.recentlyUsedOrder", false); # General - Tabs - Ctrl+Tab cycles through tabs in recently used order
+    user_pref("extensions.autoDisableScopes", 0); # not in settings - auto enable addons
+    ''' >> "$profile_default"/user.js
 
-        # addons default
-        [[ ! -f $profile_default_extensions/uBlock0@raymondhill.net.xpi ]] && curl -s -L --url https://addons.mozilla.org/firefox/downloads/file/3579401/ublock_origin-1.27.10-an+fx.xpi?src=search --output "$profile_default_extensions"/uBlock0@raymondhill.net.xpi
-        [[ ! -f $profile_default_extensions/\{446900e4-71c2-419f-a6a7-df9c091e268b\}.xpi ]] && curl -s -L --url https://addons.mozilla.org/firefox/downloads/file/3582922/bitwarden_free_password_manager-1.44.3-an+fx.xpi?src=search --output "$profile_default_extensions"/\{446900e4-71c2-419f-a6a7-df9c091e268b\}.xpi
-        [[ ! -f $profile_default_extensions/\{e6e36c9a-8323-446c-b720-a176017e38ff\}.xpi ]] && curl -s -L --url https://addons.mozilla.org/firefox/downloads/file/3566579/torrent_control-0.2.18-fx.xpi?src=search --output "$profile_default_extensions"/\{e6e36c9a-8323-446c-b720-a176017e38ff\}.xpi
-        [[ ! -f $profile_default_extensions/2341n4m3@gmail.com.xpi ]] && curl -s -L --url https://addons.mozilla.org/firefox/downloads/file/717262/ageless_for_youtube-1.3-an+fx.xpi?src=search --output "$profile_default_extensions"/2341n4m3@gmail.com.xpi
+    # ghacks guest
+    echo > "$profile_guest"/user.js
+    echo '''
+    user_pref("browser.ctrlTab.recentlyUsedOrder", false); # General - Tabs - Ctrl+Tab cycles through tabs in recently used order
+    user_pref("extensions.autoDisableScopes", 0); # not in settings - auto enable addons
+    user_pref("app.update.auto", false);
+    ''' >> "$profile_guest"/user.js
 
-        # addons guest
-        [[ ! -f $profile_guest_extensions/uBlock0@raymondhill.net.xpi ]] && curl -s -L --url https://addons.mozilla.org/firefox/downloads/file/3579401/ublock_origin-1.27.10-an+fx.xpi?src=search --output "$profile_guest_extensions"/uBlock0@raymondhill.net.xpi
-        [[ ! -f $profile_guest_extensions/\{446900e4-71c2-419f-a6a7-df9c091e268b\}.xpi ]] && curl -s -L --url https://addons.mozilla.org/firefox/downloads/file/3582922/bitwarden_free_password_manager-1.44.3-an+fx.xpi?src=search --output "$profile_guest_extensions"/\{446900e4-71c2-419f-a6a7-df9c091e268b\}.xpi
-        [[ ! -f $profile_guest_extensions/\{e6e36c9a-8323-446c-b720-a176017e38ff\}.xpi ]] && curl -s -L --url https://addons.mozilla.org/firefox/downloads/file/3566579/torrent_control-0.2.18-fx.xpi?src=search --output "$profile_guest_extensions"/\{e6e36c9a-8323-446c-b720-a176017e38ff\}.xpi
-        [[ ! -f $profile_guest_extensions/2341n4m3@gmail.com.xpi ]] && curl -s -L --url https://addons.mozilla.org/firefox/downloads/file/717262/ageless_for_youtube-1.3-an+fx.xpi?src=search --output "$profile_guest_extensions"/2341n4m3@gmail.com.xpi
+    # addons default
+    [[ ! -f $profile_default_extensions/uBlock0@raymondhill.net.xpi ]] && curl -s -L --url https://addons.mozilla.org/firefox/downloads/file/3579401/ublock_origin-1.27.10-an+fx.xpi?src=search --output "$profile_default_extensions"/uBlock0@raymondhill.net.xpi
+    [[ ! -f $profile_default_extensions/\{446900e4-71c2-419f-a6a7-df9c091e268b\}.xpi ]] && curl -s -L --url https://addons.mozilla.org/firefox/downloads/file/3582922/bitwarden_free_password_manager-1.44.3-an+fx.xpi?src=search --output "$profile_default_extensions"/\{446900e4-71c2-419f-a6a7-df9c091e268b\}.xpi
+    [[ ! -f $profile_default_extensions/\{e6e36c9a-8323-446c-b720-a176017e38ff\}.xpi ]] && curl -s -L --url https://addons.mozilla.org/firefox/downloads/file/3566579/torrent_control-0.2.18-fx.xpi?src=search --output "$profile_default_extensions"/\{e6e36c9a-8323-446c-b720-a176017e38ff\}.xpi
+    [[ ! -f $profile_default_extensions/2341n4m3@gmail.com.xpi ]] && curl -s -L --url https://addons.mozilla.org/firefox/downloads/file/717262/ageless_for_youtube-1.3-an+fx.xpi?src=search --output "$profile_default_extensions"/2341n4m3@gmail.com.xpi
+
+    # addons guest
+    [[ ! -f $profile_guest_extensions/uBlock0@raymondhill.net.xpi ]] && curl -s -L --url https://addons.mozilla.org/firefox/downloads/file/3579401/ublock_origin-1.27.10-an+fx.xpi?src=search --output "$profile_guest_extensions"/uBlock0@raymondhill.net.xpi
+    [[ ! -f $profile_guest_extensions/\{446900e4-71c2-419f-a6a7-df9c091e268b\}.xpi ]] && curl -s -L --url https://addons.mozilla.org/firefox/downloads/file/3582922/bitwarden_free_password_manager-1.44.3-an+fx.xpi?src=search --output "$profile_guest_extensions"/\{446900e4-71c2-419f-a6a7-df9c091e268b\}.xpi
+    [[ ! -f $profile_guest_extensions/\{e6e36c9a-8323-446c-b720-a176017e38ff\}.xpi ]] && curl -s -L --url https://addons.mozilla.org/firefox/downloads/file/3566579/torrent_control-0.2.18-fx.xpi?src=search --output "$profile_guest_extensions"/\{e6e36c9a-8323-446c-b720-a176017e38ff\}.xpi
+    [[ ! -f $profile_guest_extensions/2341n4m3@gmail.com.xpi ]] && curl -s -L --url https://addons.mozilla.org/firefox/downloads/file/717262/ageless_for_youtube-1.3-an+fx.xpi?src=search --output "$profile_guest_extensions"/2341n4m3@gmail.com.xpi
 
     fi
+
 }
