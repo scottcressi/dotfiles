@@ -203,17 +203,17 @@ parse_git_branch_and_add_brackets(){
     profile_default_extensions=$profile_default/extensions
     [[ ! -d $profile_default_extensions ]] && mkdir "$profile_default_extensions"
 
-    if [ ! -d /sys/module/battery ] ; then
-
-    # ghacks
+    # ghacks repo
     version=80.0
     [[ ! -d ~/repos/thirdparty/ghacks-user.js ]] && git clone https://github.com/ghacksuserjs/ghacks-user.js.git ~/repos/thirdparty/ghacks-user.js
     [[ $(cd ~/repos/thirdparty/ghacks-user.js && git branch | awk '{print $5}' | sed s/\)//g | head -1) != "$version" ]] && cd ~/repos/thirdparty/ghacks-user.js && git checkout $version
 
+    # ghacks
+    if [ ! -d /sys/module/battery ] ; then
+    grep ^user_pref ~/repos/thirdparty/ghacks-user.js/user.js | sed 's/.*user_pref/user_pref/g' > "$profile_default"/user.js
     fi
 
     # ghacks custom
-    grep ^user_pref ~/repos/thirdparty/ghacks-user.js/user.js | sed 's/.*user_pref/user_pref/g' > "$profile_default"/user.js
     echo '''
     user_pref("browser.ctrlTab.recentlyUsedOrder", false); # General - Tabs - Ctrl+Tab cycles through tabs in recently used order
     user_pref("extensions.autoDisableScopes", 0); # not in settings - auto enable addons
