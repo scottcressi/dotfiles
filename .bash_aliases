@@ -117,3 +117,7 @@ alias dcd='docker-compose down'
 alias dcp='docker-compose pull --include-deps'
 alias dcr='docker-compose restart'
 alias dl='docker network ls && echo && docker image ls --all && echo && docker container ls --all && echo && docker volume ls'
+
+# vagrant
+alias vp='vagrant up --provision'
+alias vd='vagrant destroy -f'
