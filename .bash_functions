@@ -585,3 +585,10 @@ parse_git_branch_and_add_brackets(){
 -wallpaper(){
     find ~/wallpapers/ -type f | shuf | head -1 | xargs xwallpaper --maximize
 }
+
+-virtualbox(){
+echo "deb http://download.virtualbox.org/virtualbox/debian buster contrib" | sudo tee -a /etc/apt/sources.list.d/virtualbox.list
+curl -fsSL https://www.virtualbox.org/download/oracle_vbox_2016.asc | sudo apt-key add -
+sudo apt-get update
+sudo apt-get install virtualbox-6.1
+}
