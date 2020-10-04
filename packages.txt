@@ -64,6 +64,7 @@ mpc                     debian terminal  client          music
 mpd                            terminal  music           server
 mps-youtube                    terminal  video
 mpv                     debian terminal  video
+mumble                  debian gui       audio
 mutt                    debian terminal  mail
 mycli                   debian terminal  client          database
 ncmpcpp                 debian terminal  client          music
