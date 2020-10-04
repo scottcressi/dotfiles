@@ -60,6 +60,12 @@ parse_git_branch_and_add_brackets(){
     sudo apt-get install -y --quiet --quiet signal-desktop
     sudo chmod 4755 /opt/Signal/chrome-sandbox
 
+    echo installing virtualbox
+    [[ ! -f /etc/apt/sources.list.d/virtualbox.list ]] && \
+    echo "deb http://download.virtualbox.org/virtualbox/debian buster contrib" | sudo tee -a /etc/apt/sources.list.d/virtualbox.list && \
+    curl -fsSL https://www.virtualbox.org/download/oracle_vbox_2016.asc | sudo apt-key add -
+    sudo apt-get install -y --quiet --quiet virtualbox-6.1
+
     # pip
     echo installing pip
     [[ -d ~/python/ ]] && pip install --upgrade --quiet \
@@ -584,11 +590,4 @@ parse_git_branch_and_add_brackets(){
 
 -wallpaper(){
     find ~/wallpapers/ -type f | shuf | head -1 | xargs xwallpaper --maximize
-}
-
--virtualbox(){
-echo "deb http://download.virtualbox.org/virtualbox/debian buster contrib" | sudo tee -a /etc/apt/sources.list.d/virtualbox.list
-curl -fsSL https://www.virtualbox.org/download/oracle_vbox_2016.asc | sudo apt-key add -
-sudo apt-get update
-sudo apt-get install virtualbox-6.1
 }
