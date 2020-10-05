@@ -69,6 +69,7 @@ parse_git_branch_and_add_brackets(){
     # pip
     echo installing pip
     [[ -d ~/python/ ]] && pip install --upgrade --quiet \
+    awscli \
     bpython \
     ipython \
     pylint \
@@ -84,14 +85,6 @@ parse_git_branch_and_add_brackets(){
     mkdir -p ~/wallpapers
     mkdir -p ~/.bash_completion.d
     mkdir -p ~/tmp
-
-    # aws cli
-    [[ ! -f ~/awscli-bundle.zip ]] && \
-    curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" --output ~/awscli-bundle.zip && \
-    cd && unzip awscli-bundle.zip && \
-    ./awscli-bundle/install -b ~/bin/aws
-    cd ~/bin && ln -sf ~/.local/lib/aws/bin/aws_completer aws_completer
-    sudo cp ~/.local/lib/aws/bin/aws_bash_completer ~/.bash_completion.d/aws_bash_completer
 
     # youtube-dl
     version=2020.07.28
