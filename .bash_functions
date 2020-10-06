@@ -564,9 +564,7 @@ parse_git_branch_and_add_brackets(){
 }
 
 -bookmarks-backup(){
-    if [ -d /sys/module/battery ] ; then
-        echo not allowed from this machine
-    else
+    if [ ! -d /sys/module/battery ] ; then
         7z a -p"$(cat ~/.bookmarkspasswd)" ~/repos/personal/buku/places.sqlite.7z "$(find ~/.mozilla/firefox/*.default/ -maxdepth 0)"/places.sqlite
     fi
 }
