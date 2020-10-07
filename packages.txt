@@ -108,7 +108,7 @@ screenkey               debian gui
 scrot                   debian gui       screenshot
 sent                    debian terminal  markdown
 shellcheck              debian terminal  lint
-smplayer                debian gui       audio
+smplayer                debian gui       video
 speedpad                debian terminal  fun             typing
 speedtest-cli           debian terminal  stats           network
 stow                    debian terminal
