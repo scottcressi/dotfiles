@@ -350,7 +350,17 @@ parse_git_branch_and_add_brackets(){
 }
 
 -kind(){
-    kind create cluster
+    echo """
+    # three node (two workers) cluster config
+    kind: Cluster
+    apiVersion: kind.x-k8s.io/v1alpha4
+    nodes:
+    - role: control-plane
+    - role: worker
+    - role: worker
+    - role: worker
+    """ > /tmp/kind-config.yaml
+    kind create cluster --config /tmp/kind-config.yaml
 
 }
 
