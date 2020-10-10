@@ -208,6 +208,7 @@ parse_git_branch_and_add_brackets(){
     [[ $(cd ~/repos/thirdparty/ghacks-user.js && git branch | awk '{print $5}' | sed s/\)//g | head -1) != "$version" ]] && cd ~/repos/thirdparty/ghacks-user.js && git checkout $version
 
     # ghacks
+    echo > "$profile_default"/user.js
     if [ ! -d /sys/module/battery ] ; then
     grep ^user_pref ~/repos/thirdparty/ghacks-user.js/user.js | sed 's/.*user_pref/user_pref/g' > "$profile_default"/user.js
     fi
