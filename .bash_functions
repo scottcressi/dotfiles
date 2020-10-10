@@ -215,8 +215,9 @@ parse_git_branch_and_add_brackets(){
 
     # ghacks custom
     echo '''
-    user_pref("browser.ctrlTab.recentlyUsedOrder", false); # General - Tabs - Ctrl+Tab cycles through tabs in recently used order
-    user_pref("extensions.autoDisableScopes", 0); # not in settings - auto enable addons
+    user_pref("browser.ctrlTab.recentlyUsedOrder", false); # tabs with tabbing
+    user_pref("extensions.autoDisableScopes", 0); # auto enable addons
+    user_pref("app.update.auto", false); # disable updates
     ''' >> "$profile_default"/user.js
 
     # addons default
