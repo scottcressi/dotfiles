@@ -25,7 +25,7 @@ parse_git_branch_and_add_brackets(){
 
 -packages(){
     # venv
-    [[ ! -d ~/python/ ]] && python3 -m venv ~/python
+    [[ $(type -P "python3") ]] && [[ ! -d ~/python/ ]] && python3 -m venv ~/python
 
     # update
     echo updating repos
@@ -68,7 +68,7 @@ parse_git_branch_and_add_brackets(){
 
     # pip
     echo installing pip
-    [[ -d ~/python/ ]] && python -m pip install --upgrade --quiet \
+    [[ $(type -P "python3") ]] && [[ -d ~/python/ ]] && python -m pip install --upgrade --quiet \
     awscli \
     bpython \
     ipython \
