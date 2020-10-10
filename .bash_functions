@@ -68,7 +68,7 @@ parse_git_branch_and_add_brackets(){
 
     # pip
     echo installing pip
-    [[ -d ~/python/ ]] && pip install --upgrade --quiet \
+    [[ -d ~/python/ ]] && python -m pip install --upgrade --quiet \
     awscli \
     bpython \
     ipython \
