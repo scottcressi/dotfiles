@@ -221,11 +221,26 @@ parse_git_branch_and_add_brackets(){
     ''' >> "$profile_default"/user.js
 
     # addons default
-    [[ ! -f $profile_default_extensions/uBlock0@raymondhill.net.xpi ]] && curl -s -L --url https://addons.mozilla.org/firefox/downloads/file/3579401/ublock_origin-1.27.10-an+fx.xpi --output "$profile_default_extensions"/uBlock0@raymondhill.net.xpi
-    [[ ! -f $profile_default_extensions/\{446900e4-71c2-419f-a6a7-df9c091e268b\}.xpi ]] && curl -s -L --url https://addons.mozilla.org/firefox/downloads/file/3582922/bitwarden_free_password_manager-1.44.3-an+fx.xpi --output "$profile_default_extensions"/\{446900e4-71c2-419f-a6a7-df9c091e268b\}.xpi
-    [[ ! -f $profile_default_extensions/\{e6e36c9a-8323-446c-b720-a176017e38ff\}.xpi ]] && curl -s -L --url https://addons.mozilla.org/firefox/downloads/file/3566579/torrent_control-0.2.18-fx.xpi --output "$profile_default_extensions"/\{e6e36c9a-8323-446c-b720-a176017e38ff\}.xpi
-    [[ ! -f $profile_default_extensions/2341n4m3@gmail.com.xpi ]] && curl -s -L --url https://addons.mozilla.org/firefox/downloads/file/717262/ageless_for_youtube-1.3-an+fx.xpi --output "$profile_default_extensions"/2341n4m3@gmail.com.xpi
-    [[ ! -f $profile_default_extensions/\{e4a8a97b-f2ed-450b-b12d-ee082ba24781\}.xpi ]] && curl -s -L --url https://addons.mozilla.org/firefox/downloads/file/3024171/greasemonkey-4.9-an+fx.xpi --output "$profile_default_extensions"/\{e4a8a97b-f2ed-450b-b12d-ee082ba24781\}.xpi
+    [[ ! -f $profile_default_extensions/uBlock0@raymondhill.net.xpi ]] && \
+        curl -s -L \
+        --url https://addons.mozilla.org/firefox/downloads/file/3579401/ublock_origin-1.27.10-an+fx.xpi \
+        --output "$profile_default_extensions"/uBlock0@raymondhill.net.xpi
+    [[ ! -f $profile_default_extensions/\{446900e4-71c2-419f-a6a7-df9c091e268b\}.xpi ]] && \
+        curl -s -L \
+        --url https://addons.mozilla.org/firefox/downloads/file/3582922/bitwarden_free_password_manager-1.44.3-an+fx.xpi \
+        --output "$profile_default_extensions"/\{446900e4-71c2-419f-a6a7-df9c091e268b\}.xpi
+    [[ ! -f $profile_default_extensions/\{e6e36c9a-8323-446c-b720-a176017e38ff\}.xpi ]] && \
+        curl -s -L \
+        --url https://addons.mozilla.org/firefox/downloads/file/3566579/torrent_control-0.2.18-fx.xpi \
+        --output "$profile_default_extensions"/\{e6e36c9a-8323-446c-b720-a176017e38ff\}.xpi
+    [[ ! -f $profile_default_extensions/2341n4m3@gmail.com.xpi ]] && \
+        curl -s -L \
+        --url https://addons.mozilla.org/firefox/downloads/file/717262/ageless_for_youtube-1.3-an+fx.xpi \
+        --output "$profile_default_extensions"/2341n4m3@gmail.com.xpi
+    [[ ! -f $profile_default_extensions/\{e4a8a97b-f2ed-450b-b12d-ee082ba24781\}.xpi ]] && \
+        curl -s -L \
+        --url https://addons.mozilla.org/firefox/downloads/file/3024171/greasemonkey-4.9-an+fx.xpi \
+        --output "$profile_default_extensions"/\{e4a8a97b-f2ed-450b-b12d-ee082ba24781\}.xpi
 
     # permissions
     chmod 755 ~/bin/*
