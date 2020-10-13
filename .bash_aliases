@@ -32,6 +32,7 @@ alias mv="mv -i"
 alias pwgen='pwgen 32 1 --no-capitalize --no-numerals --ambiguous'
 alias rm="rm -i"
 alias top="top -i"
+alias tty-clock="tty-clock -s -c"
 alias weather='weather $(curl -s ipinfo.io | jq .postal -r)'
 alias xfishtank='xfishtank -c black -r .1 -i .1 -b 20 -f 20'
 alias xterm='xterm -bg black -fg white'

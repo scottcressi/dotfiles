@@ -203,7 +203,7 @@ parse_git_branch_and_add_brackets(){
     [[ ! -d $profile_default_extensions ]] && mkdir "$profile_default_extensions"
 
     # ghacks repo
-    version=80.0
+    version=81.0
     [[ ! -d ~/repos/thirdparty/ghacks-user.js ]] && git clone https://github.com/ghacksuserjs/ghacks-user.js.git ~/repos/thirdparty/ghacks-user.js
     [[ $(cd ~/repos/thirdparty/ghacks-user.js && git branch | awk '{print $5}' | sed s/\)//g | head -1) != "$version" ]] && cd ~/repos/thirdparty/ghacks-user.js && git checkout $version
 
