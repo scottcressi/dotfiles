@@ -93,9 +93,22 @@ parse_git_branch_and_add_brackets(){
 
     # terraform
     version=0.13.5
-    [[ "$(terraform version | grep "v[0-9]" | awk '{print $2}' | sed 's/v//g')" != "$version" ]] && \
-    curl -s -L https://releases.hashicorp.com/terraform/${version}/terraform_${version}_linux_amd64.zip --output ~/tmp/terraform_${version}_linux_amd64.zip && \
-    unzip -d ~/bin -o ~/tmp/terraform_${version}_linux_amd64.zip
+    [[ ! -f ~/bin/terraform ]] && \
+    cd ~/bin && \
+    curl -s -L https://releases.hashicorp.com/terraform/${version}/terraform_${version}_linux_amd64.zip | jar xv
+
+    # vagrant
+    version=2.2.10
+    [[ "$(dpkg -l vagrant | grep vagrant | awk '{print $3}' | sed s/1://g)" != "$version" ]] && \
+    curl -s -L https://releases.hashicorp.com/vagrant/${version}/vagrant_${version}_x86_64.deb --output ~/tmp/vagrant_${version}_x86_64.deb && \
+    sudo dpkg -i ~/tmp/vagrant_${version}_x86_64.deb && \
+    rm -f ~/tmp/vagrant_${version}_x86_64.deb
+
+    # vault
+    version=1.5.5
+    [[ ! -f ~/bin/vault ]] && \
+    cd ~/bin && \
+    curl -s -L https://releases.hashicorp.com/vault/${version}/vault_${version}_linux_amd64.zip | jar xv
 
     # aws-iam-authenticator
     [[ ! -f ~/bin/aws-iam-authenticator ]] && \
@@ -106,23 +119,11 @@ parse_git_branch_and_add_brackets(){
     [[ ! -f ~/bin/docker-compose ]] && \
     curl -s -L https://github.com/docker/compose/releases/download/${version}/docker-compose-"$(uname -s)"-"$(uname -m)" -o ~/bin/docker-compose
 
-    # octant
-    version=0.15.0
-    [[ "$(octant version | grep Version | awk '{print $2}')" != "$version" ]] && \
-    curl -s -L --url https://github.com/vmware-tanzu/octant/releases/download/v${version}/octant_${version}_Linux-64bit.tar.gz --output ~/tmp/octant_${version}_Linux-64bit.tar.gz && \
-    tar xvf ~/tmp/octant_${version}_Linux-64bit.tar.gz --directory ~/tmp/ && \
-    cp -rp ~/tmp/octant_${version}_Linux-64bit/octant ~/bin/
-
     # pluto
     version=3.4.1
     cd ~/bin || exit
     [[ "$(pluto version | awk '{print $1}' | sed 's/Version://g')" != "$version" ]] && \
     curl -s -L --url https://github.com/FairwindsOps/pluto/releases/download/v3.4.1/pluto_3.4.1_linux_amd64.tar.gz | tar zx
-
-    # octant plugin
-    [[ ! -d ~/.config/octant/plugins/ ]] && \
-    mkdir -p ~/.config/octant/plugins/ && \
-    curl -s -L https://github.com/bloodorangeio/octant-helm/releases/download/v0.1.0/octant-helm_0.1.0_linux_amd64.tar.gz | tar zx -C ~/.config/octant/plugins/ octant-helm
 
     # skaffold
     version=v1.15.0
@@ -136,10 +137,10 @@ parse_git_branch_and_add_brackets(){
 
     # helm
     version=v3.3.4
-    [[ "$(helm version --client | awk '{print $1}' | sed 's/.*:"//g' | sed 's/",//g')" != "$version" ]] && \
-    curl -s -L --url https://get.helm.sh/helm-"${version}"-linux-amd64.tar.gz --output ~/tmp/helm-"${version}"-linux-amd64.tar.gz && \
-    tar xvf ~/tmp/helm-"${version}"-linux-amd64.tar.gz --directory ~/tmp/ && \
-    cp -rp ~/tmp/linux-amd64/helm ~/bin/helm
+    [[ ! -f ~/bin/helm ]] && \
+    cd ~/bin && curl -s -L --url https://get.helm.sh/helm-"${version}"-linux-amd64.tar.gz | tar zx && \
+    mv ~/bin/linux-amd64/helm ~/bin && \
+    rm -rf ~/bin/linux-amd64
 
     # kubectl
     version=v1.18.2
@@ -149,9 +150,7 @@ parse_git_branch_and_add_brackets(){
     # k9s
     version=0.22.1
     [[ "$(k9s version --short | grep Version | awk '{print $2}')" != "$version" ]] && \
-    curl -s -L --url https://github.com/derailed/k9s/releases/download/v${version}/k9s_Linux_x86_64.tar.gz --output ~/tmp/k9s_Linux_x86_64.tar.gz && \
-    tar xvf ~/tmp/k9s_Linux_x86_64.tar.gz --directory ~/tmp/ && \
-    cp -rp ~/tmp/k9s ~/bin/
+    cd ~/bin && curl -s -L --url https://github.com/derailed/k9s/releases/download/v${version}/k9s_Linux_x86_64.tar.gz | tar zxv k9s
 
     # kind
     version=v0.9.0
@@ -160,17 +159,16 @@ parse_git_branch_and_add_brackets(){
 
     # rakkess
     version=v0.4.4
-    [[ "$(rakkess version)" != "$version" ]] && \
-    curl -s -L --url https://github.com/corneliusweig/rakkess/releases/download/${version}/rakkess-amd64-linux.tar.gz --output ~/tmp/rakkess-amd64-linux.tar.gz && \
-    tar xvf ~/tmp/rakkess-amd64-linux.tar.gz --directory ~/tmp/ && \
-    cp -rp ~/tmp/rakkess-amd64-linux ~/bin/rakkess
+    [[ ! -f ~/bin/rakkess ]] && \
+    cd ~/bin && curl -s -L --url https://github.com/corneliusweig/rakkess/releases/download/${version}/rakkess-amd64-linux.tar.gz | tar zxv rakkess-amd64-linux && \
+    mv ~/bin/rakkess-amd64-linux ~/bin/rakkess
 
     # istioctl
     version=1.5.2
-    [[ "$(istioctl version --remote=false)" != "$version" ]] && \
-    curl -s -L --url https://github.com/istio/istio/releases/download/${version}/istio-${version}-linux.tar.gz --output ~/tmp/istio-${version}-linux.tar.gz && \
-    tar xvf ~/tmp/istio-${version}-linux.tar.gz --directory ~/tmp/ && \
-    cp -rp ~/tmp/istio-${version}/bin/istioctl ~/bin/
+    [[ ! -f ~/bin/istioctl ]] && \
+    cd ~/bin && curl -s -L --url https://github.com/istio/istio/releases/download/${version}/istio-${version}-linux.tar.gz | tar zxv && \
+    mv ~/bin/istio-1.5.2/bin/istioctl ~/bin/istioctl
+    rm -rf ~/bin/istio-${version}
 
     # slack term
     version=v0.5.0
@@ -376,8 +374,8 @@ parse_git_branch_and_add_brackets(){
     - role: worker
     - role: worker
     - role: worker
-    """ > /tmp/kind-config.yaml
-    kind create cluster --config /tmp/kind-config.yaml
+    """ > ~/tmp/kind-config.yaml
+    kind create cluster --config ~/tmp/kind-config.yaml
 
 }
 
