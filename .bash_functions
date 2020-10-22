@@ -68,7 +68,8 @@ parse_git_branch_and_add_brackets(){
 
     # pip
     echo installing pip
-    [[ $(type -P "python3") ]] && [[ -d ~/python/ ]] && python -m pip install --upgrade --quiet \
+    [[ $(type -P "python3") ]] && [[ -d ~/python/ ]] && \
+    python -m pip install --upgrade --quiet \
     awscli \
     bpython \
     ipython \
