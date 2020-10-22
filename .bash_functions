@@ -122,17 +122,17 @@ parse_git_branch_and_add_brackets(){
     # pluto
     version=3.4.1
     cd ~/bin || exit
-    [[ "$(pluto version | awk '{print $1}' | sed 's/Version://g')" != "$version" ]] && \
+    [[ ! -f ~/bin/pluto ]] && \
     curl -s -L --url https://github.com/FairwindsOps/pluto/releases/download/v3.4.1/pluto_3.4.1_linux_amd64.tar.gz | tar zx
 
     # skaffold
     version=v1.15.0
-    [[ "$(skaffold version)" != "$version" ]] && \
+    [[ ! -f ~/bin/skaffold ]] && \
     curl -s -L --url https://github.com/GoogleContainerTools/skaffold/releases/download/${version}/skaffold-linux-amd64 --output ~/bin/skaffold
 
     # kops
     version=1.18.0
-    [[ "$(kops version | awk '{print $2}')" != "$version" ]] && \
+    [[ ! -f ~/bin/kops ]] && \
     curl -s -L --url https://github.com/kubernetes/kops/releases/download/v${version}/kops-linux-amd64 --output ~/bin/kops
 
     # helm
@@ -144,17 +144,17 @@ parse_git_branch_and_add_brackets(){
 
     # kubectl
     version=v1.18.2
-    [[ "$(kubectl version --client | awk '{print $5}' | sed 's/.*:"//g' | sed 's/",//g')" != "$version" ]] && \
+    [[ ! -f ~/bin/kubectl ]] && \
     curl -s -LO https://storage.googleapis.com/kubernetes-release/release/"${version}"/bin/linux/amd64/kubectl --output ~/bin/kubectl
 
     # k9s
     version=0.22.1
-    [[ "$(k9s version --short | grep Version | awk '{print $2}')" != "$version" ]] && \
+    [[ ! -f ~/bin/k9s ]] && \
     cd ~/bin && curl -s -L --url https://github.com/derailed/k9s/releases/download/v${version}/k9s_Linux_x86_64.tar.gz | tar zxv k9s
 
     # kind
     version=v0.9.0
-    [[ "$(kind version | awk '{print $2}')" != "$version" ]] && \
+    [[ ! -f ~/bin/kind ]] && \
     curl -s -L --url https://github.com/kubernetes-sigs/kind/releases/download/${version}/kind-linux-amd64 --output ~/bin/kind
 
     # rakkess
