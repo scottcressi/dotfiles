@@ -92,7 +92,7 @@ parse_git_branch_and_add_brackets(){
     curl -s -L https://github.com/ytdl-org/youtube-dl/releases/download/${version}/youtube-dl --output ~/bin/youtube-dl
 
     # terraform
-    version=0.13.4
+    version=0.13.5
     [[ "$(terraform version | grep "v[0-9]" | awk '{print $2}' | sed 's/v//g')" != "$version" ]] && \
     curl -s -L https://releases.hashicorp.com/terraform/${version}/terraform_${version}_linux_amd64.zip --output ~/tmp/terraform_${version}_linux_amd64.zip && \
     unzip -d ~/bin -o ~/tmp/terraform_${version}_linux_amd64.zip
