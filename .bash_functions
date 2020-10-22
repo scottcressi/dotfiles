@@ -95,7 +95,8 @@ parse_git_branch_and_add_brackets(){
     version=0.13.5
     [[ ! -f ~/bin/terraform ]] && \
     cd ~/bin && \
-    curl -s -L https://releases.hashicorp.com/terraform/${version}/terraform_${version}_linux_amd64.zip | jar xv
+    curl -s -L -O https://releases.hashicorp.com/terraform/${version}/terraform_${version}_linux_amd64.zip && unzip terraform_${version}_linux_amd64.zip && \
+    rm -f terraform_${version}_linux_amd64.zip
 
     # vagrant
     version=2.2.10
@@ -108,14 +109,16 @@ parse_git_branch_and_add_brackets(){
     version=1.5.5
     [[ ! -f ~/bin/vault ]] && \
     cd ~/bin && \
-    curl -s -L https://releases.hashicorp.com/vault/${version}/vault_${version}_linux_amd64.zip | jar xv
+    curl -s -L -O https://releases.hashicorp.com/vault/${version}/vault_${version}_linux_amd64.zip && \
+    unzip vault_${version}_linux_amd64.zip && \
+    rm -f vault_${version}_linux_amd64.zip
 
     # aws-iam-authenticator
     [[ ! -f ~/bin/aws-iam-authenticator ]] && \
     curl -s https://amazon-eks.s3.us-west-2.amazonaws.com/1.17.9/2020-08-04/bin/linux/amd64/aws-iam-authenticator --output ~/bin/aws-iam-authenticator
 
     # docker compose
-    version=1.26.2
+    version=1.27.4
     [[ ! -f ~/bin/docker-compose ]] && \
     curl -s -L https://github.com/docker/compose/releases/download/${version}/docker-compose-"$(uname -s)"-"$(uname -m)" -o ~/bin/docker-compose
 
