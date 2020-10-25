@@ -16,7 +16,6 @@ alias test-cpu='for i in 1 2 3 4; do while : ; do : ; done & done'
 alias test-disk-speed='dd if=/dev/zero of=~/tmp/testfile.bin bs=1M count=4K conv=fdatasync status=progress;rm -f ~/tmp/testfile.bin'
 alias tm='transmission-remote debian:8080 -l'
 alias vf='vifm .'
-alias ww='curl http://wttr.in/'
 alias xrandr-tv='xrandr -s 1360x768'
 alias ycm='cd ~/.vim/plugged/YouCompleteMe && python3 install.py --all'
 
@@ -33,7 +32,6 @@ alias pwgen='pwgen 32 1 --no-capitalize --no-numerals --ambiguous'
 alias rm="rm -i"
 alias top="top -i"
 alias tty-clock="tty-clock -s -c"
-alias weather='weather $(curl -s ipinfo.io | jq .postal -r)'
 alias xfishtank='xfishtank -c black -r .1 -i .1 -b 20 -f 20'
 alias xterm='xterm -bg black -fg white'
 

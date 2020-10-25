@@ -611,3 +611,7 @@ parse_git_branch_and_add_brackets(){
 -wallpaper(){
     find ~/wallpapers/ -type f | shuf | head -1 | xargs xwallpaper --maximize
 }
+
+-ww(){
+curl http://wttr.in/$1
+}
