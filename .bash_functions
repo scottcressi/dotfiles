@@ -140,7 +140,7 @@ parse_git_branch_and_add_brackets(){
     curl -s -L --url https://github.com/kubernetes/kops/releases/download/v${version}/kops-linux-amd64 --output ~/bin/kops
 
     # helm
-    version=v3.3.4
+    version=v3.4.0
     [[ ! -f ~/bin/helm ]] && \
     cd ~/bin && curl -s -L --url https://get.helm.sh/helm-"${version}"-linux-amd64.tar.gz | tar zx && \
     mv ~/bin/linux-amd64/helm ~/bin && \
