@@ -35,6 +35,7 @@ git                     debian terminal  scm
 git-extras              debian terminal  scm
 gnuchess                debian terminal  game
 gnupg                   debian prereq    apt-key
+gource                  debian gui       scm
 greed                   debian terminal  game
 howdoi                  debian terminal  language
 htop                    debian terminal  stats           multi

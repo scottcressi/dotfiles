@@ -25,7 +25,7 @@ alias dd='dd status="progress"'
 alias df='df -h'
 alias dstat='dstat --net --disk --top-bio --top-cpu --top-cputime --top-io --top-latency --top-mem --top-oom'
 alias firefox='~/firefox/firefox -ProfileManager & disown ; exit'
-alias gource='gource -1280x720 --seconds-per-day 0.1 -o - | ffmpeg -y -r 60 -f image2pipe -vcodec ppm -i - -vcodec libx264 -preset ultrafast -pix_fmt yuv420p -crf 1 -threads 0 -bf 0 gource.mp4'
+alias gource='gource -1280x720 --seconds-per-day 0.1 -o - | ffmpeg -y -r 60 -f image2pipe -vcodec ppm -i - -vcodec libx264 -preset ultrafast -pix_fmt yuv420p -crf 1 -threads 0 -bf 0 ~/tmp/gource.mp4'
 alias grep='grep --color=auto'
 alias ls='ls --color=auto'
 alias mv="mv -i"
