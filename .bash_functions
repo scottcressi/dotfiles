@@ -1,8 +1,5 @@
 #!/usr/bin/env bash
 
-# shellcheck source=/dev/null
-[[ $(type -P "python3") ]] && [[ -d ~/python ]] && source ~/python/bin/activate
-
 DIRS=(
 SORT
 _misc
@@ -19,6 +16,25 @@ software
 videos
 )
 
+BIN=~/bin
+TMP=~/tmp
+REPOS=~/repos
+
+# directories
+mkdir -p ~/Downloads
+mkdir -p $BIN
+mkdir -p ~/wallpapers
+mkdir -p ~/.bash_completion.d
+mkdir -p $TMP
+
+# directories storage
+for i in "${DIRS[@]}" ; do
+mkdir -p ~/mnt/"$i"
+done
+
+# shellcheck source=/dev/null
+[[ $(type -P "python3") ]] && [[ -d ~/python ]] && source ~/python/bin/activate
+
 parse_git_branch_and_add_brackets(){
     git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\ \[\1\]/'
 }
@@ -33,7 +49,7 @@ parse_git_branch_and_add_brackets(){
 
     # install
     echo installing debian packages
-    grep "$(grep ^ID /etc/os-release | sed 's/ID=//g')" ~/repos/personal/dotfiles/packages.txt | awk '{print $1}' | xargs sudo apt-get install -y --quiet --quiet
+    grep "$(grep ^ID /etc/os-release | sed 's/ID=//g')" $REPOS/personal/dotfiles/packages.txt | awk '{print $1}' | xargs sudo apt-get install -y --quiet --quiet
 
     # drivers
     echo installing drivers
@@ -75,115 +91,103 @@ parse_git_branch_and_add_brackets(){
     ipython \
     pylint \
 
-    # directories storage
-    for i in "${DIRS[@]}" ; do
-    mkdir -p ~/mnt/"$i"
-    done
-
-    # directories other
-    mkdir -p ~/Downloads
-    mkdir -p ~/bin
-    mkdir -p ~/wallpapers
-    mkdir -p ~/.bash_completion.d
-    mkdir -p ~/tmp
-
     # youtube-dl
     version_youtube_dl=2020.07.28
-    [[ ! -f ~/bin/youtube-dl ]] && \
-    curl -s -L https://github.com/ytdl-org/youtube-dl/releases/download/${version_youtube_dl}/youtube-dl --output ~/bin/youtube-dl
+    [[ ! -f $BIN/youtube-dl ]] && \
+    curl -s -L https://github.com/ytdl-org/youtube-dl/releases/download/${version_youtube_dl}/youtube-dl --output $BIN/youtube-dl
 
     # terraform
     version_terraform=0.13.5
-    [[ ! -f ~/bin/terraform ]] && \
-    cd ~/bin && \
+    [[ ! -f $BIN/terraform ]] && \
+    cd $BIN && \
     curl -s -L -O https://releases.hashicorp.com/terraform/${version_terraform}/terraform_${version_terraform}_linux_amd64.zip && unzip terraform_${version_terraform}_linux_amd64.zip && \
     rm -f terraform_${version_terraform}_linux_amd64.zip
 
     # vagrant
     version_vagrant=2.2.10
     [[ "$(dpkg -l vagrant | grep vagrant | awk '{print $3}' | sed s/1://g)" != "$version_vagrant" ]] && \
-    curl -s -L https://releases.hashicorp.com/vagrant/${version_vagrant}/vagrant_${version_vagrant}_x86_64.deb --output ~/tmp/vagrant_${version_vagrant}_x86_64.deb && \
-    sudo dpkg -i ~/tmp/vagrant_${version_vagrant}_x86_64.deb && \
-    rm -f ~/tmp/vagrant_${version_vagrant}_x86_64.deb
+    curl -s -L https://releases.hashicorp.com/vagrant/${version_vagrant}/vagrant_${version_vagrant}_x86_64.deb --output $TMP/vagrant_${version_vagrant}_x86_64.deb && \
+    sudo dpkg -i $TMP/vagrant_${version_vagrant}_x86_64.deb && \
+    rm -f $TMP/vagrant_${version_vagrant}_x86_64.deb
 
     # vault
     version_vault=1.5.5
-    [[ ! -f ~/bin/vault ]] && \
-    cd ~/bin && \
+    [[ ! -f $BIN/vault ]] && \
+    cd $BIN && \
     curl -s -L -O https://releases.hashicorp.com/vault/${version_vault}/vault_${version_vault}_linux_amd64.zip && \
     unzip vault_${version_vault}_linux_amd64.zip && \
     rm -f vault_${version_vault}_linux_amd64.zip
 
     # aws-iam-authenticator
-    [[ ! -f ~/bin/aws-iam-authenticator ]] && \
-    curl -s https://amazon-eks.s3.us-west-2.amazonaws.com/1.17.9/2020-08-04/bin/linux/amd64/aws-iam-authenticator --output ~/bin/aws-iam-authenticator
+    [[ ! -f $BIN/aws-iam-authenticator ]] && \
+    curl -s https://amazon-eks.s3.us-west-2.amazonaws.com/1.17.9/2020-08-04/bin/linux/amd64/aws-iam-authenticator --output $BIN/aws-iam-authenticator
 
     # docker compose
     version_docker_compose=1.27.4
-    [[ ! -f ~/bin/docker-compose ]] && \
-    curl -s -L https://github.com/docker/compose/releases/download/${version_docker_compose}/docker-compose-"$(uname -s)"-"$(uname -m)" -o ~/bin/docker-compose
+    [[ ! -f $BIN/docker-compose ]] && \
+    curl -s -L https://github.com/docker/compose/releases/download/${version_docker_compose}/docker-compose-"$(uname -s)"-"$(uname -m)" -o $BIN/docker-compose
 
     # pluto
     version_pluto=3.4.1
-    cd ~/bin || exit
-    [[ ! -f ~/bin/pluto ]] && \
+    cd $BIN || exit
+    [[ ! -f $BIN/pluto ]] && \
     curl -s -L --url https://github.com/FairwindsOps/pluto/releases/download/v${version_pluto}/pluto_${version_pluto}_linux_amd64.tar.gz | tar zx
 
     # skaffold
     version_skaffold=v1.16.0
-    [[ ! -f ~/bin/skaffold ]] && \
-    curl -s -L --url https://github.com/GoogleContainerTools/skaffold/releases/download/${version_skaffold}/skaffold-linux-amd64 --output ~/bin/skaffold
+    [[ ! -f $BIN/skaffold ]] && \
+    curl -s -L --url https://github.com/GoogleContainerTools/skaffold/releases/download/${version_skaffold}/skaffold-linux-amd64 --output $BIN/skaffold
 
     # kops
     version_kops=1.18.0
-    [[ ! -f ~/bin/kops ]] && \
-    curl -s -L --url https://github.com/kubernetes/kops/releases/download/v${version_kops}/kops-linux-amd64 --output ~/bin/kops
+    [[ ! -f $BIN/kops ]] && \
+    curl -s -L --url https://github.com/kubernetes/kops/releases/download/v${version_kops}/kops-linux-amd64 --output $BIN/kops
 
     # helm
     version_helm=v3.4.0
-    [[ ! -f ~/bin/helm ]] && \
-    cd ~/bin && curl -s -L --url https://get.helm.sh/helm-"${version_helm}"-linux-amd64.tar.gz | tar zx && \
-    mv ~/bin/linux-amd64/helm ~/bin && \
-    rm -rf ~/bin/linux-amd64
+    [[ ! -f $BIN/helm ]] && \
+    cd $BIN && curl -s -L --url https://get.helm.sh/helm-"${version_helm}"-linux-amd64.tar.gz | tar zx && \
+    mv $BIN/linux-amd64/helm $BIN && \
+    rm -rf $BIN/linux-amd64
 
     # kubectl
     version_kubectl=v1.18.2
-    [[ ! -f ~/bin/kubectl ]] && \
-    curl -s -LO https://storage.googleapis.com/kubernetes-release/release/"${version_kubectl}"/bin/linux/amd64/kubectl --output ~/bin/kubectl
+    [[ ! -f $BIN/kubectl ]] && \
+    curl -s -LO https://storage.googleapis.com/kubernetes-release/release/"${version_kubectl}"/bin/linux/amd64/kubectl --output $BIN/kubectl
 
     # k9s
     version_k9s=0.23.1
-    [[ ! -f ~/bin/k9s ]] && \
-    cd ~/bin && curl -s -L --url https://github.com/derailed/k9s/releases/download/v${version_k9s}/k9s_Linux_x86_64.tar.gz | tar zxv k9s
+    [[ ! -f $BIN/k9s ]] && \
+    cd $BIN && curl -s -L --url https://github.com/derailed/k9s/releases/download/v${version_k9s}/k9s_Linux_x86_64.tar.gz | tar zxv k9s
 
     # kind
     version_kind=v0.9.0
-    [[ ! -f ~/bin/kind ]] && \
-    curl -s -L --url https://github.com/kubernetes-sigs/kind/releases/download/${version_kind}/kind-linux-amd64 --output ~/bin/kind
+    [[ ! -f $BIN/kind ]] && \
+    curl -s -L --url https://github.com/kubernetes-sigs/kind/releases/download/${version_kind}/kind-linux-amd64 --output $BIN/kind
 
     # rakkess
     version_rakkess=v0.4.4
-    [[ ! -f ~/bin/rakkess ]] && \
-    cd ~/bin && curl -s -L --url https://github.com/corneliusweig/rakkess/releases/download/${version_rakkess}/rakkess-amd64-linux.tar.gz | tar zxv rakkess-amd64-linux && \
-    mv ~/bin/rakkess-amd64-linux ~/bin/rakkess
+    [[ ! -f $BIN/rakkess ]] && \
+    cd $BIN && curl -s -L --url https://github.com/corneliusweig/rakkess/releases/download/${version_rakkess}/rakkess-amd64-linux.tar.gz | tar zxv rakkess-amd64-linux && \
+    mv $BIN/rakkess-amd64-linux $BIN/rakkess
 
     # istioctl
     version_istioctl=1.5.2
-    [[ ! -f ~/bin/istioctl ]] && \
-    cd ~/bin && curl -s -L --url https://github.com/istio/istio/releases/download/${version_istioctl}/istio-${version_istioctl}-linux.tar.gz | tar zxv && \
-    mv ~/bin/istio-1.5.2/bin/istioctl ~/bin/istioctl
-    rm -rf ~/bin/istio-${version_istioctl}
+    [[ ! -f $BIN/istioctl ]] && \
+    cd $BIN && curl -s -L --url https://github.com/istio/istio/releases/download/${version_istioctl}/istio-${version_istioctl}-linux.tar.gz | tar zxv && \
+    mv $BIN/istio-1.5.2/bin/istioctl $BIN/istioctl
+    rm -rf $BIN/istio-${version_istioctl}
 
     # slack term
     version_slack_term=v0.5.0
-    [[ ! -f ~/bin/slack-term ]] && \
-    curl -s -L --url https://github.com/erroneousboat/slack-term/releases/download/${version_slack_term}/slack-term-linux-amd64 --output ~/bin/slack-term
+    [[ ! -f $BIN/slack-term ]] && \
+    curl -s -L --url https://github.com/erroneousboat/slack-term/releases/download/${version_slack_term}/slack-term-linux-amd64 --output $BIN/slack-term
 
     # dwarf fortress
     version_dwarf_fortress=47_04
-    [[ ! -d ~/repos/thirdparty/df_linux ]] && \
-    curl -s -L --url http://www.bay12games.com/dwarves/df_${version_dwarf_fortress}_linux.tar.bz2 --output ~/repos/thirdparty/df_${version_dwarf_fortress}_linux.tar.bz2 && \
-    tar xvf ~/repos/thirdparty/df_${version_dwarf_fortress}_linux.tar.bz2 --directory ~/repos/thirdparty/ && \
+    [[ ! -d $REPOS/thirdparty/df_linux ]] && \
+    curl -s -L --url http://www.bay12games.com/dwarves/df_${version_dwarf_fortress}_linux.tar.bz2 --output $REPOS/thirdparty/df_${version_dwarf_fortress}_linux.tar.bz2 && \
+    tar xvf $REPOS/thirdparty/df_${version_dwarf_fortress}_linux.tar.bz2 --directory $REPOS/thirdparty/ && \
 
     # completions
     [[ ! -f ~/.bash_completion.d/kubectl ]] && kubectl completion bash | sudo tee ~/.bash_completion.d/kubectl
@@ -191,7 +195,7 @@ parse_git_branch_and_add_brackets(){
     sudo curl -s -L https://raw.githubusercontent.com/docker/compose/1.26.0/contrib/completion/bash/docker-compose -o ~/.bash_completion.d/docker-compose
 
     # stocks
-    [[ ! -d ~/repos/thirdparty/ticker.sh ]] && git clone https://github.com/pstadler/ticker.sh.git ~/repos/thirdparty/ticker.sh
+    [[ ! -d $REPOS/thirdparty/ticker.sh ]] && git clone https://github.com/pstadler/ticker.sh.git $REPOS/thirdparty/ticker.sh
 
     # firefox
     version_firefox=$(curl -s https://www.mozilla.org/en-US/firefox/releases/| grep data-latest | awk '{print $7}' | sed 's/.*=//g' | sed 's/"//g')
@@ -206,13 +210,13 @@ parse_git_branch_and_add_brackets(){
 
     # ghacks repo
     version_ghacks=81.0
-    [[ ! -d ~/repos/thirdparty/ghacks-user.js ]] && git clone https://github.com/ghacksuserjs/ghacks-user.js.git ~/repos/thirdparty/ghacks-user.js
-    [[ $(cd ~/repos/thirdparty/ghacks-user.js && git branch | awk '{print $5}' | sed s/\)//g | head -1) != "$version_ghacks" ]] && cd ~/repos/thirdparty/ghacks-user.js && git checkout $version_ghacks
+    [[ ! -d $REPOS/thirdparty/ghacks-user.js ]] && git clone https://github.com/ghacksuserjs/ghacks-user.js.git $REPOS/thirdparty/ghacks-user.js
+    [[ $(cd $REPOS/thirdparty/ghacks-user.js && git branch | awk '{print $5}' | sed s/\)//g | head -1) != "$version_ghacks" ]] && cd $REPOS/thirdparty/ghacks-user.js && git checkout $version_ghacks
 
     # ghacks
     echo > "$profile_default"/user.js
     if [ ! -d /sys/module/battery ] ; then
-    grep ^user_pref ~/repos/thirdparty/ghacks-user.js/user.js | sed 's/.*user_pref/user_pref/g' > "$profile_default"/user.js
+    grep ^user_pref $REPOS/thirdparty/ghacks-user.js/user.js | sed 's/.*user_pref/user_pref/g' > "$profile_default"/user.js
     fi
 
     # ghacks custom
@@ -245,7 +249,7 @@ parse_git_branch_and_add_brackets(){
         --output "$profile_default_extensions"/\{e4a8a97b-f2ed-450b-b12d-ee082ba24781\}.xpi
 
     # permissions
-    chmod 755 ~/bin/*
+    chmod 755 $BIN/*
 
     # return
     cd || return
@@ -378,8 +382,8 @@ parse_git_branch_and_add_brackets(){
     - role: worker
     - role: worker
     - role: worker
-    """ > ~/tmp/kind-config.yaml
-    kind create cluster --config ~/tmp/kind-config.yaml
+    """ > $TMP/kind-config.yaml
+    kind create cluster --config $TMP/kind-config.yaml
 
 }
 
@@ -395,16 +399,16 @@ parse_git_branch_and_add_brackets(){
 
 -record-screen(){
     RESOLUTION=$(xrandr | grep "\\*" | awk '{print $1}')
-    ffmpeg -f x11grab -s "$RESOLUTION" -i :0.0 ~/tmp/ffmpeg-screen-"$(date +"%Y-%m-%d-%I-%m-%S")".mkv
+    ffmpeg -f x11grab -s "$RESOLUTION" -i :0.0 $TMP/ffmpeg-screen-"$(date +"%Y-%m-%d-%I-%m-%S")".mkv
 }
 
 -record-camera(){
-    ffmpeg -i /dev/video0 ~/tmp/ffmpeg-camera-"$(date +"%Y-%m-%d-%I-%m-%S")".mkv
+    ffmpeg -i /dev/video0 $TMP/ffmpeg-camera-"$(date +"%Y-%m-%d-%I-%m-%S")".mkv
 }
 
 -record-security(){
     ffmpeg -i /dev/video0 \
-        -vf "select=gt(scene\\,0.0003),setpts=N/(10*TB)" ~/tmp/ffmpeg-security-"$(date +"%Y-%m-%d-%I-%m-%S")".mkv
+        -vf "select=gt(scene\\,0.0003),setpts=N/(10*TB)" $TMP/ffmpeg-security-"$(date +"%Y-%m-%d-%I-%m-%S")".mkv
 }
 
 -kpeee(){
@@ -525,31 +529,31 @@ parse_git_branch_and_add_brackets(){
 -suckless(){
     # dwm
     version_dwm=6.2
-    [[ ! -d ~/repos/thirdparty/dwm ]] && \
-    git clone https://git.suckless.org/dwm ~/repos/thirdparty/dwm
+    [[ ! -d $REPOS/thirdparty/dwm ]] && \
+    git clone https://git.suckless.org/dwm $REPOS/thirdparty/dwm
     export DESTDIR="$HOME" && \
-    cd ~/repos/thirdparty/dwm && \
+    cd $REPOS/thirdparty/dwm && \
     make clean install --quiet && \
     git checkout ${version_dwm} && git clean -df
 
     # dwmblocks
-    [[ ! -d ~/repos/thirdparty/dwmblocks ]] && \
-    git clone https://github.com/torrinfail/dwmblocks ~/repos/thirdparty/dwmblocks
+    [[ ! -d $REPOS/thirdparty/dwmblocks ]] && \
+    git clone https://github.com/torrinfail/dwmblocks $REPOS/thirdparty/dwmblocks
     [[ "$(pgrep dwmblocks)" ]] && pkill dwmblocks
-    cp ~/repos/personal/dwmblocks/dwmblocks.blocks.h ~/repos/thirdparty/dwmblocks/blocks.h
-    cd ~/repos/thirdparty/dwmblocks && make clean install ; ./dwmblocks & disown
-    cd ~/repos/thirdparty/dwmblocks && git checkout .
+    cp $REPOS/personal/dwmblocks/dwmblocks.blocks.h $REPOS/thirdparty/dwmblocks/blocks.h
+    cd $REPOS/thirdparty/dwmblocks && make clean install ; ./dwmblocks & disown
+    cd $REPOS/thirdparty/dwmblocks && git checkout .
 
     # st
     version_st=0.8.4
-    [[ ! -d ~/repos/thirdparty/st ]] && \
-    git clone https://git.suckless.org/st ~/repos/thirdparty/st
-    cd ~/repos/thirdparty/st && git checkout ${version_st} && \
+    [[ ! -d $REPOS/thirdparty/st ]] && \
+    git clone https://git.suckless.org/st $REPOS/thirdparty/st
+    cd $REPOS/thirdparty/st && git checkout ${version_st} && \
     export DESTDIR="$HOME" && \
-    curl -s -L --url https://st.suckless.org/patches/scrollback/st-scrollback-20200419-72e3f6c.diff --output ~/repos/thirdparty/st/st-scrollback-20200419-72e3f6c.diff && \
+    curl -s -L --url https://st.suckless.org/patches/scrollback/st-scrollback-20200419-72e3f6c.diff --output $REPOS/thirdparty/st/st-scrollback-20200419-72e3f6c.diff && \
     patch --quiet --merge -i st-* && \
     make clean install --quiet && \
-    cd ~/repos/thirdparty/st && git clean -df && git checkout .
+    cd $REPOS/thirdparty/st && git clean -df && git checkout .
 }
 
 -cowsay-normal(){
@@ -557,7 +561,7 @@ parse_git_branch_and_add_brackets(){
 }
 
 -cowsay-custom(){
-    fortune | cowsay -f "$(find ~/repos/personal/cowsay-files/cows | shuf | head -1)"
+    fortune | cowsay -f "$(find $REPOS/personal/cowsay-files/cows | shuf | head -1)"
 }
 
 -camera-web-html(){
@@ -573,7 +577,7 @@ parse_git_branch_and_add_brackets(){
 }
 
 -generate-person(){
-    curl -s -o ~/tmp/person https://thispersondoesnotexist.com/image && sxiv ~/tmp/person
+    curl -s -o $TMP/person https://thispersondoesnotexist.com/image && sxiv $TMP/person
 }
 
 -git-push-all-remotes(){
@@ -594,14 +598,14 @@ parse_git_branch_and_add_brackets(){
 
 -bookmarks-backup(){
     if [ ! -d /sys/module/battery ] ; then
-        7z a -p"$(cat ~/.bookmarkspasswd)" ~/repos/personal/buku/places.sqlite.7z "$(find ~/.mozilla/firefox/*.default/ -maxdepth 0)"/places.sqlite
+        7z a -p"$(cat ~/.bookmarkspasswd)" $REPOS/personal/buku/places.sqlite.7z "$(find ~/.mozilla/firefox/*.default/ -maxdepth 0)"/places.sqlite
     fi
 }
 
 -bookmarks-restore(){
-    cd ~/repos/personal/buku/ || exit
-    7z x -p"$(cat ~/.bookmarkspasswd)" ~/repos/personal/buku/places.sqlite.7z
-    mv ~/repos/personal/buku/places.sqlite "$(find ~/.mozilla/firefox/*.default/ -maxdepth 0)"/places.sqlite
+    cd $REPOS/personal/buku/ || exit
+    7z x -p"$(cat ~/.bookmarkspasswd)" $REPOS/personal/buku/places.sqlite.7z
+    mv $REPOS/personal/buku/places.sqlite "$(find ~/.mozilla/firefox/*.default/ -maxdepth 0)"/places.sqlite
 }
 
 -ip(){
