@@ -120,4 +120,6 @@ alias dl='docker network ls && echo && docker image ls --all && echo && docker c
 
 # vagrant
 alias vp='vagrant up --provision'
+alias vu='vagrant up --provision'
 alias vd='vagrant destroy -f'
+alias vs='vagrant status'
