@@ -203,7 +203,7 @@ parse_git_branch_and_add_brackets(){
     cd ~/ && curl -s -L --url https://ftp.mozilla.org/pub/firefox/releases/"${version_firefox}"/linux-x86_64/en-US/firefox-"${version_firefox}".tar.bz2 | tar -xj
 
     # firefox profile
-    ~/firefox/firefox -CreateProfile default
+    ~/firefox/firefox -headless -CreateProfile default
     profile_default=$(find ~/.mozilla/firefox/*.default/ -maxdepth 0)
     profile_default_extensions=$profile_default/extensions
     mkdir -p "$profile_default_extensions"
