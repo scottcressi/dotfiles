@@ -206,7 +206,7 @@ parse_git_branch_and_add_brackets(){
     ~/firefox/firefox -CreateProfile default
     profile_default=$(find ~/.mozilla/firefox/*.default/ -maxdepth 0)
     profile_default_extensions=$profile_default/extensions
-    [[ ! -d $profile_default_extensions ]] && mkdir "$profile_default_extensions"
+    mkdir -p "$profile_default_extensions"
 
     # ghacks repo
     version_ghacks=81.0
