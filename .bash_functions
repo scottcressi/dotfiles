@@ -51,7 +51,6 @@ parse_git_branch_and_add_brackets(){
     curl -s https://updates.signal.org/desktop/apt/keys.asc | sudo apt-key add -
 
     # docker key
-    if ! pgrep docker$ > /dev/null ; then
     [[ ! -f /etc/apt/sources.list.d/docker.list ]] && \
     curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add - && \
     sudo apt-key fingerprint 0EBFCD88 && \
@@ -76,8 +75,10 @@ parse_git_branch_and_add_brackets(){
 
     # docker
     echo installing docker
+    if ! pgrep docker$ > /dev/null ; then
     sudo apt-get install -y --quiet --quiet containerd.io docker-ce docker-ce-cli
     sudo usermod -a -G docker "$USER"
+    fi
 
     # signal
     echo installing signal
