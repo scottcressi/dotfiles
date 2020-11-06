@@ -40,6 +40,23 @@ parse_git_branch_and_add_brackets(){
 }
 
 -packages(){
+    # virtualbox key
+    [[ ! -f /etc/apt/sources.list.d/virtualbox.list ]] && \
+    echo "deb http://download.virtualbox.org/virtualbox/debian buster contrib" | sudo tee -a /etc/apt/sources.list.d/virtualbox.list && \
+    curl -fsSL https://www.virtualbox.org/download/oracle_vbox_2016.asc | sudo apt-key add -
+
+    # signal key
+    [[ ! -f /etc/apt/sources.list.d/signal-xenial.list ]] && \
+    echo "deb [arch=amd64] https://updates.signal.org/desktop/apt xenial main" | sudo tee -a /etc/apt/sources.list.d/signal-xenial.list && \
+    curl -s https://updates.signal.org/desktop/apt/keys.asc | sudo apt-key add -
+
+    # docker key
+    if ! pgrep docker$ > /dev/null ; then
+    [[ ! -f /etc/apt/sources.list.d/docker.list ]] && \
+    curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add - && \
+    sudo apt-key fingerprint 0EBFCD88 && \
+    echo "deb [arch=amd64] https://download.docker.com/linux/$(grep ^ID /etc/os-release | sed 's/ID=//g') $(grep VERSION_CODENAME /etc/os-release | sed 's/.*=//g') stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
     # venv
     [[ $(type -P "python3") ]] && [[ ! -d ~/python/ ]] && python3 -m venv ~/python
 
@@ -59,27 +76,16 @@ parse_git_branch_and_add_brackets(){
 
     # docker
     echo installing docker
-    if ! pgrep docker$ > /dev/null ; then
-    [[ ! -f /etc/apt/sources.list.d/docker.list ]] && \
-    curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add - && \
-    sudo apt-key fingerprint 0EBFCD88 && \
-    echo "deb [arch=amd64] https://download.docker.com/linux/$(grep ^ID /etc/os-release | sed 's/ID=//g') $(grep VERSION_CODENAME /etc/os-release | sed 's/.*=//g') stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
     sudo apt-get install -y --quiet --quiet containerd.io docker-ce docker-ce-cli
     sudo usermod -a -G docker "$USER"
-    fi
 
     # signal
     echo installing signal
-    [[ ! -f /etc/apt/sources.list.d/signal-xenial.list ]] && \
-    echo "deb [arch=amd64] https://updates.signal.org/desktop/apt xenial main" | sudo tee -a /etc/apt/sources.list.d/signal-xenial.list && \
-    curl -s https://updates.signal.org/desktop/apt/keys.asc | sudo apt-key add -
     sudo apt-get install -y --quiet --quiet signal-desktop
     sudo chmod 4755 /opt/Signal/chrome-sandbox
 
+    # virtualbox
     echo installing virtualbox
-    [[ ! -f /etc/apt/sources.list.d/virtualbox.list ]] && \
-    echo "deb http://download.virtualbox.org/virtualbox/debian buster contrib" | sudo tee -a /etc/apt/sources.list.d/virtualbox.list && \
-    curl -fsSL https://www.virtualbox.org/download/oracle_vbox_2016.asc | sudo apt-key add -
     sudo apt-get install -y --quiet --quiet virtualbox-6.1
 
     # pip
