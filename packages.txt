@@ -93,6 +93,7 @@ pandoc                  debian terminal  converter       docs
 pgcli                   debian terminal  client          database
 pi                      debian terminal  fun
 pkg-config              debian prereq    st
+pulseaudio              debian terminal  audio
 pulsemixer              debian terminal  audio
 pwgen                   debian terminal  passwords
 python3                 debian terminal  language
