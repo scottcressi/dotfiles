@@ -33,7 +33,7 @@ mkdir -p ~/mnt/"$i"
 done
 
 # shellcheck source=/dev/null
-[[ $(type -P "python3") ]] && [[ -d ~/python ]] && source ~/python/bin/activate
+[ -d ~/python ] && source ~/python/bin/activate
 
 parse_git_branch_and_add_brackets(){
     git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\ \[\1\]/'
@@ -91,7 +91,7 @@ parse_git_branch_and_add_brackets(){
 
     # pip
     echo installing pip
-    [[ $(type -P "python3") ]] && [[ -d ~/python/ ]] && \
+    [ -d ~/python/ ] && \
     python3 -m pip install --upgrade --quiet \
     awscli \
     bpython \

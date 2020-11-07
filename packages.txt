@@ -97,6 +97,7 @@ pulsemixer              debian terminal  audio
 pwgen                   debian terminal  passwords
 python3                 debian terminal  language
 python3-pip             debian terminal  language
+python3-venv            debian terminal  language
 redis-tools             debian terminal  client          database
 rig                     debian terminal  fun
 robotfindskitten        debian terminal  game
