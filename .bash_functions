@@ -222,9 +222,7 @@ parse_git_branch_and_add_brackets(){
 
     # ghacks
     echo > "$profile_default"/user.js
-    if [ ! -d /sys/module/battery ] ; then
     grep ^user_pref $REPOS/thirdparty/ghacks-user.js/user.js | sed 's/.*user_pref/user_pref/g' > "$profile_default"/user.js
-    fi
 
     # ghacks custom
     echo '''
