@@ -231,6 +231,7 @@ parse_git_branch_and_add_brackets(){
     user_pref("browser.ctrlTab.recentlyUsedOrder", false); # tabs with tabbing
     user_pref("extensions.autoDisableScopes", 0); # auto enable addons
     user_pref("app.update.auto", false); # disable updates
+    user_pref("privacy.resistFingerprinting", false);
     ''' >> "$profile_default"/user.js
 
     # addons default
