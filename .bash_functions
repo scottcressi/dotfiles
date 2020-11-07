@@ -99,9 +99,12 @@ parse_git_branch_and_add_brackets(){
     pylint \
 
     # youtube-dl
-    version_youtube_dl=2020.07.28
+    version_youtube_dl=2020.11.01.1
     [[ ! -f $BIN/youtube-dl ]] && \
-    curl -s -L https://github.com/ytdl-org/youtube-dl/releases/download/${version_youtube_dl}/youtube-dl --output $BIN/youtube-dl
+    cd $TMP && \
+    curl -s -L https://youtube-dl.org/downloads/latest/youtube-dl-${version_youtube_dl}.tar.gz | tar xz && \
+    mv youtube-dl/youtube-dl ~/bin/ && \
+    rm -rf youtube-dl
 
     # terraform
     version_terraform=0.13.5
