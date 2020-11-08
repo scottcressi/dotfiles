@@ -36,6 +36,3 @@ export PATH=$PATH:~/bin
 export PATH=$PATH:~/go/bin
 export PATH=$PATH:~/python/bin
 export PATH=$PATH:~/usr/local/bin
-
-# locale
-export LC_ALL="en_US"
