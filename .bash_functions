@@ -233,6 +233,8 @@ parse_git_branch_and_add_brackets(){
     user_pref("extensions.autoDisableScopes", 0); # auto enable addons
     user_pref("app.update.auto", false); # disable updates
     user_pref("privacy.resistFingerprinting", false);
+    user_pref("privacy.resistFingerprinting.block_mozAddonManager", false); // [HIDDEN PREF]
+    user_pref("privacy.resistFingerprinting.letterboxing", false); // [HIDDEN PREF]
     ''' >> "$profile_default"/user.js
 
     # addons default
