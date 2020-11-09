@@ -8,5 +8,5 @@ fi
 
 if [ ! -L ~/.bashrc ] ; then rm -f ~/.bashrc ; fi
 
-sudo apt-get install -y --quiet --quiet stow curl gnupg
+sudo apt-get install -y --quiet --quiet stow
 stow --verbose --stow --target ~/ .

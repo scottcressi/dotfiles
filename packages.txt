@@ -17,7 +17,7 @@ cmake                   debian prereq    youcompleteme
 cmatrix                 debian terminal  fun
 cmus                    debian terminal  client          music
 cowsay                  debian terminal  fun
-curl                    debian terminal  file            transfer
+curl                    debian prereq    file            transfer
 curseofwar              debian terminal  game
 dialog                  debian terminal  language        dialogbox
 dnsutils                debian terminal  stats           dns
@@ -29,7 +29,7 @@ ffmpeg                  debian terminal  video
 filezilla               debian gui       file            transfer
 freeciv                 debian gui       game
 fzf                     debian terminal
-gcc                     debian prereq  compiler
+gcc                     debian prereq    compiler
 git                     debian terminal  scm
 git-extras              debian terminal  scm
 gnuchess                debian terminal  game

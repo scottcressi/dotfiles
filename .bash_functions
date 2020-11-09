@@ -534,7 +534,7 @@ parse_git_branch_and_add_brackets(){
     curl 'https://corona-stats.online/updates'
 }
 
--graphics(){
+-prereqs(){
     # install
     echo installing base prereqs
     awk '/prereq/ {print $1}' $REPOS/personal/dotfiles/packages.txt | xargs sudo apt-get install -y --quiet --quiet
