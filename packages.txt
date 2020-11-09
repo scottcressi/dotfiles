@@ -29,7 +29,7 @@ ffmpeg                  debian terminal  video
 filezilla               debian gui       file            transfer
 freeciv                 debian gui       game
 fzf                     debian terminal
-gcc                     debian terminal  compiler
+gcc                     debian prereq  compiler
 git                     debian terminal  scm
 git-extras              debian terminal  scm
 gnuchess                debian terminal  game
@@ -47,7 +47,12 @@ jq                      debian terminal  language
 jsonlint                debian terminal  lint
 lftp                    debian terminal  file            transfer
 libaa-bin               debian terminal  fun
+libfontconfig1-dev      debian prereq    st
+libfreetype6-dev        debian prereq    st
 libgtk-3-0              debian prereq    firefox
+libx11-dev              debian prereq    dwm
+libxft-dev              debian prereq    dwm
+libxinerama-dev         debian prereq    dwm
 links2                  debian terminal  browser
 lm-sensors              debian terminal  stats
 lolcat                  debian terminal  fun
@@ -86,6 +91,7 @@ pacman4console          debian terminal  game
 pandoc                  debian terminal  converter       docs
 pgcli                   debian terminal  client          database
 pi                      debian terminal  fun
+pkg-config              debian prereq    st
 pulseaudio              debian terminal  audio
 pulsemixer              debian terminal  audio
 pwgen                   debian terminal  passwords
@@ -136,6 +142,7 @@ whois                   debian terminal  stats
 xautolock               debian gui       lock
 xcowsay                 debian gui       fun
 xfishtank               debian gui       fun
+xorg                    debian prereq    graphics        xserver
 xwallpaper              debian terminal  wallpaper
 yamllint                debian terminal  lint
 zathura                 debian gui       document        reader

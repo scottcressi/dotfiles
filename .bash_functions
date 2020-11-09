@@ -535,14 +535,9 @@ parse_git_branch_and_add_brackets(){
 }
 
 -graphics(){
-    echo installing xorg
-    sudo apt-get install -y --quiet --quiet xorg
-
-    echo prereqs dwm
-    sudo apt-get install -y --quiet --quiet libx11-dev libxft-dev libxinerama-dev
-
-    echo prereqs st
-    sudo apt-get install -y --quiet --quiet libfontconfig1-dev libfreetype6-dev pkg-config
+    # install
+    echo installing base prereqs
+    awk '/prereq/ {print $1}' $REPOS/personal/dotfiles/packages.txt | xargs sudo apt-get install -y --quiet --quiet
 
     echo compile dwm
     echo "exec dwm" > ~/.xinitrc
