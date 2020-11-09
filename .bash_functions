@@ -534,7 +534,7 @@ parse_git_branch_and_add_brackets(){
     curl 'https://corona-stats.online/updates'
 }
 
--prereqs(){
+-packages-prereqs(){
 
     # update
     echo updating repos
