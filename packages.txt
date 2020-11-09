@@ -136,7 +136,6 @@ whois                   debian terminal  stats
 xautolock               debian gui       lock
 xcowsay                 debian gui       fun
 xfishtank               debian gui       fun
-xorg                    debian gui       graphics        xserver
 xwallpaper              debian terminal  wallpaper
 yamllint                debian terminal  lint
 zathura                 debian gui       document        reader

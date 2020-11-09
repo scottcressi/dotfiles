@@ -534,7 +534,10 @@ parse_git_branch_and_add_brackets(){
     curl 'https://corona-stats.online/updates'
 }
 
--suckless(){
+-graphics(){
+    echo installing xorg
+    sudo apt-get install -y --quiet --quiet xorg
+
     echo prereqs dwm
     sudo apt-get install -y --quiet --quiet libx11-dev libxft-dev libxinerama-dev
 
