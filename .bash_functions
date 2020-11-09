@@ -535,6 +535,11 @@ parse_git_branch_and_add_brackets(){
 }
 
 -prereqs(){
+
+    # update
+    echo updating repos
+    sudo apt-get update --quiet --quiet
+
     # install
     echo installing base prereqs
     awk '/prereq/ {print $1}' $REPOS/personal/dotfiles/packages.txt | xargs sudo apt-get install -y --quiet --quiet
