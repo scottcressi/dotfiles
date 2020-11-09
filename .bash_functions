@@ -33,7 +33,7 @@ mkdir -p ~/mnt/"$i"
 done
 
 # shellcheck source=/dev/null
-[ -d ~/python ] && source ~/python/bin/activate
+[ -f /home/debian/python/bin/activate ] && source ~/python/bin/activate
 
 parse_git_branch_and_add_brackets(){
     git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\ \[\1\]/'
@@ -57,7 +57,7 @@ parse_git_branch_and_add_brackets(){
     echo "deb [arch=amd64] https://download.docker.com/linux/$(grep ^ID /etc/os-release | sed 's/ID=//g') $(grep VERSION_CODENAME /etc/os-release | sed 's/.*=//g') stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 
     # venv
-    [[ $(type -P "python3") ]] && [[ ! -d ~/python/ ]] && python3 -m venv ~/python
+    [ ! -f /home/debian/python/bin/activate ] && python3 -m venv ~/python
 
     echo updating repos
     sudo apt-get update --quiet --quiet
@@ -84,7 +84,7 @@ parse_git_branch_and_add_brackets(){
     sudo apt-get install -y --quiet --quiet virtualbox-6.1
 
     echo installing pip
-    [ -d ~/python/ ] && \
+    [ "$VIRTUAL_ENV" != "" ] && \
     python3 -m pip install --upgrade --quiet \
     awscli \
     bpython \
