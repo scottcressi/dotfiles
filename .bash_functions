@@ -59,37 +59,30 @@ parse_git_branch_and_add_brackets(){
     # venv
     [[ $(type -P "python3") ]] && [[ ! -d ~/python/ ]] && python3 -m venv ~/python
 
-    # update
     echo updating repos
     sudo apt-get update --quiet --quiet
 
-    # install
     echo installing debian packages
     grep "$(grep ^ID /etc/os-release | sed 's/ID=//g')" $REPOS/personal/dotfiles/packages.txt | awk '{print $1}' | xargs sudo apt-get install -y --quiet --quiet
 
-    # drivers
     echo installing drivers
     if [ "$(lspci | grep VGA | awk '{print $5}')" == "NVIDIA" ] ; then
         sudo apt-get install -y --quiet --quiet nvidia-driver
     fi
 
-    # docker
     echo installing docker
     if ! pgrep docker$ > /dev/null ; then
     sudo apt-get install -y --quiet --quiet containerd.io docker-ce docker-ce-cli
     sudo usermod -a -G docker "$USER"
     fi
 
-    # signal
     echo installing signal
     sudo apt-get install -y --quiet --quiet signal-desktop
     sudo chmod 4755 /opt/Signal/chrome-sandbox
 
-    # virtualbox
     echo installing virtualbox
     sudo apt-get install -y --quiet --quiet virtualbox-6.1
 
-    # pip
     echo installing pip
     [ -d ~/python/ ] && \
     python3 -m pip install --upgrade --quiet \
@@ -536,7 +529,6 @@ parse_git_branch_and_add_brackets(){
 
 -packages-prereqs(){
 
-    # update
     echo updating repos
     sudo apt-get update --quiet --quiet
 
