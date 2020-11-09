@@ -535,7 +535,14 @@ parse_git_branch_and_add_brackets(){
 }
 
 -suckless(){
-    # dwm
+    echo prereqs dwm
+    sudo apt-get install -y --quiet --quiet libx11-dev libxft-dev libxinerama-dev
+
+    echo prereqs st
+    sudo apt-get install -y --quiet --quiet libfontconfig1-dev libfreetype6-dev pkg-config
+
+    echo compile dwm
+    echo "exec dwm" > ~/.xinitrc
     version_dwm=6.2
     [[ ! -d $REPOS/thirdparty/dwm ]] && \
     git clone https://git.suckless.org/dwm $REPOS/thirdparty/dwm
@@ -544,7 +551,7 @@ parse_git_branch_and_add_brackets(){
     make clean install --quiet && \
     git checkout ${version_dwm} && git clean -df
 
-    # dwmblocks
+    echo compile dwmblocks
     [[ ! -d $REPOS/thirdparty/dwmblocks ]] && \
     git clone https://github.com/torrinfail/dwmblocks $REPOS/thirdparty/dwmblocks
     [[ "$(pgrep dwmblocks)" ]] && pkill dwmblocks
@@ -552,7 +559,7 @@ parse_git_branch_and_add_brackets(){
     cd $REPOS/thirdparty/dwmblocks && make clean install ; ./dwmblocks & disown
     cd $REPOS/thirdparty/dwmblocks && git checkout .
 
-    # st
+    echo compile st
     version_st=0.8.4
     [[ ! -d $REPOS/thirdparty/st ]] && \
     git clone https://git.suckless.org/st $REPOS/thirdparty/st
