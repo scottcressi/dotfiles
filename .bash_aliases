@@ -36,7 +36,6 @@ alias rm="rm -i"
 alias top="top -i"
 alias tty-clock="tty-clock -s -c"
 alias xfishtank='xfishtank -c black -r .1 -i .1 -b 20 -f 20'
-alias xterm='xterm -bg black -fg white'
 
 # git
 alias ga='git add --all'
