@@ -147,7 +147,7 @@ parse_git_branch_and_add_brackets(){
     curl -s -L --url https://github.com/kubernetes/kops/releases/download/v${version_kops}/kops-linux-amd64 --output $BIN/kops
 
     # helm
-    version_helm=v3.4.0
+    version_helm=v3.4.1
     [[ ! -f $BIN/helm ]] && \
     cd $BIN && curl -s -L --url https://get.helm.sh/helm-"${version_helm}"-linux-amd64.tar.gz | tar zx && \
     mv $BIN/linux-amd64/helm $BIN && \
@@ -536,15 +536,16 @@ parse_git_branch_and_add_brackets(){
     echo installing base prereqs
     awk '/prereq/ {print $1}' $REPOS/personal/dotfiles/packages.txt | xargs sudo apt-get install -y --quiet --quiet
 
+    export DESTDIR="$HOME"
+
     echo compile dwm
     echo "exec dwm" > ~/.xinitrc
     version_dwm=6.2
-    [[ ! -d $REPOS/thirdparty/dwm ]] && \
-    git clone https://git.suckless.org/dwm $REPOS/thirdparty/dwm
-    export DESTDIR="$HOME" && \
-    cd $REPOS/thirdparty/dwm && \
-    make clean install --quiet && \
-    git checkout ${version_dwm} && git clean -df
+    cd $TMP || exit
+    curl -s -L --url https://dl.suckless.org/dwm/dwm-${version_dwm}.tar.gz | tar xz
+    cd $TMP/dwm-${version_dwm} || exit
+    make clean install --quiet
+    rm -rf $TMP/dwm-${version_dwm}
 
     echo compile dwmblocks
     [[ ! -d $REPOS/thirdparty/dwmblocks ]] && \
@@ -556,14 +557,13 @@ parse_git_branch_and_add_brackets(){
 
     echo compile st
     version_st=0.8.4
-    [[ ! -d $REPOS/thirdparty/st ]] && \
-    git clone https://git.suckless.org/st $REPOS/thirdparty/st
-    cd $REPOS/thirdparty/st && git checkout ${version_st} && \
-    export DESTDIR="$HOME" && \
-    curl -s -L --url https://st.suckless.org/patches/scrollback/st-scrollback-20200419-72e3f6c.diff --output $REPOS/thirdparty/st/st-scrollback-20200419-72e3f6c.diff && \
-    patch --quiet --merge -i st-* && \
-    make clean install --quiet && \
-    cd $REPOS/thirdparty/st && git clean -df && git checkout .
+    cd $TMP || exit
+    curl -s -L --url https://dl.suckless.org/st/st-${version_st}.tar.gz | tar xz
+    curl -s -L --url https://st.suckless.org/patches/scrollback/st-scrollback-20200419-72e3f6c.diff --output $TMP/st-${version_st}/st-scrollback-20200419-72e3f6c.diff
+    cd $TMP/st-${version_st} || exit
+    patch --quiet --merge -i st-*
+    make clean install --quiet
+    rm -rf $TMP/st-${version_st}
 }
 
 -cowsay-normal(){
