@@ -50,6 +50,7 @@ libaa-bin               debian terminal  fun
 libfontconfig1-dev      debian terminal  prereq    st
 libfreetype6-dev        debian terminal  prereq    st
 libgtk-3-0              debian terminal  prereq    firefox
+libpq-dev               debian terminal  prereq    pgcli
 libx11-dev              debian terminal  prereq    dwm
 libxft-dev              debian terminal  prereq    dwm
 libxinerama-dev         debian terminal  prereq    dwm
