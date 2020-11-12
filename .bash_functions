@@ -551,14 +551,6 @@ parse_git_branch_and_add_brackets(){
     make clean install --quiet && \
     rm -rf $TMP/dwm-${version_dwm}
 
-    echo compile dwmblocks
-    [[ ! -d $REPOS/thirdparty/dwmblocks ]] && \
-    git clone https://github.com/torrinfail/dwmblocks $REPOS/thirdparty/dwmblocks
-    [[ "$(pgrep dwmblocks)" ]] && pkill dwmblocks
-    cp $REPOS/personal/dwmblocks/dwmblocks.blocks.h $REPOS/thirdparty/dwmblocks/blocks.h
-    cd $REPOS/thirdparty/dwmblocks && make clean install ; ./dwmblocks & disown
-    cd $REPOS/thirdparty/dwmblocks && git checkout .
-
     echo compile st
     version_st=0.8.4
     [[ ! -f $REPOS/thirdparty/st-${version_st}.tar.gz ]] && \
@@ -569,6 +561,14 @@ parse_git_branch_and_add_brackets(){
     patch --quiet --merge -i st-*
     make clean install --quiet && \
     rm -rf $TMP/st-${version_st}
+
+    echo compile dwmblocks
+    [[ ! -d $REPOS/thirdparty/dwmblocks ]] && \
+    git clone https://github.com/torrinfail/dwmblocks $REPOS/thirdparty/dwmblocks
+    [[ "$(pgrep dwmblocks)" ]] && pkill dwmblocks
+    cp $REPOS/personal/dwmblocks/dwmblocks.blocks.h $REPOS/thirdparty/dwmblocks/blocks.h
+    cd $REPOS/thirdparty/dwmblocks && make clean install ; ./dwmblocks & disown
+    cd $REPOS/thirdparty/dwmblocks && git checkout .
 }
 
 -cowsay-normal(){
