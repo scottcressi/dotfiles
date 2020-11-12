@@ -89,7 +89,6 @@ openssh-client          debian terminal  client          ssh
 p7zip-full              debian terminal
 pacman4console          debian terminal  game
 pandoc                  debian terminal  converter       docs
-pgcli                   debian terminal  client          database
 pi                      debian terminal  fun
 pkg-config              debian prereq    st
 pulseaudio              debian terminal  audio

@@ -88,6 +88,7 @@ parse_git_branch_and_add_brackets(){
     python3 -m pip install --upgrade --quiet \
     awscli \
     bpython \
+    pgcli \
     ipython \
     pylint \
 
