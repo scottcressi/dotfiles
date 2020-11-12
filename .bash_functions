@@ -565,7 +565,7 @@ parse_git_branch_and_add_brackets(){
     echo compile dwmblocks
     [[ ! -d $REPOS/thirdparty/dwmblocks ]] && \
     git clone https://github.com/torrinfail/dwmblocks $REPOS/thirdparty/dwmblocks
-    [[ "$(pgrep dwmblocks)" ]] && pkill dwmblocks
+    pkill dwmblocks
     cp $REPOS/personal/dwmblocks/dwmblocks.blocks.h $REPOS/thirdparty/dwmblocks/blocks.h
     cd $REPOS/thirdparty/dwmblocks && make clean install ; ./dwmblocks & disown
     cd $REPOS/thirdparty/dwmblocks && git checkout .
