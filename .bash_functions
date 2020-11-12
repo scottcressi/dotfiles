@@ -33,7 +33,7 @@ mkdir -p ~/mnt/"$i"
 done
 
 # shellcheck source=/dev/null
-[ -f /home/debian/python/bin/activate ] && source ~/python/bin/activate
+[ -f ~/python/bin/activate ] && source ~/python/bin/activate
 
 parse_git_branch_and_add_brackets(){
     git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\ \[\1\]/'
@@ -57,13 +57,13 @@ parse_git_branch_and_add_brackets(){
     echo "deb [arch=amd64] https://download.docker.com/linux/$(grep ^ID /etc/os-release | sed 's/ID=//g') $(grep VERSION_CODENAME /etc/os-release | sed 's/.*=//g') stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 
     # venv
-    [ ! -f /home/debian/python/bin/activate ] && python3 -m venv ~/python
+    [ ! -f ~/python/bin/activate ] && python3 -m venv ~/python
 
     echo updating repos
     sudo apt-get update --quiet --quiet
 
-    echo installing debian packages
-    grep "$(grep ^ID /etc/os-release | sed 's/ID=//g')" $REPOS/personal/dotfiles/packages.txt | awk '{print $1}' | xargs sudo apt-get install -y --quiet --quiet
+    echo installing packages
+    awk '/debian/ {print $1}' $REPOS/personal/dotfiles/packages.txt | awk '{print $1}' | xargs sudo apt-get install -y --quiet --quiet
 
     echo installing drivers
     if [ "$(lspci | grep VGA | awk '{print $5}')" == "NVIDIA" ] ; then
