@@ -213,14 +213,16 @@ parse_git_branch_and_add_brackets(){
 
     # ghacks repo
     version_ghacks=81.0
-    [[ ! -d $REPOS/thirdparty/ghacks-user.js ]] && git clone https://github.com/ghacksuserjs/ghacks-user.js.git $REPOS/thirdparty/ghacks-user.js
-    [[ $(cd $REPOS/thirdparty/ghacks-user.js && git branch | awk '{print $5}' | sed s/\)//g | head -1) != "$version_ghacks" ]] && cd $REPOS/thirdparty/ghacks-user.js && git checkout $version_ghacks
+    [[ ! -d $REPOS/thirdparty/${version_ghacks} ]] && \
+    cd $REPOS/thirdparty/ && \
+    curl -s -L --url https://github.com/arkenfox/user.js/archive/${version_ghacks}.tar.gz --output ${version_ghacks}.tar.gz
+    tar zxvf ${version_ghacks}.tar.gz
 
-    # ghacks
+    # ghacks settings
     echo > "$profile_default"/user.js
     #grep ^user_pref $REPOS/thirdparty/ghacks-user.js/user.js | sed 's/.*user_pref/user_pref/g' > "$profile_default"/user.js
 
-    # ghacks custom
+    # custom user.js settings
     echo '''
     user_pref("browser.ctrlTab.recentlyUsedOrder", false); # tabs with tabbing
     user_pref("extensions.autoDisableScopes", 0); # auto enable addons
