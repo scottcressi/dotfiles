@@ -213,9 +213,9 @@ parse_git_branch_and_add_brackets(){
 
     # ghacks repo
     version_ghacks=81.0
-    [[ ! -d $REPOS/thirdparty/${version_ghacks} ]] && \
+    [[ ! -d $REPOS/thirdparty/user.js-${version_ghacks} ]] && \
     cd $REPOS/thirdparty/ && \
-    curl -s -L --url https://github.com/arkenfox/user.js/archive/${version_ghacks}.tar.gz --output ${version_ghacks}.tar.gz
+    curl -s -L --url https://github.com/arkenfox/user.js/archive/${version_ghacks}.tar.gz --output ${version_ghacks}.tar.gz && \
     tar zxvf ${version_ghacks}.tar.gz
 
     # ghacks settings
@@ -543,10 +543,12 @@ parse_git_branch_and_add_brackets(){
     echo compile dwm
     echo "exec dwm" > ~/.xinitrc
     version_dwm=6.2
-    cd $TMP || exit
-    curl -s -L --url https://dl.suckless.org/dwm/dwm-${version_dwm}.tar.gz | tar xz
-    cd $TMP/dwm-${version_dwm} || exit
-    make clean install --quiet
+    [[ ! -f $REPOS/thirdparty/dwm-${version_dwm}.tar.gz ]] && \
+    cd $REPOS/thirdparty && \
+    curl -s -L --url https://dl.suckless.org/dwm/dwm-${version_dwm}.tar.gz --output dwm-${version_dwm}.tar.gz && \
+    tar zxvf dwm-${version_dwm}.tar.gz && \
+    cd $REPOS/thirdparty/dwm-${version_dwm} && \
+    make clean install --quiet && \
     rm -rf $TMP/dwm-${version_dwm}
 
     echo compile dwmblocks
@@ -559,12 +561,13 @@ parse_git_branch_and_add_brackets(){
 
     echo compile st
     version_st=0.8.4
-    cd $TMP || exit
-    curl -s -L --url https://dl.suckless.org/st/st-${version_st}.tar.gz | tar xz
-    curl -s -L --url https://st.suckless.org/patches/scrollback/st-scrollback-20200419-72e3f6c.diff --output $TMP/st-${version_st}/st-scrollback-20200419-72e3f6c.diff
-    cd $TMP/st-${version_st} || exit
+    [[ ! -f $REPOS/thirdparty/st-${version_st}.tar.gz ]] && \
+    cd $REPOS/thirdparty && \
+    curl -s -L --url https://dl.suckless.org/st/st-${version_st}.tar.gz --output st-${version_st}.tar.gz && \
+    tar zxvf st-${version_st}.tar.gz && \
+    cd $REPOS/thirdparty/st-${version_st} && \
     patch --quiet --merge -i st-*
-    make clean install --quiet
+    make clean install --quiet && \
     rm -rf $TMP/st-${version_st}
 }
 
