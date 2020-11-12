@@ -558,7 +558,8 @@ parse_git_branch_and_add_brackets(){
     curl -s -L --url https://dl.suckless.org/st/st-${version_st}.tar.gz --output st-${version_st}.tar.gz && \
     tar zxvf st-${version_st}.tar.gz && \
     cd $REPOS/thirdparty/st-${version_st} && \
-    patch --merge -i st-*
+    curl -s -L --url https://st.suckless.org/patches/scrollback/st-scrollback-20200419-72e3f6c.diff --output st-scrollback-20200419-72e3f6c.diff && \
+    patch --merge -i st-* && \
     make install && \
     rm -rf $TMP/st-${version_st}
 
