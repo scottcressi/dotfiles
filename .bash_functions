@@ -93,7 +93,7 @@ parse_git_branch_and_add_brackets(){
     pylint \
 
     # youtube-dl
-    version_youtube_dl=2020.11.01.1
+    version_youtube_dl=2020.11.12
     [[ ! -f $BIN/youtube-dl ]] && \
     cd $TMP && \
     curl -L https://youtube-dl.org/downloads/latest/youtube-dl-${version_youtube_dl}.tar.gz | tar xz && \
