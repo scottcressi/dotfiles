@@ -255,9 +255,6 @@ parse_git_branch_and_add_brackets(){
     # permissions
     chmod 755 $BIN/*
 
-    # return
-    cd || return
-
 }
 
 -docker-stop-all(){
@@ -545,10 +542,8 @@ parse_git_branch_and_add_brackets(){
     echo "exec dwm" > ~/.xinitrc
     version_dwm=6.2
     [[ ! -f $REPOS/thirdparty/dwm-${version_dwm}.tar.gz ]] && \
-    cd $REPOS/thirdparty && \
-    curl -L --url https://dl.suckless.org/dwm/dwm-${version_dwm}.tar.gz --output dwm-${version_dwm}.tar.gz
-    cd $REPOS/thirdparty && \
-    tar zxf dwm-${version_dwm}.tar.gz && \
+    curl -L --url https://dl.suckless.org/dwm/dwm-${version_dwm}.tar.gz --output $REPOS/thirdparty/dwm-${version_dwm}.tar.gz
+    tar zxf $REPOS/thirdparty/dwm-${version_dwm}.tar.gz -C $REPOS/thirdparty/ && \
     cd $REPOS/thirdparty/dwm-${version_dwm} && \
     make install --quiet && \
     rm -rf $REPOS/thirdparty/dwm-${version_dwm}
@@ -556,11 +551,9 @@ parse_git_branch_and_add_brackets(){
     echo compile st
     version_st=0.8.4
     [[ ! -f $REPOS/thirdparty/st-${version_st}.tar.gz ]] && \
-    cd $REPOS/thirdparty && \
-    curl -L --url https://dl.suckless.org/st/st-${version_st}.tar.gz --output st-${version_st}.tar.gz
+    curl -L --url https://dl.suckless.org/st/st-${version_st}.tar.gz --output $REPOS/thirdparty/st-${version_st}.tar.gz
     [[ ! -d $REPOS/thirdparty/st-${version_st} ]] && \
-    cd $REPOS/thirdparty && \
-    tar zxf st-${version_st}.tar.gz
+    tar zxf $REPOS/thirdparty/st-${version_st}.tar.gz -C $REPOS/thirdparty/
     [[ ! -f $REPOS/thirdparty/st-scrollback-20200419-72e3f6c.diff ]] && \
     curl -L --url https://st.suckless.org/patches/scrollback/st-scrollback-20200419-72e3f6c.diff --output $REPOS/thirdparty/st-scrollback-20200419-72e3f6c.diff
     cp -rp $REPOS/thirdparty/st-*.diff $REPOS/thirdparty/st-${version_st}/
@@ -574,8 +567,7 @@ parse_git_branch_and_add_brackets(){
     git clone https://github.com/torrinfail/dwmblocks $REPOS/thirdparty/dwmblocks
     pkill dwmblocks
     cp $REPOS/personal/dwmblocks/dwmblocks.blocks.h $REPOS/thirdparty/dwmblocks/blocks.h
-    cd $REPOS/thirdparty/dwmblocks && make clean install --quiet ; ./dwmblocks & disown
-    cd $REPOS/thirdparty/dwmblocks && git checkout .
+    cd $REPOS/thirdparty/dwmblocks ; make clean install --quiet ; ./dwmblocks & disown ; git checkout .
 }
 
 -cowsay-normal(){
