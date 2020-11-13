@@ -73,8 +73,8 @@ parse_git_branch_and_add_brackets(){
     echo installing docker
     if ! pgrep docker$ > /dev/null ; then
     sudo apt-get install -y --quiet --quiet containerd.io docker-ce docker-ce-cli
-    sudo usermod -a -G docker "$USER"
     fi
+    sudo usermod -a -G docker "$USER"
 
     echo installing signal
     sudo apt-get install -y --quiet --quiet signal-desktop
