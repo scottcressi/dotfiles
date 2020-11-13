@@ -95,10 +95,9 @@ parse_git_branch_and_add_brackets(){
     # youtube-dl
     version_youtube_dl=2020.11.12
     [[ ! -f $BIN/youtube-dl ]] && \
-    cd $TMP && \
-    curl -L https://youtube-dl.org/downloads/latest/youtube-dl-${version_youtube_dl}.tar.gz | tar xz && \
+    curl -L https://youtube-dl.org/downloads/latest/youtube-dl-${version_youtube_dl}.tar.gz | tar xz youtube-dl/youtube-dl && \
     mv youtube-dl/youtube-dl ~/bin/ && \
-    rm -rf youtube-dl
+    rmdir youtube-dl
 
     # terraform
     version_terraform=0.13.5
@@ -133,9 +132,8 @@ parse_git_branch_and_add_brackets(){
 
     # pluto
     version_pluto=3.4.1
-    cd $BIN || exit
     [[ ! -f $BIN/pluto ]] && \
-    curl -L --url https://github.com/FairwindsOps/pluto/releases/download/v${version_pluto}/pluto_${version_pluto}_linux_amd64.tar.gz | tar zx
+    curl -L --url https://github.com/FairwindsOps/pluto/releases/download/v${version_pluto}/pluto_${version_pluto}_linux_amd64.tar.gz | tar zx -C ~/bin/ pluto
 
     # skaffold
     version_skaffold=v1.16.0
@@ -150,9 +148,9 @@ parse_git_branch_and_add_brackets(){
     # helm
     version_helm=v3.4.1
     [[ ! -f $BIN/helm ]] && \
-    cd $BIN && curl -L --url https://get.helm.sh/helm-"${version_helm}"-linux-amd64.tar.gz | tar zx && \
-    mv $BIN/linux-amd64/helm $BIN && \
-    rm -rf $BIN/linux-amd64
+    curl -L --url https://get.helm.sh/helm-"${version_helm}"-linux-amd64.tar.gz | tar zx linux-amd64/helm && \
+    mv linux-amd64/helm $BIN && \
+    rmdir linux-amd64
 
     # kubectl
     version_kubectl=v1.18.2
@@ -162,7 +160,8 @@ parse_git_branch_and_add_brackets(){
     # k9s
     version_k9s=0.23.1
     [[ ! -f $BIN/k9s ]] && \
-    cd $BIN && curl -L --url https://github.com/derailed/k9s/releases/download/v${version_k9s}/k9s_Linux_x86_64.tar.gz | tar zxv k9s
+    curl -L --url https://github.com/derailed/k9s/releases/download/v${version_k9s}/k9s_Linux_x86_64.tar.gz | tar zxv k9s && \
+    mv k9s $BIN
 
     # kind
     version_kind=v0.9.0
@@ -172,15 +171,15 @@ parse_git_branch_and_add_brackets(){
     # rakkess
     version_rakkess=v0.4.4
     [[ ! -f $BIN/rakkess ]] && \
-    cd $BIN && curl -L --url https://github.com/corneliusweig/rakkess/releases/download/${version_rakkess}/rakkess-amd64-linux.tar.gz | tar zxv rakkess-amd64-linux && \
-    mv $BIN/rakkess-amd64-linux $BIN/rakkess
+    curl -L --url https://github.com/corneliusweig/rakkess/releases/download/${version_rakkess}/rakkess-amd64-linux.tar.gz | tar zxv rakkess-amd64-linux && \
+    mv rakkess-amd64-linux $BIN/rakkess
 
     # istioctl
     version_istioctl=1.5.2
     [[ ! -f $BIN/istioctl ]] && \
-    cd $BIN && curl -L --url https://github.com/istio/istio/releases/download/${version_istioctl}/istio-${version_istioctl}-linux.tar.gz | tar zxv && \
-    mv $BIN/istio-1.5.2/bin/istioctl $BIN/istioctl
-    rm -rf $BIN/istio-${version_istioctl}
+    curl -L --url https://github.com/istio/istio/releases/download/${version_istioctl}/istio-${version_istioctl}-linux.tar.gz | tar zxv istio-${version_istioctl}/bin/istioctl && \
+    mv istio-1.5.2/bin/istioctl $BIN/istioctl
+    rmdir -p istio-1.5.2/bin
 
     # slack term
     version_slack_term=v0.5.0
@@ -214,10 +213,10 @@ parse_git_branch_and_add_brackets(){
 
     # ghacks repo
     version_ghacks=81.0
-    [[ ! -d $REPOS/thirdparty/user.js-${version_ghacks} ]] && \
-    cd $REPOS/thirdparty/ && \
-    curl -L --url https://github.com/arkenfox/user.js/archive/${version_ghacks}.tar.gz --output ${version_ghacks}.tar.gz && \
-    tar zxvf ${version_ghacks}.tar.gz
+    [[ ! -d $REPOS/thirdparty/user.js ]] && \
+    curl -L --url https://github.com/arkenfox/user.js/archive/${version_ghacks}.tar.gz | tar xz user.js-${version_ghacks}/user.js && \
+    mv user.js-${version_ghacks}/user.js $REPOS/thirdparty/user.js && \
+    rmdir user.js-${version_ghacks}
 
     # ghacks settings
     echo > "$profile_default"/user.js
