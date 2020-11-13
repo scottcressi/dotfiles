@@ -567,7 +567,9 @@ parse_git_branch_and_add_brackets(){
     pkill dwmblocks
     cp $REPOS/personal/dwmblocks/dwmblocks.blocks.h $REPOS/thirdparty/dwmblocks/blocks.h
     make clean install -C $REPOS/thirdparty/dwmblocks --quiet && \
+    if pgrep startx > /dev/null ; then
     dwmblocks & disown
+    fi
 }
 
 -cowsay-normal(){
