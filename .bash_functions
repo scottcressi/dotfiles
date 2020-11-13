@@ -566,7 +566,8 @@ parse_git_branch_and_add_brackets(){
     git clone https://github.com/torrinfail/dwmblocks $REPOS/thirdparty/dwmblocks
     pkill dwmblocks
     cp $REPOS/personal/dwmblocks/dwmblocks.blocks.h $REPOS/thirdparty/dwmblocks/blocks.h
-    make clean install -C $REPOS/thirdparty/dwmblocks --quiet ; dwmblocks & disown ; git checkout .
+    make clean install -C $REPOS/thirdparty/dwmblocks --quiet && \
+    dwmblocks & disown
 }
 
 -cowsay-normal(){
