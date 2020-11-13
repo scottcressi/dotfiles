@@ -545,8 +545,7 @@ parse_git_branch_and_add_brackets(){
     [[ ! -f $REPOS/thirdparty/dwm-${version_dwm}.tar.gz ]] && \
     curl -L --url https://dl.suckless.org/dwm/dwm-${version_dwm}.tar.gz --output $REPOS/thirdparty/dwm-${version_dwm}.tar.gz
     tar zxf $REPOS/thirdparty/dwm-${version_dwm}.tar.gz -C $REPOS/thirdparty/ && \
-    cd $REPOS/thirdparty/dwm-${version_dwm} && \
-    make install --quiet && \
+    make install --quiet -C $REPOS/thirdparty/dwm-${version_dwm} && \
     rm -rf $REPOS/thirdparty/dwm-${version_dwm}
 
     echo compile st
@@ -558,9 +557,8 @@ parse_git_branch_and_add_brackets(){
     [[ ! -f $REPOS/thirdparty/st-scrollback-20200419-72e3f6c.diff ]] && \
     curl -L --url https://st.suckless.org/patches/scrollback/st-scrollback-20200419-72e3f6c.diff --output $REPOS/thirdparty/st-scrollback-20200419-72e3f6c.diff
     cp -rp $REPOS/thirdparty/st-*.diff $REPOS/thirdparty/st-${version_st}/
-    cd $REPOS/thirdparty/st-${version_st} && \
-    patch --merge --quiet -i st-*.diff && \
-    make install --quiet && \
+    patch --merge --quiet -i -d $REPOS/thirdparty/st-${version_st} st-*.diff && \
+    make install --quiet -C $REPOS/thirdparty/st-${version_st} && \
     rm -rf $REPOS/thirdparty/st-${version_st}
 
     echo compile dwmblocks
@@ -568,7 +566,7 @@ parse_git_branch_and_add_brackets(){
     git clone https://github.com/torrinfail/dwmblocks $REPOS/thirdparty/dwmblocks
     pkill dwmblocks
     cp $REPOS/personal/dwmblocks/dwmblocks.blocks.h $REPOS/thirdparty/dwmblocks/blocks.h
-    cd $REPOS/thirdparty/dwmblocks ; make clean install --quiet ; ./dwmblocks & disown ; git checkout .
+    make clean install -C $REPOS/thirdparty/dwmblocks --quiet ; dwmblocks & disown ; git checkout .
 }
 
 -cowsay-normal(){
