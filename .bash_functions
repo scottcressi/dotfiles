@@ -202,7 +202,7 @@ parse_git_branch_and_add_brackets(){
     [[ ! -d $REPOS/thirdparty/ticker.sh ]] && git clone https://github.com/pstadler/ticker.sh.git $REPOS/thirdparty/ticker.sh
 
     # firefox
-    version_firefox=$(curl https://www.mozilla.org/en-US/firefox/releases/| grep data-latest | awk '{print $7}' | sed 's/.*=//g' | sed 's/"//g')
+    version_firefox=82.0.3
     [[ ! -d ~/firefox ]] && \
     cd ~/ && curl -L --url https://ftp.mozilla.org/pub/firefox/releases/"${version_firefox}"/linux-x86_64/en-US/firefox-"${version_firefox}".tar.bz2 | tar -xj
 
