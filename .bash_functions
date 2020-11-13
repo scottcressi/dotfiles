@@ -541,8 +541,10 @@ parse_git_branch_and_add_brackets(){
     version_dwm=6.2
     [[ ! -f $REPOS/thirdparty/dwm-${version_dwm}.tar.gz ]] && \
     curl -L --url https://dl.suckless.org/dwm/dwm-${version_dwm}.tar.gz --output $REPOS/thirdparty/dwm-${version_dwm}.tar.gz
-    tar zxf $REPOS/thirdparty/dwm-${version_dwm}.tar.gz -C $REPOS/thirdparty/ && \
-    make clean install --quiet -C $REPOS/thirdparty/dwm-${version_dwm} && \
+    [[ ! -d $REPOS/thirdparty/dwm-${version_dwm} ]] && \
+    tar zxf $REPOS/thirdparty/dwm-${version_dwm}.tar.gz -C $REPOS/thirdparty/
+    make clean install --quiet -C $REPOS/thirdparty/dwm-${version_dwm}
+    rm -rf $REPOS/thirdparty/dwm-${version_dwm}
 
     echo compile st
     version_st=0.8.4
@@ -555,6 +557,7 @@ parse_git_branch_and_add_brackets(){
     cp -rp $REPOS/thirdparty/st-*.diff $REPOS/thirdparty/st-${version_st}/
     patch --merge --quiet -i $REPOS/thirdparty/st-*.diff -d $REPOS/thirdparty/st-${version_st}
     make clean install --quiet -C $REPOS/thirdparty/st-${version_st}
+    rm -rf $REPOS/thirdparty/st-${version_st}
 
     echo compile dwmblocks
     [[ ! -d $REPOS/thirdparty/dwmblocks ]] && \
