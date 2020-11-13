@@ -96,14 +96,15 @@ parse_git_branch_and_add_brackets(){
     version_youtube_dl=2020.11.12
     [[ ! -f $BIN/youtube-dl ]] && \
     curl -L https://youtube-dl.org/downloads/latest/youtube-dl-${version_youtube_dl}.tar.gz | tar xz youtube-dl/youtube-dl && \
-    mv youtube-dl/youtube-dl ~/bin/ && \
+    mv youtube-dl/youtube-dl $BIN/ && \
     rmdir youtube-dl
 
     # terraform
     version_terraform=0.13.5
     [[ ! -f $BIN/terraform ]] && \
-    cd $BIN && \
-    curl -L -O https://releases.hashicorp.com/terraform/${version_terraform}/terraform_${version_terraform}_linux_amd64.zip && unzip terraform_${version_terraform}_linux_amd64.zip && \
+    curl -L -O https://releases.hashicorp.com/terraform/${version_terraform}/terraform_${version_terraform}_linux_amd64.zip && \
+    unzip terraform_${version_terraform}_linux_amd64.zip && \
+    mv terraform $BIN/
     rm -f terraform_${version_terraform}_linux_amd64.zip
 
     # vagrant
@@ -116,9 +117,9 @@ parse_git_branch_and_add_brackets(){
     # vault
     version_vault=1.5.5
     [[ ! -f $BIN/vault ]] && \
-    cd $BIN && \
     curl -L -O https://releases.hashicorp.com/vault/${version_vault}/vault_${version_vault}_linux_amd64.zip && \
     unzip vault_${version_vault}_linux_amd64.zip && \
+    mv vault $BIN/
     rm -f vault_${version_vault}_linux_amd64.zip
 
     # aws-iam-authenticator
@@ -133,7 +134,7 @@ parse_git_branch_and_add_brackets(){
     # pluto
     version_pluto=3.4.1
     [[ ! -f $BIN/pluto ]] && \
-    curl -L --url https://github.com/FairwindsOps/pluto/releases/download/v${version_pluto}/pluto_${version_pluto}_linux_amd64.tar.gz | tar zx -C ~/bin/ pluto
+    curl -L --url https://github.com/FairwindsOps/pluto/releases/download/v${version_pluto}/pluto_${version_pluto}_linux_amd64.tar.gz | tar zx -C $BIN/ pluto
 
     # skaffold
     version_skaffold=v1.16.0
@@ -203,7 +204,8 @@ parse_git_branch_and_add_brackets(){
     # firefox
     version_firefox=82.0.3
     [[ ! -d ~/firefox ]] && \
-    cd ~/ && curl -L --url https://ftp.mozilla.org/pub/firefox/releases/"${version_firefox}"/linux-x86_64/en-US/firefox-"${version_firefox}".tar.bz2 | tar -xj
+    curl -L --url https://ftp.mozilla.org/pub/firefox/releases/"${version_firefox}"/linux-x86_64/en-US/firefox-"${version_firefox}".tar.bz2 | tar -xj && \
+    mv firefox ~/
 
     # firefox profile
     ~/firefox/firefox -headless -CreateProfile default
