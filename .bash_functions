@@ -110,9 +110,9 @@ parse_git_branch_and_add_brackets(){
     # vagrant
     version_vagrant=2.2.10
     [[ "$(dpkg -l vagrant | grep vagrant | awk '{print $3}' | sed s/1://g)" != "$version_vagrant" ]] && \
-    curl -L https://releases.hashicorp.com/vagrant/${version_vagrant}/vagrant_${version_vagrant}_x86_64.deb --output $TMP/vagrant_${version_vagrant}_x86_64.deb && \
-    sudo dpkg -i $TMP/vagrant_${version_vagrant}_x86_64.deb && \
-    rm -f $TMP/vagrant_${version_vagrant}_x86_64.deb
+    curl -L https://releases.hashicorp.com/vagrant/${version_vagrant}/vagrant_${version_vagrant}_x86_64.deb --output vagrant_${version_vagrant}_x86_64.deb && \
+    sudo dpkg -i vagrant_${version_vagrant}_x86_64.deb && \
+    rm -f vagrant_${version_vagrant}_x86_64.deb
 
     # vault
     version_vault=1.5.5
@@ -384,8 +384,9 @@ parse_git_branch_and_add_brackets(){
     - role: worker
     - role: worker
     - role: worker
-    """ > $TMP/kind-config.yaml
-    kind create cluster --config $TMP/kind-config.yaml
+    """ > kind-config.yaml
+    kind create cluster --config kind-config.yaml
+    rm -f kind-config.yaml
 
 }
 
