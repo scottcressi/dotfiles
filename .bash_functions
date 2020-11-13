@@ -179,8 +179,8 @@ parse_git_branch_and_add_brackets(){
     version_istioctl=1.5.2
     [[ ! -f $BIN/istioctl ]] && \
     curl -L --url https://github.com/istio/istio/releases/download/${version_istioctl}/istio-${version_istioctl}-linux.tar.gz | tar zxv istio-${version_istioctl}/bin/istioctl && \
-    mv istio-${version_istioctl}/bin/istioctl $BIN/istioctl
-    rm -rf istio-${version_istioctl}
+    mv istio-${version_istioctl}/bin/istioctl $BIN/istioctl && \
+    rmdir -p istio-${version_istioctl}/bin
 
     # slack term
     version_slack_term=v0.5.0
