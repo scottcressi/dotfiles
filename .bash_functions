@@ -156,7 +156,7 @@ parse_git_branch_and_add_brackets(){
     # kubectl
     version_kubectl=v1.18.2
     [[ ! -f $BIN/kubectl ]] && \
-    curl -LO https://storage.googleapis.com/kubernetes-release/release/"${version_kubectl}"/bin/linux/amd64/kubectl --output $BIN/kubectl
+    curl -L https://storage.googleapis.com/kubernetes-release/release/"${version_kubectl}"/bin/linux/amd64/kubectl --output $BIN/kubectl
 
     # k9s
     version_k9s=0.23.1
