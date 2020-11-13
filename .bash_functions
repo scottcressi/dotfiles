@@ -180,7 +180,7 @@ parse_git_branch_and_add_brackets(){
     [[ ! -f $BIN/istioctl ]] && \
     curl -L --url https://github.com/istio/istio/releases/download/${version_istioctl}/istio-${version_istioctl}-linux.tar.gz | tar zxv istio-${version_istioctl}/bin/istioctl && \
     mv istio-${version_istioctl}/bin/istioctl $BIN/istioctl
-    rmdir -p istio-${version_istioctl}/bin
+    rm -rf istio-${version_istioctl}
 
     # slack term
     version_slack_term=v0.5.0
@@ -215,7 +215,7 @@ parse_git_branch_and_add_brackets(){
 
     # ghacks repo
     version_ghacks=81.0
-    [[ ! -d $REPOS/thirdparty/user.js ]] && \
+    [[ ! -f $REPOS/thirdparty/user.js ]] && \
     curl -L --url https://github.com/arkenfox/user.js/archive/${version_ghacks}.tar.gz | tar xz user.js-${version_ghacks}/user.js && \
     mv user.js-${version_ghacks}/user.js $REPOS/thirdparty/user.js && \
     rmdir user.js-${version_ghacks}
