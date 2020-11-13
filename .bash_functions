@@ -520,12 +520,8 @@ parse_git_branch_and_add_brackets(){
     docker run --name spreed-webrtc -p 8000:8080 -p 8443:8443 -i -t spreed/webrtc
 }
 
--corona-stats(){
+-covid-stats(){
     curl 'https://corona-stats.online?top=10&minimal=true'
-}
-
--corona-news(){
-    curl 'https://corona-stats.online/updates'
 }
 
 -packages-prereqs(){
@@ -632,6 +628,6 @@ parse_git_branch_and_add_brackets(){
     find ~/wallpapers/ -type f | shuf | head -1 | xargs xwallpaper --maximize
 }
 
--ww(){
+-weather(){
     curl http://wttr.in/"$1"
 }
