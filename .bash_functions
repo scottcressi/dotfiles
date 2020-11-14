@@ -543,7 +543,8 @@ parse_git_branch_and_add_brackets(){
     curl -L --url https://dl.suckless.org/dwm/dwm-${version_dwm}.tar.gz --output $REPOS/thirdparty/dwm-${version_dwm}.tar.gz
     [[ ! -d $REPOS/thirdparty/dwm-${version_dwm} ]] && \
     tar zxf $REPOS/thirdparty/dwm-${version_dwm}.tar.gz -C $REPOS/thirdparty/
-    make clean install --quiet -C $REPOS/thirdparty/dwm-${version_dwm}
+    [[ -d $REPOS/thirdparty/dwm-${version_dwm} ]] && \
+    make clean install --quiet -C $REPOS/thirdparty/dwm-${version_dwm} && \
     rm -rf $REPOS/thirdparty/dwm-${version_dwm}
 
     echo compile st
@@ -554,9 +555,10 @@ parse_git_branch_and_add_brackets(){
     tar zxf $REPOS/thirdparty/st-${version_st}.tar.gz -C $REPOS/thirdparty/
     [[ ! -f $REPOS/thirdparty/st-scrollback-20200419-72e3f6c.diff ]] && \
     curl -L --url https://st.suckless.org/patches/scrollback/st-scrollback-20200419-72e3f6c.diff --output $REPOS/thirdparty/st-scrollback-20200419-72e3f6c.diff
-    cp -rp $REPOS/thirdparty/st-*.diff $REPOS/thirdparty/st-${version_st}/
-    patch --merge --quiet -i $REPOS/thirdparty/st-*.diff -d $REPOS/thirdparty/st-${version_st}
-    make clean install --quiet -C $REPOS/thirdparty/st-${version_st}
+    [[ -d $REPOS/thirdparty/st-${version_st} ]] && \
+    cp -rp $REPOS/thirdparty/st-*.diff $REPOS/thirdparty/st-${version_st}/ && \
+    patch --merge --quiet -i $REPOS/thirdparty/st-*.diff -d $REPOS/thirdparty/st-${version_st} && \
+    make clean install --quiet -C $REPOS/thirdparty/st-${version_st} && \
     rm -rf $REPOS/thirdparty/st-${version_st}
 
     echo compile dwmblocks
