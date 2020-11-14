@@ -92,14 +92,14 @@ parse_git_branch_and_add_brackets(){
     ipython \
     pylint \
 
-    echo youtube-dl
+    echo installing binary youtube-dl
     version_youtube_dl=2020.11.12
     [[ ! -f $BIN/youtube-dl ]] && \
     curl -L https://youtube-dl.org/downloads/latest/youtube-dl-${version_youtube_dl}.tar.gz | tar xz youtube-dl/youtube-dl && \
     mv youtube-dl/youtube-dl $BIN/ && \
     rmdir youtube-dl
 
-    echo terraform
+    echo installing binary terraform
     version_terraform=0.13.5
     [[ ! -f $BIN/terraform ]] && \
     curl -L -O https://releases.hashicorp.com/terraform/${version_terraform}/terraform_${version_terraform}_linux_amd64.zip && \
@@ -107,14 +107,14 @@ parse_git_branch_and_add_brackets(){
     mv terraform $BIN/
     rm -f terraform_${version_terraform}_linux_amd64.zip
 
-    echo vagrant
+    echo installing package vagrant
     version_vagrant=2.2.10
     [[ "$(dpkg -l vagrant | grep vagrant | awk '{print $3}' | sed s/1://g)" != "$version_vagrant" ]] && \
     curl -L https://releases.hashicorp.com/vagrant/${version_vagrant}/vagrant_${version_vagrant}_x86_64.deb --output vagrant_${version_vagrant}_x86_64.deb && \
     sudo dpkg -i vagrant_${version_vagrant}_x86_64.deb && \
     rm -f vagrant_${version_vagrant}_x86_64.deb
 
-    echo vault
+    echo installing binary vault
     version_vault=1.5.5
     [[ ! -f $BIN/vault ]] && \
     curl -L -O https://releases.hashicorp.com/vault/${version_vault}/vault_${version_vault}_linux_amd64.zip && \
@@ -122,67 +122,67 @@ parse_git_branch_and_add_brackets(){
     mv vault $BIN/
     rm -f vault_${version_vault}_linux_amd64.zip
 
-    echo aws-iam-authenticator
+    echo installing binary aws-iam-authenticator
     [[ ! -f $BIN/aws-iam-authenticator ]] && \
     curl https://amazon-eks.s3.us-west-2.amazonaws.com/1.17.9/2020-08-04/bin/linux/amd64/aws-iam-authenticator --output $BIN/aws-iam-authenticator
 
-    echo docker compose
+    echo installing binary docker compose
     version_docker_compose=1.27.4
     [[ ! -f $BIN/docker-compose ]] && \
     curl -L https://github.com/docker/compose/releases/download/${version_docker_compose}/docker-compose-"$(uname -s)"-"$(uname -m)" -o $BIN/docker-compose
 
-    echo pluto
+    echo installing binary pluto
     version_pluto=3.4.1
     [[ ! -f $BIN/pluto ]] && \
     curl -L --url https://github.com/FairwindsOps/pluto/releases/download/v${version_pluto}/pluto_${version_pluto}_linux_amd64.tar.gz | tar zx -C $BIN/ pluto
 
-    echo skaffold
+    echo installing binary skaffold
     version_skaffold=v1.16.0
     [[ ! -f $BIN/skaffold ]] && \
     curl -L --url https://github.com/GoogleContainerTools/skaffold/releases/download/${version_skaffold}/skaffold-linux-amd64 --output $BIN/skaffold
 
-    echo kops
+    echo installing binary kops
     version_kops=1.18.0
     [[ ! -f $BIN/kops ]] && \
     curl -L --url https://github.com/kubernetes/kops/releases/download/v${version_kops}/kops-linux-amd64 --output $BIN/kops
 
-    echo helm
+    echo installing binary helm
     version_helm=v3.4.1
     [[ ! -f $BIN/helm ]] && \
     curl -L --url https://get.helm.sh/helm-"${version_helm}"-linux-amd64.tar.gz | tar zx linux-amd64/helm && \
     mv linux-amd64/helm $BIN && \
     rmdir linux-amd64
 
-    echo kubectl
+    echo installing binary kubectl
     version_kubectl=v1.18.2
     [[ ! -f $BIN/kubectl ]] && \
     curl -L https://storage.googleapis.com/kubernetes-release/release/"${version_kubectl}"/bin/linux/amd64/kubectl --output $BIN/kubectl
 
-    echo k9s
+    echo installing binary k9s
     version_k9s=0.23.1
     [[ ! -f $BIN/k9s ]] && \
     curl -L --url https://github.com/derailed/k9s/releases/download/v${version_k9s}/k9s_Linux_x86_64.tar.gz | tar zxv k9s && \
     mv k9s $BIN
 
-    echo kind
+    echo installing binary kind
     version_kind=v0.9.0
     [[ ! -f $BIN/kind ]] && \
     curl -L --url https://github.com/kubernetes-sigs/kind/releases/download/${version_kind}/kind-linux-amd64 --output $BIN/kind
 
-    echo rakkess
+    echo installing binary rakkess
     version_rakkess=v0.4.4
     [[ ! -f $BIN/rakkess ]] && \
     curl -L --url https://github.com/corneliusweig/rakkess/releases/download/${version_rakkess}/rakkess-amd64-linux.tar.gz | tar zxv rakkess-amd64-linux && \
     mv rakkess-amd64-linux $BIN/rakkess
 
-    echo istioctl
+    echo installing binary istioctl
     version_istioctl=1.5.2
     [[ ! -f $BIN/istioctl ]] && \
     curl -L --url https://github.com/istio/istio/releases/download/${version_istioctl}/istio-${version_istioctl}-linux.tar.gz | tar zxv istio-${version_istioctl}/bin/istioctl && \
     mv istio-${version_istioctl}/bin/istioctl $BIN/istioctl && \
     rmdir -p istio-${version_istioctl}/bin
 
-    echo slack term
+    echo installing binary slack term
     version_slack_term=v0.5.0
     [[ ! -f $BIN/slack-term ]] && \
     curl -L --url https://github.com/erroneousboat/slack-term/releases/download/${version_slack_term}/slack-term-linux-amd64 --output $BIN/slack-term
@@ -193,7 +193,7 @@ parse_git_branch_and_add_brackets(){
     curl -L --url http://www.bay12games.com/dwarves/df_${version_dwarf_fortress}_linux.tar.bz2 --output $REPOS/thirdparty/df_${version_dwarf_fortress}_linux.tar.bz2 && \
     tar xvf $REPOS/thirdparty/df_${version_dwarf_fortress}_linux.tar.bz2 --directory $REPOS/thirdparty/ && \
 
-    echo completions
+    echo configure completions
     [[ ! -f ~/.bash_completion.d/kubectl ]] && kubectl completion bash | sudo tee ~/.bash_completion.d/kubectl
     [[ ! -f ~/.bash_completion.d/docker-compose ]] && \
     sudo curl -L https://raw.githubusercontent.com/docker/compose/1.26.0/contrib/completion/bash/docker-compose -o ~/.bash_completion.d/docker-compose
@@ -207,7 +207,7 @@ parse_git_branch_and_add_brackets(){
     curl -L --url https://ftp.mozilla.org/pub/firefox/releases/"${version_firefox}"/linux-x86_64/en-US/firefox-"${version_firefox}".tar.bz2 | tar -xj && \
     mv firefox ~/
 
-    echo firefox profile
+    echo configure firefox profile
     ~/firefox/firefox -headless -CreateProfile default
     profile_default=$(find ~/.mozilla/firefox/*.default/ -maxdepth 0)
     profile_default_extensions=$profile_default/extensions
@@ -220,18 +220,18 @@ parse_git_branch_and_add_brackets(){
     mv user.js-${version_ghacks}/user.js $REPOS/thirdparty/user.js && \
     rmdir user.js-${version_ghacks}
 
-    echo ghacks settings
+    echo configure ghacks settings
     echo > "$profile_default"/user.js
     #grep ^user_pref $REPOS/thirdparty/ghacks-user.js/user.js | sed 's/.*user_pref/user_pref/g' > "$profile_default"/user.js
 
-    echo user.js settings
+    echo configure user.js settings
     echo '''
     user_pref("browser.ctrlTab.recentlyUsedOrder", false); // tabs with tabbing
     user_pref("extensions.autoDisableScopes", 0); // auto enable addons
     user_pref("app.update.auto", false); // disable updates
     ''' >> "$profile_default"/user.js
 
-    echo addons default
+    echo configure addons default
     [[ ! -f $profile_default_extensions/uBlock0@raymondhill.net.xpi ]] && \
         curl -L \
         --url https://addons.mozilla.org/firefox/downloads/file/3579401/ublock_origin-1.27.10-an+fx.xpi \
@@ -253,7 +253,7 @@ parse_git_branch_and_add_brackets(){
         --url https://addons.mozilla.org/firefox/downloads/file/3024171/greasemonkey-4.9-an+fx.xpi \
         --output "$profile_default_extensions"/\{e4a8a97b-f2ed-450b-b12d-ee082ba24781\}.xpi
 
-    echo permissions
+    echo configure permissions
     chmod 755 $BIN/*
 
 }
