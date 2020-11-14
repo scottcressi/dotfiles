@@ -22,6 +22,7 @@ curseofwar              debian terminal  game
 dialog                  debian terminal  language        dialogbox
 dnsutils                debian terminal  stats           dns
 dstat                   debian terminal  stats           multi
+dwarf-fortress          debian terminal  game
 elinks                  debian terminal  browser
 empire                  debian terminal  game
 espeak                  debian terminal  speech

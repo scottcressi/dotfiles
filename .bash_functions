@@ -187,12 +187,6 @@ parse_git_branch_and_add_brackets(){
     [[ ! -f $BIN/slack-term ]] && \
     curl -L --url https://github.com/erroneousboat/slack-term/releases/download/${version_slack_term}/slack-term-linux-amd64 --output $BIN/slack-term
 
-    echo installing dwarf fortress
-    version_dwarf_fortress=47_04
-    [[ ! -d $REPOS/thirdparty/df_linux ]] && \
-    curl -L --url http://www.bay12games.com/dwarves/df_${version_dwarf_fortress}_linux.tar.bz2 --output $REPOS/thirdparty/df_${version_dwarf_fortress}_linux.tar.bz2 && \
-    tar xvf $REPOS/thirdparty/df_${version_dwarf_fortress}_linux.tar.bz2 --directory $REPOS/thirdparty/ && \
-
     echo configuring completions
     [[ ! -f ~/.bash_completion.d/kubectl ]] && kubectl completion bash | sudo tee ~/.bash_completion.d/kubectl
     [[ ! -f ~/.bash_completion.d/docker-compose ]] && \
