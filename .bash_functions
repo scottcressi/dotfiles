@@ -114,6 +114,13 @@ parse_git_branch_and_add_brackets(){
     sudo dpkg -i vagrant_${version_vagrant}_x86_64.deb && \
     rm -f vagrant_${version_vagrant}_x86_64.deb
 
+    echo installing deb bitwarden
+    version_bitwarden=1.22.2
+    [[ "$(dpkg -l bitwarden | grep bitwarden | awk '{print $3}' | sed s/1://g)" != "$version_bitwarden" ]] && \
+    curl -L https://github.com/bitwarden/desktop/releases/download/v${version_bitwarden}/Bitwarden-${version_bitwarden}-amd64.deb --output Bitwarden-${version_bitwarden}-amd64.deb && \
+    sudo dpkg -i Bitwarden-${version_bitwarden}-amd64.deb && \
+    rm -f Bitwarden-${version_bitwarden}-amd64.deb
+
     echo installing binary vault
     version_vault=1.5.5
     [[ ! -f $BIN/vault ]] && \
