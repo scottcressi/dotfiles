@@ -19,7 +19,7 @@ alias test-disk-speed='dd if=/dev/zero of=~/tmp/testfile.bin bs=1M count=4K conv
 alias tm='transmission-remote debian:8080 -l'
 alias vf='vifm .'
 alias xrandr-tv='xrandr -s 1360x768'
-alias ycm='cd ~/.vim/plugged/YouCompleteMe && python3 install.py --all'
+alias ycm='python3 ~/.vim/plugged/YouCompleteMe/install.py --all'
 
 # revisions
 alias cp='cp -i'
