@@ -65,22 +65,22 @@ parse_git_branch_and_add_brackets(){
     echo installing packages
     awk '/debian/ {print $1}' $REPOS/personal/dotfiles/packages.txt | awk '{print $1}' | xargs sudo apt-get install -y --quiet --quiet
 
-    echo installing drivers
+    echo installing package driver
     if [ "$(lspci | grep VGA | awk '{print $5}')" == "NVIDIA" ] ; then
         sudo apt-get install -y --quiet --quiet nvidia-driver
     fi
 
-    echo installing docker
+    echo installing package docker
     if ! pgrep docker$ > /dev/null ; then
     sudo apt-get install -y --quiet --quiet containerd.io docker-ce docker-ce-cli
     fi
     sudo usermod -a -G docker "$USER"
 
-    echo installing signal
+    echo installing package signal
     sudo apt-get install -y --quiet --quiet signal-desktop
     sudo chmod 4755 /opt/Signal/chrome-sandbox
 
-    echo installing virtualbox
+    echo installing package virtualbox
     sudo apt-get install -y --quiet --quiet virtualbox-6.1
 
     echo installing pip
