@@ -40,23 +40,23 @@ parse_git_branch_and_add_brackets(){
 }
 
 -packages(){
-    echo virtualbox key
+    echo configuring virtualbox key
     [[ ! -f /etc/apt/sources.list.d/virtualbox.list ]] && \
     echo "deb http://download.virtualbox.org/virtualbox/debian buster contrib" | sudo tee -a /etc/apt/sources.list.d/virtualbox.list && \
     curl -fsSL https://www.virtualbox.org/download/oracle_vbox_2016.asc | sudo apt-key add -
 
-    echo signal key
+    echo configuring signal key
     [[ ! -f /etc/apt/sources.list.d/signal-xenial.list ]] && \
     echo "deb [arch=amd64] https://updates.signal.org/desktop/apt xenial main" | sudo tee -a /etc/apt/sources.list.d/signal-xenial.list && \
     curl https://updates.signal.org/desktop/apt/keys.asc | sudo apt-key add -
 
-    echo docker key
+    echo configuring docker key
     [[ ! -f /etc/apt/sources.list.d/docker.list ]] && \
     curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add - && \
     sudo apt-key fingerprint 0EBFCD88 && \
     echo "deb [arch=amd64] https://download.docker.com/linux/$(grep ^ID /etc/os-release | sed 's/ID=//g') $(grep VERSION_CODENAME /etc/os-release | sed 's/.*=//g') stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 
-    echo venv
+    echo configuring venv
     [ ! -f ~/python/bin/activate ] && python3 -m venv ~/python
 
     echo updating repos
@@ -107,7 +107,7 @@ parse_git_branch_and_add_brackets(){
     mv terraform $BIN/
     rm -f terraform_${version_terraform}_linux_amd64.zip
 
-    echo installing package vagrant
+    echo installing deb vagrant
     version_vagrant=2.2.10
     [[ "$(dpkg -l vagrant | grep vagrant | awk '{print $3}' | sed s/1://g)" != "$version_vagrant" ]] && \
     curl -L https://releases.hashicorp.com/vagrant/${version_vagrant}/vagrant_${version_vagrant}_x86_64.deb --output vagrant_${version_vagrant}_x86_64.deb && \
@@ -187,51 +187,51 @@ parse_git_branch_and_add_brackets(){
     [[ ! -f $BIN/slack-term ]] && \
     curl -L --url https://github.com/erroneousboat/slack-term/releases/download/${version_slack_term}/slack-term-linux-amd64 --output $BIN/slack-term
 
-    echo dwarf fortress
+    echo installing dwarf fortress
     version_dwarf_fortress=47_04
     [[ ! -d $REPOS/thirdparty/df_linux ]] && \
     curl -L --url http://www.bay12games.com/dwarves/df_${version_dwarf_fortress}_linux.tar.bz2 --output $REPOS/thirdparty/df_${version_dwarf_fortress}_linux.tar.bz2 && \
     tar xvf $REPOS/thirdparty/df_${version_dwarf_fortress}_linux.tar.bz2 --directory $REPOS/thirdparty/ && \
 
-    echo configure completions
+    echo configuring completions
     [[ ! -f ~/.bash_completion.d/kubectl ]] && kubectl completion bash | sudo tee ~/.bash_completion.d/kubectl
     [[ ! -f ~/.bash_completion.d/docker-compose ]] && \
     sudo curl -L https://raw.githubusercontent.com/docker/compose/1.26.0/contrib/completion/bash/docker-compose -o ~/.bash_completion.d/docker-compose
 
-    echo stocks
+    echo clone stocks ticker
     [[ ! -d $REPOS/thirdparty/ticker.sh ]] && git clone https://github.com/pstadler/ticker.sh.git $REPOS/thirdparty/ticker.sh
 
-    echo firefox
+    echo installing firefox
     version_firefox=82.0.3
     [[ ! -d ~/firefox ]] && \
     curl -L --url https://ftp.mozilla.org/pub/firefox/releases/"${version_firefox}"/linux-x86_64/en-US/firefox-"${version_firefox}".tar.bz2 | tar -xj && \
     mv firefox ~/
 
-    echo configure firefox profile
+    echo configuring firefox profile
     ~/firefox/firefox -headless -CreateProfile default
     profile_default=$(find ~/.mozilla/firefox/*.default/ -maxdepth 0)
     profile_default_extensions=$profile_default/extensions
     mkdir -p "$profile_default_extensions"
 
-    echo ghacks repo
+    echo installing ghacks
     version_ghacks=81.0
     [[ ! -f $REPOS/thirdparty/user.js ]] && \
     curl -L --url https://github.com/arkenfox/user.js/archive/${version_ghacks}.tar.gz | tar xz user.js-${version_ghacks}/user.js && \
     mv user.js-${version_ghacks}/user.js $REPOS/thirdparty/user.js && \
     rmdir user.js-${version_ghacks}
 
-    echo configure ghacks settings
+    echo configuring ghacks settings
     echo > "$profile_default"/user.js
     #grep ^user_pref $REPOS/thirdparty/ghacks-user.js/user.js | sed 's/.*user_pref/user_pref/g' > "$profile_default"/user.js
 
-    echo configure user.js settings
+    echo configuring user.js settings
     echo '''
     user_pref("browser.ctrlTab.recentlyUsedOrder", false); // tabs with tabbing
     user_pref("extensions.autoDisableScopes", 0); // auto enable addons
     user_pref("app.update.auto", false); // disable updates
     ''' >> "$profile_default"/user.js
 
-    echo configure addons default
+    echo configuring addons default
     [[ ! -f $profile_default_extensions/uBlock0@raymondhill.net.xpi ]] && \
         curl -L \
         --url https://addons.mozilla.org/firefox/downloads/file/3579401/ublock_origin-1.27.10-an+fx.xpi \
@@ -253,7 +253,7 @@ parse_git_branch_and_add_brackets(){
         --url https://addons.mozilla.org/firefox/downloads/file/3024171/greasemonkey-4.9-an+fx.xpi \
         --output "$profile_default_extensions"/\{e4a8a97b-f2ed-450b-b12d-ee082ba24781\}.xpi
 
-    echo configure permissions
+    echo configuring permissions
     chmod 755 $BIN/*
 
 }
