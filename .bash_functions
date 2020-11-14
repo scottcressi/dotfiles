@@ -40,23 +40,23 @@ parse_git_branch_and_add_brackets(){
 }
 
 -packages(){
-    # virtualbox key
+    echo virtualbox key
     [[ ! -f /etc/apt/sources.list.d/virtualbox.list ]] && \
     echo "deb http://download.virtualbox.org/virtualbox/debian buster contrib" | sudo tee -a /etc/apt/sources.list.d/virtualbox.list && \
     curl -fsSL https://www.virtualbox.org/download/oracle_vbox_2016.asc | sudo apt-key add -
 
-    # signal key
+    echo signal key
     [[ ! -f /etc/apt/sources.list.d/signal-xenial.list ]] && \
     echo "deb [arch=amd64] https://updates.signal.org/desktop/apt xenial main" | sudo tee -a /etc/apt/sources.list.d/signal-xenial.list && \
     curl https://updates.signal.org/desktop/apt/keys.asc | sudo apt-key add -
 
-    # docker key
+    echo docker key
     [[ ! -f /etc/apt/sources.list.d/docker.list ]] && \
     curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add - && \
     sudo apt-key fingerprint 0EBFCD88 && \
     echo "deb [arch=amd64] https://download.docker.com/linux/$(grep ^ID /etc/os-release | sed 's/ID=//g') $(grep VERSION_CODENAME /etc/os-release | sed 's/.*=//g') stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 
-    # venv
+    echo venv
     [ ! -f ~/python/bin/activate ] && python3 -m venv ~/python
 
     echo updating repos
@@ -92,14 +92,14 @@ parse_git_branch_and_add_brackets(){
     ipython \
     pylint \
 
-    # youtube-dl
+    echo youtube-dl
     version_youtube_dl=2020.11.12
     [[ ! -f $BIN/youtube-dl ]] && \
     curl -L https://youtube-dl.org/downloads/latest/youtube-dl-${version_youtube_dl}.tar.gz | tar xz youtube-dl/youtube-dl && \
     mv youtube-dl/youtube-dl $BIN/ && \
     rmdir youtube-dl
 
-    # terraform
+    echo terraform
     version_terraform=0.13.5
     [[ ! -f $BIN/terraform ]] && \
     curl -L -O https://releases.hashicorp.com/terraform/${version_terraform}/terraform_${version_terraform}_linux_amd64.zip && \
@@ -107,14 +107,14 @@ parse_git_branch_and_add_brackets(){
     mv terraform $BIN/
     rm -f terraform_${version_terraform}_linux_amd64.zip
 
-    # vagrant
+    echo vagrant
     version_vagrant=2.2.10
     [[ "$(dpkg -l vagrant | grep vagrant | awk '{print $3}' | sed s/1://g)" != "$version_vagrant" ]] && \
     curl -L https://releases.hashicorp.com/vagrant/${version_vagrant}/vagrant_${version_vagrant}_x86_64.deb --output vagrant_${version_vagrant}_x86_64.deb && \
     sudo dpkg -i vagrant_${version_vagrant}_x86_64.deb && \
     rm -f vagrant_${version_vagrant}_x86_64.deb
 
-    # vault
+    echo vault
     version_vault=1.5.5
     [[ ! -f $BIN/vault ]] && \
     curl -L -O https://releases.hashicorp.com/vault/${version_vault}/vault_${version_vault}_linux_amd64.zip && \
@@ -122,116 +122,116 @@ parse_git_branch_and_add_brackets(){
     mv vault $BIN/
     rm -f vault_${version_vault}_linux_amd64.zip
 
-    # aws-iam-authenticator
+    echo aws-iam-authenticator
     [[ ! -f $BIN/aws-iam-authenticator ]] && \
     curl https://amazon-eks.s3.us-west-2.amazonaws.com/1.17.9/2020-08-04/bin/linux/amd64/aws-iam-authenticator --output $BIN/aws-iam-authenticator
 
-    # docker compose
+    echo docker compose
     version_docker_compose=1.27.4
     [[ ! -f $BIN/docker-compose ]] && \
     curl -L https://github.com/docker/compose/releases/download/${version_docker_compose}/docker-compose-"$(uname -s)"-"$(uname -m)" -o $BIN/docker-compose
 
-    # pluto
+    echo pluto
     version_pluto=3.4.1
     [[ ! -f $BIN/pluto ]] && \
     curl -L --url https://github.com/FairwindsOps/pluto/releases/download/v${version_pluto}/pluto_${version_pluto}_linux_amd64.tar.gz | tar zx -C $BIN/ pluto
 
-    # skaffold
+    echo skaffold
     version_skaffold=v1.16.0
     [[ ! -f $BIN/skaffold ]] && \
     curl -L --url https://github.com/GoogleContainerTools/skaffold/releases/download/${version_skaffold}/skaffold-linux-amd64 --output $BIN/skaffold
 
-    # kops
+    echo kops
     version_kops=1.18.0
     [[ ! -f $BIN/kops ]] && \
     curl -L --url https://github.com/kubernetes/kops/releases/download/v${version_kops}/kops-linux-amd64 --output $BIN/kops
 
-    # helm
+    echo helm
     version_helm=v3.4.1
     [[ ! -f $BIN/helm ]] && \
     curl -L --url https://get.helm.sh/helm-"${version_helm}"-linux-amd64.tar.gz | tar zx linux-amd64/helm && \
     mv linux-amd64/helm $BIN && \
     rmdir linux-amd64
 
-    # kubectl
+    echo kubectl
     version_kubectl=v1.18.2
     [[ ! -f $BIN/kubectl ]] && \
     curl -L https://storage.googleapis.com/kubernetes-release/release/"${version_kubectl}"/bin/linux/amd64/kubectl --output $BIN/kubectl
 
-    # k9s
+    echo k9s
     version_k9s=0.23.1
     [[ ! -f $BIN/k9s ]] && \
     curl -L --url https://github.com/derailed/k9s/releases/download/v${version_k9s}/k9s_Linux_x86_64.tar.gz | tar zxv k9s && \
     mv k9s $BIN
 
-    # kind
+    echo kind
     version_kind=v0.9.0
     [[ ! -f $BIN/kind ]] && \
     curl -L --url https://github.com/kubernetes-sigs/kind/releases/download/${version_kind}/kind-linux-amd64 --output $BIN/kind
 
-    # rakkess
+    echo rakkess
     version_rakkess=v0.4.4
     [[ ! -f $BIN/rakkess ]] && \
     curl -L --url https://github.com/corneliusweig/rakkess/releases/download/${version_rakkess}/rakkess-amd64-linux.tar.gz | tar zxv rakkess-amd64-linux && \
     mv rakkess-amd64-linux $BIN/rakkess
 
-    # istioctl
+    echo istioctl
     version_istioctl=1.5.2
     [[ ! -f $BIN/istioctl ]] && \
     curl -L --url https://github.com/istio/istio/releases/download/${version_istioctl}/istio-${version_istioctl}-linux.tar.gz | tar zxv istio-${version_istioctl}/bin/istioctl && \
     mv istio-${version_istioctl}/bin/istioctl $BIN/istioctl && \
     rmdir -p istio-${version_istioctl}/bin
 
-    # slack term
+    echo slack term
     version_slack_term=v0.5.0
     [[ ! -f $BIN/slack-term ]] && \
     curl -L --url https://github.com/erroneousboat/slack-term/releases/download/${version_slack_term}/slack-term-linux-amd64 --output $BIN/slack-term
 
-    # dwarf fortress
+    echo dwarf fortress
     version_dwarf_fortress=47_04
     [[ ! -d $REPOS/thirdparty/df_linux ]] && \
     curl -L --url http://www.bay12games.com/dwarves/df_${version_dwarf_fortress}_linux.tar.bz2 --output $REPOS/thirdparty/df_${version_dwarf_fortress}_linux.tar.bz2 && \
     tar xvf $REPOS/thirdparty/df_${version_dwarf_fortress}_linux.tar.bz2 --directory $REPOS/thirdparty/ && \
 
-    # completions
+    echo completions
     [[ ! -f ~/.bash_completion.d/kubectl ]] && kubectl completion bash | sudo tee ~/.bash_completion.d/kubectl
     [[ ! -f ~/.bash_completion.d/docker-compose ]] && \
     sudo curl -L https://raw.githubusercontent.com/docker/compose/1.26.0/contrib/completion/bash/docker-compose -o ~/.bash_completion.d/docker-compose
 
-    # stocks
+    echo stocks
     [[ ! -d $REPOS/thirdparty/ticker.sh ]] && git clone https://github.com/pstadler/ticker.sh.git $REPOS/thirdparty/ticker.sh
 
-    # firefox
+    echo firefox
     version_firefox=82.0.3
     [[ ! -d ~/firefox ]] && \
     curl -L --url https://ftp.mozilla.org/pub/firefox/releases/"${version_firefox}"/linux-x86_64/en-US/firefox-"${version_firefox}".tar.bz2 | tar -xj && \
     mv firefox ~/
 
-    # firefox profile
+    echo firefox profile
     ~/firefox/firefox -headless -CreateProfile default
     profile_default=$(find ~/.mozilla/firefox/*.default/ -maxdepth 0)
     profile_default_extensions=$profile_default/extensions
     mkdir -p "$profile_default_extensions"
 
-    # ghacks repo
+    echo ghacks repo
     version_ghacks=81.0
     [[ ! -f $REPOS/thirdparty/user.js ]] && \
     curl -L --url https://github.com/arkenfox/user.js/archive/${version_ghacks}.tar.gz | tar xz user.js-${version_ghacks}/user.js && \
     mv user.js-${version_ghacks}/user.js $REPOS/thirdparty/user.js && \
     rmdir user.js-${version_ghacks}
 
-    # ghacks settings
+    echo ghacks settings
     echo > "$profile_default"/user.js
     #grep ^user_pref $REPOS/thirdparty/ghacks-user.js/user.js | sed 's/.*user_pref/user_pref/g' > "$profile_default"/user.js
 
-    # custom user.js settings
+    echo user.js settings
     echo '''
-    user_pref("browser.ctrlTab.recentlyUsedOrder", false); # tabs with tabbing
-    user_pref("extensions.autoDisableScopes", 0); # auto enable addons
-    user_pref("app.update.auto", false); # disable updates
+    user_pref("browser.ctrlTab.recentlyUsedOrder", false); // tabs with tabbing
+    user_pref("extensions.autoDisableScopes", 0); // auto enable addons
+    user_pref("app.update.auto", false); // disable updates
     ''' >> "$profile_default"/user.js
 
-    # addons default
+    echo addons default
     [[ ! -f $profile_default_extensions/uBlock0@raymondhill.net.xpi ]] && \
         curl -L \
         --url https://addons.mozilla.org/firefox/downloads/file/3579401/ublock_origin-1.27.10-an+fx.xpi \
@@ -253,7 +253,7 @@ parse_git_branch_and_add_brackets(){
         --url https://addons.mozilla.org/firefox/downloads/file/3024171/greasemonkey-4.9-an+fx.xpi \
         --output "$profile_default_extensions"/\{e4a8a97b-f2ed-450b-b12d-ee082ba24781\}.xpi
 
-    # permissions
+    echo permissions
     chmod 755 $BIN/*
 
 }
@@ -376,7 +376,6 @@ parse_git_branch_and_add_brackets(){
 
 -kind(){
     echo """
-    # three node (two workers) cluster config
     kind: Cluster
     apiVersion: kind.x-k8s.io/v1alpha4
     nodes:
@@ -433,14 +432,14 @@ parse_git_branch_and_add_brackets(){
 }
 
 -mount(){
-    # credentials file check
+    echo credentials file check
     if [ ! -f ~/.smbpasswd ] ; then
         echo ~/.smbpasswd does not exist, format is password=foo
     else
         smbpasswd_status=1
     fi
 
-    # freenas check
+    echo freenas check
 
     status=$(nc -z freenas 80 ; echo $?)
     if [ "$status" != "0" ] ; then
@@ -449,7 +448,7 @@ parse_git_branch_and_add_brackets(){
         freenas_status=1
     fi
 
-    # mount
+    echo mount
     if [ "$smbpasswd_status" == 1 ] && [ "$freenas_status" == 1 ] ; then
         for i in "${DIRS[@]}" ; do
             sudo mount -t cifs //freenas/"$i" ~/mnt/"$i" -o credentials=~/.smbpasswd -v
@@ -530,7 +529,6 @@ parse_git_branch_and_add_brackets(){
     echo updating repos
     sudo apt-get update --quiet --quiet
 
-    # install
     echo installing base prereqs
     awk '/prereq/ {print $1}' $REPOS/personal/dotfiles/packages.txt | xargs sudo apt-get install -y --quiet --quiet
 
