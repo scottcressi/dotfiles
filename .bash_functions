@@ -617,9 +617,8 @@ parse_git_branch_and_add_brackets(){
 }
 
 -bookmarks-restore(){
-    cd $REPOS/personal/buku/ || exit
     7z x -p"$(cat ~/.bookmarkspasswd)" $REPOS/personal/buku/places.sqlite.7z
-    mv $REPOS/personal/buku/places.sqlite "$(find ~/.mozilla/firefox/*.default/ -maxdepth 0)"/places.sqlite
+    mv places.sqlite "$(find ~/.mozilla/firefox/*.default/ -maxdepth 0)"/places.sqlite
 }
 
 -ip(){
