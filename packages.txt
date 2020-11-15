@@ -69,8 +69,8 @@ make                     debian    terminal  prereq      compiler
 mdp                      debian    terminal  markdown
 moon-buggy               debian    terminal  game
 mpc                      debian    terminal  client      music
-mpd                      terminal  music     server
-mps-youtube              terminal  video
+mpd                                terminal  music     server
+mps-youtube                        terminal  video
 mpv                      debian    terminal  video
 mumble                   debian    gui       audio
 mutt                     debian    terminal  mail
