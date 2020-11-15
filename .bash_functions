@@ -422,17 +422,19 @@ parse_git_branch_and_add_brackets(){
 }
 
 -kforward(){
-    random_port=$(( ( RANDOM % 12345 )  + 1024 ))
-    echo $random_port
-    echo pod:
-    read -r pod
+    if [ -z "$1" ] ; then echo enter pod ; else
+    pod=$1
     namespace=$(kubectl get pod --all-namespaces | grep "$pod" | awk '{print $1}')
+    port=$(kubectl describe pod -n "$namespace" "$pod" | grep Port | grep -v Host | awk '{$1=""; print $0}' | sed 's/\/TCP//g' | sed 's/\/UDP//g' | sed 's/,//g')
+    echo pod: "$pod"
+    echo random port: "$random_port"
     echo namespace: "$namespace"
-    port=$(kubectl describe pod -n "$namespace" "$pod" | grep Port | grep -v Host)
-    echo "$port"
-    echo enter port to forward
-    read -r port
-    kubectl port-forward --address 0.0.0.0 --namespace "$namespace" pod/"$pod" $random_port:"$port"
+    echo port: "$port"
+    for i in $port ; do
+        random_port=$(( ( RANDOM % 65535 )  + 1024 ))
+        kubectl port-forward --address 0.0.0.0 --namespace "$namespace" pod/"$pod" "$random_port":"$i" &
+    done
+    fi
 }
 
 -mount(){
