@@ -51,10 +51,15 @@ libaa-bin               debian terminal  fun
 libfontconfig1-dev      debian terminal  prereq    st
 libfreetype6-dev        debian terminal  prereq    st
 libgtk-3-0              debian terminal  prereq    firefox
+libnotify4              debian terminal  prereq    bitwarden
+libnss3                 debian terminal  prereq    bitwarden
 libpq-dev               debian terminal  prereq    pgcli
+libsecret-1-0           debian terminal  prereq    bitwarden
 libx11-dev              debian terminal  prereq    dwm
 libxft-dev              debian terminal  prereq    dwm
 libxinerama-dev         debian terminal  prereq    dwm
+libxss1                 debian terminal  prereq    bitwarden
+libxtst6                debian terminal  prereq    bitwarden
 links2                  debian terminal  browser
 lm-sensors              debian terminal  stats
 lolcat                  debian terminal  fun
