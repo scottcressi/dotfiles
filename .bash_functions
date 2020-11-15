@@ -228,7 +228,7 @@ parse_git_branch_and_add_brackets(){
     echo > "$profile_default"/user.js
     #grep ^user_pref $REPOS/thirdparty/ghacks-user.js/user.js | sed 's/.*user_pref/user_pref/g' > "$profile_default"/user.js
 
-    echo configuring user.js settings
+    echo configuring custom user.js settings
     echo '''
     user_pref("browser.ctrlTab.recentlyUsedOrder", false); // tabs with tabbing
     user_pref("extensions.autoDisableScopes", 0); // auto enable addons
@@ -240,10 +240,6 @@ parse_git_branch_and_add_brackets(){
         curl -L \
         --url https://addons.mozilla.org/firefox/downloads/file/3579401/ublock_origin-1.27.10-an+fx.xpi \
         --output "$profile_default_extensions"/uBlock0@raymondhill.net.xpi
-    [[ ! -f $profile_default_extensions/\{446900e4-71c2-419f-a6a7-df9c091e268b\}.xpi ]] && \
-        curl -L \
-        --url https://addons.mozilla.org/firefox/downloads/file/3582922/bitwarden_free_password_manager-1.44.3-an+fx.xpi \
-        --output "$profile_default_extensions"/\{446900e4-71c2-419f-a6a7-df9c091e268b\}.xpi
     [[ ! -f $profile_default_extensions/\{e6e36c9a-8323-446c-b720-a176017e38ff\}.xpi ]] && \
         curl -L \
         --url https://addons.mozilla.org/firefox/downloads/file/3566579/torrent_control-0.2.18-fx.xpi \
