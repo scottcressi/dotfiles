@@ -40,6 +40,9 @@ parse_git_branch_and_add_brackets(){
 }
 
 -packages(){
+
+    if ! command -v curl ; then echo install package prereqs first ;  exit 0 ; fi
+
     echo configuring virtualbox key
     [[ ! -f /etc/apt/sources.list.d/virtualbox.list ]] && \
     echo "deb http://download.virtualbox.org/virtualbox/debian buster contrib" | sudo tee -a /etc/apt/sources.list.d/virtualbox.list && \
