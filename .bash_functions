@@ -81,7 +81,6 @@ parse_git_branch_and_add_brackets(){
 
     echo installing package signal
     sudo apt-get install -y --quiet --quiet signal-desktop
-    sudo chmod 4755 /opt/Signal/chrome-sandbox
 
     echo installing package virtualbox
     sudo apt-get install -y --quiet --quiet virtualbox-6.1
