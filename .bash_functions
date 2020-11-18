@@ -43,6 +43,11 @@ parse_git_branch_and_add_brackets(){
 
     if ! command -v curl ; then echo install package prereqs first ;  exit 0 ; fi
 
+    echo configuring vagrant key
+    [[ ! -f /etc/apt/sources.list.d/hashicorp.list ]] && \
+    echo "deb [arch=amd64] https://apt.releases.hashicorp.com buster main" | sudo tee -a /etc/apt/sources.list.d/hashicorp.list && \
+    curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
+
     echo configuring virtualbox key
     [[ ! -f /etc/apt/sources.list.d/virtualbox.list ]] && \
     echo "deb http://download.virtualbox.org/virtualbox/debian buster contrib" | sudo tee -a /etc/apt/sources.list.d/virtualbox.list && \
@@ -85,6 +90,9 @@ parse_git_branch_and_add_brackets(){
     echo installing package virtualbox
     sudo apt-get install -y --quiet --quiet virtualbox-6.1
 
+    echo installing package vagrant
+    sudo apt-get install -y --quiet --quiet vagrant
+
     echo installing pip
     [ "$VIRTUAL_ENV" != "" ] && \
     python3 -m pip install --upgrade --quiet \
@@ -108,13 +116,6 @@ parse_git_branch_and_add_brackets(){
     unzip terraform_${version_terraform}_linux_amd64.zip && \
     mv terraform $BIN/
     rm -f terraform_${version_terraform}_linux_amd64.zip
-
-    echo installing deb vagrant
-    version_vagrant=2.2.10
-    [[ "$(dpkg -l vagrant | grep vagrant | awk '{print $3}' | sed s/1://g)" != "$version_vagrant" ]] && \
-    curl -L https://releases.hashicorp.com/vagrant/${version_vagrant}/vagrant_${version_vagrant}_x86_64.deb --output vagrant_${version_vagrant}_x86_64.deb && \
-    sudo dpkg -i vagrant_${version_vagrant}_x86_64.deb && \
-    rm -f vagrant_${version_vagrant}_x86_64.deb
 
     echo installing deb bitwarden
     version_bitwarden=1.23.0
