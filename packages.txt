@@ -22,6 +22,7 @@ curseofwar               debian    terminal  game
 dialog                   debian    terminal  language    dialogbox
 dnsutils                 debian    terminal  stats       dns
 dstat                    debian    terminal  stats       multi
+dunst                    debian    gui       notifications
 dwarf-fortress           debian    terminal  game
 elinks                   debian    terminal  browser
 empire                   debian    terminal  game
@@ -52,6 +53,7 @@ libfontconfig1-dev       debian    terminal  prereq      st
 libfreetype6-dev         debian    terminal  prereq      st
 libgtk-3-0               debian    terminal  prereq      firefox
 libnotify4               debian    terminal  prereq      bitwarden
+libnotify-bin            debian    terminal  prereq      dunst
 libnss3                  debian    terminal  prereq      bitwarden
 libpq-dev                debian    terminal  prereq      pgcli
 libsecret-1-0            debian    terminal  prereq      bitwarden

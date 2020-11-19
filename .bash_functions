@@ -256,6 +256,9 @@ parse_git_branch_and_add_brackets(){
     echo configuring permissions
     chmod 755 $BIN/*
 
+    echo starting dunst
+    if command -v dunst ; then dunst & disown ; fi
+
 }
 
 -docker-stop-all(){
