@@ -258,7 +258,7 @@ parse_git_branch_and_add_brackets(){
 
     echo starting dunst
     if command -v dunst &> /dev/null ; then
-        if ! pgrep dunst ; then dunst & disown ; fi
+        if ! pgrep dunst > /dev/null ; then dunst & disown ; fi
     fi
 
 }
