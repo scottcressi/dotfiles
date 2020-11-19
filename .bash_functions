@@ -257,7 +257,9 @@ parse_git_branch_and_add_brackets(){
     chmod 755 $BIN/*
 
     echo starting dunst
-    if command -v dunst ; then dunst & disown ; fi
+    if command -v dunst ; then
+        if ! pgrep dunst ; then dunst & disown ; fi
+    fi
 
 }
 
