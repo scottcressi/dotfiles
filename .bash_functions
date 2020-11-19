@@ -41,7 +41,7 @@ parse_git_branch_and_add_brackets(){
 
 -packages(){
 
-    if ! command -v curl ; then echo install package prereqs first ;  exit 0 ; fi
+    if ! command -v curl &> /dev/null ; then echo install package prereqs first ;  exit 0 ; fi
 
     echo prereq key vagrant
     [[ ! -f /etc/apt/sources.list.d/hashicorp.list ]] && \
@@ -257,7 +257,7 @@ parse_git_branch_and_add_brackets(){
     chmod 755 $BIN/*
 
     echo starting dunst
-    if command -v dunst ; then
+    if command -v dunst &> /dev/null ; then
         if ! pgrep dunst ; then dunst & disown ; fi
     fi
 
