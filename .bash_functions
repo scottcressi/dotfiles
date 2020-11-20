@@ -101,20 +101,10 @@ parse_git_branch_and_add_brackets(){
     rmdir youtube-dl
 
     echo installing binary terraform
-    version_terraform=0.13.5
-    [[ ! -f $BIN/terraform ]] && \
-    curl -L -O https://releases.hashicorp.com/terraform/${version_terraform}/terraform_${version_terraform}_linux_amd64.zip && \
-    unzip terraform_${version_terraform}_linux_amd64.zip && \
-    mv terraform $BIN/
-    rm -f terraform_${version_terraform}_linux_amd64.zip
+    sudo apt-get install -y --quiet --quiet terraform
 
     echo installing binary vault
-    version_vault=1.5.5
-    [[ ! -f $BIN/vault ]] && \
-    curl -L -O https://releases.hashicorp.com/vault/${version_vault}/vault_${version_vault}_linux_amd64.zip && \
-    unzip vault_${version_vault}_linux_amd64.zip && \
-    mv vault $BIN/
-    rm -f vault_${version_vault}_linux_amd64.zip
+    sudo apt-get install -y --quiet --quiet vault
 
     echo installing binary aws-iam-authenticator
     [[ ! -f $BIN/aws-iam-authenticator ]] && \
