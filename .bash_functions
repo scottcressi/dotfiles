@@ -187,7 +187,7 @@ parse_git_branch_and_add_brackets(){
     ipython \
     pylint \
 
-    echo clone stocks ticker
+    echo installing misc ticker
     [[ ! -d $REPOS/thirdparty/ticker.sh ]] && git clone https://github.com/pstadler/ticker.sh.git $REPOS/thirdparty/ticker.sh
 
     echo installing misc firefox
