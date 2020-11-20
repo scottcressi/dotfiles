@@ -64,6 +64,11 @@ parse_git_branch_and_add_brackets(){
     sudo apt-key fingerprint 0EBFCD88 && \
     echo "deb [arch=amd64] https://download.docker.com/linux/$(grep ^ID /etc/os-release | sed 's/ID=//g') $(grep VERSION_CODENAME /etc/os-release | sed 's/.*=//g') stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 
+    echo prereq key helm
+    [[ ! -f /etc/apt/sources.list.d/helm-stable-debian.list ]] && \
+    curl https://baltocdn.com/helm/signing.asc | sudo apt-key add - && \
+    echo "deb https://baltocdn.com/helm/stable/debian/ all main" | sudo tee /etc/apt/sources.list.d/helm-stable-debian.list
+
     echo configuring venv
     [ ! -f ~/python/bin/activate ] && python3 -m venv ~/python
 
@@ -99,6 +104,9 @@ parse_git_branch_and_add_brackets(){
     echo installing apt vault
     sudo apt-get install -y --quiet --quiet vault
 
+    echo installing apt helm
+    sudo apt-get install -y --quiet --quiet helm
+
     echo installing binary youtube-dl
     version_youtube_dl=2020.11.12
     [[ ! -f $BIN/youtube-dl ]] && \
@@ -129,13 +137,6 @@ parse_git_branch_and_add_brackets(){
     version_kops=1.18.0
     [[ ! -f $BIN/kops ]] && \
     curl -L --url https://github.com/kubernetes/kops/releases/download/v${version_kops}/kops-linux-amd64 --output $BIN/kops
-
-    echo installing binary helm
-    version_helm=v3.4.1
-    [[ ! -f $BIN/helm ]] && \
-    curl -L --url https://get.helm.sh/helm-"${version_helm}"-linux-amd64.tar.gz | tar zx linux-amd64/helm && \
-    mv linux-amd64/helm $BIN && \
-    rmdir linux-amd64
 
     echo installing binary kubectl
     version_kubectl=v1.18.2
