@@ -43,7 +43,7 @@ parse_git_branch_and_add_brackets(){
 
     if ! command -v curl &> /dev/null ; then echo install package prereqs first ;  exit 0 ; fi
 
-    echo prereq key vagrant
+    echo prereq key hashicorp
     [[ ! -f /etc/apt/sources.list.d/hashicorp.list ]] && \
     echo "deb [arch=amd64] https://apt.releases.hashicorp.com buster main" | sudo tee -a /etc/apt/sources.list.d/hashicorp.list && \
     curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
@@ -93,18 +93,18 @@ parse_git_branch_and_add_brackets(){
     echo installing apt vagrant
     sudo apt-get install -y --quiet --quiet vagrant
 
+    echo installing apt terraform
+    sudo apt-get install -y --quiet --quiet terraform
+
+    echo installing apt vault
+    sudo apt-get install -y --quiet --quiet vault
+
     echo installing binary youtube-dl
     version_youtube_dl=2020.11.12
     [[ ! -f $BIN/youtube-dl ]] && \
     curl -L https://youtube-dl.org/downloads/latest/youtube-dl-${version_youtube_dl}.tar.gz | tar xz youtube-dl/youtube-dl && \
     mv youtube-dl/youtube-dl $BIN/ && \
     rmdir youtube-dl
-
-    echo installing binary terraform
-    sudo apt-get install -y --quiet --quiet terraform
-
-    echo installing binary vault
-    sudo apt-get install -y --quiet --quiet vault
 
     echo installing binary aws-iam-authenticator
     [[ ! -f $BIN/aws-iam-authenticator ]] && \
