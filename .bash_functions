@@ -76,7 +76,7 @@ parse_git_branch_and_add_brackets(){
     sudo apt-get update --quiet --quiet
 
     echo installing packages
-    awk '/debian/ {print $1}' $REPOS/personal/dotfiles/packages.txt | awk '{print $1}' | xargs sudo apt-get install -y --quiet --quiet
+    awk '/debian/ {print $1}' $REPOS/personal/dotfiles/packages.txt | xargs sudo apt-get install -y --quiet --quiet
 
     echo installing apt driver
     if [ "$(lspci | grep VGA | awk '{print $5}')" == "NVIDIA" ] ; then
@@ -89,23 +89,8 @@ parse_git_branch_and_add_brackets(){
     fi
     sudo usermod -a -G docker "$USER"
 
-    echo installing apt signal
-    sudo apt-get install -y --quiet --quiet signal-desktop
-
-    echo installing apt virtualbox
-    sudo apt-get install -y --quiet --quiet virtualbox-6.1
-
-    echo installing apt vagrant
-    sudo apt-get install -y --quiet --quiet vagrant
-
-    echo installing apt terraform
-    sudo apt-get install -y --quiet --quiet terraform
-
-    echo installing apt vault
-    sudo apt-get install -y --quiet --quiet vault
-
-    echo installing apt helm
-    sudo apt-get install -y --quiet --quiet helm
+    echo installing apt thirdparty
+    awk '/thirdparty/ {print $1}' $REPOS/personal/dotfiles/packages.txt | xargs sudo apt-get install -y --quiet --quiet
 
     echo installing binary youtube-dl
     version_youtube_dl=2020.11.19
