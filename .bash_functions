@@ -192,7 +192,7 @@ parse_git_branch_and_add_brackets(){
     [[ ! -d $REPOS/thirdparty/ticker.sh ]] && git clone https://github.com/pstadler/ticker.sh.git $REPOS/thirdparty/ticker.sh
 
     echo installing misc firefox
-    version_firefox=82.0.3
+    version_firefox=83.0
     [[ ! -d ~/firefox ]] && \
     curl -L --url https://ftp.mozilla.org/pub/firefox/releases/"${version_firefox}"/linux-x86_64/en-US/firefox-"${version_firefox}".tar.bz2 | tar -xj && \
     mv firefox ~/
