@@ -16,11 +16,14 @@ cifs-utils               debian      terminal  mounting
 cmake                    debian      terminal  prereq         youcompleteme
 cmatrix                  debian      terminal  fun
 cmus                     debian      terminal  client         music
+containerd.io            docker      terminal
 cowsay                   debian      terminal  fun
 curl                     debian      terminal  prereq         file           transfer
 curseofwar               debian      terminal  game
 dialog                   debian      terminal  language       dialogbox
 dnsutils                 debian      terminal  stats          dns
+docker-ce                docker      terminal
+docker-ce-cli            docker      terminal
 dstat                    debian      terminal  stats          multi
 dunst                    debian      gui       notifications
 dwarf-fortress           debian      terminal  game
@@ -94,6 +97,7 @@ ninvaders                debian      terminal  game
 nmap                     debian      terminal  stats          network
 nsnake                   debian      terminal  game
 nudoku                   debian      terminal  game
+nvidia-driver            driver      terminal
 oneko                    debian      gui       fun
 openssh-client           debian      terminal  client         ssh
 p7zip-full               debian      terminal

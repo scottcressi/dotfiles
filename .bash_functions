@@ -80,12 +80,12 @@ parse_git_branch_and_add_brackets(){
 
     echo installing apt driver
     if [ "$(lspci | grep VGA | awk '{print $5}')" == "NVIDIA" ] ; then
-        sudo apt-get install -y --quiet --quiet nvidia-driver
+        awk '/driver/ {print $1}' $REPOS/personal/dotfiles/packages.txt | xargs sudo apt-get install -y --quiet --quiet
     fi
 
     echo installing apt docker
     if ! pgrep docker$ > /dev/null ; then
-    sudo apt-get install -y --quiet --quiet containerd.io docker-ce docker-ce-cli
+        awk '/docker/ {print $1}' $REPOS/personal/dotfiles/packages.txt | xargs sudo apt-get install -y --quiet --quiet
     fi
     sudo usermod -a -G docker "$USER"
 
