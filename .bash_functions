@@ -108,9 +108,9 @@ parse_git_branch_and_add_brackets(){
     sudo apt-get install -y --quiet --quiet helm
 
     echo installing binary youtube-dl
-    version_youtube_dl=2020.11.12
+    version_youtube_dl=2020.11.19
     [[ ! -f $BIN/youtube-dl ]] && \
-    curl -L https://youtube-dl.org/downloads/latest/youtube-dl-${version_youtube_dl}.tar.gz | tar xz youtube-dl/youtube-dl && \
+    curl -L https://youtube-dl.org/downloads/latest/youtube-dl-${version_youtube_dl}.tar.gz | tar zx youtube-dl/youtube-dl && \
     mv youtube-dl/youtube-dl $BIN/ && \
     rmdir youtube-dl
 
@@ -245,7 +245,13 @@ parse_git_branch_and_add_brackets(){
     sudo curl -L https://raw.githubusercontent.com/docker/compose/1.26.0/contrib/completion/bash/docker-compose -o ~/.bash_completion.d/docker-compose
 
     echo configuring permissions
-    chmod 755 $BIN/*
+    chmod 755 $BIN/aws-iam-authenticator
+    chmod 755 $BIN/docker-compose
+    chmod 755 $BIN/kind
+    chmod 755 $BIN/kops
+    chmod 755 $BIN/kubectl
+    chmod 755 $BIN/skaffold
+    chmod 755 $BIN/slack-term
 
     echo starting dunst
     if command -v dunst &> /dev/null ; then
