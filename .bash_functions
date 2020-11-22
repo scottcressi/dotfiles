@@ -39,6 +39,11 @@ parse_git_branch_and_add_brackets(){
     git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\ \[\1\]/'
 }
 
+# start apps
+if command -v xautolock &> /dev/null ; then if pgrep startx > /dev/null ; then if ! pgrep xautolock > /dev/null ; then xautolock -time 1 -locker slock  & disown ; fi ; fi ; fi
+if command -v dunst     &> /dev/null ; then if pgrep startx > /dev/null ; then if ! pgrep dunst     > /dev/null ; then dunst                            & disown ; fi ; fi ; fi
+if command -v dwmblocks &> /dev/null ; then if pgrep startx > /dev/null ; then if ! pgrep dwmblocks > /dev/null ; then dwmblocks                        & disown ; fi ; fi ; fi
+
 -packages(){
 
     if ! command -v curl &> /dev/null ; then echo install package prereqs first ;  exit 0 ; fi
@@ -238,11 +243,6 @@ parse_git_branch_and_add_brackets(){
     chmod 755 $BIN/skaffold
     chmod 755 $BIN/slack-term
 
-    echo starting dunst
-    if command -v dunst &> /dev/null ; then
-        if ! pgrep dunst > /dev/null ; then dunst & disown ; fi
-    fi
-
 }
 
 -docker-stop-all(){
@@ -347,12 +347,6 @@ parse_git_branch_and_add_brackets(){
 
 -aws-test(){
     aws sts get-caller-identity ; aws s3 ls
-
-}
-
--lock-auto(){
-    pkill xautolock
-    xautolock -time 1 -locker slock & disown
 
 }
 
@@ -551,12 +545,8 @@ parse_git_branch_and_add_brackets(){
     echo compile dwmblocks
     [[ ! -d $REPOS/thirdparty/dwmblocks ]] && \
     git clone https://github.com/torrinfail/dwmblocks $REPOS/thirdparty/dwmblocks
-    pkill dwmblocks
     cp $REPOS/personal/dwmblocks/dwmblocks.blocks.h $REPOS/thirdparty/dwmblocks/blocks.h
-    make clean install -C $REPOS/thirdparty/dwmblocks --quiet && \
-    if pgrep startx > /dev/null ; then
-    dwmblocks & disown
-    fi
+    make clean install -C $REPOS/thirdparty/dwmblocks --quiet
 }
 
 -cowsay-normal(){
