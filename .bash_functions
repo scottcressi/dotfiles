@@ -183,9 +183,11 @@ if command -v dwmblocks &> /dev/null ; then if pgrep startx > /dev/null ; then i
 
     echo installing misc firefox
     version_firefox=83.0
-    [[ ! -d ~/firefox ]] && \
+    if ! pgrep firefox-bin > /dev/null ; then
+    rm -rf ~/firefox
     curl -L --url https://ftp.mozilla.org/pub/firefox/releases/"${version_firefox}"/linux-x86_64/en-US/firefox-"${version_firefox}".tar.bz2 | tar -xj && \
     mv firefox ~/
+    fi
 
     echo configuring firefox profile
     ~/firefox/firefox -headless -CreateProfile default
