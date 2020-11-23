@@ -182,17 +182,22 @@ if command -v dwmblocks &> /dev/null ; then if pgrep startx > /dev/null ; then i
     [[ ! -d $REPOS/thirdparty/ticker.sh ]] && git clone https://github.com/pstadler/ticker.sh.git $REPOS/thirdparty/ticker.sh
 
     echo installing misc firefox
+    set -x
     version_firefox=83.0
+    profile_default=$(find ~/.mozilla/firefox/*.default/ -maxdepth 0)
+    profile_default_extensions=$profile_default/extensions
+    profile_default_version=$profile_default/compatibility.ini
     if ! pgrep firefox-bin > /dev/null ; then
-    rm -rf ~/firefox
-    curl -L --url https://ftp.mozilla.org/pub/firefox/releases/"${version_firefox}"/linux-x86_64/en-US/firefox-"${version_firefox}".tar.bz2 | tar -xj && \
-    mv firefox ~/
+        if [ "$(grep LastVersion "$profile_default_version" | sed 's/_.*//g' | sed 's/LastVersion=//g')" != "$version_firefox" ] ; then
+        set +x
+        rm -rf ~/firefox
+        curl -L --url https://ftp.mozilla.org/pub/firefox/releases/"${version_firefox}"/linux-x86_64/en-US/firefox-"${version_firefox}".tar.bz2 | tar -xj && \
+        mv firefox ~/
+        fi
     fi
 
     echo configuring firefox profile
     ~/firefox/firefox -headless -CreateProfile default
-    profile_default=$(find ~/.mozilla/firefox/*.default/ -maxdepth 0)
-    profile_default_extensions=$profile_default/extensions
     mkdir -p "$profile_default_extensions"
 
     echo installing misc ghacks
