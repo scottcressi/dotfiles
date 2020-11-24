@@ -47,9 +47,6 @@ parse_git_branch_and_add_brackets(){
     curl https://baltocdn.com/helm/signing.asc | sudo apt-key add - && \
     echo "deb https://baltocdn.com/helm/stable/debian/ all main" | sudo tee /etc/apt/sources.list.d/helm-stable-debian.list
 
-    echo configuring venv
-    [ ! -f ~/python/bin/activate ] && python3 -m venv ~/python
-
     echo updating repos
     sudo apt-get update --quiet --quiet
 
@@ -166,6 +163,9 @@ parse_git_branch_and_add_brackets(){
         mv firefox ~/
         fi
     fi
+
+    echo configuring venv
+    if command -v python3 &> /dev/null ; then if [ ! -f ~/python/bin/activate ] ; then python3 -m venv ~/python ; fi ; fi
 
     echo configuring firefox profile
     ~/firefox/firefox -headless -CreateProfile default
