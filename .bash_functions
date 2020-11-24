@@ -23,29 +23,44 @@ parse_git_branch_and_add_brackets(){
 
     echo prereq key hashicorp
     [[ ! -f /etc/apt/sources.list.d/hashicorp.list ]] && \
-    echo "deb [arch=amd64] https://apt.releases.hashicorp.com buster main" | sudo tee -a /etc/apt/sources.list.d/hashicorp.list && \
+    echo "deb [arch=amd64] https://apt.releases.hashicorp.com buster main" | sudo tee -a /etc/apt/sources.list.d/hashicorp.list
+    KEY=$(apt-key list 2> /dev/null | grep HashiCorp)
+    if [[ ! $KEY ]]; then
     curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
+    fi
 
     echo prereq key virtualbox
     [[ ! -f /etc/apt/sources.list.d/virtualbox.list ]] && \
-    echo "deb http://download.virtualbox.org/virtualbox/debian buster contrib" | sudo tee -a /etc/apt/sources.list.d/virtualbox.list && \
+    echo "deb http://download.virtualbox.org/virtualbox/debian buster contrib" | sudo tee -a /etc/apt/sources.list.d/virtualbox.list
+    KEY=$(apt-key list 2> /dev/null | grep VirtualBox)
+    if [[ ! $KEY ]]; then
     curl -fsSL https://www.virtualbox.org/download/oracle_vbox_2016.asc | sudo apt-key add -
+    fi
 
     echo prereq key signal
     [[ ! -f /etc/apt/sources.list.d/signal-xenial.list ]] && \
-    echo "deb [arch=amd64] https://updates.signal.org/desktop/apt xenial main" | sudo tee -a /etc/apt/sources.list.d/signal-xenial.list && \
+    echo "deb [arch=amd64] https://updates.signal.org/desktop/apt xenial main" | sudo tee -a /etc/apt/sources.list.d/signal-xenial.list
+    KEY=$(apt-key list 2> /dev/null | grep Whisper)
+    if [[ ! $KEY ]]; then
     curl https://updates.signal.org/desktop/apt/keys.asc | sudo apt-key add -
+    fi
 
     echo prereq key docker
     [[ ! -f /etc/apt/sources.list.d/docker.list ]] && \
-    curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add - && \
-    sudo apt-key fingerprint 0EBFCD88 && \
     echo "deb [arch=amd64] https://download.docker.com/linux/$(grep ^ID /etc/os-release | sed 's/ID=//g') $(grep VERSION_CODENAME /etc/os-release | sed 's/.*=//g') stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+    KEY=$(apt-key list 2> /dev/null | grep Docker)
+    if [[ ! $KEY ]]; then
+    curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
+    sudo apt-key fingerprint 0EBFCD88
+    fi
 
     echo prereq key helm
     [[ ! -f /etc/apt/sources.list.d/helm-stable-debian.list ]] && \
-    curl https://baltocdn.com/helm/signing.asc | sudo apt-key add - && \
     echo "deb https://baltocdn.com/helm/stable/debian/ all main" | sudo tee /etc/apt/sources.list.d/helm-stable-debian.list
+    KEY=$(apt-key list 2> /dev/null | grep Helm)
+    if [[ ! $KEY ]]; then
+    curl https://baltocdn.com/helm/signing.asc | sudo apt-key add -
+    fi
 
     echo updating repos
     sudo apt-get update --quiet --quiet
