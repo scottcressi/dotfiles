@@ -1,36 +1,8 @@
 #!/usr/bin/env bash
 
-DIRS=(
-SORT
-_misc
-books
-comics
-documents
-drop
-emulators
-games
-music
-pictures
-sheet_music
-software
-videos
-)
-
 BIN=~/bin
 TMP=~/tmp
 REPOS=~/repos
-
-# directories
-mkdir -p ~/Downloads
-mkdir -p $BIN
-mkdir -p ~/wallpapers
-mkdir -p ~/.bash_completion.d
-mkdir -p $TMP
-
-# directories storage
-for i in "${DIRS[@]}" ; do
-mkdir -p ~/mnt/"$i"
-done
 
 # shellcheck source=/dev/null
 [ -f ~/python/bin/activate ] && source ~/python/bin/activate
@@ -39,10 +11,11 @@ parse_git_branch_and_add_brackets(){
     git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\ \[\1\]/'
 }
 
-# start apps
-if command -v xautolock &> /dev/null ; then if pgrep startx > /dev/null ; then if ! pgrep xautolock > /dev/null ; then xautolock -time 5 -locker slock  & disown ; fi ; fi ; fi
-if command -v dunst     &> /dev/null ; then if pgrep startx > /dev/null ; then if ! pgrep dunst     > /dev/null ; then dunst                            & disown ; fi ; fi ; fi
-if command -v dwmblocks &> /dev/null ; then if pgrep startx > /dev/null ; then if ! pgrep dwmblocks > /dev/null ; then dwmblocks                        & disown ; fi ; fi ; fi
+-start-apps(){
+    if command -v xautolock &> /dev/null ; then if pgrep startx > /dev/null ; then if ! pgrep xautolock > /dev/null ; then xautolock -time 5 -locker slock  & disown ; fi ; fi ; fi
+    if command -v dunst     &> /dev/null ; then if pgrep startx > /dev/null ; then if ! pgrep dunst     > /dev/null ; then dunst                            & disown ; fi ; fi ; fi
+    if command -v dwmblocks &> /dev/null ; then if pgrep startx > /dev/null ; then if ! pgrep dwmblocks > /dev/null ; then dwmblocks                        & disown ; fi ; fi ; fi
+}
 
 -packages(){
 
@@ -119,7 +92,7 @@ if command -v dwmblocks &> /dev/null ; then if pgrep startx > /dev/null ; then i
     curl -L --url https://github.com/FairwindsOps/pluto/releases/download/v${version_pluto}/pluto_${version_pluto}_linux_amd64.tar.gz | tar zx -C $BIN/ pluto
 
     echo installing binary skaffold
-    version_skaffold=v1.16.0
+    version_skaffold=v1.17.0
     [[ ! -f $BIN/skaffold ]] && \
     curl -L --url https://github.com/GoogleContainerTools/skaffold/releases/download/${version_skaffold}/skaffold-linux-amd64 --output $BIN/skaffold
 
@@ -513,6 +486,34 @@ if command -v dwmblocks &> /dev/null ; then if pgrep startx > /dev/null ; then i
 }
 
 -packages-prereqs(){
+
+    DIRS=(
+    SORT
+    _misc
+    books
+    comics
+    documents
+    drop
+    emulators
+    games
+    music
+    pictures
+    sheet_music
+    software
+    videos
+    )
+
+    # directories
+    mkdir -p ~/Downloads
+    mkdir -p $BIN
+    mkdir -p ~/wallpapers
+    mkdir -p ~/.bash_completion.d
+    mkdir -p $TMP
+
+    # directories storage
+    for i in "${DIRS[@]}" ; do
+    mkdir -p ~/mnt/"$i"
+    done
 
     echo updating repos
     sudo apt-get update --quiet --quiet
