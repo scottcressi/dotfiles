@@ -12,10 +12,10 @@ parse_git_branch_and_add_brackets(){
 }
 
 -start-apps(){
-    if command -v xautolock &> /dev/null ; then if pgrep startx > /dev/null ; then if ! pgrep xautolock > /dev/null ; then xautolock -time 5 -locker slock  & disown ; fi ; fi ; fi
+    if command -v xautolock &> /dev/null ; then if pgrep startx > /dev/null ; then if ! pgrep xautolock > /dev/null ; then xautolock -time 1 -locker slock  & disown ; fi ; fi ; fi
     if command -v dunst     &> /dev/null ; then if pgrep startx > /dev/null ; then if ! pgrep dunst     > /dev/null ; then dunst                            & disown ; fi ; fi ; fi
     if command -v dwmblocks &> /dev/null ; then if pgrep startx > /dev/null ; then if ! pgrep dwmblocks > /dev/null ; then dwmblocks                        & disown ; fi ; fi ; fi
-    if command -v unclutter &> /dev/null ; then if pgrep startx > /dev/null ; then if ! pgrep unclutter > /dev/null ; then unclutter                        & disown ; fi ; fi ; fi
+    if command -v unclutter &> /dev/null ; then if pgrep startx > /dev/null ; then if ! pgrep unclutter > /dev/null ; then unclutter -idle 1                & disown ; fi ; fi ; fi
 }
 
 -packages(){
