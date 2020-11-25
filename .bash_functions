@@ -548,8 +548,11 @@ parse_git_branch_and_add_brackets(){
     [[ ! -d $REPOS/thirdparty/dwm-${version_dwm} ]] && \
     tar zxf $REPOS/thirdparty/dwm-${version_dwm}.tar.gz -C $REPOS/thirdparty/
     [[ -d $REPOS/thirdparty/dwm-${version_dwm} ]] && \
+    cp -rp $REPOS/thirdparty/dwm-${version_dwm}/config.def.h $REPOS/thirdparty/dwm-${version_dwm}/config.h && \
+    sed -i '/Gimp/d' $REPOS/thirdparty/dwm-${version_dwm}/config.h && \
+    sed -i 's/.*Firefox.*/	{ NULL,       NULL,       NULL,       0,            False,       -1 },/g' $REPOS/thirdparty/dwm-${version_dwm}/config.h && \
     make clean install --quiet -C $REPOS/thirdparty/dwm-${version_dwm} && \
-    rm -rf $REPOS/thirdparty/dwm-${version_dwm}
+    #rm -rf $REPOS/thirdparty/dwm-${version_dwm}
 
     echo compile st
     version_st=0.8.4
