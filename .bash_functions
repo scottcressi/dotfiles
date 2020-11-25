@@ -541,7 +541,9 @@ parse_git_branch_and_add_brackets(){
     export DESTDIR="$HOME"
 
     echo compile dwm
-    echo "exec dwm" > ~/.xinitrc
+    echo > ~/.xinitrc
+    echo cd >> ~/.xinitrc
+    echo exec dwm >> ~/.xinitrc
     version_dwm=6.2
     [[ ! -f $REPOS/thirdparty/dwm-${version_dwm}.tar.gz ]] && \
     curl -L --url https://dl.suckless.org/dwm/dwm-${version_dwm}.tar.gz --output $REPOS/thirdparty/dwm-${version_dwm}.tar.gz
