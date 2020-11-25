@@ -81,6 +81,7 @@ parse_git_branch_and_add_brackets(){
 
     echo installing apt thirdparty
     awk '/thirdparty/ {print $1}' $REPOS/personal/dotfiles/packages.txt | xargs sudo apt-get install -y --quiet --quiet
+    sudo chmod 4755 /opt/Signal/chrome-sandbox
 
     echo installing binary youtube-dl
     version_youtube_dl=2020.11.19
