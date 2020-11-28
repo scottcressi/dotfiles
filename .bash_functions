@@ -4,6 +4,22 @@ BIN=~/bin
 TMP=~/tmp
 REPOS=~/repos
 
+DIRS=(
+SORT
+_misc
+books
+comics
+documents
+drop
+emulators
+games
+music
+pictures
+sheet_music
+software
+videos
+)
+
 # shellcheck source=/dev/null
 [ -f ~/python/bin/activate ] && source ~/python/bin/activate
 
@@ -502,22 +518,6 @@ parse_git_branch_and_add_brackets(){
 }
 
 -packages-prereqs(){
-
-    DIRS=(
-    SORT
-    _misc
-    books
-    comics
-    documents
-    drop
-    emulators
-    games
-    music
-    pictures
-    sheet_music
-    software
-    videos
-    )
 
     # directories
     mkdir -p ~/Downloads
