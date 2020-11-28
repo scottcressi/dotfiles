@@ -187,12 +187,10 @@ parse_git_branch_and_add_brackets(){
     version_firefox=83.0
     profile_default=$(find ~/.mozilla/firefox/*.default/ -maxdepth 0)
     profile_default_extensions=$profile_default/extensions
-    profile_default_version=$profile_default/compatibility.ini
     if ! pgrep firefox-bin > /dev/null ; then
-        if [ "$(grep LastVersion "$profile_default_version" | sed 's/_.*//g' | sed 's/LastVersion=//g')" != "$version_firefox" ] ; then
-        rm -rf ~/firefox
-        curl -L --url https://ftp.mozilla.org/pub/firefox/releases/"${version_firefox}"/linux-x86_64/en-US/firefox-"${version_firefox}".tar.bz2 | tar -xj && \
-        mv firefox ~/
+        if [ ! -d ~/firefox ] ;then
+            curl -L --url https://ftp.mozilla.org/pub/firefox/releases/"${version_firefox}"/linux-x86_64/en-US/firefox-"${version_firefox}".tar.bz2 | tar -xj && \
+            [ ! -d ~/firefox ] && mv firefox ~/
         fi
     fi
 
