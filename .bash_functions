@@ -550,8 +550,7 @@ parse_git_branch_and_add_brackets(){
     cp -rp $REPOS/thirdparty/dwm-${version_dwm}/config.def.h $REPOS/thirdparty/dwm-${version_dwm}/config.h && \
     sed -i '/Gimp/d' $REPOS/thirdparty/dwm-${version_dwm}/config.h && \
     sed -i 's/.*Firefox.*/	{ NULL,       NULL,       NULL,       0,            False,       -1 },/g' $REPOS/thirdparty/dwm-${version_dwm}/config.h && \
-    make clean install --quiet -C $REPOS/thirdparty/dwm-${version_dwm} && \
-    rm -rf $REPOS/thirdparty/dwm-${version_dwm}
+    make clean install --quiet -C $REPOS/thirdparty/dwm-${version_dwm}
 
     echo compile st
     version_st=0.8.4
@@ -564,8 +563,7 @@ parse_git_branch_and_add_brackets(){
     [[ -d $REPOS/thirdparty/st-${version_st} ]] && \
     cp -rp $REPOS/thirdparty/st-*.diff $REPOS/thirdparty/st-${version_st}/ && \
     patch --merge --quiet -i $REPOS/thirdparty/st-*.diff -d $REPOS/thirdparty/st-${version_st} && \
-    make clean install --quiet -C $REPOS/thirdparty/st-${version_st} && \
-    rm -rf $REPOS/thirdparty/st-${version_st}
+    make clean install --quiet -C $REPOS/thirdparty/st-${version_st}
 
     echo compile dwmblocks
     [[ ! -d $REPOS/thirdparty/dwmblocks ]] && \
