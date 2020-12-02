@@ -90,7 +90,7 @@ parse_git_branch_and_add_brackets(){
     fi
 
     echo installing apt docker
-    if ! pgrep docker$ > /dev/null ; then
+    if ! pgrep dockerd > /dev/null ; then
         awk '/docker/ {print $1}' $REPOS/personal/dotfiles/packages.txt | xargs sudo apt-get install -y --quiet --quiet
     fi
     sudo usermod -a -G docker "$USER"
