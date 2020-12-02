@@ -22,7 +22,7 @@ printf -v _shell_depth_str '%*s' "$((SHLVL-1))" ''
 _shell_depth_str=${_shell_depth_str:+${_shell_depth_str// />} }
 
 # ps
-PS1="$_shell_depth_str$GREEN$PROMPT$RED\$(parse_git_branch_and_add_brackets) : \w\$ "$TEXT
+PS1="$_shell_depth_str$GREEN$PROMPT$RED\$(parse_git_branch_and_add_brackets) \w "$TEXT
 
 # unset shell depth
 unset _shell_depth_str
