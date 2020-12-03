@@ -168,8 +168,7 @@ parse_git_branch_and_add_brackets(){
     version_bitwarden=1.23.1
     [[ "$(dpkg -l bitwarden | grep bitwarden | awk '{print $3}' | sed s/1://g)" != "$version_bitwarden" ]] && \
     curl -L https://github.com/bitwarden/desktop/releases/download/v${version_bitwarden}/Bitwarden-${version_bitwarden}-amd64.deb --output Bitwarden-${version_bitwarden}-amd64.deb && \
-    sudo dpkg -i Bitwarden-${version_bitwarden}-amd64.deb && \
-    rm -f Bitwarden-${version_bitwarden}-amd64.deb
+    sudo dpkg -i $TMP/Bitwarden-${version_bitwarden}-amd64.deb
 
     echo installing misc pip
     [ "$VIRTUAL_ENV" != "" ] && \
@@ -372,9 +371,8 @@ parse_git_branch_and_add_brackets(){
     - role: worker
     - role: worker
     - role: worker
-    """ > kind-config.yaml
-    kind create cluster --config kind-config.yaml
-    rm -f kind-config.yaml
+    """ > $TMP/kind-config.yaml
+    kind create cluster --config $TMP/kind-config.yaml
 
 }
 
