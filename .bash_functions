@@ -184,8 +184,6 @@ parse_git_branch_and_add_brackets(){
 
     echo installing misc firefox
     version_firefox=83.0
-    profile_default=$(find ~/.mozilla/firefox/*.default/ -maxdepth 0)
-    profile_default_extensions=$profile_default/extensions
     if ! pgrep firefox-bin > /dev/null ; then
         if [ ! -d ~/firefox ] ;then
             curl -L --url https://ftp.mozilla.org/pub/firefox/releases/"${version_firefox}"/linux-x86_64/en-US/firefox-"${version_firefox}".tar.bz2 | tar -xj && \
@@ -198,7 +196,28 @@ parse_git_branch_and_add_brackets(){
 
     echo configuring firefox profile
     ~/firefox/firefox -headless -CreateProfile default
+    profile_default=$(find ~/.mozilla/firefox/ -maxdepth 1 -mindepth 1 -type d | grep default)
+    profile_default_extensions=$profile_default/extensions
     mkdir -p "$profile_default_extensions"
+
+    echo configuring addons default
+    [[ ! -f ~/repos/thirdparty/addons/uBlock0@raymondhill.net.xpi ]] && \
+        curl -L \
+        --url https://addons.mozilla.org/firefox/downloads/file/3579401/ublock_origin-1.27.10-an+fx.xpi \
+        --output ~/repos/thirdparty/addons/uBlock0@raymondhill.net.xpi
+    [[ ! -f ~/repos/thirdparty/addons/\{e6e36c9a-8323-446c-b720-a176017e38ff\}.xpi ]] && \
+        curl -L \
+        --url https://addons.mozilla.org/firefox/downloads/file/3566579/torrent_control-0.2.18-fx.xpi \
+        --output ~/repos/thirdparty/addons/\{e6e36c9a-8323-446c-b720-a176017e38ff\}.xpi
+    [[ ! -f ~/repos/thirdparty/addons/2341n4m3@gmail.com.xpi ]] && \
+        curl -L \
+        --url https://addons.mozilla.org/firefox/downloads/file/717262/ageless_for_youtube-1.3-an+fx.xpi \
+        --output ~/repos/thirdparty/addons/2341n4m3@gmail.com.xpi
+    [[ ! -f ~/repos/thirdparty/addons/\{e4a8a97b-f2ed-450b-b12d-ee082ba24781\}.xpi ]] && \
+        curl -L \
+        --url https://addons.mozilla.org/firefox/downloads/file/3024171/greasemonkey-4.9-an+fx.xpi \
+        --output ~/repos/thirdparty/addons/\{e4a8a97b-f2ed-450b-b12d-ee082ba24781\}.xpi
+    cp -rp ~/repos/thirdparty/addons/* "$profile_default_extensions"/
 
     echo installing misc ghacks
     version_ghacks=81.0
@@ -217,24 +236,6 @@ parse_git_branch_and_add_brackets(){
     user_pref("extensions.autoDisableScopes", 0); // auto enable addons
     user_pref("app.update.auto", false); // disable updates
     ''' >> "$profile_default"/user.js
-
-    echo configuring addons default
-    [[ ! -f $profile_default_extensions/uBlock0@raymondhill.net.xpi ]] && \
-        curl -L \
-        --url https://addons.mozilla.org/firefox/downloads/file/3579401/ublock_origin-1.27.10-an+fx.xpi \
-        --output "$profile_default_extensions"/uBlock0@raymondhill.net.xpi
-    [[ ! -f $profile_default_extensions/\{e6e36c9a-8323-446c-b720-a176017e38ff\}.xpi ]] && \
-        curl -L \
-        --url https://addons.mozilla.org/firefox/downloads/file/3566579/torrent_control-0.2.18-fx.xpi \
-        --output "$profile_default_extensions"/\{e6e36c9a-8323-446c-b720-a176017e38ff\}.xpi
-    [[ ! -f $profile_default_extensions/2341n4m3@gmail.com.xpi ]] && \
-        curl -L \
-        --url https://addons.mozilla.org/firefox/downloads/file/717262/ageless_for_youtube-1.3-an+fx.xpi \
-        --output "$profile_default_extensions"/2341n4m3@gmail.com.xpi
-    [[ ! -f $profile_default_extensions/\{e4a8a97b-f2ed-450b-b12d-ee082ba24781\}.xpi ]] && \
-        curl -L \
-        --url https://addons.mozilla.org/firefox/downloads/file/3024171/greasemonkey-4.9-an+fx.xpi \
-        --output "$profile_default_extensions"/\{e4a8a97b-f2ed-450b-b12d-ee082ba24781\}.xpi
 
     echo configuring completions
     [[ ! -f ~/.bash_completion.d/kubectl ]] && kubectl completion bash | sudo tee ~/.bash_completion.d/kubectl
@@ -521,6 +522,7 @@ parse_git_branch_and_add_brackets(){
     mkdir -p ~/wallpapers
     mkdir -p ~/.bash_completion.d
     mkdir -p $TMP
+    mkdir -p ~/repos/thirdparty/addons
 
     # directories storage
     for i in "${DIRS[@]}" ; do
