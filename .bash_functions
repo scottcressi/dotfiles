@@ -33,7 +33,7 @@ parse_git_branch_and_add_brackets(){
     if command -v dwmblocks &> /dev/null ; then if pgrep startx > /dev/null ; then if ! pgrep dwmblocks > /dev/null ; then dwmblocks                        & disown ; fi ; fi ; fi
 }
 
--packages(){
+-packages-debian(){
 
     if ! command -v curl &> /dev/null ; then echo install package prereqs first ;  exit 0 ; fi
 
@@ -633,4 +633,8 @@ parse_git_branch_and_add_brackets(){
 
 -weather(){
     curl http://wttr.in/"$1"
+}
+
+-packages-size(){
+    dpkg-query -Wf '${Installed-Size}\t${Package}\n' | sort -n
 }
