@@ -28,14 +28,14 @@ parse_git_branch_and_add_brackets(){
 }
 
 -start-apps(){
-    if command -v xautolock &> /dev/null ; then if pgrep startx > /dev/null ; then if ! pgrep xautolock > /dev/null ; then xautolock -time 1 -locker slock  & disown ; fi ; fi ; fi
-    if command -v dunst     &> /dev/null ; then if pgrep startx > /dev/null ; then if ! pgrep dunst     > /dev/null ; then dunst                            & disown ; fi ; fi ; fi
-    if command -v dwmblocks &> /dev/null ; then if pgrep startx > /dev/null ; then if ! pgrep dwmblocks > /dev/null ; then dwmblocks                        & disown ; fi ; fi ; fi
+    if command -v xautolock > /dev/null ; then if pgrep startx > /dev/null ; then if ! pgrep xautolock > /dev/null ; then xautolock -time 1 -locker slock  & disown ; fi ; fi ; fi
+    if command -v dunst     > /dev/null ; then if pgrep startx > /dev/null ; then if ! pgrep dunst     > /dev/null ; then dunst                            & disown ; fi ; fi ; fi
+    if command -v dwmblocks > /dev/null ; then if pgrep startx > /dev/null ; then if ! pgrep dwmblocks > /dev/null ; then dwmblocks                        & disown ; fi ; fi ; fi
 }
 
 -packages-debian(){
 
-    if ! command -v curl &> /dev/null ; then echo install package prereqs first ;  exit 0 ; fi
+    if ! command -v curl > /dev/null ; then echo install package prereqs first ;  exit 0 ; fi
 
     echo prereq key hashicorp
     [ ! -f /etc/apt/sources.list.d/hashicorp.list ] && \
@@ -192,7 +192,7 @@ parse_git_branch_and_add_brackets(){
     fi
 
     echo configuring venv
-    if command -v python3 &> /dev/null ; then if [ ! -f ~/python/bin/activate ] ; then python3 -m venv ~/python ; fi ; fi
+    if command -v python3 > /dev/null ; then if [ ! -f ~/python/bin/activate ] ; then python3 -m venv ~/python ; fi ; fi
 
     echo configuring firefox profile
     ~/firefox/firefox -headless -CreateProfile default
