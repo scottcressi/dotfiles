@@ -21,7 +21,7 @@ videos
 )
 
 # shellcheck source=/dev/null
-[ -f ~/python/bin/activate ] && source ~/python/bin/activate
+[ -f ~/python/bin/activate ] && . ~/python/bin/activate
 
 parse_git_branch_and_add_brackets(){
     git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\ \[\1\]/'
@@ -38,43 +38,43 @@ parse_git_branch_and_add_brackets(){
     if ! command -v curl &> /dev/null ; then echo install package prereqs first ;  exit 0 ; fi
 
     echo prereq key hashicorp
-    [[ ! -f /etc/apt/sources.list.d/hashicorp.list ]] && \
+    [ ! -f /etc/apt/sources.list.d/hashicorp.list ] && \
     echo "deb [arch=amd64] https://apt.releases.hashicorp.com buster main" | sudo tee -a /etc/apt/sources.list.d/hashicorp.list
     KEY=$(apt-key list 2> /dev/null | grep HashiCorp)
-    if [[ ! $KEY ]]; then
+    if [ ! "$KEY" ] ; then
     curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
     fi
 
     echo prereq key virtualbox
-    [[ ! -f /etc/apt/sources.list.d/virtualbox.list ]] && \
+    [ ! -f /etc/apt/sources.list.d/virtualbox.list ] && \
     echo "deb http://download.virtualbox.org/virtualbox/debian buster contrib" | sudo tee -a /etc/apt/sources.list.d/virtualbox.list
     KEY=$(apt-key list 2> /dev/null | grep VirtualBox)
-    if [[ ! $KEY ]]; then
+    if [ ! "$KEY" ]; then
     curl -fsSL https://www.virtualbox.org/download/oracle_vbox_2016.asc | sudo apt-key add -
     fi
 
     echo prereq key signal
-    [[ ! -f /etc/apt/sources.list.d/signal-xenial.list ]] && \
+    [ ! -f /etc/apt/sources.list.d/signal-xenial.list ] && \
     echo "deb [arch=amd64] https://updates.signal.org/desktop/apt xenial main" | sudo tee -a /etc/apt/sources.list.d/signal-xenial.list
     KEY=$(apt-key list 2> /dev/null | grep Whisper)
-    if [[ ! $KEY ]]; then
+    if [ ! "$KEY" ]; then
     curl https://updates.signal.org/desktop/apt/keys.asc | sudo apt-key add -
     fi
 
     echo prereq key docker
-    [[ ! -f /etc/apt/sources.list.d/docker.list ]] && \
+    [ ! -f /etc/apt/sources.list.d/docker.list ] && \
     echo "deb [arch=amd64] https://download.docker.com/linux/$(grep ^ID /etc/os-release | sed 's/ID=//g') $(grep VERSION_CODENAME /etc/os-release | sed 's/.*=//g') stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
     KEY=$(apt-key list 2> /dev/null | grep Docker)
-    if [[ ! $KEY ]]; then
+    if [ ! "$KEY" ] ; then
     curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
     sudo apt-key fingerprint 0EBFCD88
     fi
 
     echo prereq key helm
-    [[ ! -f /etc/apt/sources.list.d/helm-stable-debian.list ]] && \
+    [ ! -f /etc/apt/sources.list.d/helm-stable-debian.list ] && \
     echo "deb https://baltocdn.com/helm/stable/debian/ all main" | sudo tee /etc/apt/sources.list.d/helm-stable-debian.list
     KEY=$(apt-key list 2> /dev/null | grep Helm)
-    if [[ ! $KEY ]]; then
+    if [ ! "$KEY" ] ; then
     curl https://baltocdn.com/helm/signing.asc | sudo apt-key add -
     fi
 
@@ -85,7 +85,7 @@ parse_git_branch_and_add_brackets(){
     awk '/debian/ {print $1}' $REPOS/personal/dotfiles/packages.txt | xargs sudo apt-get install -y --quiet --quiet
 
     echo installing apt driver
-    if [ "$(lspci | grep VGA | awk '{print $5}')" == "NVIDIA" ] ; then
+    if [ "$(lspci | grep VGA | awk '{print $5}')" = "NVIDIA" ] ; then
         awk '/driver/ {print $1}' $REPOS/personal/dotfiles/packages.txt | xargs sudo apt-get install -y --quiet --quiet
     fi
 
@@ -101,72 +101,72 @@ parse_git_branch_and_add_brackets(){
 
     echo installing binary youtube-dl
     version_youtube_dl=2020.11.19
-    [[ ! -f $BIN/youtube-dl ]] && \
+    [ ! -f $BIN/youtube-dl ] && \
     curl -L https://youtube-dl.org/downloads/latest/youtube-dl-${version_youtube_dl}.tar.gz | tar zx youtube-dl/youtube-dl && \
     mv youtube-dl/youtube-dl $BIN/ && \
     rmdir youtube-dl
 
     echo installing binary aws-iam-authenticator
-    [[ ! -f $BIN/aws-iam-authenticator ]] && \
+    [ ! -f $BIN/aws-iam-authenticator ] && \
     curl https://amazon-eks.s3.us-west-2.amazonaws.com/1.17.9/2020-08-04/bin/linux/amd64/aws-iam-authenticator --output $BIN/aws-iam-authenticator
 
     echo installing binary docker compose
     version_docker_compose=1.27.4
-    [[ ! -f $BIN/docker-compose ]] && \
+    [ ! -f $BIN/docker-compose ] && \
     curl -L https://github.com/docker/compose/releases/download/${version_docker_compose}/docker-compose-"$(uname -s)"-"$(uname -m)" -o $BIN/docker-compose
 
     echo installing binary pluto
     version_pluto=3.4.1
-    [[ ! -f $BIN/pluto ]] && \
+    [ ! -f $BIN/pluto ] && \
     curl -L --url https://github.com/FairwindsOps/pluto/releases/download/v${version_pluto}/pluto_${version_pluto}_linux_amd64.tar.gz | tar zx -C $BIN/ pluto
 
     echo installing binary skaffold
     version_skaffold=v1.17.0
-    [[ ! -f $BIN/skaffold ]] && \
+    [ ! -f $BIN/skaffold ] && \
     curl -L --url https://github.com/GoogleContainerTools/skaffold/releases/download/${version_skaffold}/skaffold-linux-amd64 --output $BIN/skaffold
 
     echo installing binary kops
     version_kops=1.18.0
-    [[ ! -f $BIN/kops ]] && \
+    [ ! -f $BIN/kops ] && \
     curl -L --url https://github.com/kubernetes/kops/releases/download/v${version_kops}/kops-linux-amd64 --output $BIN/kops
 
     echo installing binary kubectl
     version_kubectl=v1.18.2
-    [[ ! -f $BIN/kubectl ]] && \
+    [ ! -f $BIN/kubectl ] && \
     curl -L https://storage.googleapis.com/kubernetes-release/release/"${version_kubectl}"/bin/linux/amd64/kubectl --output $BIN/kubectl
 
     echo installing binary k9s
     version_k9s=0.24.0
-    [[ ! -f $BIN/k9s ]] && \
+    [ ! -f $BIN/k9s ] && \
     curl -L --url https://github.com/derailed/k9s/releases/download/v${version_k9s}/k9s_Linux_x86_64.tar.gz | tar zxv k9s && \
     mv k9s $BIN
 
     echo installing binary kind
     version_kind=v0.9.0
-    [[ ! -f $BIN/kind ]] && \
+    [ ! -f $BIN/kind ] && \
     curl -L --url https://github.com/kubernetes-sigs/kind/releases/download/${version_kind}/kind-linux-amd64 --output $BIN/kind
 
     echo installing binary rakkess
     version_rakkess=v0.4.4
-    [[ ! -f $BIN/rakkess ]] && \
+    [ ! -f $BIN/rakkess ] && \
     curl -L --url https://github.com/corneliusweig/rakkess/releases/download/${version_rakkess}/rakkess-amd64-linux.tar.gz | tar zxv rakkess-amd64-linux && \
     mv rakkess-amd64-linux $BIN/rakkess
 
     echo installing binary istioctl
     version_istioctl=1.5.2
-    [[ ! -f $BIN/istioctl ]] && \
+    [ ! -f $BIN/istioctl ] && \
     curl -L --url https://github.com/istio/istio/releases/download/${version_istioctl}/istio-${version_istioctl}-linux.tar.gz | tar zxv istio-${version_istioctl}/bin/istioctl && \
     mv istio-${version_istioctl}/bin/istioctl $BIN/istioctl && \
     rmdir -p istio-${version_istioctl}/bin
 
     echo installing binary slack term
     version_slack_term=v0.5.0
-    [[ ! -f $BIN/slack-term ]] && \
+    [ ! -f $BIN/slack-term ] && \
     curl -L --url https://github.com/erroneousboat/slack-term/releases/download/${version_slack_term}/slack-term-linux-amd64 --output $BIN/slack-term
 
     echo installing deb bitwarden
     version_bitwarden=1.23.1
-    [[ "$(dpkg -l bitwarden | grep bitwarden | awk '{print $3}' | sed s/1://g)" != "$version_bitwarden" ]] && \
+    [ "$(dpkg -l bitwarden | grep bitwarden | awk '{print $3}' | sed s/1://g)" != "$version_bitwarden" ] && \
     curl -L https://github.com/bitwarden/desktop/releases/download/v${version_bitwarden}/Bitwarden-${version_bitwarden}-amd64.deb --output Bitwarden-${version_bitwarden}-amd64.deb && \
     sudo dpkg -i $TMP/Bitwarden-${version_bitwarden}-amd64.deb
 
@@ -180,7 +180,7 @@ parse_git_branch_and_add_brackets(){
     pylint \
 
     echo installing misc ticker
-    [[ ! -d $REPOS/thirdparty/ticker.sh ]] && git clone https://github.com/pstadler/ticker.sh.git $REPOS/thirdparty/ticker.sh
+    [ ! -d $REPOS/thirdparty/ticker.sh ] && git clone https://github.com/pstadler/ticker.sh.git $REPOS/thirdparty/ticker.sh
 
     echo installing misc firefox
     version_firefox=83.0
@@ -201,19 +201,19 @@ parse_git_branch_and_add_brackets(){
     mkdir -p "$profile_default_extensions"
 
     echo configuring addons default
-    [[ ! -f ~/repos/thirdparty/addons/uBlock0@raymondhill.net.xpi ]] && \
+    [ ! -f ~/repos/thirdparty/addons/uBlock0@raymondhill.net.xpi ] && \
         curl -L \
         --url https://addons.mozilla.org/firefox/downloads/file/3579401/ublock_origin-1.27.10-an+fx.xpi \
         --output ~/repos/thirdparty/addons/uBlock0@raymondhill.net.xpi
-    [[ ! -f ~/repos/thirdparty/addons/\{e6e36c9a-8323-446c-b720-a176017e38ff\}.xpi ]] && \
+    [ ! -f ~/repos/thirdparty/addons/\{e6e36c9a-8323-446c-b720-a176017e38ff\}.xpi ] && \
         curl -L \
         --url https://addons.mozilla.org/firefox/downloads/file/3566579/torrent_control-0.2.18-fx.xpi \
         --output ~/repos/thirdparty/addons/\{e6e36c9a-8323-446c-b720-a176017e38ff\}.xpi
-    [[ ! -f ~/repos/thirdparty/addons/2341n4m3@gmail.com.xpi ]] && \
+    [ ! -f ~/repos/thirdparty/addons/2341n4m3@gmail.com.xpi ] && \
         curl -L \
         --url https://addons.mozilla.org/firefox/downloads/file/717262/ageless_for_youtube-1.3-an+fx.xpi \
         --output ~/repos/thirdparty/addons/2341n4m3@gmail.com.xpi
-    [[ ! -f ~/repos/thirdparty/addons/\{e4a8a97b-f2ed-450b-b12d-ee082ba24781\}.xpi ]] && \
+    [ ! -f ~/repos/thirdparty/addons/\{e4a8a97b-f2ed-450b-b12d-ee082ba24781\}.xpi ] && \
         curl -L \
         --url https://addons.mozilla.org/firefox/downloads/file/3024171/greasemonkey-4.9-an+fx.xpi \
         --output ~/repos/thirdparty/addons/\{e4a8a97b-f2ed-450b-b12d-ee082ba24781\}.xpi
@@ -221,7 +221,7 @@ parse_git_branch_and_add_brackets(){
 
     echo installing misc ghacks
     version_ghacks=81.0
-    [[ ! -f $REPOS/thirdparty/user.js ]] && \
+    [ ! -f $REPOS/thirdparty/user.js ] && \
     curl -L --url https://github.com/arkenfox/user.js/archive/${version_ghacks}.tar.gz | tar xz user.js-${version_ghacks}/user.js && \
     mv user.js-${version_ghacks}/user.js $REPOS/thirdparty/user.js && \
     rmdir user.js-${version_ghacks}
@@ -238,8 +238,8 @@ parse_git_branch_and_add_brackets(){
     ''' >> "$profile_default"/user.js
 
     echo configuring completions
-    [[ ! -f ~/.bash_completion.d/kubectl ]] && kubectl completion bash | sudo tee ~/.bash_completion.d/kubectl
-    [[ ! -f ~/.bash_completion.d/docker-compose ]] && \
+    [ ! -f ~/.bash_completion.d/kubectl ] && kubectl completion bash | sudo tee ~/.bash_completion.d/kubectl
+    [ ! -f ~/.bash_completion.d/docker-compose ] && \
     sudo curl -L https://raw.githubusercontent.com/docker/compose/1.26.0/contrib/completion/bash/docker-compose -o ~/.bash_completion.d/docker-compose
 
     echo configuring permissions
@@ -256,7 +256,7 @@ parse_git_branch_and_add_brackets(){
 -docker-stop-all(){
     echo stop all containers? y/n
     read -r confirm
-    if [ "$confirm" == "y" ] ; then
+    if [ "$confirm" = "y" ] ; then
         for i in $(docker ps | awk '{print $1}' | grep -v CONTAINER); do
         docker stop "$i"
         done
@@ -266,7 +266,7 @@ parse_git_branch_and_add_brackets(){
 -docker-kill-all(){
     echo kill all containers? y/n
     read -r confirm
-    if [ "$confirm" == "y" ] ; then
+    if [ "$confirm" = "y" ] ; then
         for i in $(docker ps | awk '{print $1}' | grep -v CONTAINER); do
         docker kill "$i"
         done
@@ -279,7 +279,7 @@ parse_git_branch_and_add_brackets(){
     read -r cluster
     echo create cluster "$cluster"? y/n
     read -r confirm
-    if [ "$confirm" == "y" ] ; then
+    if [ "$confirm" = "y" ] ; then
     kops create cluster \
         --node-count 4 \
         --name "$cluster" \
@@ -306,7 +306,7 @@ parse_git_branch_and_add_brackets(){
     read -r cluster
     echo delete cluster "$cluster"? y/n
     read -r confirm
-    if [ "$confirm" == "y" ] ; then
+    if [ "$confirm" = "y" ] ; then
         kops delete cluster \
         --name "$cluster" \
         --state s3://"$(aws sts get-caller-identity --output text --query 'Account')"-kops-test \
@@ -322,13 +322,13 @@ parse_git_branch_and_add_brackets(){
 }
 
 -aws-set-credentials(){
-    [[ -z "$1" ]] && echo enter profile ; echo ; grep "\\[" ~/.aws/credentials
+    [ -z "$1" ] && echo enter profile ; echo ; grep "\\[" ~/.aws/credentials
     export AWS_DEFAULT_PROFILE=$1
 }
 
 -is-webcam-on(){
     if [ "$(find /dev/ -maxdepth 1 | grep -c video)" -gt 0 ] ; then
-        if [ "$(lsmod | grep ^uvcvideo | awk '{print $3}')" == "0" ] ; then
+        if [ "$(lsmod | grep ^uvcvideo | awk '{print $3}')" = "0" ] ; then
             echo no
         else
             echo yes
@@ -415,7 +415,7 @@ parse_git_branch_and_add_brackets(){
     echo namespace: "$namespace"
     echo port: "$port"
     for i in $port ; do
-        random_port=$(( ( RANDOM % 65535 )  + 1024 ))
+        random_port=$(shuf -i 1024-65535 -n 1)
         kubectl port-forward --address 0.0.0.0 --namespace "$namespace" pod/"$pod" "$random_port":"$i" &
     done
     fi
@@ -439,7 +439,7 @@ parse_git_branch_and_add_brackets(){
     fi
 
     echo mount
-    if [ "$smbpasswd_status" == 1 ] && [ "$freenas_status" == 1 ] ; then
+    if [ "$smbpasswd_status" = 1 ] && [ "$freenas_status" = 1 ] ; then
         for i in "${DIRS[@]}" ; do
             sudo mount -t cifs //freenas/"$i" ~/mnt/"$i" -o credentials=~/.smbpasswd -v
         done
@@ -542,11 +542,11 @@ parse_git_branch_and_add_brackets(){
     echo cd >> ~/.xinitrc
     echo exec dwm >> ~/.xinitrc
     version_dwm=6.2
-    [[ ! -f $REPOS/thirdparty/dwm-${version_dwm}.tar.gz ]] && \
+    [ ! -f $REPOS/thirdparty/dwm-${version_dwm}.tar.gz ] && \
     curl -L --url https://dl.suckless.org/dwm/dwm-${version_dwm}.tar.gz --output $REPOS/thirdparty/dwm-${version_dwm}.tar.gz
-    [[ ! -d $REPOS/thirdparty/dwm-${version_dwm} ]] && \
+    [ ! -d $REPOS/thirdparty/dwm-${version_dwm} ] && \
     tar zxf $REPOS/thirdparty/dwm-${version_dwm}.tar.gz -C $REPOS/thirdparty/
-    [[ -d $REPOS/thirdparty/dwm-${version_dwm} ]] && \
+    [ -d $REPOS/thirdparty/dwm-${version_dwm} ] && \
     cp -rp $REPOS/thirdparty/dwm-${version_dwm}/config.def.h $REPOS/thirdparty/dwm-${version_dwm}/config.h && \
     sed -i '/Gimp/d' $REPOS/thirdparty/dwm-${version_dwm}/config.h && \
     sed -i 's/.*Firefox.*/	{ NULL,       NULL,       NULL,       0,            False,       -1 },/g' $REPOS/thirdparty/dwm-${version_dwm}/config.h && \
@@ -554,19 +554,19 @@ parse_git_branch_and_add_brackets(){
 
     echo compile st
     version_st=0.8.4
-    [[ ! -f $REPOS/thirdparty/st-${version_st}.tar.gz ]] && \
+    [ ! -f $REPOS/thirdparty/st-${version_st}.tar.gz ] && \
     curl -L --url https://dl.suckless.org/st/st-${version_st}.tar.gz --output $REPOS/thirdparty/st-${version_st}.tar.gz
-    [[ ! -d $REPOS/thirdparty/st-${version_st} ]] && \
+    [ ! -d $REPOS/thirdparty/st-${version_st} ] && \
     tar zxf $REPOS/thirdparty/st-${version_st}.tar.gz -C $REPOS/thirdparty/
-    [[ ! -f $REPOS/thirdparty/st-scrollback-20200419-72e3f6c.diff ]] && \
+    [ ! -f $REPOS/thirdparty/st-scrollback-20200419-72e3f6c.diff ] && \
     curl -L --url https://st.suckless.org/patches/scrollback/st-scrollback-20200419-72e3f6c.diff --output $REPOS/thirdparty/st-scrollback-20200419-72e3f6c.diff
-    [[ -d $REPOS/thirdparty/st-${version_st} ]] && \
+    [ -d $REPOS/thirdparty/st-${version_st} ] && \
     cp -rp $REPOS/thirdparty/st-*.diff $REPOS/thirdparty/st-${version_st}/ && \
     patch --merge --quiet -i $REPOS/thirdparty/st-*.diff -d $REPOS/thirdparty/st-${version_st} && \
     make clean install --quiet -C $REPOS/thirdparty/st-${version_st}
 
     echo compile dwmblocks
-    [[ ! -d $REPOS/thirdparty/dwmblocks ]] && \
+    [ ! -d $REPOS/thirdparty/dwmblocks ] && \
     git clone https://github.com/torrinfail/dwmblocks $REPOS/thirdparty/dwmblocks
     cp $REPOS/personal/dwmblocks/dwmblocks.blocks.h $REPOS/thirdparty/dwmblocks/blocks.h
     make clean install -C $REPOS/thirdparty/dwmblocks --quiet
@@ -597,7 +597,7 @@ parse_git_branch_and_add_brackets(){
 }
 
 -git-push-all-remotes(){
-    if [ "$(pwd | grep personal && echo $?)" == "0" ] ; then
+    if [ "$(pwd | grep personal && echo $?)" = "0" ] ; then
         git remote | xargs -L1 git push --all
     else
         echo nope
