@@ -1,10 +1,10 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 
 BIN=~/bin
 TMP=~/tmp
 REPOS=~/repos
 
-DIRS=(
+export DIRS="
 SORT
 _misc
 books
@@ -18,7 +18,7 @@ pictures
 sheet_music
 software
 videos
-)
+"
 
 # shellcheck source=/dev/null
 [ -f ~/python/bin/activate ] && . ~/python/bin/activate
@@ -28,9 +28,9 @@ parse_git_branch_and_add_brackets(){
 }
 
 -start-apps(){
-    if command -v xautolock > /dev/null ; then if pgrep startx > /dev/null ; then if ! pgrep xautolock > /dev/null ; then xautolock -time 1 -locker slock  & disown ; fi ; fi ; fi
-    if command -v dunst     > /dev/null ; then if pgrep startx > /dev/null ; then if ! pgrep dunst     > /dev/null ; then dunst                            & disown ; fi ; fi ; fi
-    if command -v dwmblocks > /dev/null ; then if pgrep startx > /dev/null ; then if ! pgrep dwmblocks > /dev/null ; then dwmblocks                        & disown ; fi ; fi ; fi
+    if command -v xautolock > /dev/null ; then if pgrep startx > /dev/null ; then if ! pgrep xautolock > /dev/null ; then nohup xautolock -time 1 -locker slock  & fi ; fi ; fi
+    if command -v dunst     > /dev/null ; then if pgrep startx > /dev/null ; then if ! pgrep dunst     > /dev/null ; then nohup dunst                            & fi ; fi ; fi
+    if command -v dwmblocks > /dev/null ; then if pgrep startx > /dev/null ; then if ! pgrep dwmblocks > /dev/null ; then nohup dwmblocks                        & fi ; fi ; fi
 }
 
 -packages-debian(){
@@ -440,7 +440,7 @@ parse_git_branch_and_add_brackets(){
 
     echo mount
     if [ "$smbpasswd_status" = 1 ] && [ "$freenas_status" = 1 ] ; then
-        for i in "${DIRS[@]}" ; do
+        for i in $DIRS ; do
             sudo mount -t cifs //freenas/"$i" ~/mnt/"$i" -o credentials=~/.smbpasswd -v
         done
             sudo mount freenas:/mnt/data/drop/incomplete ~/data/transmission/incomplete
@@ -449,7 +449,7 @@ parse_git_branch_and_add_brackets(){
 }
 
 -umount(){
-    for i in "${DIRS[@]}" ; do
+    for i in $DIRS ; do
     sudo umount -l ~/mnt/"$i"
     done
     sudo umount -l ~/data/transmission/incomplete
@@ -525,7 +525,7 @@ parse_git_branch_and_add_brackets(){
     mkdir -p ~/repos/thirdparty/addons
 
     # directories storage
-    for i in "${DIRS[@]}" ; do
+    for i in $DIRS ; do
     mkdir -p ~/mnt/"$i"
     done
 
