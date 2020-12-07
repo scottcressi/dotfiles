@@ -182,6 +182,10 @@ parse_git_branch_and_add_brackets(){
     echo installing misc ticker
     [ ! -d $REPOS/thirdparty/ticker.sh ] && git clone https://github.com/pstadler/ticker.sh.git $REPOS/thirdparty/ticker.sh
 
+    echo installing golang
+    [ ! -d ~/repos/thirdparty/go ] && \
+    curl -L https://golang.org/dl/go1.15.6.linux-amd64.tar.gz | tar zx -C ~/repos/thirdparty/
+
     echo installing misc firefox
     version_firefox=83.0
     if ! pgrep firefox-bin > /dev/null ; then
