@@ -213,10 +213,6 @@ parse_git_branch_and_add_brackets(){
         curl -L \
         --url https://addons.mozilla.org/firefox/downloads/file/3566579/torrent_control-0.2.18-fx.xpi \
         --output ~/repos/thirdparty/addons/\{e6e36c9a-8323-446c-b720-a176017e38ff\}.xpi
-    [ ! -f ~/repos/thirdparty/addons/2341n4m3@gmail.com.xpi ] && \
-        curl -L \
-        --url https://addons.mozilla.org/firefox/downloads/file/717262/ageless_for_youtube-1.3-an+fx.xpi \
-        --output ~/repos/thirdparty/addons/2341n4m3@gmail.com.xpi
     [ ! -f ~/repos/thirdparty/addons/\{e4a8a97b-f2ed-450b-b12d-ee082ba24781\}.xpi ] && \
         curl -L \
         --url https://addons.mozilla.org/firefox/downloads/file/3024171/greasemonkey-4.9-an+fx.xpi \
