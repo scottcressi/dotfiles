@@ -217,6 +217,10 @@ parse_git_branch_and_add_brackets(){
         curl -L \
         --url https://addons.mozilla.org/firefox/downloads/file/3024171/greasemonkey-4.9-an+fx.xpi \
         --output ~/repos/thirdparty/addons/\{e4a8a97b-f2ed-450b-b12d-ee082ba24781\}.xpi
+    [ ! -f ~/repos/thirdparty/addons/\{29607f9b-5198-4832-9ea9-16085d102734\}.xpi ] && \
+        curl -L \
+        --url https://addons.mozilla.org/firefox/downloads/file/974448/play_with-1.3.2-an+fx.xpi \
+        --output ~/repos/thirdparty/addons/\{29607f9b-5198-4832-9ea9-16085d102734\}.xpi
     cp -rp ~/repos/thirdparty/addons/* "$profile_default_extensions"/
 
     echo installing misc ghacks
