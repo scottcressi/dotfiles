@@ -527,6 +527,7 @@ parse_git_branch_and_add_brackets(){
     mkdir -p ~/.bash_completion.d
     mkdir -p $TMP
     mkdir -p ~/repos/thirdparty/addons
+    mkdir -p ~/repos/thirdparty/st-patches
 
     # directories storage
     for i in $DIRS ; do
@@ -562,11 +563,11 @@ parse_git_branch_and_add_brackets(){
     curl -L --url https://dl.suckless.org/st/st-${version_st}.tar.gz --output $REPOS/thirdparty/st-${version_st}.tar.gz
     [ ! -d $REPOS/thirdparty/st-${version_st} ] && \
     tar zxf $REPOS/thirdparty/st-${version_st}.tar.gz -C $REPOS/thirdparty/
-    [ ! -f $REPOS/thirdparty/st-scrollback-20200419-72e3f6c.diff ] && \
-    curl -L --url https://st.suckless.org/patches/scrollback/st-scrollback-20200419-72e3f6c.diff --output $REPOS/thirdparty/st-scrollback-20200419-72e3f6c.diff
+    [ ! -f $REPOS/thirdparty/st-patches/st-scrollback-20201205-4ef0cbd.diff ] && \
+    curl -L --url https://st.suckless.org/patches/scrollback/st-scrollback-20201205-4ef0cbd.diff --output $REPOS/thirdparty/st-patches/st-scrollback-20201205-4ef0cbd.diff
     [ -d $REPOS/thirdparty/st-${version_st} ] && \
-    cp -rp $REPOS/thirdparty/st-*.diff $REPOS/thirdparty/st-${version_st}/ && \
-    patch --merge --quiet -i $REPOS/thirdparty/st-*.diff -d $REPOS/thirdparty/st-${version_st} && \
+    rsync -a $REPOS/thirdparty/st-patches/ $REPOS/thirdparty/st-${version_st}/ && \
+    patch --merge --quiet -i $REPOS/thirdparty/st-patches/st-*.diff -d $REPOS/thirdparty/st-${version_st} && \
     make clean install --quiet -C $REPOS/thirdparty/st-${version_st}
 
     echo compile dwmblocks
