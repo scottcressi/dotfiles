@@ -619,13 +619,13 @@ parse_git_branch_and_add_brackets(){
 
 -bookmarks-backup(){
     if [ ! -d /sys/module/battery ] ; then
-        7z a -p"$(cat ~/.bookmarkspasswd)" $REPOS/personal/buku/places.sqlite.7z "$(find ~/.mozilla/firefox/*.default/ -maxdepth 0)"/places.sqlite
+        7z a -p"$(cat ~/.bookmarkspasswd)" $REPOS/personal/buku/places.sqlite.7z "$(find ~/.mozilla/firefox/ -maxdepth 1 -mindepth 1 -type d | grep default)"/places.sqlite
     fi
 }
 
 -bookmarks-restore(){
     7z x -p"$(cat ~/.bookmarkspasswd)" $REPOS/personal/buku/places.sqlite.7z
-    mv places.sqlite "$(find ~/.mozilla/firefox/*.default/ -maxdepth 0)"/places.sqlite
+    mv places.sqlite "$(find ~/.mozilla/firefox/ -maxdepth 1 -mindepth 1 -type d | grep default)"/places.sqlite
 }
 
 -ip(){
