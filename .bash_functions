@@ -63,7 +63,7 @@ parse_git_branch_and_add_brackets(){
 
     echo prereq key docker
     [ ! -f /etc/apt/sources.list.d/docker.list ] && \
-    echo "deb [arch=amd64] https://download.docker.com/linux/$(grep ^ID /etc/os-release | sed 's/ID=//g') $(grep VERSION_CODENAME /etc/os-release | sed 's/.*=//g') stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+    echo "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
     KEY=$(apt-key list 2> /dev/null | grep Docker)
     if [ ! "$KEY" ] ; then
     curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
@@ -221,7 +221,7 @@ parse_git_branch_and_add_brackets(){
         curl -L \
         --url https://addons.mozilla.org/firefox/downloads/file/974448/play_with-1.3.2-an+fx.xpi \
         --output ~/repos/thirdparty/addons/\{29607f9b-5198-4832-9ea9-16085d102734\}.xpi
-    cp -rp ~/repos/thirdparty/addons/* "$profile_default_extensions"/
+    rsync -a ~/repos/thirdparty/addons/ "$profile_default_extensions"/
 
     echo installing misc ghacks
     version_ghacks=81.0
@@ -392,7 +392,7 @@ parse_git_branch_and_add_brackets(){
 }
 
 -record-screen(){
-    RESOLUTION=$(xrandr | grep "\\*" | awk '{print $1}')
+    RESOLUTION=$(xrandr | awk '/current/ {print $8 $9 $10}' | sed 's/,//g')
     ffmpeg -f x11grab -s "$RESOLUTION" -i :0.0 $TMP/ffmpeg-screen-"$(date +"%Y-%m-%d-%I-%m-%S")".mkv
 }
 
@@ -494,7 +494,7 @@ parse_git_branch_and_add_brackets(){
 }
 
 -webserver() {
-    ip -oneline -f inet a | grep dynamic | awk '{print $4}' | sed 's/\/.*//g'
+    ip -oneline -f inet a | grep dynamic | awk '{print $4}'
     echo
     python3 -m http.server 3333
 
@@ -628,7 +628,7 @@ parse_git_branch_and_add_brackets(){
 }
 
 -ip(){
-    ip -oneline -f inet a | grep dynamic | awk '{print $4}' | sed 's/\/.*//g'
+    ip -oneline -f inet a | grep dynamic | awk '{print $4}'
 }
 
 -wallpaper(){
