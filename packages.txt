@@ -51,6 +51,7 @@ iptraf                   debian      terminal  stats          network
 irssi                    debian      terminal  messaging
 jq                       debian      terminal  language
 jsonlint                 debian      terminal  lint
+kubectl                  thirdparty  terminal
 lftp                     debian      terminal  file           transfer
 libaa-bin                debian      terminal  fun
 libfontconfig1-dev       debian      terminal  prereq         st

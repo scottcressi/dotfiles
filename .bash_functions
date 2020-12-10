@@ -24,7 +24,7 @@ videos
 [ -f ~/python/bin/activate ] && . ~/python/bin/activate
 
 parse_git_branch_and_add_brackets(){
-    git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\ \[\1\]/'
+    git branch --no-color 2> /dev/null
 }
 
 -start-apps(){
@@ -36,6 +36,14 @@ parse_git_branch_and_add_brackets(){
 -packages-debian(){
 
     if ! command -v curl > /dev/null ; then echo install package prereqs first ;  exit 0 ; fi
+
+    echo prereq key kubectl
+    [ ! -f /etc/apt/sources.list.d/kubernetes.list ] && \
+    echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee -a /etc/apt/sources.list.d/kubernetes.list
+    KEY=$(apt-key list 2> /dev/null | grep google3)
+    if [ ! "$KEY" ] ; then
+    curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+    fi
 
     echo prereq key hashicorp
     [ ! -f /etc/apt/sources.list.d/hashicorp.list ] && \
@@ -129,11 +137,6 @@ parse_git_branch_and_add_brackets(){
     version_kops=1.18.0
     [ ! -f $BIN/kops ] && \
     curl -L --url https://github.com/kubernetes/kops/releases/download/v${version_kops}/kops-linux-amd64 --output $BIN/kops
-
-    echo installing binary kubectl
-    version_kubectl=v1.18.2
-    [ ! -f $BIN/kubectl ] && \
-    curl -L https://storage.googleapis.com/kubernetes-release/release/"${version_kubectl}"/bin/linux/amd64/kubectl --output $BIN/kubectl
 
     echo installing binary k9s
     version_k9s=0.24.0
@@ -251,7 +254,6 @@ parse_git_branch_and_add_brackets(){
     chmod 755 $BIN/docker-compose
     chmod 755 $BIN/kind
     chmod 755 $BIN/kops
-    chmod 755 $BIN/kubectl
     chmod 755 $BIN/skaffold
     chmod 755 $BIN/slack-term
 
