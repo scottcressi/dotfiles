@@ -568,7 +568,7 @@ parse_git_branch_and_add_brackets(){
     curl -L --url https://st.suckless.org/patches/scrollback/st-scrollback-20201205-4ef0cbd.diff --output $REPOS/thirdparty/st-patches/st-scrollback-20201205-4ef0cbd.diff
     [ -d $REPOS/thirdparty/st-${version_st} ] && \
     rsync -a $REPOS/thirdparty/st-patches/ $REPOS/thirdparty/st-${version_st}/ && \
-    patch --merge --quiet -i $REPOS/thirdparty/st-patches/st-*.diff -d $REPOS/thirdparty/st-${version_st} && \
+    patch --merge --quiet -i $REPOS/thirdparty/st-patches/st-scrollback-20201205-4ef0cbd.diff -d $REPOS/thirdparty/st-${version_st} && \
     make clean install --quiet -C $REPOS/thirdparty/st-${version_st}
 
     echo compile dwmblocks
