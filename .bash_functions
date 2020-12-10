@@ -232,7 +232,7 @@ parse_git_branch_and_add_brackets(){
 
     echo configuring ghacks
     echo > "$profile_default"/user.js
-    #grep ^user_pref $REPOS/thirdparty/ghacks-user.js/user.js | sed 's/.*user_pref/user_pref/g' > "$profile_default"/user.js
+    #grep ^user_pref $REPOS/thirdparty/user.js > "$profile_default"/user.js
 
     echo configuring user.js custom
     echo '''
@@ -554,7 +554,8 @@ parse_git_branch_and_add_brackets(){
     [ -d $REPOS/thirdparty/dwm-${version_dwm} ] && \
     cp -rp $REPOS/thirdparty/dwm-${version_dwm}/config.def.h $REPOS/thirdparty/dwm-${version_dwm}/config.h && \
     sed -i '/Gimp/d' $REPOS/thirdparty/dwm-${version_dwm}/config.h && \
-    sed -i 's/.*Firefox.*/	{ NULL,       NULL,       NULL,       0,            False,       -1 },/g' $REPOS/thirdparty/dwm-${version_dwm}/config.h && \
+    sed -i '/Firefox/a   { NULL,       NULL,       NULL,       0,            False,       -1 },' $REPOS/thirdparty/dwm-${version_dwm}/config.h && \
+    sed -i '/Firefox/d' $REPOS/thirdparty/dwm-${version_dwm}/config.h && \
     make clean install --quiet -C $REPOS/thirdparty/dwm-${version_dwm}
 
     echo compile st
