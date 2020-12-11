@@ -41,35 +41,30 @@ parse_git_branch_and_add_brackets(){
     echo "$GPG" > $TMP/gpg
 
     echo prereq key kubectl
-    [ ! -f /etc/apt/sources.list.d/kubernetes.list ] && \
-    echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee -a /etc/apt/sources.list.d/kubernetes.list
+    echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list > /dev/null
     if ! grep -q google3 $TMP/gpg ; then
     curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
     fi
 
     echo prereq key hashicorp
-    [ ! -f /etc/apt/sources.list.d/hashicorp.list ] && \
-    echo "deb [arch=amd64] https://apt.releases.hashicorp.com buster main" | sudo tee -a /etc/apt/sources.list.d/hashicorp.list
+    echo "deb [arch=amd64] https://apt.releases.hashicorp.com buster main" | sudo tee /etc/apt/sources.list.d/hashicorp.list > /dev/null
     if ! grep -q hashicorp $TMP/gpg ; then
     curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
     fi
 
     echo prereq key virtualbox
-    [ ! -f /etc/apt/sources.list.d/virtualbox.list ] && \
-    echo "deb http://download.virtualbox.org/virtualbox/debian buster contrib" | sudo tee -a /etc/apt/sources.list.d/virtualbox.list
+    echo "deb http://download.virtualbox.org/virtualbox/debian buster contrib" | sudo tee /etc/apt/sources.list.d/virtualbox.list > /dev/null
     if ! grep -q virtualbox $TMP/gpg ; then
     curl -fsSL https://www.virtualbox.org/download/oracle_vbox_2016.asc | sudo apt-key add -
     fi
 
     echo prereq key signal
-    [ ! -f /etc/apt/sources.list.d/signal-xenial.list ] && \
-    echo "deb [arch=amd64] https://updates.signal.org/desktop/apt xenial main" | sudo tee -a /etc/apt/sources.list.d/signal-xenial.list
+    echo "deb [arch=amd64] https://updates.signal.org/desktop/apt xenial main" | sudo tee /etc/apt/sources.list.d/signal-xenial.list > /dev/null
     if ! grep -q Whisper $TMP/gpg ; then
     curl https://updates.signal.org/desktop/apt/keys.asc | sudo apt-key add -
     fi
 
     echo prereq key docker
-    [ ! -f /etc/apt/sources.list.d/docker.list ] && \
     echo "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
     if ! grep -q Docker $TMP/gpg ; then
     curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
@@ -77,8 +72,7 @@ parse_git_branch_and_add_brackets(){
     fi
 
     echo prereq key helm
-    [ ! -f /etc/apt/sources.list.d/helm-stable-debian.list ] && \
-    echo "deb https://baltocdn.com/helm/stable/debian/ all main" | sudo tee /etc/apt/sources.list.d/helm-stable-debian.list
+    echo "deb https://baltocdn.com/helm/stable/debian/ all main" | sudo tee /etc/apt/sources.list.d/helm-stable-debian.list > /dev/null
     if ! grep -q Helm $TMP/gpg ; then
     curl https://baltocdn.com/helm/signing.asc | sudo apt-key add -
     fi
