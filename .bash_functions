@@ -92,11 +92,9 @@ parse_git_branch_and_add_brackets(){
     if ! pgrep dockerd > /dev/null ; then
         awk '/docker/ {print $1}' $REPOS/personal/dotfiles/packages.txt | xargs sudo apt-get install -y --quiet --quiet
     fi
-    sudo usermod -a -G docker "$USER"
 
     echo installing apt thirdparty
     awk '/thirdparty/ {print $1}' $REPOS/personal/dotfiles/packages.txt | xargs sudo apt-get install -y --quiet --quiet
-    sudo chmod 4755 /opt/Signal/chrome-sandbox
 
     echo installing binary youtube-dl
     version_youtube_dl=2020.11.19
@@ -247,6 +245,8 @@ parse_git_branch_and_add_brackets(){
     chmod 755 $BIN/kops
     chmod 755 $BIN/skaffold
     chmod 755 $BIN/slack-term
+    sudo chmod 4755 /opt/Signal/chrome-sandbox
+    sudo usermod -a -G docker "$USER"
 
 }
 
