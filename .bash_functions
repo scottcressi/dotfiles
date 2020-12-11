@@ -96,13 +96,6 @@ parse_git_branch_and_add_brackets(){
     echo installing apt thirdparty
     awk '/thirdparty/ {print $1}' $REPOS/personal/dotfiles/packages.txt | xargs sudo apt-get install -y --quiet --quiet
 
-    echo installing binary youtube-dl
-    version_youtube_dl=2020.11.19
-    [ ! -f $BIN/youtube-dl ] && \
-    curl -L https://youtube-dl.org/downloads/latest/youtube-dl-${version_youtube_dl}.tar.gz | tar zx youtube-dl/youtube-dl && \
-    mv youtube-dl/youtube-dl $BIN/ && \
-    rmdir youtube-dl
-
     echo installing binary aws-iam-authenticator
     [ ! -f $BIN/aws-iam-authenticator ] && \
     curl https://amazon-eks.s3.us-west-2.amazonaws.com/1.17.9/2020-08-04/bin/linux/amd64/aws-iam-authenticator --output $BIN/aws-iam-authenticator
@@ -170,6 +163,7 @@ parse_git_branch_and_add_brackets(){
     pgcli \
     ipython \
     pylint \
+    youtube-dl \
 
     echo installing misc ticker
     [ ! -d $REPOS/thirdparty/ticker.sh ] && git clone https://github.com/pstadler/ticker.sh.git $REPOS/thirdparty/ticker.sh
