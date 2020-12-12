@@ -77,6 +77,8 @@ parse_git_branch_and_add_brackets(){
     curl https://baltocdn.com/helm/signing.asc | sudo apt-key add -
     fi
 
+    rm -f $TMP/gpg
+
     echo updating repos
     sudo apt-get update --quiet --quiet
 
@@ -365,6 +367,7 @@ parse_git_branch_and_add_brackets(){
     - role: worker
     """ > $TMP/kind-config.yaml
     kind create cluster --config $TMP/kind-config.yaml
+    rm -f $TMP/kind-config.yaml
 
 }
 
