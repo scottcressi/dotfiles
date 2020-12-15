@@ -1,3 +1,5 @@
+#!/usr/bin/env sh
+
 for bcfile in ~/.bash_completion.d/* ; do
-  . $bcfile
+  . "$bcfile"
 done
