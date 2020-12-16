@@ -224,9 +224,10 @@ parse_git_branch_and_add_brackets(){
 
     echo configuring user.js custom
     echo '''
-    user_pref("browser.ctrlTab.recentlyUsedOrder", false); // tabs with tabbing
-    user_pref("extensions.autoDisableScopes", 0); // auto enable addons
-    user_pref("app.update.auto", false); // disable updates
+    user_pref("browser.ctrlTab.recentlyUsedOrder", false);                      // tabs with tabbing
+    user_pref("extensions.autoDisableScopes", 0);                               // auto enable addons
+    user_pref("app.update.auto", false);                                        // disable updates
+    user_pref("extensions.activeThemeID", "firefox-compact-dark@mozilla.org");  // dark theme
     ''' >> "$profile_default"/user.js
 
     echo configuring completions
