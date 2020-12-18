@@ -28,9 +28,11 @@ parse_git_branch_and_add_brackets(){
 }
 
 -start-apps(){
-    if command -v xautolock > /dev/null ; then if pgrep startx > /dev/null ; then if ! pgrep xautolock > /dev/null ; then nohup xautolock -time 1 -locker slock  & fi ; fi ; fi
-    if command -v dunst     > /dev/null ; then if pgrep startx > /dev/null ; then if ! pgrep dunst     > /dev/null ; then nohup dunst                            & fi ; fi ; fi
-    if command -v dwmblocks > /dev/null ; then if pgrep startx > /dev/null ; then if ! pgrep dwmblocks > /dev/null ; then nohup dwmblocks                        & fi ; fi ; fi
+    if pgrep startx > /dev/null ; then
+        if command -v xautolock > /dev/null ; then if ! pgrep xautolock > /dev/null ; then nohup xautolock -time 1 -locker slock </dev/null >/dev/null 2>&1 & fi ; fi
+        if command -v dunst     > /dev/null ; then if ! pgrep dunst     > /dev/null ; then nohup dunst                           </dev/null >/dev/null 2>&1 & fi ; fi
+        if command -v dwmblocks > /dev/null ; then if ! pgrep dwmblocks > /dev/null ; then nohup dwmblocks                       </dev/null >/dev/null 2>&1 & fi ; fi
+    fi
 }
 
 -packages-debian(){
