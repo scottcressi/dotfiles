@@ -169,9 +169,6 @@ parse_git_branch_and_add_brackets(){
     pylint \
     youtube-dl \
 
-    echo installing misc ticker
-    [ ! -d $REPOS/thirdparty/ticker.sh ] && git clone https://github.com/pstadler/ticker.sh.git $REPOS/thirdparty/ticker.sh
-
     echo installing golang
     [ ! -d ~/repos/thirdparty/go ] && \
     curl -L https://golang.org/dl/go1.15.6.linux-amd64.tar.gz | tar zx -C ~/repos/thirdparty/
