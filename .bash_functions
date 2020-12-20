@@ -20,12 +20,10 @@ software
 videos
 "
 
+# configuring venv
+if command -v python3 > /dev/null ; then if [ ! -f ~/python/bin/activate ] ; then python3 -m venv ~/python ; fi ; fi
 # shellcheck source=/dev/null
 [ -f ~/python/bin/activate ] && . ~/python/bin/activate
-
-parse_git_branch_and_add_brackets(){
-    git branch --no-color 2> /dev/null
-}
 
 -start-apps(){
     if pgrep startx > /dev/null ; then
@@ -37,7 +35,7 @@ parse_git_branch_and_add_brackets(){
 
 -packages-debian(){
 
-    if ! command -v curl > /dev/null ; then echo install package prereqs first ;  exit 0 ; fi
+    if ! command -v curl > /dev/null ; then echo install package base first ;  exit 0 ; fi
 
     GPG=$(apt-key list 2> /dev/null)
     echo "$GPG" > $TMP/gpg
@@ -52,12 +50,6 @@ parse_git_branch_and_add_brackets(){
     echo "deb [arch=amd64] https://apt.releases.hashicorp.com buster main" | sudo tee /etc/apt/sources.list.d/hashicorp.list > /dev/null
     if ! grep -q hashicorp $TMP/gpg ; then
     curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
-    fi
-
-    echo prereq key virtualbox
-    echo "deb http://download.virtualbox.org/virtualbox/debian buster contrib" | sudo tee /etc/apt/sources.list.d/virtualbox.list > /dev/null
-    if ! grep -q virtualbox $TMP/gpg ; then
-    curl -fsSL https://www.virtualbox.org/download/oracle_vbox_2016.asc | sudo apt-key add -
     fi
 
     echo prereq key signal
@@ -159,16 +151,6 @@ parse_git_branch_and_add_brackets(){
     curl -L https://github.com/bitwarden/desktop/releases/download/v${version_bitwarden}/Bitwarden-${version_bitwarden}-amd64.deb --output Bitwarden-${version_bitwarden}-amd64.deb && \
     sudo dpkg -i $TMP/Bitwarden-${version_bitwarden}-amd64.deb
 
-    echo installing misc pip
-    [ "$VIRTUAL_ENV" != "" ] && \
-    python3 -m pip install --upgrade --quiet \
-    awscli \
-    bpython \
-    pgcli \
-    ipython \
-    pylint \
-    youtube-dl \
-
     echo installing golang
     [ ! -d ~/repos/thirdparty/go ] && \
     curl -L https://golang.org/dl/go1.15.6.linux-amd64.tar.gz | tar zx -C ~/repos/thirdparty/
@@ -181,9 +163,6 @@ parse_git_branch_and_add_brackets(){
             [ ! -d ~/firefox ] && mv firefox ~/
         fi
     fi
-
-    echo configuring venv
-    if command -v python3 > /dev/null ; then if [ ! -f ~/python/bin/activate ] ; then python3 -m venv ~/python ; fi ; fi
 
     echo configuring firefox profile
     ~/firefox/firefox -headless -CreateProfile default
@@ -508,7 +487,7 @@ parse_git_branch_and_add_brackets(){
     curl 'https://corona-stats.online?top=10&minimal=true'
 }
 
--packages-prereqs(){
+-packages-base(){
 
     # directories
     mkdir -p ~/Downloads
@@ -527,7 +506,7 @@ parse_git_branch_and_add_brackets(){
     echo updating repos
     sudo apt-get update --quiet --quiet
 
-    echo installing base prereqs
+    echo installing base
     awk '/prereq/ {print $1}' $REPOS/personal/dotfiles/packages.txt | xargs sudo apt-get install -y --quiet --quiet
 
     export DESTDIR="$HOME"
@@ -631,6 +610,20 @@ parse_git_branch_and_add_brackets(){
     curl http://wttr.in/"$1"
 }
 
--packages-size(){
+-dpkg-sizes(){
     dpkg-query -Wf '${Installed-Size}\t${Package}\n' | sort -n
+}
+
+-packages-pip(){
+    echo installing misc pip
+    [ "$VIRTUAL_ENV" != "" ] && \
+    python3 -m pip install --upgrade \
+    awscli \
+    bpython \
+    pgcli \
+    pip \
+    ipython \
+    pylint \
+    youtube-dl \
+
 }
