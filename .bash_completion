@@ -1,5 +1,6 @@
 #!/usr/bin/env sh
 
 for bcfile in ~/.bash_completion.d/* ; do
-  . "$bcfile"
+    # shellcheck source=/dev/null
+    . "$bcfile"
 done
