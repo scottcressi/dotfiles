@@ -603,7 +603,9 @@ if command -v python3 > /dev/null ; then if [ ! -f ~/python/bin/activate ] ; the
 }
 
 -wallpaper(){
-    find ~/wallpapers/ -type f | shuf | head -1 | xargs xwallpaper --maximize
+    wallpaper=$(find ~/wallpapers/ -type f | shuf | head -1)
+    echo "$wallpaper"
+    xwallpaper --maximize "$wallpaper"
 }
 
 -weather(){
