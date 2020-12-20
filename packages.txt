@@ -16,14 +16,14 @@ cifs-utils               debian      terminal  mounting
 cmake                    debian      terminal  prereq         youcompleteme
 cmatrix                  debian      terminal  fun
 cmus                     debian      terminal  client         music
-containerd.io            docker      terminal
+containerd.io            docker      terminal  virtualization
 cowsay                   debian      terminal  fun
 curl                     debian      terminal  prereq         file           transfer
 curseofwar               debian      terminal  game
 dialog                   debian      terminal  language       dialogbox
 dnsutils                 debian      terminal  stats          dns
-docker-ce                docker      terminal
-docker-ce-cli            docker      terminal
+docker-ce                docker      terminal  virtualization
+docker-ce-cli            docker      terminal  virtualization
 dstat                    debian      terminal  stats          multi
 dunst                    debian      gui       notifications
 dwarf-fortress           debian      terminal  game
@@ -150,7 +150,7 @@ vault                    thirdparty  gui
 vifm                     debian      terminal  file           manager
 vim                      debian      terminal  editor
 vim-python-jedi          debian      terminal  editor
-virtualbox-6.1           thirdparty  gui
+virt-manager             debian      gui       virtualization
 vitetris                 debian      terminal  game
 w3m                      debian      terminal  browser
 weather-util             debian      terminal  weather
