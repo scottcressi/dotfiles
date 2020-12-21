@@ -535,9 +535,12 @@ if command -v python3 > /dev/null ; then if [ ! -f ~/python/bin/activate ] ; the
     tar zxf $REPOS/thirdparty/st-${version_st}.tar.gz -C $REPOS/thirdparty/
     [ ! -f $REPOS/thirdparty/st-patches/st-scrollback-20201205-4ef0cbd.diff ] && \
     curl -L --url https://st.suckless.org/patches/scrollback/st-scrollback-20201205-4ef0cbd.diff --output $REPOS/thirdparty/st-patches/st-scrollback-20201205-4ef0cbd.diff
+    [ ! -f $REPOS/thirdparty/st-patches/st-scrollback-mouse-20191024-a2c479c.diff ] && \
+    curl -L --url https://st.suckless.org/patches/scrollback/st-scrollback-mouse-20191024-a2c479c.diff --output $REPOS/thirdparty/st-patches/st-scrollback-mouse-20191024-a2c479c.diff
     [ -d $REPOS/thirdparty/st-${version_st} ] && \
     rsync -a $REPOS/thirdparty/st-patches/ $REPOS/thirdparty/st-${version_st}/ && \
     patch --merge --quiet -i $REPOS/thirdparty/st-patches/st-scrollback-20201205-4ef0cbd.diff -d $REPOS/thirdparty/st-${version_st} && \
+    patch --merge --quiet -i $REPOS/thirdparty/st-patches/st-scrollback-mouse-20191024-a2c479c.diff -d $REPOS/thirdparty/st-${version_st} && \
     make clean install --quiet -C $REPOS/thirdparty/st-${version_st}
 
     echo compile dwmblocks
