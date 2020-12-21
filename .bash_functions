@@ -80,7 +80,7 @@ if command -v python3 > /dev/null ; then if [ ! -f ~/python/bin/activate ] ; the
     awk '/debian/ {print $1}' $REPOS/personal/dotfiles/packages.txt | xargs sudo apt-get install -y --quiet --quiet
 
     echo installing apt driver
-    if [ "$(lspci | grep VGA | awk '{print $5}')" = "NVIDIA" ] ; then
+    if [ "$(sudo dmesg | grep vgaarb | grep -c nvidia)" = "1" ] ; then
         awk '/driver/ {print $1}' $REPOS/personal/dotfiles/packages.txt | xargs sudo apt-get install -y --quiet --quiet
     fi
 
@@ -585,6 +585,10 @@ if command -v python3 > /dev/null ; then if [ ! -f ~/python/bin/activate ] ; the
     echo host:
     read -r host
     ssh -L "$port":localhost:"$port" "$host"
+}
+
+-ssh-stop(){
+    pgrep ssh | xargs kill
 }
 
 -bookmarks-backup(){
