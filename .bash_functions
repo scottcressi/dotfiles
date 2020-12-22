@@ -89,9 +89,6 @@ if command -v python3 > /dev/null ; then if [ ! -f ~/python/bin/activate ] ; the
         awk '/docker/ {print $1}' $REPOS/personal/dotfiles/packages.txt | xargs sudo apt-get install -y --quiet --quiet
     fi
 
-    echo installing apt thirdparty
-    awk '/thirdparty/ {print $1}' $REPOS/personal/dotfiles/packages.txt | xargs sudo apt-get install -y --quiet --quiet
-
     echo installing binary aws-iam-authenticator
     [ ! -f $BIN/aws-iam-authenticator ] && \
     curl https://amazon-eks.s3.us-west-2.amazonaws.com/1.17.9/2020-08-04/bin/linux/amd64/aws-iam-authenticator --output $BIN/aws-iam-authenticator

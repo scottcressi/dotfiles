@@ -41,7 +41,7 @@ gnuchess                 debian      terminal  game
 gnupg                    debian      terminal  prereq         apt-key
 gource                   debian      gui       scm
 greed                    debian      terminal  game
-helm                     thirdparty  terminal
+helm                     debian      terminal  thirdparty
 howdoi                   debian      terminal  language
 htop                     debian      terminal  stats          multi
 iftop                    debian      terminal  stats          network
@@ -51,7 +51,7 @@ iptraf                   debian      terminal  stats          network
 irssi                    debian      terminal  messaging
 jq                       debian      terminal  language
 jsonlint                 debian      terminal  lint
-kubectl                  thirdparty  terminal
+kubectl                  debian      terminal  thirdparty
 lftp                     debian      terminal  file           transfer
 libaa-bin                debian      terminal  fun
 libfontconfig1-dev       debian      terminal  prereq         st
@@ -123,7 +123,7 @@ screenkey                debian      gui
 scrot                    debian      gui       screenshot
 sent                     debian      terminal  markdown
 shellcheck               debian      terminal  lint
-signal-desktop           thirdparty  gui
+signal-desktop           debian      gui       thirdparty
 smplayer                 debian      gui       video
 speedpad                 debian      terminal  fun            typing
 speedtest-cli            debian      terminal  stats          network
@@ -132,7 +132,7 @@ suckless-tools           debian      terminal
 sudo                     debian      terminal
 sxiv                     debian      terminal  pictures
 tcpdump                  debian      terminal  stats
-terraform                thirdparty  terminal
+terraform                debian      terminal  thirdparty
 texlive-xetex            debian      terminal  converter      docs
 thefuck                  debian      terminal  spelling
 tig                      debian      terminal  scm
@@ -145,8 +145,8 @@ ttygif                   debian      terminal  recording
 ttyrec                   debian      terminal  recording
 typespeed                debian      terminal  game
 units                    debian      terminal
-vagrant                  thirdparty  terminal
-vault                    thirdparty  gui
+vagrant                  debian      terminal  thirdparty
+vault                    debian      gui       thirdparty
 vifm                     debian      terminal  file           manager
 vim                      debian      terminal  editor
 vim-python-jedi          debian      terminal  editor
