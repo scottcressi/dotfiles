@@ -115,7 +115,7 @@ python3-venv             debian      terminal  language
 redis-tools              debian      terminal  client         database
 rig                      debian      terminal  fun
 robotfindskitten         debian      terminal  game
-rsync                    debian      terminal  file           transfer
+rsync                    debian      terminal  base           file           transfer
 rtorrent                 debian      terminal  file           transfer
 rtv                      debian      terminal  social         media
 s-tui                    debian      terminal  stats          multi
