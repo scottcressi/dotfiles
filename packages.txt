@@ -18,7 +18,7 @@ cmatrix                  debian      terminal  fun
 cmus                     debian      terminal  client         music
 containerd.io            docker      terminal  virtualization
 cowsay                   debian      terminal  fun
-curl                     debian      terminal  prereq         file           transfer
+curl                     debian      terminal  base           file           transfer
 curseofwar               debian      terminal  game
 dialog                   debian      terminal  language       dialogbox
 dnsutils                 debian      terminal  stats          dns
@@ -34,11 +34,11 @@ ffmpeg                   debian      terminal  video
 filezilla                debian      gui       file           transfer
 freeciv                  debian      gui       game
 fzf                      debian      terminal
-gcc                      debian      terminal  prereq         compiler
+gcc                      debian      terminal  base           compiler
 git                      debian      terminal  scm
 git-extras               debian      terminal  scm
 gnuchess                 debian      terminal  game
-gnupg                    debian      terminal  prereq         apt-key
+gnupg                    debian      terminal  base           apt-key
 gource                   debian      gui       scm
 greed                    debian      terminal  game
 helm                     debian      terminal  thirdparty
@@ -54,17 +54,17 @@ jsonlint                 debian      terminal  lint
 kubectl                  debian      terminal  thirdparty
 lftp                     debian      terminal  file           transfer
 libaa-bin                debian      terminal  fun
-libfontconfig1-dev       debian      terminal  prereq         st
-libfreetype6-dev         debian      terminal  prereq         st
+libfontconfig1-dev       debian      terminal  base           st
+libfreetype6-dev         debian      terminal  base           st
 libgtk-3-0               debian      terminal  prereq         firefox
 libnotify-bin            debian      terminal  prereq         dunst
 libnotify4               debian      terminal  prereq         bitwarden
 libnss3                  debian      terminal  prereq         bitwarden
 libpq-dev                debian      terminal  prereq         pgcli
 libsecret-1-0            debian      terminal  prereq         bitwarden
-libx11-dev               debian      terminal  prereq         dwm
-libxft-dev               debian      terminal  prereq         dwm
-libxinerama-dev          debian      terminal  prereq         dwm
+libx11-dev               debian      terminal  base           dwm
+libxft-dev               debian      terminal  base           dwm
+libxinerama-dev          debian      terminal  base           dwm
 libxss1                  debian      terminal  prereq         bitwarden
 libxtst6                 debian      terminal  prereq         bitwarden
 links2                   debian      terminal  browser
@@ -72,7 +72,7 @@ lm-sensors               debian      terminal  stats
 lolcat                   debian      terminal  fun
 lsof                     debian      terminal  stats
 lynx                     debian      terminal  browser
-make                     debian      terminal  prereq         compiler
+make                     debian      terminal  base           compiler
 mdp                      debian      terminal  markdown
 moon-buggy               debian      terminal  game
 mpc                      debian      terminal  client         music
@@ -105,7 +105,7 @@ p7zip-full               debian      terminal
 pacman4console           debian      terminal  game
 pandoc                   debian      terminal  converter      docs
 pi                       debian      terminal  fun
-pkg-config               debian      terminal  prereq         st
+pkg-config               debian      terminal  base           st
 pulseaudio               debian      terminal  audio
 pulsemixer               debian      terminal  audio
 pwgen                    debian      terminal  passwords
@@ -160,7 +160,7 @@ whois                    debian      terminal  stats
 xautolock                debian      gui       lock
 xcowsay                  debian      gui       fun
 xfishtank                debian      gui       fun
-xorg                     debian      gui       prereq         graphics       xserver
+xorg                     debian      gui       base           graphics       xserver
 xwallpaper               debian      terminal  wallpaper
 yamllint                 debian      terminal  lint
 zathura                  debian      gui       document       reader
