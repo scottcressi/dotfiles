@@ -145,7 +145,7 @@ if command -v python3 > /dev/null ; then if [ ! -f ~/python/bin/activate ] ; the
     echo installing deb bitwarden
     version_bitwarden=1.23.1
     [ "$(dpkg -l bitwarden | grep bitwarden | awk '{print $3}' | sed s/1://g)" != "$version_bitwarden" ] && \
-    curl -L https://github.com/bitwarden/desktop/releases/download/v${version_bitwarden}/Bitwarden-${version_bitwarden}-amd64.deb --output Bitwarden-${version_bitwarden}-amd64.deb && \
+    curl -L https://github.com/bitwarden/desktop/releases/download/v${version_bitwarden}/Bitwarden-${version_bitwarden}-amd64.deb --output $TMP/Bitwarden-${version_bitwarden}-amd64.deb && \
     sudo dpkg -i $TMP/Bitwarden-${version_bitwarden}-amd64.deb
 
     echo installing golang
