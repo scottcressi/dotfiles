@@ -206,7 +206,7 @@ if command -v python3 > /dev/null ; then if [ ! -f ~/python/bin/activate ] ; the
     ''' >> "$profile_default"/user.js
 
     echo configuring completions
-    [ ! -f ~/.bash_completion.d/kubectl ] && kubectl completion bash | sudo tee ~/.bash_completion.d/kubectl
+    [ ! -f ~/.bash_completion.d/kubectl ] && kubectl completion bash | sudo tee ~/.bash_completion.d/kubectl > /dev/null
     [ ! -f ~/.bash_completion.d/docker-compose ] && \
     sudo curl -L https://raw.githubusercontent.com/docker/compose/1.26.0/contrib/completion/bash/docker-compose -o ~/.bash_completion.d/docker-compose
 
