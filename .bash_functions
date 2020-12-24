@@ -473,7 +473,7 @@ if command -v python3 > /dev/null ; then if [ ! -f ~/python/bin/activate ] ; the
     sudo apt-get update --quiet --quiet
 
     echo installing base
-    awk '/base/ {print $1}' $REPOS/personal/dotfiles/packages.txt | xargs sudo apt-get install -y --quiet --quiet
+    awk '/ base/ {print $1}' $REPOS/personal/dotfiles/packages.txt | xargs sudo apt-get install -y --quiet --quiet
 
     export DESTDIR="$HOME"
 
