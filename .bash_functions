@@ -32,7 +32,6 @@ if command -v python3 > /dev/null ; then if [ ! -f ~/python/bin/activate ] ; the
         if command -v dwmblocks > /dev/null ; then if ! pgrep dwmblocks > /dev/null ; then nohup dwmblocks                       </dev/null >/dev/null 2>&1 & fi ; fi
     fi
 }
-
 -packages-debian(){
 
     if ! command -v curl > /dev/null ; then echo install package base first ;  exit 0 ; fi
@@ -221,7 +220,6 @@ if command -v python3 > /dev/null ; then if [ ! -f ~/python/bin/activate ] ; the
     sudo usermod -a -G docker "$USER"
 
 }
-
 -docker-stop-all(){
     echo stop all containers? y/n
     read -r confirm
@@ -231,7 +229,6 @@ if command -v python3 > /dev/null ; then if [ ! -f ~/python/bin/activate ] ; the
         done
     fi
 }
-
 -docker-kill-all(){
     echo kill all containers? y/n
     read -r confirm
@@ -241,7 +238,6 @@ if command -v python3 > /dev/null ; then if [ ! -f ~/python/bin/activate ] ; the
         done
     fi
 }
-
 -kops-create(){
     echo
     echo enter cluster name, ex. test.example.com:
@@ -263,12 +259,10 @@ if command -v python3 > /dev/null ; then if [ ! -f ~/python/bin/activate ] ; the
         --yes
     fi
 }
-
 -kops-get(){
     kops get cluster \
         --state s3://"$(aws sts get-caller-identity --output text --query 'Account')"-kops-test
 }
-
 -kops-delete(){
     echo
     echo enter cluster name ex. foo.example.com:
@@ -281,7 +275,6 @@ if command -v python3 > /dev/null ; then if [ ! -f ~/python/bin/activate ] ; the
         --state s3://"$(aws sts get-caller-identity --output text --query 'Account')"-kops-test \
         --yes ; fi
 }
-
 -aws-get-route53-records(){
     echo domain:
     read -r domain
@@ -289,12 +282,10 @@ if command -v python3 > /dev/null ; then if [ ! -f ~/python/bin/activate ] ; the
     aws route53 list-resource-record-sets --hosted-zone-id "$ZONE"
 
 }
-
 -aws-set-credentials(){
     [ -z "$1" ] && echo enter profile ; echo ; grep "\\[" ~/.aws/credentials
     export AWS_DEFAULT_PROFILE=$1
 }
-
 -is-webcam-on(){
     if [ "$(find /dev/ -maxdepth 1 | grep -c video)" -gt 0 ] ; then
         if [ "$(lsmod | grep ^uvcvideo | awk '{print $3}')" = "0" ] ; then
@@ -305,7 +296,6 @@ if command -v python3 > /dev/null ; then if [ ! -f ~/python/bin/activate ] ; the
     fi
 
 }
-
 -aws-set-eks(){
     echo region:
     read -r region
@@ -315,23 +305,19 @@ if command -v python3 > /dev/null ; then if [ ! -f ~/python/bin/activate ] ; the
     aws eks update-kubeconfig --region "$region" --name "$cluster"
 
 }
-
 -aws-get-certs(){
     echo region:
     read -r region
     aws acm list-certificates --region "$region"
 }
-
 -aws-test(){
     aws sts get-caller-identity ; aws s3 ls
 
 }
-
 -lock(){
     slock
 
 }
-
 -kind(){
     echo """
     kind: Cluster
@@ -346,7 +332,6 @@ if command -v python3 > /dev/null ; then if [ ! -f ~/python/bin/activate ] ; the
     rm -f $TMP/kind-config.yaml
 
 }
-
 -brightness(){
     if [ -z "$1" ] ; then
         brightness=1
@@ -356,25 +341,20 @@ if command -v python3 > /dev/null ; then if [ ! -f ~/python/bin/activate ] ; the
     screenname=$(xrandr | grep " connected" | cut -f1 -d" ")
     xrandr --output "$screenname" --brightness "$brightness";
 }
-
 -record-screen(){
     RESOLUTION=$(xrandr | awk '/current/ {print $8 $9 $10}' | sed 's/,//g')
     ffmpeg -f x11grab -s "$RESOLUTION" -i :0.0 $TMP/ffmpeg-screen-"$(date +"%Y-%m-%d-%I-%m-%S")".mkv
 }
-
 -record-camera(){
     ffmpeg -i /dev/video0 $TMP/ffmpeg-camera-"$(date +"%Y-%m-%d-%I-%m-%S")".mkv
 }
-
 -record-security(){
     ffmpeg -i /dev/video0 \
         -vf "select=gt(scene\\,0.0003),setpts=N/(10*TB)" $TMP/ffmpeg-security-"$(date +"%Y-%m-%d-%I-%m-%S")".mkv
 }
-
 -kpeee(){
     kubectl get pods --all-namespaces -o wide --show-labels | awk '{print $11}'
 }
-
 -kforward(){
     if [ -z "$1" ] ; then echo enter pod ; else
     pod=$1
@@ -390,7 +370,6 @@ if command -v python3 > /dev/null ; then if [ ! -f ~/python/bin/activate ] ; the
     done
     fi
 }
-
 -mount(){
     echo credentials file check
     if [ ! -f ~/.smbpasswd ] ; then
@@ -417,7 +396,6 @@ if command -v python3 > /dev/null ; then if [ ! -f ~/python/bin/activate ] ; the
             sudo mount freenas:/mnt/data/drop/completed ~/data/transmission/completed
     fi
 }
-
 -umount(){
     for i in $DIRS ; do
     sudo umount -l ~/mnt/"$i"
@@ -426,7 +404,6 @@ if command -v python3 > /dev/null ; then if [ ! -f ~/python/bin/activate ] ; the
     sudo umount -l ~/data/transmission/completed
 
 }
-
 -extract(){
     if [ -f "$1" ] ; then
         case "$1" in
@@ -448,42 +425,34 @@ if command -v python3 > /dev/null ; then if [ ! -f ~/python/bin/activate ] ; the
     fi
 
 }
-
 -down() {
     curl https://isitdown.site/api/v3/"$1" | jq
 
 }
-
 -cert-local() {
     openssl x509 -in "$1" -text -noout
 
 }
-
 -webserver() {
     ip -oneline -f inet a | grep dynamic | awk '{print $4}'
     echo
     python3 -m http.server 3333
 
 }
-
 -nonfree() {
     dpkg-query -W -f='${Section}\t${Package}\n' | grep non-free
 
 }
-
 -disable-suspend() {
     sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target
 
 }
-
 -videochat(){
     docker run --name spreed-webrtc -p 8000:8080 -p 8443:8443 -i -t spreed/webrtc
 }
-
 -covid-stats(){
     curl 'https://corona-stats.online?top=10&minimal=true'
 }
-
 -packages-base(){
 
     # directories
@@ -546,31 +515,24 @@ if command -v python3 > /dev/null ; then if [ ! -f ~/python/bin/activate ] ; the
     cp $REPOS/personal/dwmblocks/dwmblocks.blocks.h $REPOS/thirdparty/dwmblocks/blocks.h
     make clean install -C $REPOS/thirdparty/dwmblocks --quiet
 }
-
 -cowsay-normal(){
     fortune | cowsay -f "$(find /usr/share/cowsay/cows/ | shuf | head -1)"
 }
-
 -cowsay-custom(){
     fortune | cowsay -f "$(find $REPOS/personal/cowsay-files/cows | shuf | head -1)"
 }
-
 -camera-web-html(){
     docker run --device=/dev/video0:/dev/video0 -p56000:56000 -it gen2brain/cam2ip -bind-addr 0.0.0.0:56000
 }
-
 -camera-web-rtsp(){
     docker run --net host --device=/dev/video0 -p 8000:8000 -it mpromonet/webrtc-streamer
 }
-
 -translate(){
     docker run -ti soimort/translate-shell
 }
-
 -generate-person(){
     curl -o $TMP/person https://thispersondoesnotexist.com/image && sxiv $TMP/person
 }
-
 -git-push-all-remotes(){
     if [ "$(pwd | grep personal && echo $?)" = "0" ] ; then
         git remote | xargs -L1 git push --all
@@ -578,7 +540,6 @@ if command -v python3 > /dev/null ; then if [ ! -f ~/python/bin/activate ] ; the
         echo nope
     fi
 }
-
 -ssh-port-forward(){
     echo port:
     read -r port
@@ -586,40 +547,32 @@ if command -v python3 > /dev/null ; then if [ ! -f ~/python/bin/activate ] ; the
     read -r host
     ssh -L "$port":localhost:"$port" "$host"
 }
-
 -ssh-stop(){
     pgrep ssh | xargs kill
 }
-
 -bookmarks-backup(){
     if [ ! -d /sys/module/battery ] ; then
         7z a -p"$(cat ~/.bookmarkspasswd)" $REPOS/personal/buku/places.sqlite.7z "$(find ~/.mozilla/firefox/ -maxdepth 1 -mindepth 1 -type d | grep default)"/places.sqlite
     fi
 }
-
 -bookmarks-restore(){
     7z x -p"$(cat ~/.bookmarkspasswd)" $REPOS/personal/buku/places.sqlite.7z
     mv places.sqlite "$(find ~/.mozilla/firefox/ -maxdepth 1 -mindepth 1 -type d | grep default)"/places.sqlite
 }
-
 -ip(){
     ip -oneline -f inet a | grep dynamic | awk '{print $4}'
 }
-
 -wallpaper(){
     wallpaper=$(find ~/wallpapers/ -type f | shuf | head -1)
     echo "$wallpaper"
     xwallpaper --maximize "$wallpaper"
 }
-
 -weather(){
     curl http://wttr.in/"$1"
 }
-
 -dpkg-sizes(){
     dpkg-query -Wf '${Installed-Size}\t${Package}\n' | sort -n
 }
-
 -packages-pip(){
     echo installing misc pip
     [ "$VIRTUAL_ENV" != "" ] && \
