@@ -152,7 +152,7 @@ if command -v python3 > /dev/null ; then if [ ! -f ~/python/bin/activate ] ; the
     curl -L https://golang.org/dl/go1.15.6.linux-amd64.tar.gz | tar zx -C ~/repos/thirdparty/
 
     echo installing misc firefox
-    version_firefox=83.0
+    version_firefox=84.0.1
     if ! pgrep firefox-bin > /dev/null ; then
         if [ ! -d ~/firefox ] ;then
             curl -L --url https://ftp.mozilla.org/pub/firefox/releases/"${version_firefox}"/linux-x86_64/en-US/firefox-"${version_firefox}".tar.bz2 | tar -xj && \
@@ -441,10 +441,6 @@ if command -v python3 > /dev/null ; then if [ ! -f ~/python/bin/activate ] ; the
 }
 -nonfree() {
     dpkg-query -W -f='${Section}\t${Package}\n' | grep non-free
-
-}
--disable-suspend() {
-    sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target
 
 }
 -videochat(){
