@@ -1,0 +1,8 @@
+ansible
+awscli
+bpython
+pgcli
+pip
+ipython
+pylint
+youtube-dl

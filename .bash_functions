@@ -572,13 +572,5 @@ if command -v python3 > /dev/null ; then if [ ! -f ~/python/bin/activate ] ; the
 -packages-pip(){
     echo installing misc pip
     [ "$VIRTUAL_ENV" != "" ] && \
-    python3 -m pip install --upgrade \
-    awscli \
-    bpython \
-    pgcli \
-    pip \
-    ipython \
-    pylint \
-    youtube-dl \
-
+    python3 -m pip install --upgrade -r requirements.txt
 }
