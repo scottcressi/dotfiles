@@ -150,6 +150,8 @@ if command -v python3 > /dev/null ; then if [ ! -f ~/python/bin/activate ] ; the
     echo installing golang
     [ ! -d ~/repos/thirdparty/go ] && \
     curl -L https://golang.org/dl/go1.15.6.linux-amd64.tar.gz | tar zx -C ~/repos/thirdparty/
+    [ ! -d ~/go/src/github.com/aws ] && \
+    go get -u github.com/aws/aws-sdk-go
 
     echo installing misc firefox
     version_firefox=84.0.1
