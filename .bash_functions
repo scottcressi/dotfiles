@@ -51,6 +51,12 @@ if command -v python3 > /dev/null ; then if [ ! -f ~/python/bin/activate ] ; the
     curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
     fi
 
+    echo prereq key virtualbox
+    echo "deb http://download.virtualbox.org/virtualbox/debian buster contrib" | sudo tee /etc/apt/sources.list.d/virtualbox.list > /dev/null
+    if ! grep -q virtualbox $TMP/gpg ; then
+    curl -fsSL https://www.virtualbox.org/download/oracle_vbox_2016.asc | sudo apt-key add -
+    fi
+
     echo prereq key signal
     echo "deb [arch=amd64] https://updates.signal.org/desktop/apt xenial main" | sudo tee /etc/apt/sources.list.d/signal-xenial.list > /dev/null
     if ! grep -q Whisper $TMP/gpg ; then

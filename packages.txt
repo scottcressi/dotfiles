@@ -150,6 +150,7 @@ vault                    debian      gui       thirdparty
 vifm                     debian      terminal  file           manager
 vim                      debian      terminal  editor
 vim-python-jedi          debian      terminal  editor
+virtualbox-6.1           debian      terminal  thirdparty
 virt-manager             debian      gui       virtualization
 vitetris                 debian      terminal  game
 w3m                      debian      terminal  browser
