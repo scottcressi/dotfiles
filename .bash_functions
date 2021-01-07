@@ -39,38 +39,41 @@ if command -v python3 > /dev/null ; then if [ ! -f ~/python/bin/activate ] ; the
     GPG=$(apt-key list 2> /dev/null)
     echo "$GPG" > $TMP/gpg
 
-    echo prereq key kubectl
+    echo prereq repo backports
+    echo "deb http://deb.debian.org/debian buster-backports main" | sudo tee /etc/apt/sources.list.d/backports.list > /dev/null
+
+    echo prereq repo kubectl
     echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list > /dev/null
     if ! grep -q google3 $TMP/gpg ; then
     curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
     fi
 
-    echo prereq key hashicorp
+    echo prereq repo hashicorp
     echo "deb [arch=amd64] https://apt.releases.hashicorp.com buster main" | sudo tee /etc/apt/sources.list.d/hashicorp.list > /dev/null
     if ! grep -q hashicorp $TMP/gpg ; then
     curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
     fi
 
-    echo prereq key virtualbox
+    echo prereq repo virtualbox
     echo "deb http://download.virtualbox.org/virtualbox/debian buster contrib" | sudo tee /etc/apt/sources.list.d/virtualbox.list > /dev/null
     if ! grep -q virtualbox $TMP/gpg ; then
     curl -fsSL https://www.virtualbox.org/download/oracle_vbox_2016.asc | sudo apt-key add -
     fi
 
-    echo prereq key signal
+    echo prereq repo signal
     echo "deb [arch=amd64] https://updates.signal.org/desktop/apt xenial main" | sudo tee /etc/apt/sources.list.d/signal-xenial.list > /dev/null
     if ! grep -q Whisper $TMP/gpg ; then
     curl https://updates.signal.org/desktop/apt/keys.asc | sudo apt-key add -
     fi
 
-    echo prereq key docker
+    echo prereq repo docker
     echo "deb [arch=amd64] https://download.docker.com/linux/debian buster stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
     if ! grep -q Docker $TMP/gpg ; then
     curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
     sudo apt-key fingerprint 0EBFCD88
     fi
 
-    echo prereq key helm
+    echo prereq repo helm
     echo "deb https://baltocdn.com/helm/stable/debian/ all main" | sudo tee /etc/apt/sources.list.d/helm-stable-debian.list > /dev/null
     if ! grep -q Helm $TMP/gpg ; then
     curl https://baltocdn.com/helm/signing.asc | sudo apt-key add -
@@ -448,7 +451,7 @@ if command -v python3 > /dev/null ; then if [ ! -f ~/python/bin/activate ] ; the
 
 }
 -nonfree() {
-    dpkg-query -W -f='${Section}\t${Package}\n' | grep non-free
+    dpkg-query -W -f='${Section}\t${Package}\n' | grep \\/ | sort
 
 }
 -videochat(){
