@@ -1,2 +1,3 @@
+
 cd
 exec dwm
