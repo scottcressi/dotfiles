@@ -87,10 +87,10 @@ if command -v python3 > /dev/null ; then if [ ! -f ~/python/bin/activate ] ; the
     echo installing packages
     awk '/debian/ {print $1}' $REPOS/personal/dotfiles/packages.txt | xargs sudo apt-get install -y --quiet --quiet
 
-    echo installing apt driver
-    if [ "$(sudo dmesg | grep vgaarb | grep -c nvidia)" = "1" ] ; then
-        awk '/driver/ {print $1}' $REPOS/personal/dotfiles/packages.txt | xargs sudo apt-get install -y --quiet --quiet
-    fi
+    #echo installing apt driver
+    #if [ "$(sudo dmesg | grep vgaarb | grep -c nvidia)" = "1" ] ; then
+    #    awk '/driver/ {print $1}' $REPOS/personal/dotfiles/packages.txt | xargs sudo apt-get install -y --quiet --quiet
+    #fi
 
     echo installing apt docker
     if ! pgrep dockerd > /dev/null ; then
