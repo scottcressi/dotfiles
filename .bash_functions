@@ -485,9 +485,6 @@ if command -v python3 > /dev/null ; then if [ ! -f ~/python/bin/activate ] ; the
     export DESTDIR="$HOME"
 
     echo compile dwm
-    echo > ~/.xinitrc
-    echo cd >> ~/.xinitrc
-    echo exec dwm >> ~/.xinitrc
     version_dwm=6.2
     [ ! -f $REPOS/thirdparty/dwm-${version_dwm}.tar.gz ] && \
     curl -L --url https://dl.suckless.org/dwm/dwm-${version_dwm}.tar.gz --output $REPOS/thirdparty/dwm-${version_dwm}.tar.gz
