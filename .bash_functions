@@ -597,8 +597,7 @@ if command -v python3 > /dev/null ; then if [ ! -f ~/python/bin/activate ] ; the
     windows10
     "
 
-    ACCOUNT="$(grep git "$REPOS"/personal/dotfiles/.git/config | sed 's/.*://g' | sed 's/\/.*//g')"
-    echo "$ACCOUNT"
+    ACCOUNT="$(cd "$REPOS"/personal/dotfiles/ && git config remote.origin.url | sed 's/.*\.com[\/:]//g' | sed 's/\/.*//g')"
     for i in $CLONES ; do
         cd "$REPOS"/personal && git clone https://github.com/"$ACCOUNT"/"$i".git
     done
