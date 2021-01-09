@@ -582,3 +582,24 @@ if command -v python3 > /dev/null ; then if [ ! -f ~/python/bin/activate ] ; the
     [ "$VIRTUAL_ENV" != "" ] && \
     python3 -m pip install --upgrade -r $REPOS/personal/dotfiles/requirements.txt
 }
+-clone-repos(){
+    export CLONES="
+    ansible
+    docker-compose
+    dotfiles
+    dwmblocks
+    grub
+    helm-microservice
+    jenkins
+    logstash-oss
+    puppet
+    terraform
+    windows10
+    "
+
+    ACCOUNT="$(grep git "$REPOS"/personal/dotfiles/.git/config | sed 's/.*://g' | sed 's/\/.*//g')"
+    echo "$ACCOUNT"
+    for i in $CLONES ; do
+        cd "$REPOS"/personal && git clone https://github.com/"$ACCOUNT"/"$i".git
+    done
+}
