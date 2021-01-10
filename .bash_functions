@@ -585,6 +585,8 @@ if command -v python3 > /dev/null ; then if [ ! -f ~/python/bin/activate ] ; the
 -clone-repos(){
     export CLONES="
     ansible
+    buku
+    chef
     docker-compose
     dotfiles
     dwmblocks
@@ -593,12 +595,13 @@ if command -v python3 > /dev/null ; then if [ ! -f ~/python/bin/activate ] ; the
     jenkins
     logstash-oss
     puppet
+    resume
     terraform
     windows10
     "
 
     ACCOUNT="$(cd "$REPOS"/personal/dotfiles/ && git config remote.origin.url | sed 's/.*\.com[\/:]//g' | sed 's/\/.*//g')"
     for i in $CLONES ; do
-        cd "$REPOS"/personal && git clone https://github.com/"$ACCOUNT"/"$i".git
+        cd "$REPOS"/personal && git clone git@github.com:"$ACCOUNT"/"$i".git
     done
 }
