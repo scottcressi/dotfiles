@@ -602,6 +602,6 @@ if command -v python3 > /dev/null ; then if [ ! -f ~/python/bin/activate ] ; the
 
     ACCOUNT="$(cd "$REPOS"/personal/dotfiles/ && git config remote.origin.url | sed 's/.*\.com[\/:]//g' | sed 's/\/.*//g')"
     for i in $CLONES ; do
-        cd "$REPOS"/personal && git clone git@github.com:"$ACCOUNT"/"$i".git
+        git clone git@github.com:"$ACCOUNT"/"$i".git "$REPOS"/personal/"$i"
     done
 }
