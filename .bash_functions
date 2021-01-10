@@ -600,7 +600,7 @@ if command -v python3 > /dev/null ; then if [ ! -f ~/python/bin/activate ] ; the
     windows10
     "
 
-    ACCOUNT="$(cd "$REPOS"/personal/dotfiles/ && git config remote.origin.url | sed 's/.*\.com[\/:]//g' | sed 's/\/.*//g')"
+    ACCOUNT="$(git -C "$REPOS"/personal/dotfiles/ config remote.origin.url | sed 's/.*\.com[\/:]//g' | sed 's/\/.*//g')"
     for i in $CLONES ; do
         git clone git@github.com:"$ACCOUNT"/"$i".git "$REPOS"/personal/"$i"
     done
