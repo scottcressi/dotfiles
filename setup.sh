@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 
 dir=$(basename "$PWD")
 if [ "$dir" != "dotfiles" ] ; then
