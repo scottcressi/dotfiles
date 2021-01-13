@@ -597,6 +597,7 @@ if command -v python3 > /dev/null ; then if [ ! -f ~/python/bin/activate ] ; the
     puppet
     resume
     terraform
+    website
     windows10
     "
 
