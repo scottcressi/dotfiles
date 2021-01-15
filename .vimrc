@@ -20,7 +20,7 @@ Plug 'junegunn/fzf.vim' " fzf
 Plug 'itchyny/lightline.vim' " statusbar
 Plug 'ervandew/supertab' " tabbing
 Plug 'scrooloose/syntastic' " syntax
-Plug 'Valloric/YouCompleteMe' " completion
+Plug 'Valloric/YouCompleteMe', { 'commit':'d98f896' } " completion
 Plug 'nvie/vim-flake8' " flake8
 Plug 'vim-scripts/indentpython.vim' " python indentation
 Plug 'easymotion/vim-easymotion' " easymotion
