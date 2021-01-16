@@ -580,7 +580,7 @@ if command -v python3 > /dev/null ; then if [ ! -f ~/python/bin/activate ] ; the
 -packages-pip(){
     echo installing misc pip
     [ "$VIRTUAL_ENV" != "" ] && \
-    python3 -m pip install --upgrade -r $REPOS/personal/dotfiles/requirements.txt
+    pip install --upgrade -r $REPOS/personal/dotfiles/requirements.txt
 }
 -clone-repos(){
     export CLONES="
