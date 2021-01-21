@@ -585,6 +585,7 @@ if command -v python3 > /dev/null ; then if [ ! -f ~/python/bin/activate ] ; the
 -clone-repos(){
     export CLONES="
     ansible
+    appdevtest
     buku
     chef
     docker-compose
