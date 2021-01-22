@@ -1,7 +1,8 @@
 awscli
 bpython
+ipython
+mycli
 pgcli
 pip
-ipython
 pylint
 youtube-dl
