@@ -151,7 +151,7 @@ if command -v python3 > /dev/null ; then if [ ! -f ~/python/bin/activate ] ; the
     curl -L --url https://github.com/erroneousboat/slack-term/releases/download/${version_slack_term}/slack-term-linux-amd64 --output $BIN/slack-term
 
     echo installing deb bitwarden
-    version_bitwarden=1.23.1
+    version_bitwarden=1.24.0
     [ "$(dpkg -l bitwarden | grep bitwarden | awk '{print $3}' | sed s/1://g)" != "$version_bitwarden" ] && \
     curl -L https://github.com/bitwarden/desktop/releases/download/v${version_bitwarden}/Bitwarden-${version_bitwarden}-amd64.deb --output $TMP/Bitwarden-${version_bitwarden}-amd64.deb && \
     sudo dpkg -i $TMP/Bitwarden-${version_bitwarden}-amd64.deb
