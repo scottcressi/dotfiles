@@ -194,7 +194,7 @@ if command -v python3 > /dev/null ; then if [ ! -f ~/python/bin/activate ] ; the
         curl -L \
         --url https://addons.mozilla.org/firefox/downloads/file/974448/play_with-1.3.2-an+fx.xpi \
         --output ~/repos/thirdparty/addons/\{29607f9b-5198-4832-9ea9-16085d102734\}.xpi
-    rsync -a ~/repos/thirdparty/addons/ "$profile_default_extensions"/
+    cp -rp ~/repos/thirdparty/addons/* "$profile_default_extensions"/
 
     echo installing misc ghacks
     version_ghacks=81.0
@@ -469,7 +469,6 @@ if command -v python3 > /dev/null ; then if [ ! -f ~/python/bin/activate ] ; the
     mkdir -p ~/.bash_completion.d
     mkdir -p $TMP
     mkdir -p ~/repos/thirdparty/addons
-    mkdir -p ~/repos/thirdparty/st-patches
 
     # directories storage
     for i in $DIRS ; do
@@ -496,22 +495,6 @@ if command -v python3 > /dev/null ; then if [ ! -f ~/python/bin/activate ] ; the
     sed -i '/Firefox/a   { NULL,       NULL,       NULL,       0,            False,       -1 },' $REPOS/thirdparty/dwm-${version_dwm}/config.h && \
     sed -i '/Firefox/d' $REPOS/thirdparty/dwm-${version_dwm}/config.h && \
     make clean install --quiet -C $REPOS/thirdparty/dwm-${version_dwm}
-
-    echo compile st
-    version_st=0.8.4
-    [ ! -f $REPOS/thirdparty/st-${version_st}.tar.gz ] && \
-    curl -L --url https://dl.suckless.org/st/st-${version_st}.tar.gz --output $REPOS/thirdparty/st-${version_st}.tar.gz
-    [ ! -d $REPOS/thirdparty/st-${version_st} ] && \
-    tar zxf $REPOS/thirdparty/st-${version_st}.tar.gz -C $REPOS/thirdparty/
-    [ ! -f $REPOS/thirdparty/st-patches/st-scrollback-20201205-4ef0cbd.diff ] && \
-    curl -L --url https://st.suckless.org/patches/scrollback/st-scrollback-20201205-4ef0cbd.diff --output $REPOS/thirdparty/st-patches/st-scrollback-20201205-4ef0cbd.diff
-    [ ! -f $REPOS/thirdparty/st-patches/st-scrollback-mouse-20191024-a2c479c.diff ] && \
-    curl -L --url https://st.suckless.org/patches/scrollback/st-scrollback-mouse-20191024-a2c479c.diff --output $REPOS/thirdparty/st-patches/st-scrollback-mouse-20191024-a2c479c.diff
-    [ -d $REPOS/thirdparty/st-${version_st} ] && \
-    rsync -a $REPOS/thirdparty/st-patches/ $REPOS/thirdparty/st-${version_st}/ && \
-    patch --merge --quiet -i $REPOS/thirdparty/st-patches/st-scrollback-20201205-4ef0cbd.diff -d $REPOS/thirdparty/st-${version_st} && \
-    patch --merge --quiet -i $REPOS/thirdparty/st-patches/st-scrollback-mouse-20191024-a2c479c.diff -d $REPOS/thirdparty/st-${version_st} && \
-    make clean install --quiet -C $REPOS/thirdparty/st-${version_st}
 
     echo compile dwmblocks
     [ ! -d $REPOS/thirdparty/dwmblocks ] && \
