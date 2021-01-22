@@ -54,8 +54,6 @@ jsonlint                 debian      terminal  lint
 kubectl                  debian      terminal  thirdparty
 lftp                     debian      terminal  file           transfer
 libaa-bin                debian      terminal  fun
-libfontconfig1-dev       debian      terminal  base           st
-libfreetype6-dev         debian      terminal  base           st
 libgtk-3-0               debian      terminal  prereq         firefox
 libnotify-bin            debian      terminal  prereq         dunst
 libnotify4               debian      terminal  prereq         bitwarden
@@ -81,7 +79,6 @@ mps-youtube              none        terminal  video
 mpv                      debian      terminal  video
 mumble                   debian      gui       audio
 mutt                     debian      terminal  mail
-mycli                    debian      terminal  client         database
 ncmpcpp                  debian      terminal  client         music
 neofetch                 debian      terminal  stats
 net-tools                debian      terminal  stats
@@ -105,7 +102,6 @@ p7zip-full               debian      terminal
 pacman4console           debian      terminal  game
 pandoc                   debian      terminal  converter      docs
 pi                       debian      terminal  fun
-pkg-config               debian      terminal  base           st
 pulseaudio               debian      terminal  audio
 pulsemixer               debian      terminal  audio
 pwgen                    debian      terminal  passwords
@@ -127,7 +123,7 @@ signal-desktop           debian      gui       thirdparty
 smplayer                 debian      gui       video
 speedpad                 debian      terminal  fun            typing
 speedtest-cli            debian      terminal  stats          network
-stow                     debian      terminal
+stow                     debian      terminal  base
 suckless-tools           debian      terminal
 sudo                     debian      terminal
 sxiv                     debian      terminal  pictures
@@ -160,6 +156,7 @@ whiptail                 debian      terminal  language       dialogbox
 whois                    debian      terminal  stats
 xautolock                debian      gui       lock
 xcowsay                  debian      gui       fun
+xfce4-terminal           debian      gui       base
 xfishtank                debian      gui       fun
 xorg                     debian      gui       base           graphics       xserver
 xwallpaper               debian      terminal  wallpaper
