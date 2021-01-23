@@ -492,6 +492,7 @@ if command -v python3 > /dev/null ; then if [ ! -f ~/python/bin/activate ] ; the
     [ -d $REPOS/thirdparty/dwm-${version_dwm} ] && \
     cp -rp $REPOS/thirdparty/dwm-${version_dwm}/config.def.h $REPOS/thirdparty/dwm-${version_dwm}/config.h && \
     sed -i '/Gimp/d' $REPOS/thirdparty/dwm-${version_dwm}/config.h && \
+    sed -i 's/termcmd\[]  = { "st", NULL };/termcmd\[]  = { "xfce4-terminal", NULL };/g' $REPOS/thirdparty/dwm-${version_dwm}/config.h && \
     sed -i '/Firefox/a   { NULL,       NULL,       NULL,       0,            False,       -1 },' $REPOS/thirdparty/dwm-${version_dwm}/config.h && \
     sed -i '/Firefox/d' $REPOS/thirdparty/dwm-${version_dwm}/config.h && \
     make clean install --quiet -C $REPOS/thirdparty/dwm-${version_dwm}
