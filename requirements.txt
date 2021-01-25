@@ -1,4 +1,3 @@
-awscli
 bpython
 ipython
 mycli
