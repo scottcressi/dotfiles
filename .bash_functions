@@ -377,7 +377,7 @@ if command -v python3 > /dev/null ; then if [ ! -f ~/python/bin/activate ] ; the
     echo port: "$port"
     for i in $port ; do
         random_port=$(shuf -i 1024-65535 -n 1)
-        kubectl port-forward --address 0.0.0.0 --namespace "$namespace" pod/"$pod" "$random_port":"$i" &
+        kubectl port-forward --address 0.0.0.0 --namespace "$namespace" pod/"$pod" "$random_port":"$i"
     done
     fi
 }
