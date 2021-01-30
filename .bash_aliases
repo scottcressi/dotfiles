@@ -24,7 +24,7 @@ alias ycm='python3 ~/.vim/plugged/YouCompleteMe/install.py --all'
 
 # revisions
 alias cp='cp -i'
-alias dd='dd status="progress"'
+alias dd='dd status=progress'
 alias df='df -h'
 alias dstat='dstat --net --disk --top-bio --top-cpu --top-cputime --top-io --top-latency --top-mem --top-oom'
 alias firefox='~/firefox/firefox -ProfileManager & disown ; exit'
