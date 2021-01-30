@@ -580,6 +580,7 @@ if command -v python3 > /dev/null ; then if [ ! -f ~/python/bin/activate ] ; the
     jenkins
     logstash-oss
     puppet
+    references
     resume
     terraform
     website
