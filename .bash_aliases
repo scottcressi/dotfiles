@@ -102,8 +102,8 @@ alias kc='kubectl config use-context'
 alias kpn='watch -n 1 "kubectl get pods --all-namespaces | grep 0\/ | grep -v Completed"'
 
 # terraform
-alias tp='terraform fmt && terraform plan'
-alias ta='terraform fmt && terraform apply'
+alias tp='terraform plan'
+alias ta='terraform apply'
 alias ti='terraform init -upgrade'
 alias td='terraform destroy'
 
