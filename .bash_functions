@@ -157,6 +157,10 @@ if command -v python3 > /dev/null ; then if [ ! -f ~/python/bin/activate ] ; the
     sudo dpkg -i $TMP/Bitwarden-${version_bitwarden}-amd64.deb
     rm -f $TMP/Bitwarden-${version_bitwarden}-amd64.deb
 
+    echo installing deb vscode
+    [ ! -d ~/.vscode/extensions/hashicorp.terraform-2.5.0 ] && code --install-extension hashicorp.terraform@2.5.0
+    [ ! -d ~/.vscode/extensions/ms-python.python-2021.1.502429796 ] && code --install-extension ms-python.python@2021.1.502429796
+
     echo installing golang
     [ ! -d ~/repos/thirdparty/go ] && \
     curl -L https://golang.org/dl/go1.15.6.linux-amd64.tar.gz | tar zx -C ~/repos/thirdparty/
