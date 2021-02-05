@@ -1,12 +1,12 @@
 #!/usr/bin/env sh
 
 # single letters
-alias f='vim $(fzf)'
 alias g='cd ~/repos'
 alias l='ls -lh --color=auto'
 
 # misc
 alias am='pulsemixer'
+alias fz='vim $(fzf)'
 alias get='sudo apt-get install'
 alias gip='curl -s ipinfo.io'
 alias home='ssh -l debian home'
