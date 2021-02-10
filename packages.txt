@@ -35,7 +35,7 @@ filezilla                debian      gui       file           transfer
 freeciv                  debian      gui       game
 fzf                      debian      terminal
 gcc                      debian      terminal  base           compiler
-gcloud                   debian      terminal  thirdparty
+google-cloud-sdk         debian      terminal  thirdparty
 git                      debian      terminal  scm
 git-extras               debian      terminal  scm
 gnuchess                 debian      terminal  game
