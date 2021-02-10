@@ -584,7 +584,6 @@ if command -v python3 > /dev/null ; then if [ ! -f ~/python/bin/activate ] ; the
     grub
     helm-microservice
     jenkins
-    jenkinstest
     logstash-oss
     puppet
     references
