@@ -380,12 +380,10 @@ if command -v python3 > /dev/null ; then if [ ! -f ~/python/bin/activate ] ; the
     namespace=$(kubectl get pod --all-namespaces | grep "$pod" | awk '{print $1}')
     port=$(kubectl describe pod -n "$namespace" "$pod" | grep Port | grep -v Host | awk '{$1=""; print $0}' | sed 's/\/TCP//g' | sed 's/\/UDP//g' | sed 's/,//g')
     echo pod: "$pod"
-    echo random port: "$random_port"
     echo namespace: "$namespace"
     echo port: "$port"
     for i in $port ; do
-        random_port=$(shuf -i 1024-65535 -n 1)
-        kubectl port-forward --address 0.0.0.0 --namespace "$namespace" pod/"$pod" "$random_port":"$i"
+        kubectl port-forward --address 0.0.0.0 --namespace "$namespace" pod/"$pod" :"$i"
     done
     fi
 }
