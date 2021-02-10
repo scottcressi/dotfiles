@@ -39,6 +39,12 @@ if command -v python3 > /dev/null ; then if [ ! -f ~/python/bin/activate ] ; the
     GPG=$(apt-key list 2> /dev/null)
     echo "$GPG" > $TMP/gpg
 
+    echo prereq repo gcloud
+    echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" | sudo tee /etc/apt/sources.list.d/google-cloud-sdk.list > /dev/null
+    if ! grep -q "Google Cloud" $TMP/gpg ; then
+    curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key --keyring /usr/share/keyrings/cloud.google.gpg add -
+    fi
+
     echo prereq repo backports
     echo "deb http://deb.debian.org/debian buster-backports main" | sudo tee /etc/apt/sources.list.d/backports.list > /dev/null
 
@@ -78,8 +84,6 @@ if command -v python3 > /dev/null ; then if [ ! -f ~/python/bin/activate ] ; the
     if ! grep -q Helm $TMP/gpg ; then
     curl https://baltocdn.com/helm/signing.asc | sudo apt-key add -
     fi
-
-    rm -f $TMP/gpg
 
     echo updating repos
     sudo apt-get update --quiet --quiet
@@ -155,7 +159,6 @@ if command -v python3 > /dev/null ; then if [ ! -f ~/python/bin/activate ] ; the
     [ "$(dpkg -l bitwarden | grep bitwarden | awk '{print $3}' | sed s/1://g)" != "$version_bitwarden" ] && \
     curl -L https://github.com/bitwarden/desktop/releases/download/v${version_bitwarden}/Bitwarden-${version_bitwarden}-amd64.deb --output $TMP/Bitwarden-${version_bitwarden}-amd64.deb && \
     sudo dpkg -i $TMP/Bitwarden-${version_bitwarden}-amd64.deb
-    rm -f $TMP/Bitwarden-${version_bitwarden}-amd64.deb
 
     echo installing deb vscode
     [ -d ~/.vscode ] && \
@@ -346,7 +349,6 @@ if command -v python3 > /dev/null ; then if [ ! -f ~/python/bin/activate ] ; the
     - role: worker
     """ > $TMP/kind-config.yaml
     kind create cluster --config $TMP/kind-config.yaml
-    rm -f $TMP/kind-config.yaml
 
 }
 -brightness(){
