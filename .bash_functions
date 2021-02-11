@@ -40,7 +40,7 @@ if command -v python3 > /dev/null ; then if [ ! -f ~/python/bin/activate ] ; the
     echo "$GPG" > $TMP/gpg
 
     echo prereq repo gcloud
-    echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" | sudo tee /etc/apt/sources.list.d/google-cloud-sdk.list > /dev/null
+    echo "deb https://packages.cloud.google.com/apt cloud-sdk main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
     if ! grep -q "Google Cloud" $TMP/gpg ; then
     curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key --keyring /usr/share/keyrings/cloud.google.gpg add -
     fi
