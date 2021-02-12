@@ -160,11 +160,6 @@ if command -v python3 > /dev/null ; then if [ ! -f ~/python/bin/activate ] ; the
     curl -L https://github.com/bitwarden/desktop/releases/download/v${version_bitwarden}/Bitwarden-${version_bitwarden}-amd64.deb --output $TMP/Bitwarden-${version_bitwarden}-amd64.deb && \
     sudo dpkg -i $TMP/Bitwarden-${version_bitwarden}-amd64.deb
 
-    echo installing deb vscode
-    [ -d ~/.vscode ] && \
-        [ ! -d ~/.vscode/extensions/hashicorp.terraform-2.5.0 ] && code --install-extension hashicorp.terraform@2.5.0 && \
-        [ ! -d ~/.vscode/extensions/ms-python.python-2021.1.502429796 ] && code --install-extension ms-python.python@2021.1.502429796 && \
-
     echo installing golang
     [ ! -d ~/repos/thirdparty/go ] && \
     curl -L https://golang.org/dl/go1.15.6.linux-amd64.tar.gz | tar zx -C ~/repos/thirdparty/
@@ -596,5 +591,21 @@ if command -v python3 > /dev/null ; then if [ ! -f ~/python/bin/activate ] ; the
     ACCOUNT="$(git -C "$REPOS"/personal/dotfiles/ config remote.origin.url | sed 's/.*\.com[\/:]//g' | sed 's/\/.*//g')"
     for i in $CLONES ; do
         git clone git@github.com:"$ACCOUNT"/"$i".git "$REPOS"/personal/"$i"
+    done
+}
+-codes-plugins(){
+    export extensions="
+    haaaad.ansible@0.2.8
+    hashicorp.terraform@2.6.0
+    ms-azuretools.vscode-azureterraform@0.3.2
+    ms-python.python@2021.1.502429796
+    ms-toolsai.jupyter@2020.12.414227025
+    ms-vscode.azure-account@0.9.6
+    puppet.puppet-vscode@1.1.0
+    redhat.vscode-yaml@0.15.0
+    "
+
+    for i in $extensions ; do
+        code --install-extension "$i"
     done
 }
