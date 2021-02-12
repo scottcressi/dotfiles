@@ -598,9 +598,7 @@ if command -v python3 > /dev/null ; then if [ ! -f ~/python/bin/activate ] ; the
     esbenp.prettier-vscode@5.8.0
     haaaad.ansible@0.2.8
     hashicorp.terraform@2.6.0
-    ms-azuretools.vscode-azureterraform@0.3.2
     ms-azuretools.vscode-docker@1.9.1
-    ms-kubernetes-tools.vscode-kubernetes-tools@1.2.4
     ms-python.python@2021.1.502429796
     ms-toolsai.jupyter@2020.12.414227025
     ms-vscode.azure-account@0.9.6
