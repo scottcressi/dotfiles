@@ -1,4 +1,5 @@
 bpython
+flake8
 ipython
 mycli
 pgcli
