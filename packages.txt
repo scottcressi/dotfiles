@@ -35,11 +35,11 @@ filezilla                debian      gui       file           transfer
 freeciv                  debian      gui       game
 fzf                      debian      terminal
 gcc                      debian      terminal  base           compiler
-google-cloud-sdk         debian      terminal  thirdparty
 git                      debian      terminal  scm
 git-extras               debian      terminal  scm
 gnuchess                 debian      terminal  game
 gnupg                    debian      terminal  base           apt-key
+google-cloud-sdk         debian      terminal  thirdparty
 gource                   debian      gui       scm
 greed                    debian      terminal  game
 helm                     debian      terminal  thirdparty
@@ -147,8 +147,8 @@ vault                    debian      gui       thirdparty
 vifm                     debian      terminal  file           manager
 vim                      debian      terminal  editor
 vim-python-jedi          debian      terminal  editor
-virtualbox-6.1           debian      terminal  thirdparty
 virt-manager             debian      gui       virtualization
+virtualbox-6.1           debian      terminal  thirdparty
 vitetris                 debian      terminal  game
 w3m                      debian      terminal  browser
 weather-util             debian      terminal  weather
