@@ -223,7 +223,7 @@ if command -v python3 > /dev/null ; then if [ ! -f ~/python/bin/activate ] ; the
     [ ! -f ~/.bash_completion.d/kubectl ] && kubectl completion bash | tee ~/.bash_completion.d/kubectl > /dev/null
     [ ! -f ~/.bash_completion.d/docker-compose ] && \
     curl -L https://raw.githubusercontent.com/docker/compose/1.26.0/contrib/completion/bash/docker-compose -o ~/.bash_completion.d/docker-compose
-    ln -fs ~/.local/bin/aws_bash_completer ~/.bash_completion.d/aws_completer
+    ln -fs ~/python/bin/aws_bash_completer ~/.bash_completion.d/aws_completer
 
     echo configuring permissions
     chmod 755 $BIN/aws-iam-authenticator
