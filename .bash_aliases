@@ -99,8 +99,9 @@ alias kse='kubectl get svc --all-namespaces -o wide'
 alias ksee='kubectl get svc --all-namespaces -o wide --show-labels'
 alias ksm='kubectl get servicemonitors --all-namespaces'
 alias ktest='kubectl run -it foo --image=debian:stable-slim --restart=Never -- /bin/bash'
-alias kl='kubectl config get-contexts'
-alias kc='kubectl config use-context'
+alias kubeconfig-context-get='kubectl config get-contexts'
+alias kubeconfig-context-set='kubectl config use-context'
+alias kubeconfig-print='kubectl config view --raw --minify=true'
 alias kpn='watch -n 1 "kubectl get pods --all-namespaces | grep 0\/ | grep -v Completed"'
 
 # terraform
