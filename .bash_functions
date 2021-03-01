@@ -42,7 +42,7 @@ if command -v python3 > /dev/null ; then if [ ! -f ~/python/bin/activate ] ; the
     echo prereq repo gcloud
     echo "deb https://packages.cloud.google.com/apt cloud-sdk main" | sudo tee /etc/apt/sources.list.d/google-cloud-sdk.list > /dev/null
     if ! grep -q "Google Cloud" $TMP/gpg ; then
-    curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key --keyring /usr/share/keyrings/cloud.google.gpg add -
+    curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
     fi
 
     echo prereq repo backports
@@ -506,7 +506,7 @@ if command -v python3 > /dev/null ; then if [ ! -f ~/python/bin/activate ] ; the
     make clean install -C $REPOS/thirdparty/dwmblocks --quiet
 }
 -cowsay-normal(){
-    fortune | cowsay -f "$(find /usr/share/cowsay/cows/ | shuf | head -1)"
+    fortune | cowsay -f "$(cowsay -l | sed "1 d" | tr ' ' '\n' | shuf -n 1)"
 }
 -cowsay-custom(){
     fortune | cowsay -f "$(find $REPOS/personal/cowsay-files/cows | shuf | head -1)"
