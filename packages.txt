@@ -121,6 +121,7 @@ scrot                    debian      gui       screenshot
 sent                     debian      terminal  markdown
 shellcheck               debian      terminal  lint
 signal-desktop           debian      gui       thirdparty
+sipcalc                  debian      terminal  stats
 smplayer                 debian      gui       video
 speedpad                 debian      terminal  fun            typing
 speedtest-cli            debian      terminal  stats          network
