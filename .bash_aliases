@@ -19,7 +19,6 @@ alias test-disk-speed='dd if=/dev/zero of=~/tmp/testfile.bin bs=1M count=4K conv
 alias testssl='docker run -ti drwetter/testssl.sh'
 alias tm='transmission-remote debian:9091 -l'
 alias vf='vifm .'
-alias xrandr-tv='xrandr -s 1360x768'
 alias ycm='python3 ~/.vim/plugged/YouCompleteMe/install.py --all'
 alias zpool='ssh -l root freenas "zpool status"'
 
