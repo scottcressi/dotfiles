@@ -167,7 +167,7 @@ if command -v python3 > /dev/null ; then if [ ! -f ~/python/bin/activate ] ; the
     go get -u github.com/aws/aws-sdk-go
 
     echo installing misc firefox
-    version_firefox=86.0
+    version_firefox=86.0.1
     if ! pgrep firefox-bin > /dev/null ; then
         if [ ! -d ~/firefox ] ;then
             curl -L --url https://ftp.mozilla.org/pub/firefox/releases/"${version_firefox}"/linux-x86_64/en-US/firefox-"${version_firefox}".tar.bz2 | tar -xj && \
